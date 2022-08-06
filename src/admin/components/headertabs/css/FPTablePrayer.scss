@@ -1,0 +1,40 @@
+.FP_TablePrayer_ {
+   margin: 0;
+}
+.FP_TablePrayer_,table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.FP_TablePrayer_,table,th {
+     
+  background-color:var(--bbalp);
+  
+  backdrop-filter: saturate(100%);
+  backdrop-filter: contrast(50%);
+  backdrop-filter: hue-rotate(50deg);
+
+
+
+  color: whitesmoke;
+  }
+.FP_TablePrayer_,table td, table th {
+     
+    border: 1px solid #02352838;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  .FP_TablePrayer_,tbody:nth-child(even) {
+    background-color: var(--bbalp);
+  }
+  
+    .today-row{
+      backdrop-filter: saturate(100%);
+      background-color: var(--bbalp);
+      background-color: rgba(21, 221, 154, 0.274);
+     backdrop-filter: contrast(100%);
+     backdrop-filter: hue-rotate(50deg);
+  }

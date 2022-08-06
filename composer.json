@@ -1,0 +1,16 @@
+{
+    "name": "jamaa/startpluginreact-main",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "Jamaa\\StartpluginreactMain\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jamaalhassan",
+            "email": "kabarojamaal@gmail.com"
+        }
+    ],
+    "require": {}
+}

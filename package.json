@@ -1,0 +1,53 @@
+{
+  "name": "startpluginreact",
+  "version": "1.0.0",
+  "description": "start plugin simple react 17",
+  "main": "index.js",
+  "files": [
+    "*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start:hot": "wp-scripts start --hot",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "lint:md:docs": "wp-scripts lint-md-docs",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:unit": "wp-scripts test-unit-js"
+  },
+  "author": "jamaaldev",
+  "license": "MIT",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.3",
+    "@types/react-redux": "^7.1.24",
+    "@wordpress/dom-ready": "^3.14.0",
+    "@wordpress/element": "^4.12.0",
+    "@wordpress/scripts": "^23.6.0",
+    "axios": "^0.27.2",
+    "cities.json": "^1.1.10",
+    "cities15k.json": "^1.1.2",
+    "city-timezones": "^1.2.1",
+    "country-codes-list": "^1.6.8",
+    "html-react-parser": "^3.0.1",
+    "react-redux": "^8.0.2",
+    "react-refresh": "^0.14.0",
+    "react-router-dom": "^6.3.0",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.6.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.25",
+    "typescript": "^4.7.4"
+  }
+}
