@@ -20,16 +20,19 @@
 
   color: whitesmoke;
   }
-.FP_TablePrayer_,table td, table th {
+.FP_TablePrayer_,td,th {
      
     border: 1px solid #02352838;
     text-align: center;
     padding: 8px;
   }
   
-  .FP_TablePrayer_,tbody:nth-child(even) {
+  .FP_TablePrayer_ tbody:nth-child(even) {
     background-color: var(--bbalp);
   }
+   table tbody tr:nth-child(even) {
+    background-color: var(--bbalp);
+  } 
   
     .today-row{
       backdrop-filter: saturate(100%);
