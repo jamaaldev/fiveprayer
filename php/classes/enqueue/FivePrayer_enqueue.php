@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class FivePrayer_enqueue{
     function __construct(){
