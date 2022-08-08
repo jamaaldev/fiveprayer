@@ -1,3 +1,4 @@
+import { time } from 'console';
 import * as React from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -25,7 +26,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
  //Imsak
   if (localStorage.getItem('Imsak') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Imsak')[0]?.['meta-key'] === 'Imsak') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Imsak')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Imsak', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Imsak')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Imsak')[0]?.['meta-key'] === 'Imsak'){
@@ -35,7 +35,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
  //Fajr
   if (localStorage.getItem('Fajr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Fajr')[0]?.['meta-key'] === 'Fajr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Fajr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Fajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Fajr')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Fajr')[0]?.['meta-key'] === 'Fajr'){
@@ -45,7 +44,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
  //Sunrise
   if (localStorage.getItem('Sunrise') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunrise')[0]?.['meta-key'] === 'Sunrise') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunrise')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Sunrise', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunrise')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunrise')[0]?.['meta-key'] === 'Sunrise'){
@@ -55,7 +53,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   //Zhuhr
   if (localStorage.getItem('Zhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.['meta-key'] === 'Zhuhr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Zhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.['meta-key'] === 'Zhuhr'){
@@ -65,7 +62,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   //Asr
   if (localStorage.getItem('Asr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Asr')[0]?.['meta-key'] === 'Asr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Asr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Asr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Asr')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Asr')[0]?.['meta-key'] === 'Asr'){
@@ -75,7 +71,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   //Sunset
   if (localStorage.getItem('Sunset') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunset')[0]?.['meta-key'] === 'Sunset') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunset')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Sunset', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunset')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunset')[0]?.['meta-key'] === 'Sunset'){
@@ -85,7 +80,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   //Maghrib
   if (localStorage.getItem('Maghrib') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Maghrib')[0]?.['meta-key'] === 'Maghrib') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Maghrib')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Maghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Maghrib')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Maghrib')[0]?.['meta-key'] === 'Maghrib'){
@@ -95,7 +89,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   //Isha
   if (localStorage.getItem('Isha') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Isha')[0]?.['meta-key'] === 'Isha') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Isha')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Isha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Isha')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Isha')[0]?.['meta-key'] === 'Isha'){
@@ -105,7 +98,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   //Midnight
   if (localStorage.getItem('Midnight') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Midnight')[0]?.['meta-key'] === 'Midnight') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Midnight')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
     localStorage.setItem('Midnight', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Midnight')[0]?.value);
   } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Midnight')[0]?.['meta-key'] === 'Midnight'){
@@ -169,11 +161,19 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     const dataTable: string[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(localStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(localStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
+      console.log("%c 💮: GenerateCalender -> times ", "font-size:16px;background-color:#54d9c7;color:black;", times)
       dataTable.push(times);
 
       times.day = date.getDate().toString();
-      times.date =date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
-
+      times.date =date.getFullYear() + '-' + (date.getMonth() +1)+ '-' + date.getDate();
+     
+      
+          // convert given string into a number
+      let hourprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[0]; 
+      let minprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[1]; 
+      
+      times.fajr_iqamah = hourprayer + ':' + (minprayer + 5) ? (minprayer + 5) >= 60 ? hourprayer + 1 + ":" + (minprayer + 5) % 60 : hourprayer + ':' + (minprayer + 5) : hourprayer + ':' + (minprayer + 5);
+      console.log("%c 🌚: GenerateCalender -> (minprayer + 5) ", "font-size:16px;background-color:#5bb989;color:white;", (minprayer + 5) >= 60 );
       times.currentDate = date.getDate() + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
 
       let today = new Date();

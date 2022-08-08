@@ -32,8 +32,9 @@ function FPTablePrayerTime({calendar}) {
     <tr>
       <th>Date</th>
       <th>Fajr</th>
+      <th>Fajr Iqamah</th>
       <th>Sunrise</th>
-      <th>Zhuhr</th>
+      <th>dhuhr</th>
       <th>Asr</th>
       <th>Maghrib</th>
       <th>Isha</th>
@@ -45,8 +46,9 @@ function FPTablePrayerTime({calendar}) {
     <tr className={calendars?.today === new Date().getDate().toString() ?  'today-row'  : null  }>
     <td>{calendars?.currentDate}</td>
     <td>{calendars?.fajr_begins}</td>
+    <td>{calendars?.fajr_iqamah}</td>
     <td>{calendars?.sunrise}</td>
-    <td>{calendars?.zuhr_begins}</td>
+    <td>{calendars?.dhuhr_begins}</td>
     <td>{calendars?.asr_begins}</td>
     <td>{calendars?.maghrib_begins}</td>
     <td>{calendars?.isha_begins}</td>
