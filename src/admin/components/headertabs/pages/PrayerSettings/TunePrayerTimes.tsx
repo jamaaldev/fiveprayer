@@ -161,7 +161,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     const dataTable: string[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(localStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(localStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
-      console.log("%c 💮: GenerateCalender -> times ", "font-size:16px;background-color:#54d9c7;color:black;", times)
+      console.log("%c 🌬️: GenerateCalender -> times ", "font-size:16px;background-color:#9272fa;color:white;", times)
       dataTable.push(times);
 
       times.day = date.getDate().toString();
@@ -169,11 +169,26 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
      
       
           // convert given string into a number
-      let hourprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[0]; 
-      let minprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[1]; 
+      let fajrhourprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[0]; 
+      let fajrminprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[1]; 
+          // convert given string into a number
+      let dhuhrhourprayer =   1 * (times.dhuhr + "").split(/[^0-9.+-]/)[0]; 
+      let dhuhrminprayer =   1 * (times.dhuhr + "").split(/[^0-9.+-]/)[1]; 
+          // convert given string into a number
+      let asrhourprayer =   1 * (times.asr + "").split(/[^0-9.+-]/)[0]; 
+      let asrminprayer =   1 * (times.asr + "").split(/[^0-9.+-]/)[1]; 
+          // convert given string into a number
+      let maghribhourprayer =   1 * (times.maghrib + "").split(/[^0-9.+-]/)[0]; 
+      let maghribminprayer =   1 * (times.maghrib + "").split(/[^0-9.+-]/)[1]; 
+          // convert given string into a number
+      let ishahourprayer =   1 * (times.isha + "").split(/[^0-9.+-]/)[0]; 
+      let ishaminprayer =   1 * (times.isha + "").split(/[^0-9.+-]/)[1]; 
       
-      times.fajr_iqamah = hourprayer + ':' + (minprayer + 5) ? (minprayer + 5) >= 60 ? hourprayer + 1 + ":" + (minprayer + 5) % 60 : hourprayer + ':' + (minprayer + 5) : hourprayer + ':' + (minprayer + 5);
-      console.log("%c 🌚: GenerateCalender -> (minprayer + 5) ", "font-size:16px;background-color:#5bb989;color:white;", (minprayer + 5) >= 60 );
+      times.fajr_iqamah = fajrhourprayer + ':' + (fajrminprayer + 5) ? (fajrminprayer + 5) >= 60 ? fajrhourprayer + 1 + ":" + (fajrminprayer + 5) % 60 : fajrhourprayer + ':' + (fajrminprayer + 5) : fajrhourprayer + ':' + (fajrminprayer + 5);
+      times.dhuhr_iqamah = dhuhrhourprayer + ':' + (dhuhrminprayer + 5) ? (dhuhrminprayer + 5) >= 60 ? dhuhrhourprayer + 1 + ":" + (dhuhrminprayer + 5) % 60 : dhuhrhourprayer + ':' + (dhuhrminprayer + 5) : dhuhrhourprayer + ':' + (dhuhrminprayer + 5);
+      times.asr_iqamah = asrhourprayer + ':' + (asrminprayer + 5) ? (asrminprayer + 5) >= 60 ? asrhourprayer + 1 + ":" + (asrminprayer + 5) % 60 : asrhourprayer + ':' + (asrminprayer + 5) : asrhourprayer + ':' + (asrminprayer + 5);
+      times.maghrib_iqamah = maghribhourprayer + ':' + (maghribminprayer + 5) ? (maghribminprayer + 5) >= 60 ? maghribhourprayer + 1 + ":" + (maghribminprayer + 5) % 60 : maghribhourprayer + ':' + (maghribminprayer + 5) : maghribhourprayer + ':' + (maghribminprayer + 5);
+      times.isha_iqamah = ishahourprayer + ':' + (ishaminprayer + 5) ? (ishaminprayer + 5) >= 60 ? ishahourprayer + 1 + ":" + (ishaminprayer + 5) % 60 : ishahourprayer + ':' + (ishaminprayer + 5) : ishahourprayer + ':' + (ishaminprayer + 5);
       times.currentDate = date.getDate() + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
 
       let today = new Date();
