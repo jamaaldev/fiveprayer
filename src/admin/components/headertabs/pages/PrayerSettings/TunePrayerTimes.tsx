@@ -191,10 +191,12 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
      console.log("%c 😄: second min GenerateCalender -> lastDigit2Str ", "font-size:16px;background-color:#215563;color:white;", lastDigit2Str)
      const lastDigit2Str2 = String(fajrminprayer).slice(-2,1); // 👉️ '7'
      console.log("%c 🐜: first minGenerateCalender -> lastDigit2Str2 ", "font-size:16px;background-color:#6588fc;color:white;", lastDigit2Str2)
-     times.fajr_masjid_jamaah =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=5 ) ? lastDigit2Str2 : '';
+    //  times.fajr_masjid_jamaah =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=5 ) ? lastDigit2Str2 : '';
       // times.fajr_masjid_jamaah2 =  (Number(lastDigit2Str)  >=0 && Number(lastDigit2Str)  <=9 ) ? lastDigit2Str : '' ;
       // times.fajr_masjid_jamaah3 =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=5 ) && (fajrminprayer + 20) >= 60 ? fajrhourprayer + 1 + ':' +  ((fajrminprayer + 20) % 60) ?  ((fajrminprayer + 20) % 60)  + 'a': 'b' :  ((fajrminprayer + 20) % 60)  ;
-      times.fajr_masjid_jamaah = fajrhourprayer + ':' + (fajrminprayer + 30 >= 60) ? fajrhourprayer + 1 + ":" + (fajrminprayer + 30) % 60: fajrhourprayer + 1 +':' + (fajrminprayer +30) % 60;
+      // times.fajr_masjid = fajrhourprayer + ':' + (parseInt(lastDigit2Str2) + parseInt(lastDigit2Str) + 30 >= 60) ? fajrhourprayer +1 + ":" + (parseInt(lastDigit2Str2) + parseInt(lastDigit2Str) + 30) % 60: fajrhourprayer + 1 +':' + (parseInt(lastDigit2Str2) + parseInt(lastDigit2Str) +30) % 60;
+      times.fajr_masjid_jamaah = fajrhourprayer + ':' + (fajrminprayer + 30 >60 ) ? fajrhourprayer +1  && parseInt(lastDigit2Str2)  == 0 ? fajrhourprayer  + ":" + (fajrminprayer + 30) % 60 : parseInt(lastDigit2Str2)  == 0 ? fajrhourprayer  : fajrhourprayer +1  +':' + (fajrminprayer +30) % 60 : '';
+      // times.fajr_masjid_jamaah = fajrhourprayer + ':' + (fajrminprayer + 30 >= 60) ? fajrhourprayer  + ":" + (fajrminprayer + 30) % 60: fajrhourprayer + 1 +':' + (fajrminprayer +30) % 60;
       times.dhuhr_iqamah = dhuhrhourprayer + ':' + (dhuhrminprayer + 5) ? (dhuhrminprayer + 5) >= 60 ? dhuhrhourprayer + 1 + ":" + (dhuhrminprayer + 5) % 60 : dhuhrhourprayer + ':' + (dhuhrminprayer + 5) : dhuhrhourprayer + ':' + (dhuhrminprayer + 5);
       times.asr_iqamah = asrhourprayer + ':' + (asrminprayer + 5) ? (asrminprayer + 5) >= 60 ? asrhourprayer + 1 + ":" + (asrminprayer + 5) % 60 : asrhourprayer + ':' + (asrminprayer + 5) : asrhourprayer + ':' + (asrminprayer + 5);
       times.maghrib_iqamah = maghribhourprayer + ':' + (maghribminprayer + 5) ? (maghribminprayer + 5) >= 60 ? maghribhourprayer + 1 + ":" + (maghribminprayer + 5) % 60 : maghribhourprayer + ':' + (maghribminprayer + 5) : maghribhourprayer + ':' + (maghribminprayer + 5);
@@ -210,6 +212,12 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
           times.fajr_jam = hourprayer + ':' + 10;
           
         } 
+        if(parseInt(lastDigit2Str) <=8){
+          times.test = hourprayer + ':' + 10;
+        }
+        if(parseInt(lastDigit2Str) >=9){
+          times.test = hourprayer + ':' + 15;
+        }
       let today = new Date();
       let isToday = date.getMonth() == today.getMonth() && date.getDate() == today.getDate();
 
