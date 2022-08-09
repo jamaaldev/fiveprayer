@@ -161,6 +161,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     const dataTable: string[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(localStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(localStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
+      console.log("%c 🦌: GenerateCalender -> times ", "font-size:16px;background-color:#ed838b;color:white;", times)
       dataTable.push(times);
 
       times.day = date.getDate().toString();
@@ -187,8 +188,9 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
 // 👇️ Integers
     
      const lastDigit2Str = String(fajrminprayer).slice(-1); // 👉️ '7'
-     console.log("%c 😄: GenerateCalender -> lastDigit2Str ", "font-size:16px;background-color:#215563;color:white;", lastDigit2Str)
+     console.log("%c 😄: second min GenerateCalender -> lastDigit2Str ", "font-size:16px;background-color:#215563;color:white;", lastDigit2Str)
      const lastDigit2Str2 = String(fajrminprayer).slice(-2,1); // 👉️ '7'
+     console.log("%c 🐜: first minGenerateCalender -> lastDigit2Str2 ", "font-size:16px;background-color:#6588fc;color:white;", lastDigit2Str2)
      times.fajr_masjid_jamaah =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=5 ) ? lastDigit2Str2 : '';
       // times.fajr_masjid_jamaah2 =  (Number(lastDigit2Str)  >=0 && Number(lastDigit2Str)  <=9 ) ? lastDigit2Str : '' ;
       // times.fajr_masjid_jamaah3 =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=5 ) && (fajrminprayer + 20) >= 60 ? fajrhourprayer + 1 + ':' +  ((fajrminprayer + 20) % 60) ?  ((fajrminprayer + 20) % 60)  + 'a': 'b' :  ((fajrminprayer + 20) % 60)  ;
@@ -204,7 +206,10 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
         console.log("%c 🍯: GenerateCalender -> hourprayer ", "font-size:16px;background-color:#f1464b;color:white;", hourprayer)
         let minprayer =   1 * (times.fajr_masjid_jamaah + "").split(/[^0-9.+-]/)[1]; 
         console.log("%c 🤫: GenerateCalender -> minprayer ", "font-size:16px;background-color:#c217d7;color:white;", minprayer)
-     
+        if(parseInt(lastDigit2Str) >=0 ){
+          times.fajr_jam = hourprayer + ':' + 10;
+          
+        } 
       let today = new Date();
       let isToday = date.getMonth() == today.getMonth() && date.getDate() == today.getDate();
 
