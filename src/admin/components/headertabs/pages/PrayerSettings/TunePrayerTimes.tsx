@@ -161,7 +161,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     const dataTable: string[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(localStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(localStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
-      console.log("%c 🌬️: GenerateCalender -> times ", "font-size:16px;background-color:#9272fa;color:white;", times)
       dataTable.push(times);
 
       times.day = date.getDate().toString();
@@ -185,12 +184,27 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       let ishaminprayer =   1 * (times.isha + "").split(/[^0-9.+-]/)[1]; 
       
       times.fajr_iqamah = fajrhourprayer + ':' + (fajrminprayer + 5) ? (fajrminprayer + 5) >= 60 ? fajrhourprayer + 1 + ":" + (fajrminprayer + 5) % 60 : fajrhourprayer + ':' + (fajrminprayer + 5) : fajrhourprayer + ':' + (fajrminprayer + 5);
+// 👇️ Integers
+    
+     const lastDigit2Str = String(fajrminprayer).slice(-1); // 👉️ '7'
+     console.log("%c 😄: GenerateCalender -> lastDigit2Str ", "font-size:16px;background-color:#215563;color:white;", lastDigit2Str)
+     const lastDigit2Str2 = String(fajrminprayer).slice(-2,1); // 👉️ '7'
+     times.fajr_masjid_jamaah =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=5 ) ? lastDigit2Str2 : '';
+      // times.fajr_masjid_jamaah2 =  (Number(lastDigit2Str)  >=0 && Number(lastDigit2Str)  <=9 ) ? lastDigit2Str : '' ;
+      // times.fajr_masjid_jamaah3 =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=5 ) && (fajrminprayer + 20) >= 60 ? fajrhourprayer + 1 + ':' +  ((fajrminprayer + 20) % 60) ?  ((fajrminprayer + 20) % 60)  + 'a': 'b' :  ((fajrminprayer + 20) % 60)  ;
+      times.fajr_masjid_jamaah = fajrhourprayer + ':' + (fajrminprayer + 30 >= 60) ? fajrhourprayer + 1 + ":" + (fajrminprayer + 30) % 60: fajrhourprayer + 1 +':' + (fajrminprayer +30) % 60;
       times.dhuhr_iqamah = dhuhrhourprayer + ':' + (dhuhrminprayer + 5) ? (dhuhrminprayer + 5) >= 60 ? dhuhrhourprayer + 1 + ":" + (dhuhrminprayer + 5) % 60 : dhuhrhourprayer + ':' + (dhuhrminprayer + 5) : dhuhrhourprayer + ':' + (dhuhrminprayer + 5);
       times.asr_iqamah = asrhourprayer + ':' + (asrminprayer + 5) ? (asrminprayer + 5) >= 60 ? asrhourprayer + 1 + ":" + (asrminprayer + 5) % 60 : asrhourprayer + ':' + (asrminprayer + 5) : asrhourprayer + ':' + (asrminprayer + 5);
       times.maghrib_iqamah = maghribhourprayer + ':' + (maghribminprayer + 5) ? (maghribminprayer + 5) >= 60 ? maghribhourprayer + 1 + ":" + (maghribminprayer + 5) % 60 : maghribhourprayer + ':' + (maghribminprayer + 5) : maghribhourprayer + ':' + (maghribminprayer + 5);
       times.isha_iqamah = ishahourprayer + ':' + (ishaminprayer + 5) ? (ishaminprayer + 5) >= 60 ? ishahourprayer + 1 + ":" + (ishaminprayer + 5) % 60 : ishahourprayer + ':' + (ishaminprayer + 5) : ishahourprayer + ':' + (ishaminprayer + 5);
       times.currentDate = date.getDate() + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
-
+        console.log(dataTable.length)
+        console.log(times.fajr_masjid_jamaah)
+        let hourprayer =   1 * (times.fajr_masjid_jamaah + "").split(/[^0-9.+-]/)[0]; 
+        console.log("%c 🍯: GenerateCalender -> hourprayer ", "font-size:16px;background-color:#f1464b;color:white;", hourprayer)
+        let minprayer =   1 * (times.fajr_masjid_jamaah + "").split(/[^0-9.+-]/)[1]; 
+        console.log("%c 🤫: GenerateCalender -> minprayer ", "font-size:16px;background-color:#c217d7;color:white;", minprayer)
+     
       let today = new Date();
       let isToday = date.getMonth() == today.getMonth() && date.getDate() == today.getDate();
 
