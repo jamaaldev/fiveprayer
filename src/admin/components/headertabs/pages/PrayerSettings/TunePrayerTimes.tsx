@@ -10,7 +10,7 @@ import { AsrChecked, HigherChecked, LocationChecked, MedothChecked, MidnightChec
 import { PrayTimes } from '../../../../model/PrayTimes';
 import FPInput from '../../../elements/FPInput';
 import FPTablePrayerTime from './FPTablePrayerTime';
-
+import MasjidJamaah from '../../../../model/MasjidJamaah';
 export interface ITunePrayerTimesProps {}
 
 export function TunePrayerTimes(props: ITunePrayerTimesProps) {
@@ -161,13 +161,11 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     const dataTable: string[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(localStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(localStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
-      console.log("%c 🇺🇾: GenerateCalender -> times ", "font-size:16px;background-color:#f1e5fe;color:black;", times)
       dataTable.push(times);
 
       times.day = date.getDate().toString();
       times.date =date.getFullYear() + '-' + (date.getMonth() +1)+ '-' + date.getDate();
      
-      
           // convert given string into a number
       let fajrhourprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[0]; 
       let fajrminprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[1]; 
@@ -209,9 +207,11 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       times.isha_iqamah = ishahourprayer + ':' + (ishaminprayer + 20) ? (ishaminprayer + 20) >= 60 ? ishahourprayer + 1 + ":" + (ishaminprayer + 20) % 60 : ishahourprayer + ':' + (ishaminprayer + 20) : ishahourprayer + ':' + (ishaminprayer + 20);
       times.currentDate = date.getDate() + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
        
-        let hourprayer =   1 * (times.fajr_iqamah + "").split(/[^0-9.+-]/)[0]; 
-        let minprayer =   1 * (times.fajr_iqamah + "").split(/[^0-9.+-]/)[1]; 
-        console.log("%c 🤭: GenerateCalender -> minprayer ", "font-size:16px;background-color:#d05799;color:white;", minprayer)
+      const masjidJamaah = new MasjidJamaah(times);
+      masjidJamaah.FajrJamah();
+
+       /*  let hourprayer =   1 * (times.fajr_iqamah + "").split(/[^0-9.+-]/)[0]; 
+        let minprayer =   1 * (times.fajr_iqamah + "").split(/[^0-9.+-]/)[1];  */
        /*  if(parseInt(lastDigit2Str) >=0 && minprayer > 10 ){
           times.fajr_jam = hourprayer + ':' + 15;
           
@@ -219,21 +219,97 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
        /*  if(parseInt(lastDigit2Str) <=8 && minprayer <=40){
           times.test = hourprayer + ':' + 20;
         } */
-        if( minprayer >=0 && minprayer <=15 ){
-          times.test = hourprayer + ':' + 10;
+
+        let hourprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[0]; 
+        let minprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[1]; 
+
+
+
+        if( minprayer >=0 && minprayer <=8 ){
+          times.testers = hourprayer + ':' + 16;
         }
-     /*    if( minprayer >=21 && minprayer <=40 ){
-          times.test = hourprayer + ':' + 30;
-        } */
-        if( minprayer >=16 && minprayer <=32 ){
-          times.test = hourprayer + ':' + 20;
+      
+        if( minprayer >=8 && minprayer <=16 ){
+          times.testers = hourprayer + ':' + 24;
         }
-      /*   if(parseInt(lastDigit2Str) >=59){
-          times.test = minprayer < 9 ? hourprayer +  ':' + 15 : '';
+        if( minprayer >=16 && minprayer <=24 ){
+          times.testers = hourprayer + ':' + 32;
+        }
+        if( minprayer >=24 && minprayer <=32 ){
+          times.testers = hourprayer + ':' + 40;
+        }
+        if( minprayer >=32 && minprayer <=40 ){
+          times.testers = hourprayer + ':' + 48;
+        }
+        if( minprayer >=40 && minprayer <=48 ){
+          times.testers = hourprayer + ':' + 54;
+        }
+        if( minprayer >=48 && minprayer <=52 ){
+          times.testers = hourprayer + ':' + 58;
+        }
+        if( minprayer >=52 && minprayer <=59 ){
+          times.testers = hourprayer + 1+':' + 8;
+        }
+        if( minprayer == 59){
+          times.testers = hourprayer + 1 + ':' + ( minprayer - 49);
+        }
+
+       /*  if( minprayer == 33){
+          times.test = hourprayer + ':' + (minprayer == 33 ? +40 : '' ).toString()
         } */
+     
+       /*  if( minprayer >= 31){
+         times.test = hourprayer + ':' + (minprayer >= 31 ? +40 : '' ).toString()
+        }
+        if( minprayer >= 39){
+         times.test = hourprayer + ':' + (minprayer >= 39 ? +45 : '' ).toString()
+        }
+        if( minprayer >= 44){
+         times.test = hourprayer + ':' + (minprayer >= 44 ? +47 : '' ).toString()
+        }
         if( minprayer >= 57){
-          times.test = minprayer  ? parseInt( hourprayer )+ 1+ ':' + parseInt( minprayer) - 57 : '';
+         times.test = hourprayer + ':' + (minprayer >= 57 ? +48 : '' ).toString()
         }
+        if( minprayer >= 4){
+         times.test = hourprayer + ':' + (minprayer >= 4 ? +10 : '' ).toString()
+        }
+        if( minprayer >=15 ){
+         times.test = hourprayer + ':' + (minprayer >= 15 ? +24 : '' ).toString()
+        }
+        if( minprayer >=19 ){
+         times.test = hourprayer + ':' + (minprayer >= 19 ? +30 : '' ).toString()
+        } */
+
+      
+        console.log("%c ♊: GenerateCalender -> times ", "font-size:16px;background-color:#8f7285;color:white;", times)
+        console.log("%c 🇵🇦: GenerateCalender -> minprayer ", "font-size:16px;background-color:#574f3b;color:white;", minprayer)
+        // times.test = minprayer == 34 ? hourprayer + ':' + (minprayer == 34 ? +40 : '' ).toString() : '';  times.test = minprayer == 35 ? hourprayer + ':' + (minprayer == 35 ? +45 : '' ).toString() : ''; 
+        // times.test = hourprayer + ':' + (minprayer >= 40 ?  +7 : '' ).toString() ;
+        // times.test = hourprayer + ':' + ((minprayer >= 10 && minprayer <=20 ) ?  +16 : '' ).toString() ;
+       /*  times.test = hourprayer + ':' + (minprayer >= 20 ?  +26 : '' ).toString() ;
+        times.test = hourprayer + ':' + (minprayer >= 30 ?  +36 : '' ).toString() ;
+        times.test = hourprayer + ':' + (minprayer >= 40 ?  +46 :'' ).toString() ; */
+
+      /*    if( minprayer >=0 && minprayer <=15 ){
+          times.test = hourprayer + ':' + minprayer + 10;
+        }
+    
+        if( minprayer >=15 && minprayer <=32 ){
+          times.test = hourprayer + ':' + minprayer + 15;
+        }
+        if( minprayer >=32 && minprayer <=45 ){
+          times.test = hourprayer + ':' + (minprayer == 33 ?  +40 : minprayer).toString() ;
+          times.test = hourprayer + ':' + (minprayer == 34 ?  +41 : minprayer).toString() ;
+        }
+        if( minprayer >=45 && minprayer <=59 ){
+          times.test = hourprayer + ':' + 25;
+        }
+        if( minprayer >=59 && minprayer <=7 ){
+          times.test = hourprayer + ':' + 30;
+        }
+        if( minprayer == 59){
+          times.test = hourprayer + 1 + ':' + ( minprayer - 49);
+        }  */
       let today = new Date();
       let isToday = date.getMonth() == today.getMonth() && date.getDate() == today.getDate();
 
