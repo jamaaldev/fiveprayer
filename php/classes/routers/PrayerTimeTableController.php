@@ -48,6 +48,7 @@ class PrayerTimeTableController
                         'currentDate' => $day['currentDate'],
                        'fajr_begins' => $day['fajr'],
                        'fajr_iqamah' => $day['fajr_iqamah'],
+                       'fajr_masjid_jamaah' => $day['fajr_masjid_jamaah'],
                        //    'fajr_iqamah' => $day[null],
                        'dhuhr_begins' => $day['dhuhr'],
                        'dhuhr_iqamah' => $day['dhuhr_iqamah'],

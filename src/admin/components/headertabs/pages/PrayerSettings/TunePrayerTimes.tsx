@@ -182,29 +182,29 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       let ishahourprayer =   1 * (times.isha + "").split(/[^0-9.+-]/)[0]; 
       let ishaminprayer =   1 * (times.isha + "").split(/[^0-9.+-]/)[1]; 
       
-      times.fajr_iqamah = fajrhourprayer + ':' + (fajrminprayer + 20) ? (fajrminprayer + 20) >= 60 ? fajrhourprayer + 1 + ":" + (fajrminprayer + 20) % 60 : fajrhourprayer + ':' + (fajrminprayer + 20) : fajrhourprayer + ':' + (fajrminprayer + 20);
 // 👇️ Integers
     
      const lastDigit2Str = String(fajrminprayer).slice(-1); // 👉️ '7'
      const lastDigit2Str2 = String(fajrminprayer).slice(-2,1); // 👉️ '7'
-    //  times.fajr_masjid_jamaah =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=20 ) ? lastDigit2Str2 : '';
+    //  times.fajr_masjid_jamaah =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=7 ) ? lastDigit2Str2 : '';
       // times.fajr_masjid_jamaah2 =  (Number(lastDigit2Str)  >=0 && Number(lastDigit2Str)  <=9 ) ? lastDigit2Str : '' ;
-      // times.fajr_masjid_jamaah3 =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=20 ) && (fajrminprayer + 20) >= 60 ? fajrhourprayer + 1 + ':' +  ((fajrminprayer + 20) % 60) ?  ((fajrminprayer + 20) % 60)  + 'a': 'b' :  ((fajrminprayer + 20) % 60)  ;
+      // times.fajr_masjid_jamaah3 =  (Number(lastDigit2Str2)  >=0 && Number(lastDigit2Str2)  <=7 ) && (fajrminprayer + 20) >= 60 ? fajrhourprayer + 1 + ':' +  ((fajrminprayer + 20) % 60) ?  ((fajrminprayer + 20) % 60)  + 'a': 'b' :  ((fajrminprayer + 20) % 60)  ;
       // times.fajr_masjid = fajrhourprayer + ':' + (parseInt(lastDigit2Str2) + parseInt(lastDigit2Str) + 30 >= 60) ? fajrhourprayer +1 + ":" + (parseInt(lastDigit2Str2) + parseInt(lastDigit2Str) + 30) % 60: fajrhourprayer + 1 +':' + (parseInt(lastDigit2Str2) + parseInt(lastDigit2Str) +30) % 60;
         // ((parseInt(lastDigit2Str2) === 0 ) && ( parseInt(lastDigit2Str) === 0 ))  ?   + ":" + (fajrminprayer + 30) % 60  :(parseInt(lastDigit2Str2) < 60 ?  fajrhourprayer : parseInt(lastDigit2Str) < 209 ? fajrhourprayer  : fajrhourprayer +1) + ":" + (fajrminprayer + 30) % 60;
-      if(((parseInt(lastDigit2Str2) === 0 ) && ( parseInt(lastDigit2Str) === 0 ))){
-        times.fajr_masjid_jamaah = fajrhourprayer + ':' + (fajrminprayer + 30) % 60
-      }
+    /*   if(((parseInt(lastDigit2Str2) === 0 ) && ( parseInt(lastDigit2Str) === 0 ))){
+        times.fajr_masjid_jamaah = fajrhourprayer + ':' + (fajrminprayer +16) % 60
+      } */
    
     
   
-     
+      
       // times.fajr_masjid_jamaahcorrentsome = fajrhourprayer + ':' + (fajrminprayer + 30 >60 ) ? fajrhourprayer +1  && parseInt(lastDigit2Str2)  == 0 ? fajrhourprayer  + ":" + (fajrminprayer + 30) % 60 : parseInt(lastDigit2Str2)  == 0 ? fajrhourprayer  : fajrhourprayer +1  +':' + (fajrminprayer +30) % 60 : '';
       // times.fajr_masjid_jamaah = fajrhourprayer + ':' + (fajrminprayer + 30 >= 60) ? fajrhourprayer  + ":" + (fajrminprayer + 30) % 60: fajrhourprayer + 1 +':' + (fajrminprayer +30) % 60;
-      times.dhuhr_iqamah = dhuhrhourprayer + ':' + (dhuhrminprayer + 20) ? (dhuhrminprayer + 20) >= 60 ? dhuhrhourprayer + 1 + ":" + (dhuhrminprayer + 20) % 60 : dhuhrhourprayer + ':' + (dhuhrminprayer + 20) : dhuhrhourprayer + ':' + (dhuhrminprayer + 20);
-      times.asr_iqamah = asrhourprayer + ':' + (asrminprayer + 20) ? (asrminprayer + 20) >= 60 ? asrhourprayer + 1 + ":" + (asrminprayer + 20) % 60 : asrhourprayer + ':' + (asrminprayer + 20) : asrhourprayer + ':' + (asrminprayer + 20);
-      times.maghrib_iqamah = maghribhourprayer + ':' + (maghribminprayer + 20) ? (maghribminprayer + 20) >= 60 ? maghribhourprayer + 1 + ":" + (maghribminprayer + 20) % 60 : maghribhourprayer + ':' + (maghribminprayer + 20) : maghribhourprayer + ':' + (maghribminprayer + 20);
-      times.isha_iqamah = ishahourprayer + ':' + (ishaminprayer + 20) ? (ishaminprayer + 20) >= 60 ? ishahourprayer + 1 + ":" + (ishaminprayer + 20) % 60 : ishahourprayer + ':' + (ishaminprayer + 20) : ishahourprayer + ':' + (ishaminprayer + 20);
+      times.fajr_iqamah = fajrhourprayer + ':' + (fajrminprayer + 7) ? (fajrminprayer + 7) >= 60 ? fajrhourprayer + 1 + ":" + (fajrminprayer + 7) % 60 : fajrhourprayer + ':' + (fajrminprayer + 7) : fajrhourprayer + ':' + (fajrminprayer + 7);
+      times.dhuhr_iqamah = dhuhrhourprayer + ':' + (dhuhrminprayer + 7) ? (dhuhrminprayer + 7) >= 60 ? dhuhrhourprayer + 1 + ":" + (dhuhrminprayer + 7) % 60 : dhuhrhourprayer + ':' + (dhuhrminprayer + 7) : dhuhrhourprayer + ':' + (dhuhrminprayer + 7);
+      times.asr_iqamah = asrhourprayer + ':' + (asrminprayer + 7) ? (asrminprayer + 7) >= 60 ? asrhourprayer + 1 + ":" + (asrminprayer + 7) % 60 : asrhourprayer + ':' + (asrminprayer + 7) : asrhourprayer + ':' + (asrminprayer + 7);
+      times.maghrib_iqamah = maghribhourprayer + ':' + (maghribminprayer + 7) ? (maghribminprayer + 7) >= 60 ? maghribhourprayer + 1 + ":" + (maghribminprayer + 7) % 60 : maghribhourprayer + ':' + (maghribminprayer + 7) : maghribhourprayer + ':' + (maghribminprayer + 7);
+      times.isha_iqamah = ishahourprayer + ':' + (ishaminprayer + 7) ? (ishaminprayer + 7) >= 60 ? ishahourprayer + 1 + ":" + (ishaminprayer + 7) % 60 : ishahourprayer + ':' + (ishaminprayer + 7) : ishahourprayer + ':' + (ishaminprayer + 7);
       times.currentDate = date.getDate() + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
        
       const masjidJamaah = new MasjidJamaah(times);
