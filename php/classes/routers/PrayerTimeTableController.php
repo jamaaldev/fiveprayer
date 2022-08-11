@@ -115,7 +115,37 @@ class PrayerTimeTableController
           $results = $wpdb->prepare("SELECT * FROM wp_fp_timetable "); //query to fetch record only from user_ip field
           $prayersettingmeta = $wpdb->get_results($results);
           if ($prayersettingmeta) {
-               return $prayersettingmeta;
+            return array_map(function ($day) {
+                    
+                 return  array(
+                    'date' => $day->date,
+                    'currentDate' => $day->currentDate,
+                    'fajr_begins' => date("g:i A ", strtotime($day->fajr_begins)),
+                    'fajr_iqamah' => date("g:i A ", strtotime( $day->fajr_iqamah)),
+                   'fajr_masjid_jamaah' => date("g:i A ", strtotime( $day->fajr_masjid_jamaah)),
+                   'sunrise' => date("g:i A ", strtotime(  $day->sunrise)),
+                   //    'fajr_iqamah' => $day[null],
+                   'dhuhr_begins' => date("g:i A ", strtotime(  $day->dhuhr_begins)),
+                   'dhuhr_iqamah' => date("g:i A ", strtotime($day->dhuhr_iqamah)),
+                   //    'zuhr_iqamah' => $day[null],
+                   'asr_begins' => date("g:i A ", strtotime($day->asr_begins)) ,
+                   'asr_iqamah' => date("g:i A ", strtotime($day->asr_iqamah)),
+                   //    'asr_iqamah' => $day[null],
+                   'maghrib_begins' => date("g:i A ", strtotime($day->maghrib_begins)),
+                   'maghrib_iqamah' => date("g:i A ", strtotime($day->maghrib_iqamah)),
+                   //    'maghrib_iqamah' => $day[null],
+                   'isha_begins' => date("g:i A ", strtotime( $day->isha_begins)),
+                   'isha_iqamah' => date("g:i A ", strtotime($day->isha_iqamah)),
+                   'midnight' => date("g:i A ", strtotime($day->midnight)),
+                   'className' => $day->className,
+                   'today' => $day->today,
+                //    'isha_iqamah' => $day[null]
+                   
+               );
+               }, $prayersettingmeta);
+               //   return json_decode($timetable, true);
+              
+
           }
      }
 }

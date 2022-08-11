@@ -25,12 +25,17 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Fajr</th>
+                        <th>Fajr Begins</th>
+                        <th>Fajr Iqamah</th>
                         <th>Sunrise</th>
-                        <th>Zhuhr</th>
-                        <th>Asr</th>
-                        <th>Maghrib</th>
-                        <th>Isha</th>
+                        <th>Dhuhr Begins</th>
+                        <th>Dhuhr Iqamah</th>
+                        <th>Asr Begins</th>
+                        <th>Asr Iqamah</th>
+                        <th>Maghrib Begins</th>
+                        <th>Maghrib Iqamah</th>
+                        <th>Isha Begins</th>
+                        <th>Isha Iqamah</th>
                         <th>Midnight</th>
                     </tr>
                 </thead>
@@ -49,13 +54,19 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
                <?php print_r(date_parse($day->date)['month'] === 8); ?>
                     <tr class=<?php  echo $day->today == $mydate ?  'today-row'  : null ?>>
                     <td><?php echo $day->currentDate ?></td>
-                    <td><?php echo $day->fajr_begins ?></td>
-                    <td><?php echo $day->sunrise ?></td>
-                    <td><?php echo $day->dhuhr_begins ?></td>
-                    <td><?php echo $day->asr_begins ?></td>
-                    <td><?php echo $day->maghrib_begins ?></td>
-                    <td><?php echo $day->isha_begins ?></td>
-                    <td><?php echo $day->midnight ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->fajr_begins))  ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->fajr_iqamah)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->sunrise)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->dhuhr_begins)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->dhuhr_iqamah)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->asr_begins)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->asr_iqamah)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->maghrib_begins)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->maghrib_iqamah)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->isha_begins)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->isha_iqamah)) ?></td>
+                    <td><?php echo  date("g:i A ", strtotime( $day->midnight)) ?></td>
+                   
                 </tr>
                 <?php }
                                ?>

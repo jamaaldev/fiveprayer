@@ -4,7 +4,7 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 class FivePrayer_enqueue{
     function __construct(){
         add_action( 'admin_enqueue_scripts', array($this,'fiveprayer_admin_enqueue_scripts'));
-        add_action( 'wp_enqueue_scripts', array($this,'register_wprs'),99 );
+        // add_action( 'wp_enqueue_scripts', array($this,'register_wprs'),99 );
 
 
     }
