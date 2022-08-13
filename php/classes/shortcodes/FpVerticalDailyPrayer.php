@@ -66,7 +66,7 @@
                                    $timeMin = wp_date("i", null, $timezone = null);
 
                                    
-                                   if (getdate()["mday"] == $day->today && ($timeHour == 2) && ($timeMin > 19) ) {
+                                   if (getdate()["mday"] == $day->today && ($timeHour == 2) && ($timeHour > 19) ) {
                                         // echo $day->fajr_iqamah . '' . date(' H:i:s', $after) . '' . date(' H:i:s', $before)  ;
                                         echo ((strtotime($day->fajr_iqamah)) >  $before) && (!(strtotime($day->fajr_iqamah)) >=  $after)  ? date(' g:i: A', strtotime($day->fajr_iqamah)) : '' ;
 
@@ -90,14 +90,14 @@
                                    }
                                    
                                    
-                                   if (getdate()["mday"] == $day->today && ($timeHour >= 17) && ($timeHour < 19)  ) {
+                                   if (getdate()["mday"] == $day->today && ($timeHour >= 17) && ($timeHour < 20)  ) {
                                         
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->maghrib_iqamah) >  $beforeMaghrib)) && (!(strtotime($day->maghrib_iqamah) >=  $afterMaghrib))  ? date(' g:i: A', strtotime($day->maghrib_iqamah)) : '' ;
                                         // echo $timeHour . '' . $timeMin;
                                         echo date(' g:i: A', strtotime($day->maghrib_iqamah));
                                    }
-                                   if (getdate()["mday"] == $day->today && ($timeHour >= 19) && ($timeHour < 24)   ) {
+                                   if (getdate()["mday"] == $day->today && ($timeHour >= 20) && ($timeHour < 24)   ) {
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->isha_iqamah) >  $beforeIsha)) && (!(strtotime($day->isha_iqamah) >=  $afterIsha))  ? date(' g:i: A', strtotime($day->isha_iqamah)) : '' ;
                                         echo date(' g:i: A', strtotime($day->isha_iqamah));
