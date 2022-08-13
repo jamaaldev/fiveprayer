@@ -42,8 +42,8 @@ class FivePrayerPlugin {
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/CustomLocationController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerTimeTableController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerSettingsMetaController.php');
-        require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/Fp_TimeTable_Month.php');
-        require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/Fp_Vertical_Daily_Prayer.php');
+        require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/FpTimeTableMonth.php');
+        require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/FpVerticalDailyPrayer.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/pages/FivePrayer_admin.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/enqueue/FivePrayer_enqueue.php');
         new FivePrayer_admin;
@@ -51,8 +51,8 @@ class FivePrayerPlugin {
         new PrayerTimeTableController;
         new PrayerSettingsMetaController;
         new FivePrayer_enqueue;
-        new Fp_TimeTable_Month;
-        new Fp_Vertical_Daily_Prayer;
+        new FpTimetableMonth;
+        new FpVerticalDailyPrayer;
 
         
     }

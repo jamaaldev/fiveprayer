@@ -4,7 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface IqamaDelayState {
   IQFajr:number[],
-  IQZhuhr:number[],
+  IQDhuhr:number[],
   IQAsr:number[],
   IQMaghrib:number[],
   IQIsha:number[],
@@ -13,7 +13,7 @@ export interface IqamaDelayState {
 
 const initialState:IqamaDelayState = {
   IQFajr:[],
-  IQZhuhr:[],
+  IQDhuhr:[],
   IQAsr:[],
   IQMaghrib:[],
   IQIsha:[],
@@ -27,8 +27,8 @@ export const IqamaDelaySlice = createSlice({
     IQFajrVal: (state, { payload }) => {
       state.IQFajr = payload;
     },
-    IQZhuhrVal: (state, { payload }) => {
-      state.IQZhuhr = payload;
+    IQDhuhrVal: (state, { payload }) => {
+      state.IQDhuhr = payload;
     },
     IQAsrVal: (state, { payload }) => {
       state.IQAsr = payload;
@@ -44,6 +44,6 @@ export const IqamaDelaySlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {IQFajrVal,IQZhuhrVal,IQAsrVal,IQMaghribVal,IQIshaVal } = IqamaDelaySlice.actions;
+export const {IQFajrVal,IQDhuhrVal,IQAsrVal,IQMaghribVal,IQIshaVal } = IqamaDelaySlice.actions;
 
 export default IqamaDelaySlice.reducer;

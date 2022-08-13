@@ -6,7 +6,7 @@ export interface TunePrayerTimeState {
   TPTimeImsak:number[],
   TPTimeFajr:number[],
   TPTimeSunrise:number[],
-  TPTimeZhuhr:number[],
+  TPTimeDhuhr:number[],
   TPTimeAsr:number[],
   TPTimeSunset:number[],
   TPTimeMaghrib:number[],
@@ -19,7 +19,7 @@ const initialState:TunePrayerTimeState = {
   TPTimeImsak:[],
   TPTimeFajr:[],
   TPTimeSunrise:[],
-  TPTimeZhuhr:[],
+  TPTimeDhuhr:[],
   TPTimeAsr:[],
   TPTimeSunset:[],
   TPTimeMaghrib:[],
@@ -41,8 +41,8 @@ export const TunePrayerTimeSlice = createSlice({
     TPTimeSunriseVal: (state, { payload }) => {
       state.TPTimeSunrise = payload;
     },
-    TPTimeZhuhrVal: (state, { payload }) => {
-      state.TPTimeZhuhr = payload;
+    TPTimeDhuhrVal: (state, { payload }) => {
+      state.TPTimeDhuhr = payload;
     },
     TPTimeAsrVal: (state, { payload }) => {
       state.TPTimeAsr = payload;
@@ -64,6 +64,6 @@ export const TunePrayerTimeSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {TPTimeImsakVal,TPTimeFajrVal,TPTimeSunriseVal,TPTimeZhuhrVal,TPTimeAsrVal,TPTimeSunsetVal,TPTimeMaghribVal,TPTimeIshaVal,TPTimeMidnightVal } = TunePrayerTimeSlice.actions;
+export const {TPTimeImsakVal,TPTimeFajrVal,TPTimeSunriseVal,TPTimeDhuhrVal,TPTimeAsrVal,TPTimeSunsetVal,TPTimeMaghribVal,TPTimeIshaVal,TPTimeMidnightVal } = TunePrayerTimeSlice.actions;
 
 export default TunePrayerTimeSlice.reducer;

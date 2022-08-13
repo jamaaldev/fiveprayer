@@ -11,7 +11,7 @@ export interface IIqamahDelayProps {
 export function IqamahDelay (props: IIqamahDelayProps) {
   const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_prayersettings_meta');
 
-    const { IQFajr, IQZhuhr, IQAsr, IQMaghrib, IQIsha } = useSelector((state: RootState) => state.IqamaDelay);
+    const { IQFajr, IQDhuhr, IQAsr, IQMaghrib, IQIsha } = useSelector((state: RootState) => state.IqamaDelay);
 
 
   //IQFajr
@@ -24,14 +24,14 @@ export function IqamahDelay (props: IIqamahDelayProps) {
     localStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
 
   }
-  //IQZhuhr
-  if (localStorage.getItem('IQZhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQZhuhr')[0]?.['meta-key'] === 'IQZhuhr') {
-    const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQZhuhr')[0]?.value;
+  //IQDhuhr
+  if (localStorage.getItem('IQDhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
+    const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value;
     console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
     
-    localStorage.setItem('IQZhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQZhuhr')[0]?.value);
-  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQZhuhr')[0]?.['meta-key'] === 'IQZhuhr'){
-    localStorage.setItem('IQZhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQZhuhr')[0]?.value);
+    localStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
+  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr'){
+    localStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
 
   }
   //IQAsr
@@ -74,7 +74,7 @@ export function IqamahDelay (props: IIqamahDelayProps) {
               </p>
               <Container>
                 <FPInput val={localStorage.getItem('IQFajr')} holder={'IQFajr'} />
-                <FPInput val={localStorage.getItem('IQZhuhr')} holder={'IQZhuhr'} />
+                <FPInput val={localStorage.getItem('IQDhuhr')} holder={'IQDhuhr'} />
               </Container>
               <Container>
                 <FPInput val={localStorage.getItem('IQAsr')} holder={'IQAsr'} />

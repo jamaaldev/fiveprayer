@@ -4,7 +4,11 @@
   "description": "start plugin simple react 17",
   "main": "index.js",
   "files": [
-    "*"
+    "build",
+    "php",
+    "/FivePrayer.php",
+    "/composer.json"
+    
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

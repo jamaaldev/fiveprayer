@@ -2,14 +2,14 @@ import styled from "styled-components";
 import * as React from 'react';
 import { useSelector,useDispatch } from "react-redux";
 import { RootState } from "../../../app/store";
-import { IQFajrVal,IQZhuhrVal,IQAsrVal,IQMaghribVal,IQIshaVal } from "../../features/search/IqamaDelay";
-import {TPTimeImsakVal, TPTimeFajrVal,TPTimeSunriseVal,TPTimeZhuhrVal,TPTimeAsrVal,TPTimeSunsetVal,TPTimeMaghribVal,TPTimeIshaVal ,TPTimeMidnightVal} from "../../features/search/tunePrayerTime";
+import { IQFajrVal,IQDhuhrVal,IQAsrVal,IQMaghribVal,IQIshaVal } from "../../features/search/IqamaDelay";
+import {TPTimeImsakVal, TPTimeFajrVal,TPTimeSunriseVal,TPTimeDhuhrVal,TPTimeAsrVal,TPTimeSunsetVal,TPTimeMaghribVal,TPTimeIshaVal ,TPTimeMidnightVal} from "../../features/search/tunePrayerTime";
 import './css/FPInput.scss'
 import { useInsertprayerSettingsMetaAPIMutation } from "../../api/prayerSettingsMetaAPI";
 function FPInput({ holder,val }) {
   const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
 
-  // const { IQFajr,IQZhuhr} = useSelector((state:RootState) => state.searchtowncity);
+  // const { IQFajr,IQDhuhr} = useSelector((state:RootState) => state.searchtowncity);
   const dispatch = useDispatch();
 
   const changeHandle = (e) =>{
@@ -19,10 +19,10 @@ function FPInput({ holder,val }) {
       const IQFajr = { value: Number(e.target.value) , meta: 'IQFajr' };
       insertprayersettingmeta(IQFajr);
     }
-    if(holder === 'IQZhuhr'){
-      dispatch(IQZhuhrVal(Number(e.target.value) ))
-      const IQZhuhr = { value: Number(e.target.value) , meta: 'IQZhuhr' };
-      insertprayersettingmeta(IQZhuhr);
+    if(holder === 'IQDhuhr'){
+      dispatch(IQDhuhrVal(Number(e.target.value) ))
+      const IQDhuhr = { value: Number(e.target.value) , meta: 'IQDhuhr' };
+      insertprayersettingmeta(IQDhuhr);
     }
     if(holder === 'IQAsr'){
       dispatch(IQAsrVal(Number(e.target.value) ))
@@ -56,10 +56,10 @@ function FPInput({ holder,val }) {
       const Sunrise = { value: Number(e.target.value) , meta: 'Sunrise' };
       insertprayersettingmeta(Sunrise);
     }
-    if(holder === 'Zhuhr'){
-      dispatch(TPTimeZhuhrVal(Number(e.target.value) ))
-      const Zhuhr = { value: Number(e.target.value) , meta: 'Zhuhr' };
-      insertprayersettingmeta(Zhuhr);
+    if(holder === 'Dhuhr'){
+      dispatch(TPTimeDhuhrVal(Number(e.target.value) ))
+      const Dhuhr = { value: Number(e.target.value) , meta: 'Dhuhr' };
+      insertprayersettingmeta(Dhuhr);
     }
     if(holder === 'Asr'){
       dispatch(TPTimeAsrVal(Number(e.target.value) ))

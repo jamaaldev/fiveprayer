@@ -17,7 +17,7 @@ export function TunePrayerTimes(props: ITunePrayerTimesProps) {
 const [updateTimeTable] =  useUpdatePrayerTimeTableMutation();
 const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_prayersettings_meta');
 
-  const { TPTimeImsak, TPTimeFajr, TPTimeSunrise, TPTimeZhuhr, TPTimeAsr, TPTimeSunset, TPTimeMaghrib, TPTimeIsha, TPTimeMidnight } = useSelector((state: RootState) => state.TunePrayerTime);
+  const { TPTimeImsak, TPTimeFajr, TPTimeSunrise, TPTimeDhuhr, TPTimeAsr, TPTimeSunset, TPTimeMaghrib, TPTimeIsha, TPTimeMidnight } = useSelector((state: RootState) => state.TunePrayerTime);
   const { asrChecked, monthChecked, midnightChecked, locationChecked, higherChecked, medothChecked, ListCity, CalcMethods, HigherLats, MidnightMode, AsrMedoths, CityTown } = useSelector((state: RootState) => state.searchtowncity);
   const {data:timetable,isSuccess:success,isLoading,isFetching,isError} = useGetPrayerTimeTableQuery('fp_prayertimetable');
 
@@ -50,13 +50,13 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     localStorage.setItem('Sunrise', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Sunrise')[0]?.value);
 
   }
-  //Zhuhr
-  if (localStorage.getItem('Zhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.['meta-key'] === 'Zhuhr') {
-    const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.value;
+  //Dhuhr
+  if (localStorage.getItem('Dhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Dhuhr')[0]?.['meta-key'] === 'Dhuhr') {
+    const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Dhuhr')[0]?.value;
     
-    localStorage.setItem('Zhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.value);
-  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.['meta-key'] === 'Zhuhr'){
-    localStorage.setItem('Zhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Zhuhr')[0]?.value);
+    localStorage.setItem('Dhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Dhuhr')[0]?.value);
+  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Dhuhr')[0]?.['meta-key'] === 'Dhuhr'){
+    localStorage.setItem('Dhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Dhuhr')[0]?.value);
 
   }
   //Asr
@@ -139,8 +139,8 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     });
     prayTimes.tune({
       imsak: Number(TPTimeImsak),
-      fajr: Number(localStorage.getItem('Fajr')),
-      dhuhr: Number(TPTimeZhuhr),
+      fajr: Number(TPTimeFajr),
+      dhuhr: Number(TPTimeDhuhr),
       asr: Number(TPTimeAsr),
       maghrib: Number(TPTimeMaghrib),
       isha: Number(TPTimeIsha),
@@ -375,7 +375,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
           <FPInput val={localStorage.getItem('Imsak')} holder={'Imsak'} />
           <FPInput val={localStorage.getItem('Fajr')} holder={'Fajr'} />
           <FPInput val={localStorage.getItem('Sunrise')} holder={'Sunrise'} />
-          <FPInput val={localStorage.getItem('Zhuhr')} holder={'Zhuhr'} />
+          <FPInput val={localStorage.getItem('Dhuhr')} holder={'Dhuhr'} />
         </Container>
         <Container>
           <FPInput val={localStorage.getItem('Asr')} holder={'Asr'} />
