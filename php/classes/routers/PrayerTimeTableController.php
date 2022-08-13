@@ -76,6 +76,8 @@ class PrayerTimeTableController
   global $wpdb;
   $results           = $wpdb->prepare("SELECT * FROM wp_fp_timetable "); //query to fetch record only from user_ip field
   $prayersettingmeta = $wpdb->get_results($results);
+  ob_start();
+
   if ($prayersettingmeta) {
    return array_map(function ($day) {
 
@@ -106,5 +108,7 @@ class PrayerTimeTableController
    }, $prayersettingmeta);
 
   }
+  return ob_get_clean();
+
  }
 }
