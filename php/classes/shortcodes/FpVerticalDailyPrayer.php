@@ -1,26 +1,28 @@
 <?php
  defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
-
+ 
  class FpVerticalDailyPrayer
  {
-  public function __construct()
-  {
-   add_action('init', array($this, 'registerShortcodes'));
-
-  }
-
-  protected $prayerLocal = array(
-   "fajr iqamah"    => "fajr_iqamah",
-   "sunrise"        => "sunrise",
-   "dhuhr iqamah"   => "dhuhr_iqamah",
-   "asr iqamah"     => "asr_iqamah",
+      public function __construct()
+      {
+           add_action('init', array($this, 'registerShortcodes'));
+          //  require_once(plugin_dir_path( __FILE__ ) . '../module/NextPrayer.php');
+          require_once(plugin_dir_path( __FILE__ ) . '../module/NextPrayer.php');
+          
+          
+}
+protected $prayerLocal = array(
+     "fajr iqamah"    => "fajr_iqamah",
+     "sunrise"        => "sunrise",
+     "dhuhr iqamah"   => "dhuhr_iqamah",
+     "asr iqamah"     => "asr_iqamah",
    "maghrib iqamah" => "Maghrib",
    "isha iqamah"    => "isha_iqamah"
-  );
+);
 
-  public function registerShortcodes()
-  {
-   add_shortcode('Fp_Vertical_Daily_Prayer', array($this, 'fpVerticalDailyPrayer'));
+public function registerShortcodes()
+{
+     add_shortcode('Fp_Vertical_Daily_Prayer', array($this, 'fpVerticalDailyPrayer'));
   }
 
   public function fpVerticalDailyPrayer($atts)
@@ -48,25 +50,26 @@
                               <h3>
 
                               <?php array_map(function ($day) {
-                                   $value = array($day->fajr_iqamah, $day->sunrise, $day->dhuhr_iqamah, $day->asr_iqamah, $day->maghrib_iqamah, $day->isha_iqamah);
-                                   
-                                   $after = strtotime($day->fajr_iqamah) + 60;
-                                   $before = strtotime($day->fajr_iqamah) - 3600;// before one hour
-                                   $afterSunrise = strtotime($day->sunrise) + 60;
-                                   $beforeSunrise = strtotime($day->sunrise) - 3600;// before one hour
-                                   $afterDhuhr = strtotime($day->dhuhr_iqamah) + 60;
-                                   $beforeDhuhr = strtotime($day->dhuhr_iqamah) - 3600;// before one hour
-                                   $afterAsr = strtotime($day->asr_iqamah) + 60;
-                                   $beforeAsr = strtotime($day->asr_iqamah) - 18000;// before one hour
-                                   $afterMaghrib = strtotime($day->maghrib_iqamah) + 60;
-                                   $beforeMaghrib = strtotime($day->maghrib_iqamah) - 18000;// before one hour
-                                   $afterIsha = strtotime($day->isha_iqamah) + 60;
-                                   $beforeIsha = strtotime($day->isha_iqamah) - 18000;// before one hour
-                                   $timeHour = wp_date("H", null, $timezone = null);
-                                   $timeMin = wp_date("i", null, $timezone = null);
+                                   $prayerToday = new NextPrayer($day);
+                                   $prayerToday->TodayPrayer();
 
+                                   // $value = array($day->fajr_iqamah, $day->sunrise, $day->dhuhr_iqamah, $day->asr_iqamah, $day->maghrib_iqamah, $day->isha_iqamah);
                                    
-                                   if (getdate()["mday"] == $day->today && ($timeHour > 0) && ($timeHour < 5) ) {
+                                   // $after = strtotime($day->fajr_iqamah) + 60;
+                                   // $before = strtotime($day->fajr_iqamah) - 3600;// before one hour
+                                   // $afterSunrise = strtotime($day->sunrise) + 60;
+                                   // $beforeSunrise = strtotime($day->sunrise) - 3600;// before one hour
+                                   // $afterDhuhr = strtotime($day->dhuhr_iqamah) + 60;
+                                   // $beforeDhuhr = strtotime($day->dhuhr_iqamah) - 3600;// before one hour
+                                   // $afterAsr = strtotime($day->asr_iqamah) + 60;
+                                   // $beforeAsr = strtotime($day->asr_iqamah) - 18000;// before one hour
+                                   // $afterMaghrib = strtotime($day->maghrib_iqamah) + 60;
+                                   // $beforeMaghrib = strtotime($day->maghrib_iqamah) - 18000;// before one hour
+                                   // $afterIsha = strtotime($day->isha_iqamah) + 60;
+                                   // $beforeIsha = strtotime($day->isha_iqamah) - 18000;// before one hour
+                                   // $timeHour = wp_date("H", null, $timezone = null);
+                                   // $timeMin = wp_date("i", null, $timezone = null);
+                                   /* if (getdate()["mday"] == $day->today && ($timeHour > 0) && ($timeHour < 5) ) {
                                         // echo $day->fajr_iqamah . '' . date(' H:i:s', $after) . '' . date(' H:i:s', $before)  ;
                                         // echo ((strtotime($day->fajr_iqamah)) >  $before) && (!(strtotime($day->fajr_iqamah)) >=  $after)  ? date(' g:i: A', strtotime($day->fajr_iqamah)) : '' ;
                                         echo date(' g:i: A', strtotime($day->fajr_iqamah));
@@ -87,7 +90,7 @@
                                    if (getdate()["mday"] == $day->today && ($timeHour > 13) && ($timeHour < 17)  ) {
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->asr_iqamah) >  $beforeAsr)) && (!(strtotime($day->asr_iqamah) >=  $afterAsr))  ? date(' g:i: A', strtotime($day->asr_iqamah)) : '' ;
-                                        echo date(' g:i: A', strtotime($day->asr_iqamah));
+                                        echo date(' g:i: A', strtotime($day->asr_iqamah)) . ' ' . 'hour ' . $timeHour . ' ' . 'min ' . $timeMin;
                                    }
                                    
                                    
@@ -102,7 +105,7 @@
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->isha_iqamah) >  $beforeIsha)) && (!(strtotime($day->isha_iqamah) >=  $afterIsha))  ? date(' g:i: A', strtotime($day->isha_iqamah)) : '' ;
                                         echo date(' g:i: A', strtotime($day->isha_iqamah));
-                                   }
+                                   } */
  
                                  }, $prayersettingmeta);?>
                               </h3>
