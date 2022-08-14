@@ -92,14 +92,8 @@ function independence_notice() {
         
      function onActivate(){
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-           /* dbDelta( "CREATE TABLE $this->tablelocationcity (
-                id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-                country varchar(5) NOT NULL DEFAULT '',
-                city varchar(5) NOT NULL DEFAULT '',
-                lat smallint(5) NOT NULL DEFAULT 0,
-                lng smallint(5) NOT NULL DEFAULT 0,
-                PRIMARY KEY  (id)
-            ) $this->charset;"); */
+            global $wpdb;
+            if($wpdb->get_var('SHOW table like wp_fp_location_city' != 'SHOW table like wp_fp_location_city') ){
             dbDelta( "CREATE TABLE `wp_fp_location_city` (
                 `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
                 `country` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -108,6 +102,42 @@ function independence_notice() {
                 `lng` float NOT NULL DEFAULT '0',
                 PRIMARY KEY (`id`)
             ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci");
+
+            }
+     
+            if($wpdb->get_var('SHOW table like wp_fp_timetable' != 'SHOW table like wp_fp_timetable') ){
+            dbDelta("CREATE TABLE `wp_fp_timetable` (
+                `date` date NOT NULL,
+                `fajr_begins` time DEFAULT NULL,
+                `fajr_iqamah` time DEFAULT NULL,
+                `fajr_masjid_jamaah` time DEFAULT NULL,
+                `sunrise` time DEFAULT NULL,
+                `dhuhr_begins` time DEFAULT NULL,
+                `dhuhr_iqamah` time DEFAULT NULL,
+                `asr_begins` time DEFAULT NULL,
+                `asr_iqamah` time DEFAULT NULL,
+                `maghrib_begins` time DEFAULT NULL,
+                `maghrib_iqamah` time DEFAULT NULL,
+                `isha_begins` time DEFAULT NULL,
+                `isha_iqamah` time DEFAULT NULL,
+                `midnight` time DEFAULT NULL,
+                `currentDate` tinytext,
+                `today` tinyint(4) DEFAULT NULL,
+                `className` tinytext
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+              ");
+
+            }
+            if($wpdb->get_var('SHOW table like wp_fp_prayer_settings_meta' != 'SHOW table like wp_fp_prayer_settings_meta') ){
+            dbDelta("CREATE TABLE `wp_fp_prayer_settings_meta` (
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `meta-key` varchar(255) NOT NULL,
+                `value` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB AUTO_INCREMENT=1743 DEFAULT CHARSET=utf8 ");
+
+            }
+
 
 
         }
