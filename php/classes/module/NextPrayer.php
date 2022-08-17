@@ -6,70 +6,104 @@ class NextPrayer{
 public $day;
 function __construct($day){
 $this->day = $day;
+// fajr
+  $this->fajrHour = wp_date(' G ', strtotime($this->day->fajr_iqamah));
+  $this->fajrMin = wp_date(' i ', strtotime($this->day->fajr_iqamah));
+// sunrise
+ $this->sunriseHour = wp_date('G ', strtotime($this->day->sunrise));
+ $this->sunriseMin = wp_date(' i ', strtotime($this->day->sunrise));
+// dhuhr
+ $this->dhuhrHour = wp_date(' G ', strtotime($this->day->dhuhr_iqamah));
+ $this->dhuhrMin = wp_date(' i ', strtotime($this->day->dhuhr_iqamah));
+// asr
+ $this->asrHour = wp_date(' G ', strtotime($this->day->asr_iqamah));
+ $this->asrMin = wp_date(' i ', strtotime($this->day->asr_iqamah));
+// maghrib
+ $this->maghribHour = wp_date(' G ', strtotime($this->day->maghrib_iqamah));
+  $this->maghribMin = wp_date(' i ', strtotime($this->day->maghrib_iqamah));
+// isha
+ $this->ishaHour = wp_date(' G ', strtotime($this->day->isha_iqamah));
+ $this->ishaMin = wp_date(' i ', strtotime($this->day->isha_iqamah));
+
 }
 
-protected $prayerLocal = array(
-    "fajr iqamah"    => "fajr_iqamah",
-    "sunrise"        => "sunrise",
-    "dhuhr iqamah"   => "dhuhr_iqamah",
-    "asr iqamah"     => "asr_iqamah",
-    "maghrib iqamah" => "Maghrib",
-    "isha iqamah"    => "isha_iqamah"
-   );
+
    
    function TodayPrayer(){
-    $value = array($this->day->fajr_iqamah, $this->day->sunrise, $this->day->dhuhr_iqamah, $this->day->asr_iqamah, $this->day->maghrib_iqamah, $this->day->isha_iqamah);
-    $todayTimeHour = wp_date("H", null, $timezone = null);
-    $todayTimeMin = wp_date("i", null, $timezone = null);
-    // fajr
-    $fajrHour = date(' H ', strtotime($this->day->fajr_iqamah));
-    $fajrMin = date(' i ', strtotime($this->day->fajr_iqamah));
-    // sunrise
-    $sunriseHour = date(' H ', strtotime($this->day->sunrise));
-    $sunriseMin = date(' i ', strtotime($this->day->sunrise));
-    // dhuhr
-    $dhuhrHour = date(' H ', strtotime($this->day->dhuhr_iqamah));
-    $dhuhrMin = date(' i ', strtotime($this->day->dhuhr_iqamah));
-    // asr
-    $asrHour = date(' H ', strtotime($this->day->asr_iqamah));
-    $asrMin = date(' i ', strtotime($this->day->asr_iqamah));
-    // maghrib
-    $maghribHour = date(' H ', strtotime($this->day->maghrib_iqamah));
-    $maghribMin = date(' i ', strtotime($this->day->maghrib_iqamah));
-    // isha
-    $ishaHour = date(' H ', strtotime($this->day->isha_iqamah));
-    $ishaMin = date(' i ', strtotime($this->day->isha_iqamah));
+    $currentTimeHour = wp_date("g:i A", $timezone = null);
+    $currentTimeMin = wp_date("i", $timezone = null);
+    // echo  wp_date("j", null, $timezone = null);
+    // echo  ' current '. (json_decode( $ishaHour));
+    // && json_decode( $currentTimeMin ) >  (json_decode( $asrMin ) + 5)
+    // date(' g:i: A', strtotime($this->day->fajr_iqamah)) .'  ' .  ' fajrmin ' . ' ' .(json_decode( $fajrMin ) +5)
+if ( (wp_date("j", null, $timezone = null)  == $this->day->today) && (strtotime($currentTimeHour)  <=  strtotime($this->day->fajr_iqamah)) )  {
+        
+        // echo json_decode( $currentTimeHour ) .''.  (json_decode( $fajrHour ));
+        echo  $this->UpcomingPrayer($this->day->fajr_iqamah,$currentTimeHour);
 
-
-
-if (getdate()["mday"] == $this->day->today && ($todayTimeHour > 0) && ($todayTimeHour < 5)) {
-      
- echo date(' g:i: A', strtotime($this->day->fajr_iqamah));
-}
-if (getdate()["mday"] == $this->day->today && ($todayTimeHour > 5) && ($todayTimeHour < 6)) {
-
-    echo date(' g:i: A', strtotime($this->day->sunrise));
 
 }
-if (getdate()["mday"] == $this->day->today && ($todayTimeHour > 6) && ($todayTimeHour < 13)) {
+if ((wp_date("j", null, $timezone = null)  == $this->day->today) && (strtotime($currentTimeHour)  <=  strtotime($this->day->sunrise))  ) {
 
- echo date(' g:i: A', strtotime($this->day->dhuhr_iqamah));
+    // echo date(' g:i: A', strtotime($this->day->sunrise));
+    echo  $this->UpcomingPrayer($this->day->sunrise,$currentTimeHour);
+
+
 }
-if (getdate()["mday"] == $this->day->today && ($todayTimeHour > 13) && ($todayTimeHour < 17)) {
+
+if ( (wp_date("j", null, $timezone = null)  == $this->day->today) && (strtotime($currentTimeHour)  <= strtotime($this->day->dhuhr_iqamah))  ) {
+
+//  echo date(' g:i: A', strtotime($this->day->dhuhr_iqamah)) ;
+echo  $this->UpcomingPrayer($this->day->dhuhr_iqamah,$currentTimeHour);
+
+
+}
+
+if ( (wp_date("j", null, $timezone = null)  == $this->day->today) && (strtotime($currentTimeHour)  <= strtotime($this->day->asr_iqamah))  ) {
   
- echo date(' g:i: A', strtotime($this->day->asr_iqamah)) . ' ' . 'hour ' . $todayTimeHour . ' ' . 'min ' . $todayTimeMin;
+//  echo date(' g:i: A', strtotime($this->day->asr_iqamah)) ;
+echo  $this->UpcomingPrayer($this->day->asr_iqamah,$currentTimeHour);
+} 
+
+if (  (wp_date("j", null, $timezone = null)  == $this->day->today) && (strtotime($currentTimeHour)  <= strtotime($this->day->maghrib_iqamah))  ) {
+
+//  echo date(' g:i: A', strtotime($this->day->maghrib_iqamah));
+echo  $this->UpcomingPrayer($this->day->maghrib_iqamah,$currentTimeHour);
+
+
 }
 
-if (getdate()["mday"] == $this->day->today && ($todayTimeHour > 17) && ($todayTimeHour < 20)) {
-
- echo date(' g:i: A', strtotime($this->day->maghrib_iqamah));
-}
-
-if (getdate()["mday"] == $this->day->today && ($todayTimeHour > 20) && ($todayTimeHour < 24)) {
+// &&   (json_decode( $currentTimeHour )) > (json_decode( $maghribHour )) &&  (json_decode( $maghribMin ) + 5) >= json_decode( $maghribMin ) 
+if (  (wp_date("j", null, $timezone = null)  == $this->day->today) && (strtotime($currentTimeHour)  <=  strtotime($this->day->isha_iqamah))   ) {
  
- echo date(' g:i: A', strtotime($this->day->isha_iqamah));
+//  echo date(' g:i: A', strtotime($this->day->isha_iqamah));
+echo  $this->UpcomingPrayer($this->day->isha_iqamah,$currentTimeHour);
+
 }
+
 return;
 }
+
+
+function UpcomingPrayer($prayerIqamah,$currentTimeHour){
+ 
+// echo date(' g:i  A,', strtotime($prayerIqamah));
+//   if( (strtotime($prayerIqamah) ) ){
+//     $pattern = "/''/";
+
+//     $nextIqamah =   date(' g:i  A,', strtotime($prayerIqamah));
+//      echo ($nextIqamah);
+
+
+// }
+
+}
+// function tra(){
+//   $input = 'lorem, lpsum, is, simply, dummy, text, of, the, printing, and';
+//   $parts = explode(', ', $input, 5);
+  
+//        print_r($parts);
+
+// }
 
 }

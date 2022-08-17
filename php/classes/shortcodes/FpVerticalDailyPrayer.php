@@ -44,68 +44,75 @@ public function registerShortcodes()
                               <td colspan="3">
                               <h2>
                               <?php array_map(function ($day) {
-                                   echo $day->today == getdate()["mday"] ? $day->currentDate : null;
+                                   echo $day->today == wp_date("j", null, $timezone = null) ? $day->currentDate : null;
                                  }, $prayersettingmeta);?>
                               </h2>
                               <h3>
 
                               <?php array_map(function ($day) {
-                                   $prayerToday = new NextPrayer($day);
-                                   $prayerToday->TodayPrayer();
+                                   // $prayerToday = new NextPrayer($day);
+                                   // $prayerToday->TodayPrayer();
 
-                                   // $value = array($day->fajr_iqamah, $day->sunrise, $day->dhuhr_iqamah, $day->asr_iqamah, $day->maghrib_iqamah, $day->isha_iqamah);
+                                   $value = array($day->fajr_iqamah, $day->sunrise, $day->dhuhr_iqamah, $day->asr_iqamah, $day->maghrib_iqamah, $day->isha_iqamah);
                                    
-                                   // $after = strtotime($day->fajr_iqamah) + 60;
-                                   // $before = strtotime($day->fajr_iqamah) - 3600;// before one hour
-                                   // $afterSunrise = strtotime($day->sunrise) + 60;
-                                   // $beforeSunrise = strtotime($day->sunrise) - 3600;// before one hour
-                                   // $afterDhuhr = strtotime($day->dhuhr_iqamah) + 60;
-                                   // $beforeDhuhr = strtotime($day->dhuhr_iqamah) - 3600;// before one hour
-                                   // $afterAsr = strtotime($day->asr_iqamah) + 60;
-                                   // $beforeAsr = strtotime($day->asr_iqamah) - 18000;// before one hour
-                                   // $afterMaghrib = strtotime($day->maghrib_iqamah) + 60;
-                                   // $beforeMaghrib = strtotime($day->maghrib_iqamah) - 18000;// before one hour
-                                   // $afterIsha = strtotime($day->isha_iqamah) + 60;
-                                   // $beforeIsha = strtotime($day->isha_iqamah) - 18000;// before one hour
-                                   // $timeHour = wp_date("H", null, $timezone = null);
-                                   // $timeMin = wp_date("i", null, $timezone = null);
-                                   /* if (getdate()["mday"] == $day->today && ($timeHour > 0) && ($timeHour < 5) ) {
+                                   $after = strtotime($day->fajr_iqamah) + 60;
+                                   $before = strtotime($day->fajr_iqamah) - 3600;// before one hour
+                                   $afterSunrise = strtotime($day->sunrise) + 60;
+                                   $beforeSunrise = strtotime($day->sunrise) - 3600;// before one hour
+                                   $afterDhuhr = strtotime($day->dhuhr_iqamah) + 60;
+                                   $beforeDhuhr = strtotime($day->dhuhr_iqamah) - 3600;// before one hour
+                                   $afterAsr = strtotime($day->asr_iqamah) + 60;
+                                   $beforeAsr = strtotime($day->asr_iqamah) - 18000;// before one hour
+                                   $afterMaghrib = strtotime($day->maghrib_iqamah) + 60;
+                                   $beforeMaghrib = strtotime($day->maghrib_iqamah) - 18000;// before one hour
+                                   $afterIsha = strtotime($day->isha_iqamah) + 60;
+                                   $beforeIsha = strtotime($day->isha_iqamah) - 18000;// before one hour
+                                   $currentTimeHour = wp_date("H:i", null, $timezone = null);
+                                   $timeHour = wp_date("H", null, $timezone = null);
+                                   $timeMin = wp_date("i", null, $timezone = null);
+
+                                    if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 0) && ($timeHour < 4 && $timeMin > 3) ) {
                                         // echo $day->fajr_iqamah . '' . date(' H:i:s', $after) . '' . date(' H:i:s', $before)  ;
                                         // echo ((strtotime($day->fajr_iqamah)) >  $before) && (!(strtotime($day->fajr_iqamah)) >=  $after)  ? date(' g:i: A', strtotime($day->fajr_iqamah)) : '' ;
-                                        echo date(' g:i: A', strtotime($day->fajr_iqamah));
+                                        echo date(' g:i: A', strtotime($day->fajr_iqamah) );
                                    }
-                                   if (getdate()["mday"] == $day->today && ($timeHour > 5) && ($timeHour < 6)  ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 5) && ($timeHour < 6)  ) {
                                         // echo ((strtotime($day->sunrise)) >  $beforeSunrise) && (!(strtotime($day->sunrise)) >=  $afterSunrise)  ? date(' g:i: A', strtotime($day->sunrise)) : '' ;
                                         echo date(' g:i: A', strtotime($day->sunrise));
 
 
                                         
                                    }
-                                   if (getdate()["mday"] == $day->today && ($timeHour > 6) && ($timeHour < 13)  ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 6) && ($timeHour < 13)  ) {
                                         //     echo  date(' g:i: A', strtotime($day->dhuhr_iqamah)) . ''. date(' g:i: A', strtotime( $beforeDhuhr));
                                         // echo  !(strtotime($day->dhuhr_iqamah) >=  $afterDhuhr) ? 'a' : 'b';
                                         // echo ((strtotime($day->dhuhr_iqamah)) >  $beforeDhuhr) && (!(strtotime($day->dhuhr_iqamah)) >=  $afterDhuhr)  ? date(' g:i: A', strtotime($day->dhuhr_iqamah)) : '' ;
-                                        echo  date(' g:i: A', strtotime($day->dhuhr_iqamah));
+                                        echo  date(' g:i: A', strtotime($day->dhuhr_iqamah) );
                                    } 
-                                   if (getdate()["mday"] == $day->today && ($timeHour > 13) && ($timeHour < 17)  ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && (strtotime($currentTimeHour)  >= strtotime($day->dhuhr_iqamah)) && (strtotime($currentTimeHour) < strtotime($day->asr_iqamah)) ) {
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->asr_iqamah) >  $beforeAsr)) && (!(strtotime($day->asr_iqamah) >=  $afterAsr))  ? date(' g:i: A', strtotime($day->asr_iqamah)) : '' ;
-                                        echo date(' g:i: A', strtotime($day->asr_iqamah)) . ' ' . 'hour ' . $timeHour . ' ' . 'min ' . $timeMin;
+                                        echo date(' g:i: A', strtotime($day->asr_iqamah));
                                    }
+                                   // if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 13) && ($timeHour < 17)  ) {
+                                   //      //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
+                                   //      // echo ((strtotime($day->asr_iqamah) >  $beforeAsr)) && (!(strtotime($day->asr_iqamah) >=  $afterAsr))  ? date(' g:i: A', strtotime($day->asr_iqamah)) : '' ;
+                                   //      echo date(' g:i: A', strtotime($day->asr_iqamah)) . ' ' . 'hour ' . strtotime($currentTimeHour) . ' ' . 'min ' .  strtotime($day->dhuhr_iqamah);
+                                   // }
                                    
                                    
-                                   if (getdate()["mday"] == $day->today && ($timeHour > 17) && ($timeHour < 20)  ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && (strtotime($currentTimeHour)  >= strtotime($day->asr_iqamah)) ) {
                                         
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->maghrib_iqamah) >  $beforeMaghrib)) && (!(strtotime($day->maghrib_iqamah) >=  $afterMaghrib))  ? date(' g:i: A', strtotime($day->maghrib_iqamah)) : '' ;
                                         // echo $timeHour . '' . $timeMin;
                                         echo date(' g:i: A', strtotime($day->maghrib_iqamah));
                                    }
-                                   if (getdate()["mday"] == $day->today && ($timeHour > 20) && ($timeHour < 24)   ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 20) && ($timeHour < 24)   ) {
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->isha_iqamah) >  $beforeIsha)) && (!(strtotime($day->isha_iqamah) >=  $afterIsha))  ? date(' g:i: A', strtotime($day->isha_iqamah)) : '' ;
                                         echo date(' g:i: A', strtotime($day->isha_iqamah));
-                                   } */
+                                   } 
  
                                  }, $prayersettingmeta);?>
                               </h3>
