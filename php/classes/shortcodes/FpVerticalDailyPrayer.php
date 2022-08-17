@@ -76,14 +76,14 @@ public function registerShortcodes()
                                         // echo ((strtotime($day->fajr_iqamah)) >  $before) && (!(strtotime($day->fajr_iqamah)) >=  $after)  ? date(' g:i: A', strtotime($day->fajr_iqamah)) : '' ;
                                         echo date(' g:i: A', strtotime($day->fajr_iqamah) );
                                    }
-                                   if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 5) && ($timeHour < 6)  ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && (strtotime($currentTimeHour)  >= strtotime($day->fajr_iqamah)) && (strtotime($currentTimeHour) < strtotime($day->sunrise)) ) {
                                         // echo ((strtotime($day->sunrise)) >  $beforeSunrise) && (!(strtotime($day->sunrise)) >=  $afterSunrise)  ? date(' g:i: A', strtotime($day->sunrise)) : '' ;
                                         echo date(' g:i: A', strtotime($day->sunrise));
 
 
                                         
                                    }
-                                   if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 6) && ($timeHour < 13)  ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && (strtotime($currentTimeHour)  >= strtotime($day->sunrise)) && (strtotime($currentTimeHour) < strtotime($day->dhuhr_iqamah))   ) {
                                         //     echo  date(' g:i: A', strtotime($day->dhuhr_iqamah)) . ''. date(' g:i: A', strtotime( $beforeDhuhr));
                                         // echo  !(strtotime($day->dhuhr_iqamah) >=  $afterDhuhr) ? 'a' : 'b';
                                         // echo ((strtotime($day->dhuhr_iqamah)) >  $beforeDhuhr) && (!(strtotime($day->dhuhr_iqamah)) >=  $afterDhuhr)  ? date(' g:i: A', strtotime($day->dhuhr_iqamah)) : '' ;
@@ -101,14 +101,14 @@ public function registerShortcodes()
                                    // }
                                    
                                    
-                                   if (wp_date("j", null, $timezone = null) == $day->today && (strtotime($currentTimeHour)  >= strtotime($day->asr_iqamah)) ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && (strtotime($currentTimeHour)  >= strtotime($day->asr_iqamah)) && (strtotime($currentTimeHour) < strtotime($day->maghrib_iqamah))  ) {
                                         
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->maghrib_iqamah) >  $beforeMaghrib)) && (!(strtotime($day->maghrib_iqamah) >=  $afterMaghrib))  ? date(' g:i: A', strtotime($day->maghrib_iqamah)) : '' ;
                                         // echo $timeHour . '' . $timeMin;
                                         echo date(' g:i: A', strtotime($day->maghrib_iqamah));
                                    }
-                                   if (wp_date("j", null, $timezone = null) == $day->today && ($timeHour >= 20) && ($timeHour < 24)   ) {
+                                   if (wp_date("j", null, $timezone = null) == $day->today && (strtotime($currentTimeHour)  >= strtotime($day->maghrib_iqamah)) && (strtotime($currentTimeHour) < strtotime($day->isha_iqamah))   ) {
                                         //     echo !(strtotime($day->asr_iqamah) >=  $afterAsr) ? '' :  date(' g:i: A', strtotime($day->asr_iqamah));
                                         // echo ((strtotime($day->isha_iqamah) >  $beforeIsha)) && (!(strtotime($day->isha_iqamah) >=  $afterIsha))  ? date(' g:i: A', strtotime($day->isha_iqamah)) : '' ;
                                         echo date(' g:i: A', strtotime($day->isha_iqamah));
