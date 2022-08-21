@@ -1,0 +1,14 @@
+th, td {
+    padding: 8px;
+    border-width: 0 1px 1px 0;
+    text-align: center;
+}
+
+.tbhead{
+    background: hsl(131deg 53% 42%);
+    color: aliceblue;
+}
+
+.highligh{
+    background-color: burlywood;
+}
