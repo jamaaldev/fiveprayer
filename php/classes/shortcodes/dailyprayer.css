@@ -5,10 +5,10 @@ th, td {
 }
 
 .tbhead{
-    background: hsl(131deg 53% 42%);
+    background: rgb(4 94 20);
     color: aliceblue;
 }
 
-.highligh{
-    background-color: burlywood;
+.fp__highlight{
+    background-color: #e3ffee;
 }
