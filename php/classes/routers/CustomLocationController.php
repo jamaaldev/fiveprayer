@@ -25,10 +25,10 @@ class CustomLocationController
             // By using this constant we ensure that when the WP_REST_Server changes our readable endpoints will work as intended.
             'methods'  => WP_REST_Server::CREATABLE,
             // Here we register our callback. The callback is fired when this endpoint is matched by the WP_REST_Server class.
-            'callback' => array($this, 'fpInsertLocation')
-            /*   'permission_callback' => function() {
+            'callback' => array($this, 'fpInsertLocation'),
+          'permission_callback' => function() {
         return current_user_can( 'manage_options' );
-        }, */
+        }, 
         ));
 
         // register_rest_route() handles more arguments but we are going to stick to the basics for now.
@@ -46,10 +46,10 @@ class CustomLocationController
             // By using this constant we ensure that when the WP_REST_Server changes our readable endpoints will work as intended.
             'methods'  => WP_REST_Server::EDITABLE,
             // Here we register our callback. The callback is fired when this endpoint is matched by the WP_REST_Server class.
-            'callback' => array($this, 'fpUpdateLocation')
-            /*   'permission_callback' => function() {
+            'callback' => array($this, 'fpUpdateLocation'),
+               'permission_callback' => function() {
         return current_user_can( 'manage_options' );
-        }, */
+        }, 
         ));
 
         // register_rest_route() handles more arguments but we are going to stick to the basics for now.
@@ -58,7 +58,9 @@ class CustomLocationController
             'methods'             => WP_REST_Server::READABLE,
             // Here we register our callback. The callback is fired when this endpoint is matched by the WP_REST_Server class.
             'callback'            => array($this, 'fpGetLocation'),
-            'permission_callback' => '__return_true'
+            'permission_callback' => function() {
+                return current_user_can( 'manage_options' );
+                }, 
         ));
 
     }
@@ -91,9 +93,6 @@ class CustomLocationController
         $lat     = $data['lat'];
         $lng     = $data['lng'];
 
-        /* $number = 9;
-        $str = "Beijing";
-        printf("There are %u million bicycles in %s,%s",$number,$str); */
 
         $wpdb->update('wp_fp_location_city', array('id' => $id, 'country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng), array('id' => $id));
         return $request->get_params();
@@ -107,15 +106,12 @@ class CustomLocationController
         // Converts it into a PHP object
         $data = json_decode($json, true);
 
-        // $id = $data['id'];
         $country = $data['country'];
         $city    = $data['city'];
         $lat     = $data['lat'];
         $lng     = $data['lng'];
 
-        /*   $number = 9;
-        $str = "Beijing";
-        printf("There are %u million bicycles in %s,%s",$number,$str,$city); */
+    
 
         $wpdb->insert('wp_fp_location_city', array('country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng));
 

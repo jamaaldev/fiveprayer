@@ -32,7 +32,7 @@ public function registerShortcodes()
       if ($prayersettingmeta) {
           ?>
 
-            <table  class='FP_TablePrayer_'>
+            <table  class='FP_DairyPrayer_'>
                 <thead>
                     <tr>
                          <tr>
@@ -63,7 +63,7 @@ public function registerShortcodes()
                               <th>Begins</th>
                               <th>Iqamah</th>
                          </tr>
-                         <tr class="<?php echo $this->highlight == 'fajr' ? 'highlight' : null ?>">
+                         <tr class="<?php echo $this->highlight == 'fajr' ? 'fp__highlight' : null ?>">
                               <th>Fajr</th>
                               <td><?php array_map(function ($day) {
                                   echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->fajr_begins)) : null;
@@ -72,14 +72,14 @@ public function registerShortcodes()
                                     echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->fajr_iqamah)) : null;
                                 }, $prayersettingmeta);?></td>
                          </tr>
-                         <tr class="<?php echo $this->highlight == 'sunrise' ? 'highlight' : null ?>">
+                         <tr class="<?php echo $this->highlight == 'sunrise' ? 'fp__highlight' : null ?>">
                               <th >Sunrise</th>
                               <td colspan="2"><?php array_map(function ($day) {
                                   echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->sunrise)) : null;
                               }, $prayersettingmeta);?></td>
 
                          </tr>
-                         <tr class="<?php echo $this->highlight == 'dhuhr' ? 'highlight' : null ?>">
+                         <tr class="<?php echo $this->highlight == 'dhuhr' ? 'fp__highlight' : null ?>">
                               <th>Dhuhr</th>
                               <td><?php array_map(function ($day) {
                                   echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->dhuhr_begins)) : null;
@@ -88,7 +88,7 @@ public function registerShortcodes()
                                     echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->dhuhr_iqamah)) : null;
                                 }, $prayersettingmeta);?></td>
                          </tr>
-                         <tr class="<?php echo $this->highlight == 'asr' ? 'highlight' : null ?>">
+                         <tr class="<?php echo $this->highlight == 'asr' ? 'fp__highlight' : null ?>">
                               <th>Asr</th>
                               <td><?php array_map(function ($day) {
                                   echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->asr_begins)) : null;
@@ -106,7 +106,7 @@ public function registerShortcodes()
                                     echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->maghrib_iqamah)) : null;
                                 }, $prayersettingmeta);?></td>
                          </tr>
-                         <tr class="<?php echo $this->highlight == 'isha' ? 'highlight' : null ?>">
+                         <tr class="<?php echo $this->highlight == 'isha' ? 'fp__highlight' : null ?>">
                               <th>Isha</th>
                               <td><?php array_map(function ($day) {
                                   echo $day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->isha_begins)) : null;

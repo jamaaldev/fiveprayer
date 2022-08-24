@@ -1,14 +1,14 @@
-th, td {
+.FP_DairyPrayer_ th, .FP_DairyPrayer_ td {
     padding: 8px;
     border-width: 0 1px 1px 0;
     text-align: center;
 }
 
-.tbhead{
+.FP_DairyPrayer_ .tbhead{
     background: rgb(4 94 20);
     color: aliceblue;
 }
 
-.fp__highlight{
+.FP_DairyPrayer_ .fp__highlight{
     background-color: #e3ffee;
 }

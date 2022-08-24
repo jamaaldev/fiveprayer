@@ -16,7 +16,9 @@ export const prayerSettingsMetaAPI = emptySplitApi.injectEndpoints({
       invalidatesTags: [{ type: 'prayerSettingsMetaTag' }],
     }),
     updateprayerSettingsMetaAPI: builder.mutation({
-      query: ({ prayersettingschecked, ...put }) => ({ url: `fp/v1/fp_prayersettings_meta`, method: 'PUT', body: put }),
+      query: ({ prayersettingschecked, ...put }) => ({ url: `fp/v1/fp_prayersettings_meta`, method: 'PUT', body: put,headers:{
+        'X-WP-Nonce': prayerData?.nonce,
+      } }),
       invalidatesTags: [{ type: 'prayerSettingsMetaTag' }],
     }),
   }),

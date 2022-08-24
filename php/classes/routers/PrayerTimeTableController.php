@@ -13,16 +13,18 @@ class PrayerTimeTableController
  {
   register_rest_route('fp/v1', '/fp_prayertimetable', array(
    'methods'  => WP_REST_Server::CREATABLE,
-   'callback' => array($this, 'fpInsertTimetable')
-   /* 'permission_callback' => function() {
+   'callback' => array($this, 'fpInsertTimetable'),
+    'permission_callback' => function() {
   return current_user_can( 'manage_options' );
-  }, */
+  }, 
   ));
 
   register_rest_route('fp/v1', '/fp_prayertimetable', array(
    'methods'             => WP_REST_Server::READABLE,
    'callback'            => array($this, 'fpGetTimetable'),
-   'permission_callback' => '__return_true'
+   'permission_callback' => function() {
+    return current_user_can( 'manage_options' );
+    }, 
 
   ));
  }
