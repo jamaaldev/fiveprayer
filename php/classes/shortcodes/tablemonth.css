@@ -1,0 +1,14 @@
+.FP_TablePrayer_ th, .FP_TablePrayer_ td {
+    padding: 8px;
+    border-width: 0 1px 1px 0;
+    text-align: center;
+}
+
+.FP_TablePrayer_ .tbhead{
+    background: rgb(4 94 20);
+    color: aliceblue;
+}
+
+.FP_TablePrayer_ .fp__highlight{
+    background-color: #e3ffee;
+}

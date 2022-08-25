@@ -6,8 +6,15 @@
   public function __construct()
   {
    add_action('init', array($this, 'registerShortcodes'));
+   add_action('wp_enqueue_scripts', array($this,'tablemonth'));
+
 
   }
+  public function tablemonth()
+{
+    wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+}
+
 
   public function registerShortcodes()
   {
