@@ -9,11 +9,11 @@ body {
 
 /* Style the vertical_tab */
 .vertical_tab {
-  float: left;
+  // float: left;
   border: 1px solid #fcfcfc;
   background-color: #f1f1f1;
   width: 20%;
-  z-index: -99;
+  // z-index: -99;
 }
 .vertical_tab a {
   text-decoration: none;
@@ -51,11 +51,13 @@ body {
 
 /* Style the vertical_tab content */
 .vertical_tabcontent {
-  float: left;
+  // float: left;
+  display: flex;
+  flex-direction: column;
   background: white;
   padding: 0px 12px;
   min-height: 550px;
-  width: 80%;
+  width: 100%;
   border-left: none;
   z-index: 99;
   font-family: "Roboto", sans-serif;
@@ -67,8 +69,9 @@ body {
   margin: 15px;
 }
 .vertical_tab_container_both {
+  display: flex;
   background-color: #f8f8f8;
-  float: left;
+  // float: left;
   width: 100%;
   border-left: none;
   min-height: 550px;

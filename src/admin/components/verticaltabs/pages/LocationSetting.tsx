@@ -91,7 +91,7 @@ export const LocationSetting = () => {
             <ul>
               {locationcity?.map((el, index) => (
                 <List__Container key={index} onClick={(e) => listHandle(e, index, el)} className='list__item'>
-                  <li id={el.id} onClick={(e) => listEdit(e, index, el)}>
+                  <li className='fp__list' id={el.id} onClick={(e) => listEdit(e, index, el)}>
                     {' '}
                     {el.country} <span>{el.city}</span>
                   </li>
@@ -137,7 +137,9 @@ const Location__Container = styled.section`
 `;
 const List__Container = styled.div`
   font-size: 16px;
-
+.fp__list{
+  margin: 0;
+}
   display: flex;
   justify-content: space-between;
   background-color: white;

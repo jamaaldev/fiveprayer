@@ -25,18 +25,32 @@
             <table  class='FP_TablePrayer_'>
                 <thead>
                     <tr>
+                        <th></th>
+                        <th td colspan="3">Fajr</th>
+        
+                        <th td colspan="2">Dhuhr</th>
+                        
+                        <th td colspan="2">Asr</th>
+                        
+                        <th td colspan="2">Maghrib</th>
+                    
+                        <th td colspan="2">Isha</th>
+                       
+                        <th>Midnight</th>
+                    </tr>
+                    <tr>
                         <th>Date</th>
-                        <th>Fajr Begins</th>
-                        <th>Fajr Iqamah</th>
+                        <th> Begins</th>
+                        <th> Iqamah</th>
                         <th>Sunrise</th>
-                        <th>Dhuhr Begins</th>
-                        <th>Dhuhr Iqamah</th>
-                        <th>Asr Begins</th>
-                        <th>Asr Iqamah</th>
-                        <th>Maghrib Begins</th>
-                        <th>Maghrib Iqamah</th>
-                        <th>Isha Begins</th>
-                        <th>Isha Iqamah</th>
+                        <th> Begins</th>
+                        <th> Iqamah</th>
+                        <th> Begins</th>
+                        <th> Iqamah</th>
+                        <th> Begins</th>
+                        <th> Iqamah</th>
+                        <th> Begins</th>
+                        <th> Iqamah</th>
                         <th>Midnight</th>
                     </tr>
                 </thead>

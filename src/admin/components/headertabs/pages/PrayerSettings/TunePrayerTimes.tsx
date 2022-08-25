@@ -20,7 +20,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   const { TPTimeImsak, TPTimeFajr, TPTimeSunrise, TPTimeDhuhr, TPTimeAsr, TPTimeSunset, TPTimeMaghrib, TPTimeIsha, TPTimeMidnight } = useSelector((state: RootState) => state.TunePrayerTime);
   const { asrChecked, monthChecked, midnightChecked, locationChecked, higherChecked, medothChecked, ListCity, CalcMethods, HigherLats, MidnightMode, AsrMedoths, CityTown } = useSelector((state: RootState) => state.searchtowncity);
   const {data:timetable,isSuccess:success,isLoading,isFetching,isError} = useGetPrayerTimeTableQuery('fp_prayertimetable');
-
  
   const [CurrentDate, setCurrentDate] = React.useState(new Date().getDate())
  //Imsak
@@ -138,13 +137,13 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       midnight: midnightculc,
     });
     prayTimes.tune({
-      imsak: Number(TPTimeImsak),
-      fajr: Number(TPTimeFajr),
-      dhuhr: Number(TPTimeDhuhr),
-      asr: Number(TPTimeAsr),
-      maghrib: Number(TPTimeMaghrib),
-      isha: Number(TPTimeIsha),
-      midnight: Number(TPTimeMidnight),
+      imsak: Number(localStorage.getItem('Imsak')),
+      fajr: Number(localStorage.getItem('Fajr')),
+      dhuhr: Number(localStorage.getItem('Dhuhr')),
+      asr: Number(localStorage.getItem('Asr')),
+      maghrib: Number(localStorage.getItem('Maghrib')),
+      isha: Number(localStorage.getItem('Isha')),
+      midnight: Number(localStorage.getItem('Midnight')),
     });
     const currentDate = new Date();
     // const dc = currentDate.setMonth(currentDate.getMonth() + 1 * 0);
