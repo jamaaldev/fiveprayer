@@ -412,7 +412,7 @@ const Container = styled.main`
   align-items: baseline;
 `;
 const Middle_Container_Tune = styled.div`
-  width: 500px;
+  width: 380px;
   justify-content: space-between;
   align-items: center;
   .pInputHeadLine {

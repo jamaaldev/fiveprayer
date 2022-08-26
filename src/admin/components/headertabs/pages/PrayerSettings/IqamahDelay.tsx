@@ -90,7 +90,7 @@ export function IqamahDelay (props: IIqamahDelayProps) {
 
 
 const Right_Container_IQamah = styled.div`
-  width: 400px;
+  width: 250px;
   flex: 1;
   margin-top: 22px;
   justify-content: space-between;
