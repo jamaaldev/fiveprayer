@@ -43,9 +43,8 @@
                     
                         <th td colspan="2">Isha</th>
                        
-                        <th>Midnight</th>
                     </tr>
-                    <tr>
+                    <tr class="tbmonth">
                         <th>Date</th>
                         <th> Begins</th>
                         <th> Iqamah</th>
@@ -58,7 +57,6 @@
                         <th> Iqamah</th>
                         <th> Begins</th>
                         <th> Iqamah</th>
-                        <th>Midnight</th>
                     </tr>
                 </thead>
 
@@ -85,7 +83,6 @@
                     <td><?php echo date("g:i A ", strtotime($day->maghrib_iqamah)) ?></td>
                     <td><?php echo date("g:i A ", strtotime($day->isha_begins)) ?></td>
                     <td><?php echo date("g:i A ", strtotime($day->isha_iqamah)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->midnight)) ?></td>
 
                 </tr>
                 <?php }

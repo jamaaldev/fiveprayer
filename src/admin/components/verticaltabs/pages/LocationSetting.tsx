@@ -122,11 +122,11 @@ const Location__Container = styled.section`
     gap: 30px;
   }
   .FP__input__container {
-    width: 600px;
+    max-width: 350px;
   }
   .location__list {
     position: relative;
-    width: 500px;
+    min-width: 400px;
     border-radius: 3px;
     background-color: #f6f7f7;
     p {

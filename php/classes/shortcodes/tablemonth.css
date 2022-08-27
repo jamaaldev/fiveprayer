@@ -9,6 +9,10 @@
     color: aliceblue;
 }
 
-.FP_TablePrayer_ .fp__highlight{
+.FP_TablePrayer_ .today-row{
     background-color: #e3ffee;
+}
+.FP_TablePrayer_ .tbmonth{
+    background-color: #1e6138;
+    color: whitesmoke;
 }
