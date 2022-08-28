@@ -8,18 +8,18 @@ export interface IBoxModelProps {
 }
 
 export function BoxModel(props: IBoxModelProps) {
-    const refs = React.useRef<HTMLDivElement>() as  React.MutableRefObject<HTMLDivElement>;
-    
+    const refs = React.useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement>;
+
     console.log("🚀 ~ file: BoxModel.tsx ~ line 10 ~ BoxModel ~ refs", props.showPopup)
-    if(refs?.current?.style){
+    if (refs?.current?.style) {
 
         refs.current.style.display = props.showPopup;
     }
-    const ModelPoup = () =>{
+    const ModelPoup = () => {
         refs.current.style.display = "none";
 
         props.SetShow(false);
-         
+
     }
     return (
         <div className='fp__model'>
@@ -29,7 +29,13 @@ export function BoxModel(props: IBoxModelProps) {
 
                 <div className="modal-content">
                     <div onClick={ModelPoup} className="close">&times;</div>
-                    <p>Some text in the Modal..</p>
+
+
+                    <input type="file" id="actual-btn" hidden />
+
+                    <label for="actual-btn">Choose File</label>
+
+                    <span id="file-chosen">No file chosen</span>
                 </div>
 
             </div>
