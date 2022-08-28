@@ -70,7 +70,7 @@
                    foreach ($prayersettingmeta as $day) {?>
 
 
-                    <tr class=<?php echo $day->today == $mydate ? 'today-row' : null ?>>
+                    <tr id=<?php echo $day->today == $mydate ? 'today-row' : null ?>>
                     <td><?php echo $day->currentDate ?></td>
                     <td><?php echo date("g:i A ", strtotime($day->fajr_begins)) ?></td>
                     <td><?php echo date("g:i A ", strtotime($day->fajr_iqamah)) ?></td>

@@ -15,8 +15,9 @@
     color: aliceblue;
 }
 
-.FP_TablePrayer_ .today-row{
+.FP_TablePrayer_ #today-row{
     background-color: #d2f847;
+    color: #022f31;
 }
 .FP_TablePrayer_ .tbmonth{
     background-color: #007076;
