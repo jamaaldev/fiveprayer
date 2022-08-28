@@ -31,7 +31,7 @@
 
             <table  class='FP_TablePrayer_'>
                 <thead>
-                    <tr>
+                    <tr class="tbmonth">
                         <th></th>
                         <th td colspan="3">Fajr</th>
         
@@ -44,7 +44,7 @@
                         <th td colspan="2">Isha</th>
                        
                     </tr>
-                    <tr class="tbmonth">
+                    <tr id="tbmonth">
                         <th>Date</th>
                         <th> Begins</th>
                         <th> Iqamah</th>

@@ -4,86 +4,100 @@ import styled from 'styled-components';
 import { RootState } from '../../../../../app/store';
 import { useGetprayerSettingsMetaAPIQuery } from '../../../../api/prayerSettingsMetaAPI';
 import FPInput from '../../../elements/FPInput';
-
+import '../../../elements/css/FPCustomUpload.scss'
+import { BoxModel } from '../../../elements/BoxModel';
 export interface IIqamahDelayProps {
 }
 
-export function IqamahDelay (props: IIqamahDelayProps) {
+export function IqamahDelay(props: IIqamahDelayProps) {
   const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_prayersettings_meta');
+const [show,SetShow] = React.useState(false);
+  const { IQFajr, IQDhuhr, IQAsr, IQMaghrib, IQIsha } = useSelector((state: RootState) => state.IqamaDelay);
 
-    const { IQFajr, IQDhuhr, IQAsr, IQMaghrib, IQIsha } = useSelector((state: RootState) => state.IqamaDelay);
+  const UploadFile = () => {
+    SetShow(true)
 
-
+  }
   //IQFajr
   if (localStorage.getItem('IQFajr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
-    
+    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
+
     localStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
-  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr'){
+  } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr') {
     localStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
 
   }
   //IQDhuhr
   if (localStorage.getItem('IQDhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
-    
+    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
+
     localStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
-  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr'){
+  } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
     localStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
 
   }
   //IQAsr
   if (localStorage.getItem('IQAsr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
-    
+    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
+
     localStorage.setItem('IQAsr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value);
-  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr'){
+  } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr') {
     localStorage.setItem('IQAsr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value);
 
   }
   //IQMaghrib
   if (localStorage.getItem('IQMaghrib') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
-    
+    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
+
     localStorage.setItem('IQMaghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value);
-  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib'){
+  } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib') {
     localStorage.setItem('IQMaghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value);
 
   }
   //IQIsha
   if (localStorage.getItem('IQIsha') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num) )
-    
+    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
+
     localStorage.setItem('IQIsha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value);
-  } else if(getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha'){
+  } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha') {
     localStorage.setItem('IQIsha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value);
 
   }
 
   return (
-    <div>
-          <Right_Container_IQamah>
-              <p className='pInputHeadLine'>
-                Iqamah delay (in minutes)
-                <br />
-              </p>
-              <Container>
-                <FPInput val={localStorage.getItem('IQFajr')} holder={'IQFajr'} />
-                <FPInput val={localStorage.getItem('IQDhuhr')} holder={'IQDhuhr'} />
-              </Container>
-              <Container>
-                <FPInput val={localStorage.getItem('IQAsr')} holder={'IQAsr'} />
-                <FPInput val={localStorage.getItem('IQMaghrib')} holder={'IQMaghrib'} />
-              </Container>
-              <Container>
-                <FPInput val={localStorage.getItem('IQIsha')} holder={'IQIsha'} />
-              </Container>
-            </Right_Container_IQamah>
+    <div className='FP__iqamah'>
+      <Right_Container_IQamah>
+        <p className='pInputHeadLine'>
+          Iqamah delay (in minutes)
+          <br />
+        </p>
+        <Container>
+          <FPInput val={localStorage.getItem('IQFajr')} holder={'IQFajr'} />
+          <FPInput val={localStorage.getItem('IQDhuhr')} holder={'IQDhuhr'} />
+        </Container>
+        <Container>
+          <FPInput val={localStorage.getItem('IQAsr')} holder={'IQAsr'} />
+          <FPInput val={localStorage.getItem('IQMaghrib')} holder={'IQMaghrib'} />
+        </Container>
+        <Container>
+          <FPInput val={localStorage.getItem('IQIsha')} holder={'IQIsha'} />
+          <div className='middle_container'>
+            <label>Upload CSV Timings</label>
+            {/* <input title='sdsdsd' type="file" className="middle_button FP__custom-file-input"/> */}
+            <button onClick={UploadFile} className='middle_button'>Upload FivePrayer</button>
+          </div>
+        </Container>
+        {show ?
+        <BoxModel showPopup={'block'}  SetShow={SetShow}/>
+          : ''}
+
+
+      </Right_Container_IQamah>
     </div>
   );
 }

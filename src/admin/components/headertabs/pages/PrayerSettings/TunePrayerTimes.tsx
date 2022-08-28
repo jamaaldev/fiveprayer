@@ -11,6 +11,7 @@ import { PrayTimes } from '../../../../model/PrayTimes';
 import FPInput from '../../../elements/FPInput';
 import FPTablePrayerTime from './FPTablePrayerTime';
 import MasjidJamaah from '../../../../model/MasjidJamaah';
+import { useExportToCSVQuery } from '../../../../api/importExportApi';
 export interface ITunePrayerTimesProps {}
 
 export function TunePrayerTimes(props: ITunePrayerTimesProps) {
@@ -19,7 +20,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
 
   const { TPTimeImsak, TPTimeFajr, TPTimeSunrise, TPTimeDhuhr, TPTimeAsr, TPTimeSunset, TPTimeMaghrib, TPTimeIsha, TPTimeMidnight } = useSelector((state: RootState) => state.TunePrayerTime);
   const { asrChecked, monthChecked, midnightChecked, locationChecked, higherChecked, medothChecked, ListCity, CalcMethods, HigherLats, MidnightMode, AsrMedoths, CityTown } = useSelector((state: RootState) => state.searchtowncity);
-  const {data:timetable,isSuccess:success,isLoading,isFetching,isError} = useGetPrayerTimeTableQuery('fp_prayertimetable');
+  const {data:timetable,isSuccess:success,isLoading,isFetching,isError} = useExportToCSVQuery('fp_prayertimetable');
  
   const [CurrentDate, setCurrentDate] = React.useState(new Date().getDate())
  //Imsak
@@ -104,7 +105,34 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
 
   }
   
-  var t0 = performance.now();
+
+
+  
+  const DownloadCalendar = () =>{
+    // first check if object and return! if not convert to object
+    let timeTableMonth = typeof timetable !== 'object' ? JSON.parse(timetable) : timetable;
+    let timeTableColumnKey =
+    `${Object.keys(timeTableMonth[0])
+      .map((value) => `"${value}"`)
+      .join(',')}` + '\r\n';
+        
+    let csvContent = timeTableMonth.reduce((timeTableValue, next) => {
+      timeTableValue +=
+        `${Object.values(next)
+          .map((value) => `"${value}"`)
+          .join(',')}` + '\r\n';
+      return timeTableValue;
+    }, timeTableColumnKey);
+  let element = document.createElement('a');
+    element.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+    element.target = '_blank';
+    element.download = 'fiveprayer.csv';
+    element.click();
+
+}
+
+
+  let t0 = performance.now();
 
 
   
@@ -395,7 +423,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
           </div>
           <div className='middle_container'>
             <label>CSV Timings</label>
-            <button className='middle_button'>Download</button>
+            <button onClick={DownloadCalendar} className='middle_button'>Download</button>
           </div>
         </Container>
       </Middle_Container_Tune>

@@ -1,6 +1,11 @@
+.FP_DairyPrayer_ {
+    border-collapse: collapse;
+}
 .FP_DairyPrayer_ th, .FP_DairyPrayer_ td {
-    padding: 8px;
+    padding: 5px;
     border-width: 0 1px 1px 0;
+    border: 1px solid black;
+
     text-align: center;
 }
 
@@ -10,5 +15,5 @@
 }
 
 .FP_DairyPrayer_ .fp__highlight{
-    background-color: #e3ffee;
+    background-color: #d2f847;
 }

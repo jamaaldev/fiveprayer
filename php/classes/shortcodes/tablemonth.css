@@ -1,18 +1,34 @@
+.FP_TablePrayer_ {
+    border-collapse: collapse;
+}
 .FP_TablePrayer_ th, .FP_TablePrayer_ td {
-    padding: 8px;
+    padding: 5px;
+ 
     border-width: 0 1px 1px 0;
+    border: 1px solid black;
     text-align: center;
 }
 
 .FP_TablePrayer_ .tbhead{
+    width: 100%;
     background: rgb(4 94 20);
     color: aliceblue;
 }
 
 .FP_TablePrayer_ .today-row{
-    background-color: #e3ffee;
+    background-color: #d2f847;
 }
 .FP_TablePrayer_ .tbmonth{
-    background-color: #1e6138;
+    background-color: #007076;
+    color: whitesmoke;
+}
+.FP_TablePrayer_ #tbmonth{
+    background-color: #a20000;
+    color: whitesmoke;
+}
+
+
+.FP_TablePrayer_ tr:nth-child(even){
+    background-color: #3c9a61;
     color: whitesmoke;
 }

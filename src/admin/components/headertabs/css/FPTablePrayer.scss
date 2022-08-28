@@ -12,32 +12,29 @@
      
   background-color:var(--bbalp);
   
-  backdrop-filter: saturate(100%);
-  backdrop-filter: contrast(50%);
+  // backdrop-filter: saturate(100%);
+  // backdrop-filter: contrast(50%);
   backdrop-filter: hue-rotate(50deg);
 
 
 
-  color: whitesmoke;
+  color: rgb(243, 244, 245);
   }
 .FP_TablePrayer_,td,th {
      
     border: 1px solid #02352838;
     text-align: center;
-    padding: 8px;
+    padding: 7px;
   }
   
   .FP_TablePrayer_ tbody:nth-child(even) {
     background-color: var(--bbalp);
   }
-   table tbody tr:nth-child(even) {
-    background-color: var(--bbalp);
-  } 
-  
+ 
     .today-row{
-      backdrop-filter: saturate(100%);
-      background-color: var(--bbalp);
-      background-color: rgba(21, 221, 154, 0.274);
+      // backdrop-filter: saturate(100%);
+      // background-color: var(--bbalp);
+      background-color: rgba(206, 138, 50, 0.274);
      backdrop-filter: contrast(100%);
      backdrop-filter: hue-rotate(50deg);
   }

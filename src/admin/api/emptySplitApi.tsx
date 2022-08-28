@@ -5,6 +5,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const emptySplitApi = createApi({
   reducerPath:'FPMainPluginApi',
   baseQuery:fetchBaseQuery({baseUrl:`${location.origin}/wp-json/`}),
-  tagTypes: ['prayerTimeTableTag','locationTag','prayerSettingsMetaTag'],
+  tagTypes: ['prayerTimeTableTag','locationTag','prayerSettingsMetaTag','importExportTag'],
   endpoints: () => ({}),
 })
