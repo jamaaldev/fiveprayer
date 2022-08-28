@@ -11,7 +11,7 @@ export interface IIqamahDelayProps {
 
 export function IqamahDelay(props: IIqamahDelayProps) {
   const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_prayersettings_meta');
-const [show,SetShow] = React.useState(false);
+const [show,SetShow] = React.useState<boolean>(false);
   const { IQFajr, IQDhuhr, IQAsr, IQMaghrib, IQIsha } = useSelector((state: RootState) => state.IqamaDelay);
 
   const UploadFile = () => {

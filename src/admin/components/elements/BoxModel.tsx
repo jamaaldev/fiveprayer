@@ -4,7 +4,7 @@ import * as React from 'react';
 import './css/FPBOXModel.scss'
 export interface IBoxModelProps {
     showPopup: string;
-    SetShow:(boolean:boolean) => boolean;
+    SetShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function BoxModel(props: IBoxModelProps) {
@@ -18,7 +18,7 @@ export function BoxModel(props: IBoxModelProps) {
     const ModelPoup = () =>{
         refs.current.style.display = "none";
 
-        props.SetShow(false)
+        props.SetShow(false);
          
     }
     return (
