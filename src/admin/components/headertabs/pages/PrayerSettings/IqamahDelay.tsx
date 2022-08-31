@@ -21,7 +21,6 @@ const [show,SetShow] = React.useState<boolean>(false);
   //IQFajr
   if (localStorage.getItem('IQFajr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
 
     localStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr') {
@@ -31,7 +30,6 @@ const [show,SetShow] = React.useState<boolean>(false);
   //IQDhuhr
   if (localStorage.getItem('IQDhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
 
     localStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
@@ -41,7 +39,6 @@ const [show,SetShow] = React.useState<boolean>(false);
   //IQAsr
   if (localStorage.getItem('IQAsr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
 
     localStorage.setItem('IQAsr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr') {
@@ -51,7 +48,6 @@ const [show,SetShow] = React.useState<boolean>(false);
   //IQMaghrib
   if (localStorage.getItem('IQMaghrib') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
 
     localStorage.setItem('IQMaghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib') {
@@ -61,7 +57,6 @@ const [show,SetShow] = React.useState<boolean>(false);
   //IQIsha
   if (localStorage.getItem('IQIsha') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value;
-    console.log("%c 🏵️: TunePrayerTimes -> num ", "font-size:16px;background-color:#992c59;color:white;", Number(num))
 
     localStorage.setItem('IQIsha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha') {
