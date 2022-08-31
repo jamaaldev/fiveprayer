@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import FPTablePrayerTime, { FPCal, FPCalendar } from './PrayerSettings/FPTablePrayerTime';
-import PrayerTimesCalendar from './PrayerSettings/PrayerTimesCalendar';
+import PrayerTimesCalendarSettings from './PrayerSettings/PrayerTimesCalendarSettings';
 import { TunePrayerTimes } from './PrayerSettings/TunePrayerTimes';
 import { IqamahDelay } from './PrayerSettings/IqamahDelay';
 // import {ListCityTown} from '../../../features/search/searchTownCity'
@@ -19,7 +19,7 @@ const PrayerSettings = () => {
 
           <Section>
             {/* left */}
-            <PrayerTimesCalendar />
+            <PrayerTimesCalendarSettings />
             <span></span>
             {/* middle */}
             <TunePrayerTimes />

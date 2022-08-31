@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback, useMemo, useReducer } from 'r
 import styled from 'styled-components';
 import { useDeleteLocationMutation, useGetLocationQuery, useInsertLocationMutation, useUpdateLocationMutation } from '../../../api/locationApi';
 import { LocationChecked, LocationCity } from '../../../features/search/searchTownCity';
-export const LocationSetting = () => {
+export const CustomLocation = () => {
   const [country, setCountry] = useState<LocationCity | undefined | string | any>('');
   const [city, setCity] = useState<LocationCity | undefined | string | any>('');
   const [lat, setLat] = useState<LocationCity | undefined | string | any>('');

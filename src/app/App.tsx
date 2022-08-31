@@ -1,10 +1,10 @@
 import * as React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Reset from "../admin/helper/Reset";
-import Dashboard from "../admin/components/headertabs/pages/Dashboard";
+import PrayerSettings from "../admin/components/headertabs/pages/PrayerSettings";
 
 import HeaderTabLinks from "../admin/components/headertabs/HeaderTabLinks";
-import Settings from "../admin/components/headertabs/pages/Settings";
+import GeneralSettings from "../admin/components/headertabs/pages/GeneralSettings";
 import Support from "../admin/components/headertabs/pages/Support";
 import Templates from "../admin/components/headertabs/pages/Templates";
 import HeaderContent from "../admin/components/headertabs/HeaderContent";
@@ -17,9 +17,9 @@ const App = () => {
         <HeaderTabLinks />
         <Routes>
           <Route element={<HeaderContent />}>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<PrayerSettings />} />
             <Route path="/support" element={<Support />} />
-            <Route path="/settings/*" element={<Settings />} />
+            <Route path="/settings/*" element={<GeneralSettings />} />
             <Route path="/templates" element={<Templates />} />
           </Route>
         </Routes>

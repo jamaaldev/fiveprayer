@@ -12,7 +12,7 @@ import FPSearch from '../../../elements/FPSearch';
 
 export interface IPrayerTimesCalendarProps {}
 
-export default function PrayerTimesCalendar(props: IPrayerTimesCalendarProps) {
+export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendarProps) {
   // const { data } = useGetPrayerTimeTableQuery('fp_prayertimetable');
   
   const { data: getprayersettingMeta, isFetching, isSuccess, isError, isLoading } = useGetprayerSettingsMetaAPIQuery('fp_prayersettings_meta');

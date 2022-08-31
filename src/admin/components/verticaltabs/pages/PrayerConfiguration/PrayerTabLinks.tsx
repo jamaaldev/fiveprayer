@@ -7,7 +7,7 @@ export interface IPrayerTabLinksProps {
 export function PrayerTabLinks (props: IPrayerTabLinksProps) {
   return (
     <div>
-      <NavLink to={'/settings/googleaddress/locationsetting'}>
+      <NavLink to={'/settings/prayerconfigration/customlocation'}>
         <button className='tablink'>Custom location</button>
       </NavLink>
    
