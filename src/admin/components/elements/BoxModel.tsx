@@ -58,8 +58,6 @@ const ImportCSV = () =>{
 console.log(csvJSON)
 updateTimeTable(csvJSON);
 }
-
-console.log("🚀 ~ file: BoxModel.tsx ~ line 10 ~ BoxModel ~ refs", props.showPopup)
 if (refs?.current?.style) {
 
     refs.current.style.display = props.showPopup;

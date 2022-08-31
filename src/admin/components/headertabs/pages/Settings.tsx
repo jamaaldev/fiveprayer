@@ -1,7 +1,7 @@
 import * as React from "react";
 import VerticalContent from "../../verticaltabs/VerticalContent";
 import VerticalTabLinks from "../../verticaltabs/VerticalTabLinks";
-function GeneralSettings() {
+function Settings() {
   return (
     <>
       <div className="vertical_tab_container">
@@ -14,4 +14,4 @@ function GeneralSettings() {
   );
 }
 
-export default GeneralSettings;
+export default Settings;

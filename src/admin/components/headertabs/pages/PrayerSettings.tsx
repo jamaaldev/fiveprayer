@@ -41,6 +41,7 @@ const SectionContainer = styled.section`
 const Section = styled.section`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   span {
     border-right: 3px solid #f8f8f8;
     height: 340px;

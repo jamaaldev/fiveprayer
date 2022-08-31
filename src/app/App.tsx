@@ -4,7 +4,7 @@ import Reset from "../admin/helper/Reset";
 import PrayerSettings from "../admin/components/headertabs/pages/PrayerSettings";
 
 import HeaderTabLinks from "../admin/components/headertabs/HeaderTabLinks";
-import GeneralSettings from "../admin/components/headertabs/pages/GeneralSettings";
+import Settings from "../admin/components/headertabs/pages/Settings";
 import Support from "../admin/components/headertabs/pages/Support";
 import Templates from "../admin/components/headertabs/pages/Templates";
 import HeaderContent from "../admin/components/headertabs/HeaderContent";
@@ -19,7 +19,7 @@ const App = () => {
           <Route element={<HeaderContent />}>
             <Route path="/" element={<PrayerSettings />} />
             <Route path="/support" element={<Support />} />
-            <Route path="/settings/*" element={<GeneralSettings />} />
+            <Route path="/settings/*" element={<Settings />} />
             <Route path="/templates" element={<Templates />} />
           </Route>
         </Routes>

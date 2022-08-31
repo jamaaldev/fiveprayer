@@ -19,8 +19,8 @@ const HeaderTabLinks = () => {
         <NavLink to={"/templates"}>
           <button className="tablinks templates">Templates</button>
         </NavLink>
-        <NavLink to={"/settings/generalsettings"}>
-          <button className="tablinks settings">General Settings</button>
+        <NavLink to={"/settings/settings"}>
+          <button className="tablinks settings">Settings</button>
         </NavLink>
         <NavLink to={"/support"}>
           <button className="tablinks support">Support</button>
