@@ -15,8 +15,8 @@
  * Author:      Jamaaldev
  * Author URI:  https://example.com
  * Text Domain: fiveprayer-slug
- * License:     GPL v2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:     GPL v3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
