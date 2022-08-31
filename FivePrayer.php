@@ -27,17 +27,8 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 class FivePrayerPlugin {
     function __construct()
     {
-       /*  global $wpdb;
-        $this->charset = $wpdb->get_charset_collate();
-        $this->tablelocationcity = $wpdb->prefix . "fp_location_city"; */
-        // add_action('init', array($this, 'onActivate'));
-        
-        // add_action('admin_head', array($this, 'onAdminRefresh'));
-        
-        // add_action( 'admin_menu', array($this,'fiveprayer_init_menu'));
-        // add_action( 'admin_enqueue_scripts', array($this,'fiveprayer_admin_enqueue_scripts'));
-        // add_action( 'rest_api_init', array($this,'fp_register_fp_routes'));
-        // add_action( 'admin_notices', array($this,'independence_notice') );
+   
+        add_action( 'admin_notices', array($this,'independence_notice') );
         add_action('admin_notices', array($this,'my_admin_notice'));
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/CustomLocationController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerTimeTableController.php');

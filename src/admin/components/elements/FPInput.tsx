@@ -1,7 +1,5 @@
-import styled from "styled-components";
 import * as React from 'react';
-import { useSelector,useDispatch } from "react-redux";
-import { RootState } from "../../../app/store";
+import { useDispatch } from "react-redux";
 import { IQFajrVal,IQDhuhrVal,IQAsrVal,IQMaghribVal,IQIshaVal } from "../../features/search/IqamaDelay";
 import {TPTimeImsakVal, TPTimeFajrVal,TPTimeSunriseVal,TPTimeDhuhrVal,TPTimeAsrVal,TPTimeSunsetVal,TPTimeMaghribVal,TPTimeIshaVal ,TPTimeMidnightVal} from "../../features/search/tunePrayerTime";
 import './css/FPInput.scss'
@@ -9,7 +7,6 @@ import { useInsertprayerSettingsMetaAPIMutation } from "../../api/prayerSettings
 function FPInput({ holder,val }) {
   const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
 
-  // const { IQFajr,IQDhuhr} = useSelector((state:RootState) => state.searchtowncity);
   const dispatch = useDispatch();
 
   const changeHandle = (e) =>{
@@ -47,7 +44,6 @@ function FPInput({ holder,val }) {
     }
     if(holder === 'Fajr'){
       dispatch(TPTimeFajrVal(Number(e.target.value) ))
-      // localStorage.setItem('Fajr', JSON.stringify(e.target.value));
       const Fajr = { value: Number(e.target.value) , meta: 'Fajr' };
       insertprayersettingmeta(Fajr);
     }
@@ -98,9 +94,6 @@ function FPInput({ holder,val }) {
   );
 }
 
-// const FPInputConatiner = styled.section`
-//   flex: 1;
-  
-// `;
+
 
 export default FPInput;

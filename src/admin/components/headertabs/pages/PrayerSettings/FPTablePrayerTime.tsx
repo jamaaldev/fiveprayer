@@ -1,10 +1,7 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
 import '../../css/FPTablePrayer.scss'
-import parse, { domToReact } from 'html-react-parser';
-import tables from '../../../../utils/json/tables.json'
+
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
-import { AsrChecked, HigherChecked, LocationChecked, MedothChecked, MidnightChecked } from '../../../../features/search/searchTownCity';
-import { useSelector,useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export type FPCalendar ={
     currentDate: string[]; fajr: string[]; sunrise: string[]; dhuhr:string[]; className:string;
@@ -17,7 +14,6 @@ export type FPCal ={
   }
 function FPTablePrayerTime({calendar}) {
  const {data:timetable,isFetching,isLoading} = useGetPrayerTimeTableQuery('fp_prayertimetable');
- const dispatch = useDispatch()
 
  
  

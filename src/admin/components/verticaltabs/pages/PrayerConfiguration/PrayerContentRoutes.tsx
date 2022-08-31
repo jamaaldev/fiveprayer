@@ -12,8 +12,6 @@ export function PrayerContentRoutes(props: IPrayerContentRoutesProps) {
     <div>
       <Routes>
         <Route path='prayerconfigration/*' element={<PrayerConfigration />} />
-
-        {/* <Route path='location' element={<PrayerConfig />} /> */}
         <Route path="customlocation" element={<CustomLocation />} />
 
       </Routes>

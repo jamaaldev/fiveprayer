@@ -18,9 +18,7 @@ function VerticalTabLinks() {
         <NavLink to={"/settings/prayerconfigration"}>
           <button className="tablinks vertical_tab">Prayer Configuration</button>
         </NavLink>
-       {/*  <NavLink to={"/settings/locationsetting"}>
-          <button className="tablinks vertical_tab">Prayer Configuration</button>
-        </NavLink> */}
+    
       </div>
     </>
   );

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import Reset from "../admin/helper/Reset";
 import PrayerSettings from "../admin/components/headertabs/pages/PrayerSettings";
 
 import HeaderTabLinks from "../admin/components/headertabs/HeaderTabLinks";
@@ -13,7 +12,6 @@ const App = () => {
   return (
     <div className="fiveprayer">
       <HashRouter>
-        {/* <Reset /> */}
         <HeaderTabLinks />
         <Routes>
           <Route element={<HeaderContent />}>
