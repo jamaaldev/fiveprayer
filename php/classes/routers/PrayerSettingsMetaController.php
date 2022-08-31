@@ -22,7 +22,9 @@ class PrayerSettingsMetaController
           register_rest_route('fp/v1', '/fp_prayersettings_meta', array(
                'methods' => WP_REST_Server::READABLE,
                'callback' => array($this, 'fp_get_meta'),
-               'permission_callback' => '__return_true'
+               'permission_callback' => function() {
+                    return current_user_can( 'manage_options' );
+                },
 
           ));
      }

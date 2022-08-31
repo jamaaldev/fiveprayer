@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
-class PrayerTimeTableController
+class ImportExportController
 {
  public function __construct()
  {
@@ -46,25 +46,25 @@ class PrayerTimeTableController
     array(
      'date'               => $day['date'],
      'currentDate'        => $day['currentDate'],
-     'fajr_begins'        => $day['fajr_begins'],
+     'fajr_begins'        => $day['fajr'],
      'fajr_iqamah'        => $day['fajr_iqamah'],
      'fajr_masjid_jamaah' => $day['fajr_masjid_jamaah'],
      //    'fajr_iqamah' => $day[null],
-     'dhuhr_begins'       => $day['dhuhr_begins'],
+     'dhuhr_begins'       => $day['dhuhr'],
      'dhuhr_iqamah'       => $day['dhuhr_iqamah'],
      //    'zuhr_iqamah' => $day[null],
-     'asr_begins'         => $day['asr_begins'],
+     'asr_begins'         => $day['asr'],
      'asr_iqamah'         => $day['asr_iqamah'],
      //    'asr_iqamah' => $day[null],
-     'maghrib_begins'     => $day['maghrib_begins'],
+     'maghrib_begins'     => $day['maghrib'],
      'maghrib_iqamah'     => $day['maghrib_iqamah'],
      //    'maghrib_iqamah' => $day[null],
-     'isha_begins'        => $day['isha_begins'],
+     'isha_begins'        => $day['isha'],
      'isha_iqamah'        => $day['isha_iqamah'],
      'midnight'           => $day['midnight'],
      'sunrise'            => $day['sunrise'],
      'className'          => $day['className'],
-     'today'              => $day['today']
+     'today'              => $day['day']
     ),
    );
 

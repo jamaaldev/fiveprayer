@@ -4,7 +4,11 @@ import { emptySplitApi } from './emptySplitApi';
 export const prayerSettingsMetaAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     getprayerSettingsMetaAPI: builder.query({
-      query: (methods) => `fp/v1/${methods}`,
+      query: (methods ) => ({ url: `fp/v1/${methods}`, method: 'GET',headers:{
+       
+        'X-WP-Nonce': prayerData?.nonce,
+
+     } }),
       providesTags: [{ type: 'prayerSettingsMetaTag' }],
     }),
     insertprayerSettingsMetaAPI: builder.mutation({

@@ -1,6 +1,7 @@
 
 import { useRef } from '@wordpress/element/build-types';
 import * as React from 'react';
+import { useUpdatePrayerTimeTableMutation } from '../../api/prayerTimeTableApi';
 import './css/FPBOXModel.scss'
 export interface IBoxModelProps {
     showPopup: string;
@@ -9,9 +10,11 @@ export interface IBoxModelProps {
 
 export function BoxModel(props: IBoxModelProps) {
     const [filename, SetfileName] = React.useState<string>('');
+    const [csvJSON, SetCSVJSON] = React.useState<string[]>([]);
     const refs = React.useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement>;
+    const [updateTimeTable] =  useUpdatePrayerTimeTableMutation();
+
     const FileUpload = (file) => {
-        console.log("🚀 ~ file: BoxModel.tsx ~ line 13 ~ FileUpload ~ file", file.target.files[0])
 
         SetfileName(file.target.files[0].name)
         ConvertCSVToJSON(file.target.files[0])
@@ -31,7 +34,7 @@ export function BoxModel(props: IBoxModelProps) {
             });
 
             // for removing empty record
-            lines.splice(lines.length - 1, 1);
+            // lines.splice(lines.length - 1, 1);
             const result = [];
             const headers = lines[0].split(",");
 
@@ -47,11 +50,14 @@ export function BoxModel(props: IBoxModelProps) {
             }
             //return result; //JavaScript object
             // return JSON.stringify(result); //JSON
-            console.log("🚀 ~ file: BoxModel.tsx ~ line 52 ~ ConvertCSVToJSON ~ result", result)
+            SetCSVJSON(result);
         }
 
     };
-
+const ImportCSV = () =>{
+console.log(csvJSON)
+updateTimeTable(csvJSON);
+}
 
 console.log("🚀 ~ file: BoxModel.tsx ~ line 10 ~ BoxModel ~ refs", props.showPopup)
 if (refs?.current?.style) {
@@ -79,6 +85,7 @@ return (
                 <label htmlFor="actual-btn">Choose File</label>
 
                 <span id="file-chosen">{filename ? filename : 'No file chosen'}</span>
+                <button onClick={ImportCSV}>Import</button>
             </div>
 
         </div>

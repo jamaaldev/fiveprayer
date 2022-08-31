@@ -93,8 +93,9 @@ function independence_notice() {
      function onActivate(){
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             global $wpdb;
-            if($wpdb->get_var('SHOW table like wp_fp_location_city' != 'SHOW table like wp_fp_location_city') ){
-            dbDelta( "CREATE TABLE `wp_fp_location_city` (
+
+
+            dbDelta( "CREATE TABLE IF NOT EXISTS `wp_fp_location_city` (
                 `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
                 `country` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
                 `city` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -102,11 +103,10 @@ function independence_notice() {
                 `lng` float NOT NULL DEFAULT '0',
                 PRIMARY KEY (`id`)
             ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci");
-
-            }
-     
-            if($wpdb->get_var('SHOW table like wp_fp_timetable' != 'SHOW table like wp_fp_timetable') ){
-            dbDelta("CREATE TABLE `wp_fp_timetable` (
+                
+            
+         
+            dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_timetable` (
                 `date` date NOT NULL,
                 `fajr_begins` time DEFAULT NULL,
                 `fajr_iqamah` time DEFAULT NULL,
@@ -127,16 +127,16 @@ function independence_notice() {
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8
               ");
 
-            }
-            if($wpdb->get_var('SHOW table like wp_fp_prayer_settings_meta' != 'SHOW table like wp_fp_prayer_settings_meta') ){
-            dbDelta("CREATE TABLE `wp_fp_prayer_settings_meta` (
+            
+
+            dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_prayer_settings_meta` (
                 `id` int(11) NOT NULL AUTO_INCREMENT,
                 `meta-key` varchar(255) NOT NULL,
                 `value` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
                 PRIMARY KEY (`id`)
               ) ENGINE=InnoDB AUTO_INCREMENT=1743 DEFAULT CHARSET=utf8 ");
 
-            }
+            
 
 
 

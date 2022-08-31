@@ -143,6 +143,11 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
 
 },[new Date().getMinutes()])
   const prayTimes = PrayTimes();
+  const higherLat = JSON.parse( localStorage.getItem('higherlatitude') as string)?.method;
+  const asrculc = JSON.parse( localStorage.getItem('asrcalculation')as string)?.method;
+  const culcmethod = JSON.parse( localStorage.getItem('calcmedthod')as string)?.method;
+  const adjustmethod = JSON.parse( localStorage.getItem('calcmedthod')as string);
+  const midnightculc = JSON.parse( localStorage.getItem('midnightcalculation')as string)?.method;
   
 
   // return month full name
@@ -150,29 +155,35 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     var monthName = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     return monthName[month];
   }
-  const GenerateCalender = () => {
+  prayTimes.setMethod(culcmethod);
 
-    const higherLat = JSON.parse( localStorage.getItem('higherlatitude') as string)?.method;
-    const asrculc = JSON.parse( localStorage.getItem('asrcalculation')as string)?.method;
-    const culcmethod = JSON.parse( localStorage.getItem('calcmedthod')as string)?.method;
-    const midnightculc = JSON.parse( localStorage.getItem('midnightcalculation')as string)?.method;
+  prayTimes.tune({
+    imsak: Number(localStorage.getItem('Imsak')),
+    fajr: Number(localStorage.getItem('Fajr')),
+    dhuhr: Number(localStorage.getItem('Dhuhr')),
+    asr: Number(localStorage.getItem('Asr')),
+    maghrib: Number(localStorage.getItem('Maghrib')),
+    isha: Number(localStorage.getItem('Isha')),
+    midnight: Number(localStorage.getItem('Midnight')),
+    sunrise: Number(localStorage.getItem('Sunrise')),
+    sunset: Number(localStorage.getItem('Sunset')),
+  });
+  prayTimes.adjust({
+    asr: asrculc,
+    highLats: higherLat,
+    midnight: midnightculc,
+    fajr:adjustmethod?.params?.Fajr,
+    dhuhr:adjustmethod?.params?.Dhuhr,
+    maghrib:adjustmethod?.params?.Maghrib,
+    isha:adjustmethod?.params?.Isha,
+
+  });
+  const GenerateCalender = () => {
+    
+
     // updatePrayerTime({id: '1', month: monthChecked, city: locationChecked.name})
     // dispatch(MonthChecked(monthChecked));
-    prayTimes.setMethod(culcmethod);
-    prayTimes.adjust({
-      asr: asrculc,
-      highLats: higherLat,
-      midnight: midnightculc,
-    });
-    prayTimes.tune({
-      imsak: Number(localStorage.getItem('Imsak')),
-      fajr: Number(localStorage.getItem('Fajr')),
-      dhuhr: Number(localStorage.getItem('Dhuhr')),
-      asr: Number(localStorage.getItem('Asr')),
-      maghrib: Number(localStorage.getItem('Maghrib')),
-      isha: Number(localStorage.getItem('Isha')),
-      midnight: Number(localStorage.getItem('Midnight')),
-    });
+ 
     const currentDate = new Date();
     // const dc = currentDate.setMonth(currentDate.getMonth() + 1 * 0);
     let year = currentDate.getFullYear();
@@ -188,26 +199,30 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     const dataTable: string[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(localStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(localStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
+      times.fajr_begins = times.fajr;
+      times.dhuhr_begins = times.dhuhr;
+      times.asr_begins = times.asr;
+      times.maghrib_begins = times.maghrib;
+      times.isha_begins = times.isha;
       dataTable.push(times);
-
-      times.day = date.getDate().toString();
+      times.today = date.getDate().toString();
       times.date =date.getFullYear() + '-' + (date.getMonth() +1)+ '-' + date.getDate();
      
           // convert given string into a number
-      let fajrhourprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[0]; 
-      let fajrminprayer =   1 * (times.fajr + "").split(/[^0-9.+-]/)[1]; 
+      let fajrhourprayer =   1 * (times.fajr_begins + "").split(/[^0-9.+-]/)[0]; 
+      let fajrminprayer =   1 * (times.fajr_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let dhuhrhourprayer =   1 * (times.dhuhr + "").split(/[^0-9.+-]/)[0]; 
-      let dhuhrminprayer =   1 * (times.dhuhr + "").split(/[^0-9.+-]/)[1]; 
+      let dhuhrhourprayer =   1 * (times.dhuhr_begins + "").split(/[^0-9.+-]/)[0]; 
+      let dhuhrminprayer =   1 * (times.dhuhr_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let asrhourprayer =   1 * (times.asr + "").split(/[^0-9.+-]/)[0]; 
-      let asrminprayer =   1 * (times.asr + "").split(/[^0-9.+-]/)[1]; 
+      let asrhourprayer =   1 * (times.asr_begins + "").split(/[^0-9.+-]/)[0]; 
+      let asrminprayer =   1 * (times.asr_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let maghribhourprayer =   1 * (times.maghrib + "").split(/[^0-9.+-]/)[0]; 
-      let maghribminprayer =   1 * (times.maghrib + "").split(/[^0-9.+-]/)[1]; 
+      let maghribhourprayer =   1 * (times.maghrib_begins + "").split(/[^0-9.+-]/)[0]; 
+      let maghribminprayer =   1 * (times.maghrib_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let ishahourprayer =   1 * (times.isha + "").split(/[^0-9.+-]/)[0]; 
-      let ishaminprayer =   1 * (times.isha + "").split(/[^0-9.+-]/)[1]; 
+      let ishahourprayer =   1 * (times.isha_begins + "").split(/[^0-9.+-]/)[0]; 
+      let ishaminprayer =   1 * (times.isha_begins + "").split(/[^0-9.+-]/)[1]; 
       
 // 👇️ Integers
     
@@ -308,8 +323,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
         } */
 
       
-        console.log("%c ♊: GenerateCalender -> times ", "font-size:16px;background-color:#8f7285;color:white;", times)
-        console.log("%c 🇵🇦: GenerateCalender -> minprayer ", "font-size:16px;background-color:#574f3b;color:white;", minprayer)
+       
         // times.test = minprayer == 34 ? hourprayer + ':' + (minprayer == 34 ? +40 : '' ).toString() : '';  times.test = minprayer == 35 ? hourprayer + ':' + (minprayer == 35 ? +45 : '' ).toString() : ''; 
         // times.test = hourprayer + ':' + (minprayer >= 40 ?  +7 : '' ).toString() ;
         // times.test = hourprayer + ':' + ((minprayer >= 10 && minprayer <=20 ) ?  +16 : '' ).toString() ;
