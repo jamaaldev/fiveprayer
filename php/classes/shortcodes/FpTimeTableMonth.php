@@ -18,7 +18,7 @@
 
   public function registerShortcodes()
   {
-   add_shortcode('fp_timetable_month', array($this, 'fpTimetableMonth'));
+   add_shortcode('Fp_TimeTable_Monthly', array($this, 'fpTimetableMonth'));
   }
 
   public function fpTimetableMonth($atts)

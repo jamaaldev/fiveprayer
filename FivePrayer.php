@@ -3,25 +3,22 @@
  * Five Prayer
  *
  * @package     FivePrayer
- * @author      Jamaal Mahamed
+ * @author      Jamaaldev
  * @copyright   2022 Jamaal Mahamed or Company Name
  * @license     GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name: Five Prayer
+ * Plugin Name: FivePrayer
  * Plugin URI:  https://example.com/plugin-name
- * Description: A Five Prayer platform made by WordPress React 17.
+ * Description: FivePrayer - Plugin is For Muslim PrayerTimes.
  * Version:     1.0.0
- * Author:      Jamaal Mahamed
+ * Author:      Jamaaldev
  * Author URI:  https://example.com
  * Text Domain: fiveprayer-slug
  * License:     GPL v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-//  if(! defined('ABSPATH')){
-//     exit;
-//  }
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class FivePrayerPlugin {
