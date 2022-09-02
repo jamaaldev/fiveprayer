@@ -1,10 +1,13 @@
 // Need to use the React-specific entry point to import createApi
 import {  SearchTownCityState } from '../features/search/searchTownCity';
 import { emptySplitApi } from './emptySplitApi'
-
+interface FPCalendar {
+    currentDate: string[]; fajr: string[]; sunrise: string[]; dhuhr:string[]; className:string;
+    asr: string[]; sunset:string[]; maghrib: string[]; isha: string[]; midnight:string[]; day:number[];today:number;
+  }
 export const prayerTimeTableApi = emptySplitApi.injectEndpoints({
     endpoints:(builder) =>({
-        getPrayerTimeTable: builder.query({
+        getPrayerTimeTable: builder.query<[],string>({
             query:(methods) => ({ url: `fp/v1/${methods}`, method: 'GET',headers:{
                 'X-WP-Nonce': prayerData?.nonce,
             }}),

@@ -152,7 +152,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
 
   // return month full name
   function monthFullName(month: number) {
-    var monthName = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+    const monthName = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     return monthName[month];
   }
   prayTimes.setMethod(culcmethod);
@@ -192,9 +192,10 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     let day = currentDate.getDate();
 
     let title = day + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
-
-    let date = new Date(year, Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1);
-    let endDate = new Date(year, Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()) + 1, 1);
+    let date = new Date(year, Number(0));
+    // let date = new Date(year, Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1);
+    // let endDate = new Date(year, Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()) + 1, 1);
+    let endDate = new Date(year, Number(13));
 
     const dataTable: string[] = [];
     while (date < endDate) {
@@ -204,9 +205,9 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       times.asr_begins = times.asr;
       times.maghrib_begins = times.maghrib;
       times.isha_begins = times.isha;
-      dataTable.push(times);
       times.today = date.getDate().toString();
       times.date =date.getFullYear() + '-' + (date.getMonth() +1)+ '-' + date.getDate();
+      dataTable.push(times);
      
           // convert given string into a number
       let fajrhourprayer =   1 * (times.fajr_begins + "").split(/[^0-9.+-]/)[0]; 
@@ -247,7 +248,8 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       times.asr_iqamah = asrhourprayer + ':' + (asrminprayer + 7) ? (asrminprayer + 7) >= 60 ? asrhourprayer + 1 + ":" + (asrminprayer + 7) % 60 : asrhourprayer + ':' + (asrminprayer + 7) : asrhourprayer + ':' + (asrminprayer + 7);
       times.maghrib_iqamah = maghribhourprayer + ':' + (maghribminprayer + 7) ? (maghribminprayer + 7) >= 60 ? maghribhourprayer + 1 + ":" + (maghribminprayer + 7) % 60 : maghribhourprayer + ':' + (maghribminprayer + 7) : maghribhourprayer + ':' + (maghribminprayer + 7);
       times.isha_iqamah = ishahourprayer + ':' + (ishaminprayer + 7) ? (ishaminprayer + 7) >= 60 ? ishahourprayer + 1 + ":" + (ishaminprayer + 7) % 60 : ishahourprayer + ':' + (ishaminprayer + 7) : ishahourprayer + ':' + (ishaminprayer + 7);
-      times.currentDate = date.getDate() + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
+      times.currentDate = date.getDate() + ' ' + monthFullName(Number(date.getMonth())) + ' ' + date.getFullYear();
+      // times.currentDate = date.getDate() + ' ' + monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth())) + ' ' + year;
        
       const masjidJamaah = new MasjidJamaah(times);
       masjidJamaah.FajrJamah();

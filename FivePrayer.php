@@ -25,8 +25,7 @@ class FivePrayerPlugin {
     function __construct()
     {
    
-        add_action( 'admin_notices', array($this,'independence_notice') );
-        add_action('admin_notices', array($this,'my_admin_notice'));
+       
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/CustomLocationController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerTimeTableController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerSettingsMetaController.php');
@@ -47,24 +46,7 @@ class FivePrayerPlugin {
     
    
 
-    function my_admin_notice(){
-        echo '<div class="updated">
-           <p>I am a little am first active admin notice.</p>
-        </div>';
-    }
-function independence_notice() {
-    global $pagenow;
-    $admin_pages = [ 'index.php', 'edit.php', 'plugins.php' ];
-    if ( in_array( $pagenow, $admin_pages ) ) {
-        if ( date( 'j, F' ) === '29, July' ) { 
-            ?>
-            <div class="notice notice-warning is-dismissible">
-                <p>Happy Independence Day, Nigeria...</p>
-            </div>
-            <?
-        }
-    }
-}
+
    
      function insertLocation(){
             global $wpdb;

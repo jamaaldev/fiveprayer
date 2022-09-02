@@ -7,12 +7,14 @@
   {
    add_action('init', array($this, 'registerShortcodes'));
    add_action('wp_enqueue_scripts', array($this,'tablemonth'));
+   require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableMonthly.php');
 
 
   }
   public function tablemonth()
 {
     wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+  
 }
 
 
@@ -25,6 +27,7 @@
   {
    global $wpdb;
    $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
+    new GenerateTimeTableMonthly($prayersettingmeta);
    ob_start();
 
   if ($prayersettingmeta) {?>
@@ -68,7 +71,7 @@
                     $monthdate = getdate()["mon"];
 
                    foreach ($prayersettingmeta as $day) {?>
-
+                
 
                     <tr id=<?php echo $day->today == $mydate ? 'today-row' : null ?>>
                     <td><?php echo $day->currentDate ?></td>

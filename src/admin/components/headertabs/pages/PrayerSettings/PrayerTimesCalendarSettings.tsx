@@ -74,12 +74,15 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
     return monthName[month];
   }
   const monthList = (checked: string, el: string) => {
+    
     localStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum: checked }));
     // setMonths(parseInt(checked));
 
     dispatch(MonthChecked(el));
   };
-
+const checkAutoMonth = () =>{
+  return localStorage.getItem('monthselect') ? JSON.parse(localStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()))
+}
   const locationList = React.useCallback(
     (checked: EventTarget, el: ListCityTown, meta: string) => {
       localStorage.setItem('location', JSON.stringify(el));
@@ -140,7 +143,7 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
             holder={'Month'}
             label={'Select Month'}
             options={listMonthList}
-            checked={localStorage.getItem('monthselect') ? JSON.parse(localStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()))}
+            checked={checkAutoMonth()}
           />
           <FPSearch
             name={'city'}
