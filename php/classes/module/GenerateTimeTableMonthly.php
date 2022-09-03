@@ -1,4 +1,3 @@
-
 <?php 
 
 
@@ -23,10 +22,7 @@ class GenerateTimeTableMonthly {
                     $wpdb->delete('wp_fp_prayer_settings_meta', array('meta-key' => 'generate'));
                     $wpdb->insert('wp_fp_prayer_settings_meta', array('meta-key' => 'generate', 'value' => true));
                     BugFu::log(date("m", strtotime($day->date)) == $monthdate);
-                    // BugFu::log(GenerateCalender());
-                    echo '<script type="text/javascript">',
-                    'GenerateCalender();',
-                    '</script>'
+                   
                ;
                     
                 }else if($key === array_key_first($this->prayersettingmeta) && date("m", strtotime($day->date)) == $monthdate ){

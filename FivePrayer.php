@@ -26,18 +26,18 @@ class FivePrayerPlugin {
     {
    
        
+        require_once(plugin_dir_path( __FILE__ ) . './php/classes/pages/FivePrayer_admin.php');
+        require_once(plugin_dir_path( __FILE__ ) . './php/classes/enqueue/FivePrayer_enqueue.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/CustomLocationController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerTimeTableController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerSettingsMetaController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/FpTimeTableMonth.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/FpVerticalDailyPrayer.php');
-        require_once(plugin_dir_path( __FILE__ ) . './php/classes/pages/FivePrayer_admin.php');
-        require_once(plugin_dir_path( __FILE__ ) . './php/classes/enqueue/FivePrayer_enqueue.php');
         new FivePrayer_admin;
+        new FivePrayer_enqueue;
         new CustomLocationController;
         new PrayerTimeTableController;
         new PrayerSettingsMetaController;
-        new FivePrayer_enqueue;
         new FpTimetableMonth;
         new FpVerticalDailyPrayer;
 
@@ -94,8 +94,7 @@ class FivePrayerPlugin {
                 `currentDate` tinytext,
                 `today` tinyint(4) DEFAULT NULL,
                 `className` tinytext
-              ) ENGINE=InnoDB DEFAULT CHARSET=utf8
-              ");
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 
             
 
@@ -104,7 +103,7 @@ class FivePrayerPlugin {
                 `meta-key` varchar(255) NOT NULL,
                 `value` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
                 PRIMARY KEY (`id`)
-              ) ENGINE=InnoDB AUTO_INCREMENT=1743 DEFAULT CHARSET=utf8 ");
+              ) ENGINE=InnoDB AUTO_INCREMENT=1743 DEFAULT CHARSET=utf8");
 
             
 

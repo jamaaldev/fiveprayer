@@ -73,15 +73,21 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
     var monthName = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     return monthName[month];
   }
+  React.useEffect(()=>{
+    localStorage.setItem('monthselect', JSON.stringify({ monthName: monthFullName(new Date().getMonth()), monthNum:  new Date().getMonth() || new Date().getMonth()  }));
+
+  },[new Date().getMonth()])
   const monthList = (checked: string, el: string) => {
-    
-    localStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum: checked }));
+    const check = new Date().getMonth() || checked;
+    console.log("🚀 ~ file: PrayerTimesCalendarSettings.tsx ~ line 78 ~ monthList ~ check", check)
+    localStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum:  checked || new Date().getMonth()  }));
     // setMonths(parseInt(checked));
 
     dispatch(MonthChecked(el));
   };
 const checkAutoMonth = () =>{
-  return localStorage.getItem('monthselect') ? JSON.parse(localStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()))
+   
+  return monthFullName( new Date().getMonth()) || localStorage.getItem('monthselect') ? JSON.parse(localStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()));
 }
   const locationList = React.useCallback(
     (checked: EventTarget, el: ListCityTown, meta: string) => {

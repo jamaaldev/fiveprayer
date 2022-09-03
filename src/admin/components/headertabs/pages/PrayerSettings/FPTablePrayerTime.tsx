@@ -16,17 +16,18 @@ export type FPCal ={
 function FPTablePrayerTime({calendar}) {
   const [month,SetMonth] = React.useState<FPCalendar[]>();
  const {data:timetable,isFetching,isLoading} = useGetPrayerTimeTableQuery('fp_prayertimetable');
+ console.log("🚀 ~ file: FPTablePrayerTime.tsx ~ line 19 ~ FPTablePrayerTime ~ timetable", timetable)
  
  React.useEffect(()=>{
    
    if(timetable?.length){
   
      const newone = timetable?.filter((table:FPCalendar) => {
-     return  new Date(table.date).getFullYear() === new Date().getFullYear() &&  new Date(table.date).getMonth() === Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum );
+     return  new Date(table.date).getFullYear() === new Date().getFullYear() &&  new Date(table.date).getMonth() === ( Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum ) || new Date().getMonth());
      }) 
      SetMonth(newone)
     }
- },[timetable,Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
+ },[timetable, new Date().getMonth(), Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
 
   return (
     <div>

@@ -200,6 +200,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     const dataTable: string[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(localStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(localStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
+      console.log("🚀 ~ file: TunePrayerTimes.tsx ~ line 203 ~ GenerateCalender ~ times", times)
       times.fajr_begins = times.fajr;
       times.dhuhr_begins = times.dhuhr;
       times.asr_begins = times.asr;
