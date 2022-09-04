@@ -26,7 +26,10 @@
   public function fpTimetableMonth($atts)
   {
    global $wpdb;
-   $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
+   $mydate    = wp_date("j", null, $timezone = null);
+      $monthdate =  wp_date("n", null, $timezone = null);
+      $yeardate = wp_date("Y", null, $timezone = null);
+   $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate ");
     new GenerateTimeTableMonthly($prayersettingmeta);
    ob_start();
 
@@ -67,25 +70,25 @@
                 <?php
                  // Return date/time info of a timestamp; then format the output
 
-                    $mydate    = getdate()["mday"];
-                    $monthdate = getdate()["mon"];
+                 $mydate    = wp_date("j", null, $timezone = null);
+                 $monthdate =  wp_date("n", null, $timezone = null);
 
                    foreach ($prayersettingmeta as $day) {?>
                 
 
-                    <tr id=<?php echo $day->today == $mydate ? 'today-row' : null ?>>
+                    <tr id=<?php echo $day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null ?>>
                     <td><?php echo $day->currentDate ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->fajr_begins)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->fajr_iqamah)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->sunrise)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->dhuhr_begins)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->dhuhr_iqamah)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->asr_begins)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->asr_iqamah)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->maghrib_begins)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->maghrib_iqamah)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->isha_begins)) ?></td>
-                    <td><?php echo date("g:i A ", strtotime($day->isha_iqamah)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->fajr_begins)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->fajr_iqamah)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->sunrise)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->dhuhr_begins)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->dhuhr_iqamah)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->asr_begins)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->asr_iqamah)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->maghrib_begins)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->maghrib_iqamah)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->isha_begins)) ?></td>
+                    <td><?php echo wp_date("g:i A ", strtotime($day->isha_iqamah)) ?></td>
 
                 </tr>
                 <?php }

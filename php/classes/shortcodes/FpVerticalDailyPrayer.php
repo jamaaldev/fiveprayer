@@ -24,10 +24,13 @@ public function registerShortcodes()
   public function fpVerticalDailyPrayer($atts)
   {
       global $wpdb;
-      $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
+      $mydate    = wp_date("j", null, $timezone = null);
+      $monthdate =  wp_date("n", null, $timezone = null);
+      $yeardate = wp_date("Y", null, $timezone = null);
+     
+    //   $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
+      $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate " );
 
-      $mydate    = getdate()["mday"];
-      $monthdate = getdate()["mon"];
       ob_start();
       if ($prayersettingmeta) {
           ?>
