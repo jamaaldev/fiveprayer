@@ -78,17 +78,17 @@
 
                     <tr id=<?php echo $day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null ?>>
                     <td><?php echo $day->currentDate ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->fajr_begins)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->fajr_iqamah)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->sunrise)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->dhuhr_begins)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->dhuhr_iqamah)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->asr_begins)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->asr_iqamah)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->maghrib_begins)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->maghrib_iqamah)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->isha_begins)) ?></td>
-                    <td><?php echo wp_date("g:i A ", strtotime($day->isha_iqamah)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->fajr_begins)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->fajr_iqamah)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->sunrise)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->dhuhr_begins)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->dhuhr_iqamah)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->asr_begins)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->asr_iqamah)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->maghrib_begins)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->maghrib_iqamah)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->isha_begins)) ?></td>
+                    <td><?php echo date("g:i A ",  strtotime($day->isha_iqamah)) ?></td>
 
                 </tr>
                 <?php }
