@@ -16,7 +16,6 @@ export type FPCal ={
 function FPTablePrayerTime({calendar}) {
   const [month,SetMonth] = React.useState<FPCalendar[]>();
  const {data:timetable,isFetching,isLoading} = useGetPrayerTimeTableQuery('fp_prayertimetable');
- console.log("🚀 ~ file: FPTablePrayerTime.tsx ~ line 19 ~ FPTablePrayerTime ~ timetable", timetable)
  
  React.useEffect(()=>{
    

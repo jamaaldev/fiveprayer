@@ -5,7 +5,7 @@ import PrayerSettings from "../admin/components/headertabs/pages/PrayerSettings"
 import HeaderTabLinks from "../admin/components/headertabs/HeaderTabLinks";
 import Settings from "../admin/components/headertabs/pages/Settings";
 import Support from "../admin/components/headertabs/pages/Support";
-import Templates from "../admin/components/headertabs/pages/Templates";
+import Welcome from "../admin/components/headertabs/pages/Welcome";
 import HeaderContent from "../admin/components/headertabs/HeaderContent";
 const App = () => {
   console.log('am in app')
@@ -15,10 +15,10 @@ const App = () => {
         <HeaderTabLinks />
         <Routes>
           <Route element={<HeaderContent />}>
-            <Route path="/" element={<PrayerSettings />} />
+            <Route path="/" element={<Welcome />} />
+            <Route path="/prayersettings" element={<PrayerSettings />} />
             <Route path="/support" element={<Support />} />
             <Route path="/settings/*" element={<Settings />} />
-            <Route path="/templates" element={<Templates />} />
           </Route>
         </Routes>
       </HashRouter>

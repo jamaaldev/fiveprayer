@@ -14,10 +14,10 @@ const HeaderTabLinks = () => {
           <h3>Beta App Prayer</h3>
         </div>
         <NavLink to={"/"}>
-          <button className="tablinks dashboard">Prayer Settings</button>
+          <button className="tablinks dashboard">Welcome</button>
         </NavLink>
-        <NavLink to={"/templates"}>
-          <button className="tablinks templates">Templates</button>
+        <NavLink to={"/prayersettings"}>
+          <button className="tablinks prayer">Prayer Settings</button>
         </NavLink>
         <NavLink to={"/settings/settings"}>
           <button className="tablinks settings">Settings</button>

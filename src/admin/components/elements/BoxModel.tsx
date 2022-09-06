@@ -55,8 +55,9 @@ export function BoxModel(props: IBoxModelProps) {
 
     };
 const ImportCSV = () =>{
-console.log(csvJSON)
 updateTimeTable(csvJSON);
+SetfileName('');
+
 }
 if (refs?.current?.style) {
 
