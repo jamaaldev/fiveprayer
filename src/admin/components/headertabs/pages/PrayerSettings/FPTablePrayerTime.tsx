@@ -1,14 +1,12 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
 import '../../css/FPTablePrayer.scss'
-import parse, { domToReact } from 'html-react-parser';
-import tables from '../../../../utils/json/tables.json'
+
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
-import { AsrChecked, HigherChecked, LocationChecked, MedothChecked, MidnightChecked } from '../../../../features/search/searchTownCity';
-import { useSelector,useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import React from 'react';
 
 export type FPCalendar ={
     currentDate: string[]; fajr: string[]; sunrise: string[]; dhuhr:string[]; className:string;
-    asr: string[]; sunset:string[]; maghrib: string[]; isha: string[]; midnight:string[]; day:number[];
+    asr: string[]; sunset:string[]; maghrib: string[]; isha: string[]; midnight:string[]; day:number[];date:number;today:number;
 
   }
 export type FPCal ={
@@ -16,17 +14,24 @@ export type FPCal ={
 
   }
 function FPTablePrayerTime({calendar}) {
+  const [month,SetMonth] = React.useState<FPCalendar[]>();
  const {data:timetable,isFetching,isLoading} = useGetPrayerTimeTableQuery('fp_prayertimetable');
- const dispatch = useDispatch()
-
  
- 
- 
+ React.useEffect(()=>{
+   
+   if(timetable?.length){
+  
+     const newone = timetable?.filter((table:FPCalendar) => {
+     return  new Date(table.date).getFullYear() === new Date().getFullYear() &&  new Date(table.date).getMonth() === ( Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum ) || new Date().getMonth());
+     }) 
+     SetMonth(newone)
+    }
+ },[timetable, new Date().getMonth(), Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
 
   return (
     <div>
 
-{ timetable?.length ?
+{ month?.length ?
 <table  className='FP_TablePrayer_'>
 <thead>
     <tr>
@@ -46,7 +51,7 @@ function FPTablePrayerTime({calendar}) {
       <th>Midnight</th>
     </tr>
 </thead>
- {timetable?.map((calendars:FPCalendar,index:number) => (
+ {month?.map((calendars:FPCalendar,index:number) => (
  <tbody key={index}>
     <tr className={calendars?.today === new Date().getDate().toString() ?  'today-row'  : null  }>
     <td>{calendars?.currentDate}</td>

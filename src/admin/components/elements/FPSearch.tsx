@@ -1,22 +1,14 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-// import "./css/FPSearch.scss";
 import styled from 'styled-components';
-import FPDropList from './FPDropList';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../app/store';
-import { CityTownSearch } from '../../features/search/searchTownCity';
+
 import { useEffect } from 'react';
 
 function FPSearch({ holder, label, options, checked, name }) {
-  const { monthChecked, ListCity, locationChecked, CalcMethods, HigherLats, MidnightMode, AsrMedoths, CityTown } = useSelector((state: RootState) => state.searchtowncity);
 
-  const [search, setSearch] = React.useState('');
-  const [dropRem, setDropRem] = React.useState('');
+  
   const droplist = React.useRef<HTMLInputElement>(null);
   const dropclick = React.useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
   let stopTime: number;
   let node: Element;
   node = ReactDOM?.findDOMNode(droplist?.current) as HTMLInputElement;
@@ -31,7 +23,6 @@ function FPSearch({ holder, label, options, checked, name }) {
     node?.classList?.remove('show');
   };
   const dropWait = (selected: EventTarget) => {
-    // node.classList.add("show");
   };
   const dropSelected = (selected: EventTarget) => {};
 
@@ -44,7 +35,6 @@ function FPSearch({ holder, label, options, checked, name }) {
   let timeTyping: number;
   let prevues: string;
   const getCityName = (search: string, city: string) => {
-    // let target = e.target as Element;
     let cityTown = search;
 
     if (search.length > 2 && city === 'city') {
@@ -52,7 +42,6 @@ function FPSearch({ holder, label, options, checked, name }) {
       if (cityTown != '' && prevues != cityTown) {
         timeTyping = window.setTimeout(() => {
           prevues = cityTown;
-          // dispatch(CityTownSearch(cityTown));
         }, 500);
       }
     }

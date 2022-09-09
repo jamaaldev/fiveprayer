@@ -3,54 +3,41 @@
  * Five Prayer
  *
  * @package     FivePrayer
- * @author      Jamaal Mahamed
+ * @author      Jamaaldev
  * @copyright   2022 Jamaal Mahamed or Company Name
  * @license     GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name: Five Prayer
+ * Plugin Name: FivePrayer
  * Plugin URI:  https://example.com/plugin-name
- * Description: A Five Prayer platform made by WordPress React 17.
+ * Description: FivePrayer - Plugin is For Muslim PrayerTimes.
  * Version:     1.0.0
- * Author:      Jamaal Mahamed
+ * Author:      Jamaaldev
  * Author URI:  https://example.com
  * Text Domain: fiveprayer-slug
- * License:     GPL v2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:     GPL v3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-//  if(! defined('ABSPATH')){
-//     exit;
-//  }
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class FivePrayerPlugin {
     function __construct()
     {
-       /*  global $wpdb;
-        $this->charset = $wpdb->get_charset_collate();
-        $this->tablelocationcity = $wpdb->prefix . "fp_location_city"; */
-        // add_action('init', array($this, 'onActivate'));
-        
-        // add_action('admin_head', array($this, 'onAdminRefresh'));
-        
-        // add_action( 'admin_menu', array($this,'fiveprayer_init_menu'));
-        // add_action( 'admin_enqueue_scripts', array($this,'fiveprayer_admin_enqueue_scripts'));
-        // add_action( 'rest_api_init', array($this,'fp_register_fp_routes'));
-        // add_action( 'admin_notices', array($this,'independence_notice') );
-        add_action('admin_notices', array($this,'my_admin_notice'));
+   
+       
+        require_once(plugin_dir_path( __FILE__ ) . './php/classes/pages/FivePrayer_admin.php');
+        require_once(plugin_dir_path( __FILE__ ) . './php/classes/enqueue/FivePrayer_enqueue.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/CustomLocationController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerTimeTableController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerSettingsMetaController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/FpTimeTableMonth.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/FpVerticalDailyPrayer.php');
-        require_once(plugin_dir_path( __FILE__ ) . './php/classes/pages/FivePrayer_admin.php');
-        require_once(plugin_dir_path( __FILE__ ) . './php/classes/enqueue/FivePrayer_enqueue.php');
         new FivePrayer_admin;
+        new FivePrayer_enqueue;
         new CustomLocationController;
         new PrayerTimeTableController;
         new PrayerSettingsMetaController;
-        new FivePrayer_enqueue;
         new FpTimetableMonth;
         new FpVerticalDailyPrayer;
 
@@ -59,24 +46,7 @@ class FivePrayerPlugin {
     
    
 
-    function my_admin_notice(){
-        echo '<div class="updated">
-           <p>I am a little am first active admin notice.</p>
-        </div>';
-    }
-function independence_notice() {
-    global $pagenow;
-    $admin_pages = [ 'index.php', 'edit.php', 'plugins.php' ];
-    if ( in_array( $pagenow, $admin_pages ) ) {
-        if ( date( 'j, F' ) === '29, July' ) { 
-            ?>
-            <div class="notice notice-warning is-dismissible">
-                <p>Happy Independence Day, Nigeria...</p>
-            </div>
-            <?
-        }
-    }
-}
+
    
      function insertLocation(){
             global $wpdb;
@@ -124,8 +94,7 @@ function independence_notice() {
                 `currentDate` tinytext,
                 `today` tinyint(4) DEFAULT NULL,
                 `className` tinytext
-              ) ENGINE=InnoDB DEFAULT CHARSET=utf8
-              ");
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 
             
 
@@ -134,7 +103,7 @@ function independence_notice() {
                 `meta-key` varchar(255) NOT NULL,
                 `value` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
                 PRIMARY KEY (`id`)
-              ) ENGINE=InnoDB AUTO_INCREMENT=1743 DEFAULT CHARSET=utf8 ");
+              ) ENGINE=InnoDB AUTO_INCREMENT=1743 DEFAULT CHARSET=utf8");
 
             
 

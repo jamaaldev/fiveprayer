@@ -7,7 +7,6 @@ import FPTablePrayerTime, { FPCal, FPCalendar } from './PrayerSettings/FPTablePr
 import PrayerTimesCalendarSettings from './PrayerSettings/PrayerTimesCalendarSettings';
 import { TunePrayerTimes } from './PrayerSettings/TunePrayerTimes';
 import { IqamahDelay } from './PrayerSettings/IqamahDelay';
-// import {ListCityTown} from '../../../features/search/searchTownCity'
 const PrayerSettings = () => {
   const { calendar } = useSelector((state: RootState) => state.prayer);
 

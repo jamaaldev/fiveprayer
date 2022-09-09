@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { RootState } from '../../../../../app/store';
 import { useGetLocationQuery } from '../../../../api/locationApi';
 import { useGetprayerSettingsMetaAPIQuery, useInsertprayerSettingsMetaAPIMutation } from '../../../../api/prayerSettingsMetaAPI';
-import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
 import { AsrChecked, CalCMethod, HigherChecked, ListCityTown, LocationChecked, MedothChecked, MidnightChecked, MonthChecked, NameAndMethod } from '../../../../features/search/searchTownCity';
 import FPDropList from '../../../elements/FPDropList';
 import FPSearch from '../../../elements/FPSearch';
@@ -74,20 +73,28 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
     var monthName = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     return monthName[month];
   }
+  React.useEffect(()=>{
+    localStorage.setItem('monthselect', JSON.stringify({ monthName: monthFullName(new Date().getMonth()), monthNum:  new Date().getMonth() || new Date().getMonth()  }));
+
+  },[new Date().getMonth()])
   const monthList = (checked: string, el: string) => {
-    localStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum: checked }));
+    const check = new Date().getMonth() || checked;
+    console.log("🚀 ~ file: PrayerTimesCalendarSettings.tsx ~ line 78 ~ monthList ~ check", check)
+    localStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum:  checked || new Date().getMonth()  }));
     // setMonths(parseInt(checked));
 
     dispatch(MonthChecked(el));
   };
-
+const checkAutoMonth = () =>{
+   
+  return monthFullName( new Date().getMonth()) || localStorage.getItem('monthselect') ? JSON.parse(localStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()));
+}
   const locationList = React.useCallback(
     (checked: EventTarget, el: ListCityTown, meta: string) => {
       localStorage.setItem('location', JSON.stringify(el));
       const loc = { value: el, meta: meta };
       insertprayersettingmeta(loc);
-      // localStorage.setItem('location',JSON.stringify(getprayersettingMeta?.map(el=> el['meta-key'] === 'location' ? JSON.parse(el.value) : '')[0]));
-      // dispatch(LocationChecked(el));
+     
     },
     [localStorage.getItem('location'), isSuccess]
   );
@@ -142,19 +149,16 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
             holder={'Month'}
             label={'Select Month'}
             options={listMonthList}
-            checked={localStorage.getItem('monthselect') ? JSON.parse(localStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()))}
+            checked={checkAutoMonth()}
           />
-          {/* <FPDropList name={"year"} holder={"Year"} options={'wait list'} label={"Select Year"} checked={'wait check'}/> */}
           <FPSearch
             name={'city'}
             holder={'Location,City'}
             label={'Search Location'}
             options={listCityList}
             checked={localStorage.getItem('location') ? JSON.parse(localStorage?.getItem('location') as string)?.city : ''}
-            // getprayersettingMeta ? getprayersettingMeta?.map(el=> el['meta-key'] === 'location' ? JSON.parse(el.value)?.city : '')
           />
-          {/* <FPDropList name={"city"} holder={"Location,City"} label={"Search Location"} options={listCityList} defaultV={'defaultValue'} types={'search'} checked={CityTown} /> */}
-          {/* <FPDropList  holder={"Location"} label={"Select Location"} /> */}
+        
         </Container>
         <Container onClick={(e) => dropReset(e.target)}>
           <FPDropList

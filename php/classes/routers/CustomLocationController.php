@@ -6,16 +6,10 @@ class CustomLocationController
     public function __construct()
     {
         add_action('rest_api_init', array($this, 'customLocationRoute'));
-        add_action('admin_notices', array($this, 'myAdminNotice'));
 
     }
 
-    public function myAdminNotice()
-    {
-        echo '<div class="updated">
-           <p>I am a little custom location class notice.</p>
-        </div>';
-    }
+ 
 
     public function customLocationRoute()
     {
