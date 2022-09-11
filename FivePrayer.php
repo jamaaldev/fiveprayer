@@ -28,6 +28,7 @@ class FivePrayerPlugin {
        
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/pages/FivePrayer_admin.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/enqueue/FivePrayer_enqueue.php');
+        // require_once(plugin_dir_path( __FILE__ ) . './php/classes/shortcodes/test.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/CustomLocationController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerTimeTableController.php');
         require_once(plugin_dir_path( __FILE__ ) . './php/classes/routers/PrayerSettingsMetaController.php');
