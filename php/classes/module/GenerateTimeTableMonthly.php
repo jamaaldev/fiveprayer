@@ -14,13 +14,23 @@ class GenerateTimeTableMonthly {
     function __construct(){
         // $this->prayersettingmeta = $prayersettingmeta;
         // $this->DynamicGenerate();
+        add_action('wp_enqueue_scripts', array($this,'tablemonth'));
+
+    }
+    function tablemonth(){
+        wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+        wp_enqueue_script('jquery');
+
     }
 
     function DynamicGenerate(){
+
+
         global $wpdb;
 
         {?>
 
+        <div id="divTo">
             <table  id="divToPrint" class='FP_TablePrayer_'>
                 <thead class='waa'>
                     <tr class="tbmonth">
@@ -96,17 +106,19 @@ class GenerateTimeTableMonthly {
                 </tbody>
 
             </table>
-
+        </div>
 
         <?php
             
             } 
-            ?> <script type="text/javascript">    
+            ?> 
+
+            <script type="text/javascript">    
             jQuery(document).ready(function(){
               
                         jQuery('select').change(function(e){
                             let month = e.target.value;
-                            jQuery('#divToPrint').load('<?php echo plugin_dir_url( __FILE__ ) . 'Test.php'; ?>',{
+                            jQuery('#divTo').load('<?php echo plugin_dir_url( __FILE__ ) . 'Test.php'; ?>',{
                                 newMonth: month
                             });
                         });
