@@ -31,7 +31,8 @@ class GenerateTimeTableMonthly {
         {?>
 
         <div class="printer" id="divTo">
-        <link rel="stylesheet" type="text/css" media="print"  href="../../../../../../wp-content/plugins/fiveprayer_alpha/php/classes/shortcodes/tablemonth.css">
+        <link rel="stylesheet" type="text/css" media="print"  href=' <?php echo plugin_dir_url( __FILE__ ) . '../shortcodes/tablemonth.css' ?>'>
+        <!-- <link rel="stylesheet" type="text/css" media="print"  href="../../../../../../wp-content/plugins/fiveprayer_alpha/php/classes/shortcodes/tablemonth.css"> -->
 
             <table  id='divToPrint' class='FP_TablePrayer_'>
                 <thead class='waa'>
