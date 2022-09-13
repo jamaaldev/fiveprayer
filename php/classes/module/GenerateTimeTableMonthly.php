@@ -37,7 +37,7 @@ class GenerateTimeTableMonthly {
                 <thead class='waa'>
                     <tr class="tbmonth">
                         <th>  
-                             <form>
+                             <form class="noPrint">
                                 <select name="country">
                                     <option value="" disabled selected>--select--</option>
                                     <option value="1">January</option>
@@ -45,7 +45,7 @@ class GenerateTimeTableMonthly {
                                     <option value="3">March</option>
                                 </select>
                             </form>
-                            <input id='toPrint' class='noPrint' type="button"   value="print" />
+                            <input id='clickPrint' class='noPrint' type="button"   value="print" />
                         </th>
                         <th td colspan="3">Fajr</th>
         
@@ -128,7 +128,7 @@ class GenerateTimeTableMonthly {
             });
             jQuery(document).ready(function(){
               
-                        jQuery('.noPrint').click(function(e){
+                        jQuery('#clickPrint').click(function(e){
                             print()
                         
 
