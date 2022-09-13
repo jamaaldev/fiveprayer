@@ -31,7 +31,7 @@ class GenerateTimeTableMonthly {
         {?>
 
         <div class="printer" id="divTo">
-        <link rel="stylesheet" type="text/css" media="print"  href="../../../../../../wp-content/plugins/FP_Plugin-main-main/php/classes/shortcodes/tablemonth.css">
+        <link rel="stylesheet" type="text/css" media="print"  href="../../../../../../wp-content/plugins/fiveprayer_alpha/php/classes/shortcodes/tablemonth.css">
 
             <table  id='divToPrint' class='FP_TablePrayer_'>
                 <thead class='waa'>
@@ -78,7 +78,7 @@ class GenerateTimeTableMonthly {
 
                 <?php
                  // Return date/time info of a timestamp; then format the output
-                 $monthss = array('newMonth' =>  sanitize_text_field(esc_sql($_POST['newMonth']))); 
+                 $monthss = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])))); 
                  $mydate    = wp_date("j", null, $timezone = null);
                  $monthdate =  wp_date("n", null, $timezone = null);
                  $mydate    = wp_date("j", null, $timezone = null);
@@ -120,7 +120,6 @@ class GenerateTimeTableMonthly {
             jQuery(document).ready(function(){
               
                         jQuery('select').change(function(e){
-                            console.log('change')
                             let month = e.target.value;
                             jQuery('#divTo').load('<?php echo plugin_dir_url( __FILE__ ) . 'Test.php'; ?>',{
                                 newMonth: month
@@ -137,37 +136,6 @@ class GenerateTimeTableMonthly {
                         });
             });
                       
-                      function printTable(printThis){
-                        var printwin = window.open("");
-
-                          var originalContents = document.body.innerHTML;
-                       
-                          printwin.onbeforeprint = (event) => {
-                              jQuery('body').load('<?php echo plugin_dir_url( __FILE__ ) . 'Test.php'; ?>',{
-                            
-                                  
-                              });
-                          setTimeout(() => {
-                          }, 500);
-             
-             console.log('Before print');
-            
-            };
- 
-            // printwin.print();
-            setTimeout(() => {
-             
-             
-           
-
-            }, 500);
-            printwin.onafterprint = (event) => {
-               
-    // printwin.close();
-                              console.log('After print');
-};
-
-                      }
              </script> <?php
     } 
 
