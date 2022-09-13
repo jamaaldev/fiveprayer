@@ -30,8 +30,10 @@ class GenerateTimeTableMonthly {
 
         {?>
 
-        <div id="divTo">
-            <table  id="divToPrint" class='FP_TablePrayer_'>
+        <div class="printer" id="divTo">
+        <link rel="stylesheet" type="text/css" media="print"  href="../../../../../../wp-content/plugins/FP_Plugin-main-main/php/classes/shortcodes/tablemonth.css">
+
+            <table  id='divToPrint' class='FP_TablePrayer_'>
                 <thead class='waa'>
                     <tr class="tbmonth">
                         <th>  
@@ -43,7 +45,7 @@ class GenerateTimeTableMonthly {
                                     <option value="3">March</option>
                                 </select>
                             </form>
-                            <input class='noPrint' type="button" value="print" />
+                            <input id='toPrint' class='noPrint' type="button"   value="print" />
                         </th>
                         <th td colspan="3">Fajr</th>
         
@@ -76,13 +78,14 @@ class GenerateTimeTableMonthly {
 
                 <?php
                  // Return date/time info of a timestamp; then format the output
-                   $monthss = $_POST['newMonth']; 
+                 $monthss = array('newMonth' =>  sanitize_text_field(esc_sql($_POST['newMonth']))); 
                  $mydate    = wp_date("j", null, $timezone = null);
                  $monthdate =  wp_date("n", null, $timezone = null);
                  $mydate    = wp_date("j", null, $timezone = null);
-                 $monthdate =  $monthss ? $monthss : wp_date("n", null, $timezone = null) ;
+                 $monthdate =  $monthss['newMonth'] ? $monthss['newMonth'] : wp_date("n", null, $timezone = null) ;
                  $yeardate = wp_date("Y", null, $timezone = null);
-                 $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate ");
+                 $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ",array($yeardate,$monthdate));
+                 $prayersettingmeta = $wpdb->get_results($ourQueryTableGen);
                    foreach ($prayersettingmeta as $day) {?>
                 
 
@@ -117,16 +120,55 @@ class GenerateTimeTableMonthly {
             jQuery(document).ready(function(){
               
                         jQuery('select').change(function(e){
+                            console.log('change')
                             let month = e.target.value;
                             jQuery('#divTo').load('<?php echo plugin_dir_url( __FILE__ ) . 'Test.php'; ?>',{
                                 newMonth: month
                             });
                         });
-                      });
+            });
+            jQuery(document).ready(function(){
+              
+                        jQuery('.noPrint').click(function(e){
+                            print()
                         
+
+                            // printTable('divTo')
+                        });
+            });
+                      
+                      function printTable(printThis){
+                        var printwin = window.open("");
+
+                          var originalContents = document.body.innerHTML;
+                       
+                          printwin.onbeforeprint = (event) => {
+                              jQuery('body').load('<?php echo plugin_dir_url( __FILE__ ) . 'Test.php'; ?>',{
+                            
+                                  
+                              });
+                          setTimeout(() => {
+                          }, 500);
+             
+             console.log('Before print');
+            
+            };
+ 
+            // printwin.print();
+            setTimeout(() => {
+             
+             
+           
+
+            }, 500);
+            printwin.onafterprint = (event) => {
+               
+    // printwin.close();
+                              console.log('After print');
+};
+
+                      }
              </script> <?php
     } 
-    function getMe(){
-         echo 'Test.php';
-    }
+
 }
