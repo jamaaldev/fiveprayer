@@ -1,14 +1,12 @@
 {
-  "name": "startpluginreact",
+  "name": "fiveprayer",
   "version": "1.0.0",
-  "description": "start plugin simple react 17",
+  "description": "fiveprayer plugin simple react 17",
   "main": "index.js",
   "files": [
     "build",
     "php",
-    "/FivePrayer.php",
-    "/composer.json"
-    
+    "/FivePrayer.php"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

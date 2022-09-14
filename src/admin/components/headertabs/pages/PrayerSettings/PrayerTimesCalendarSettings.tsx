@@ -79,7 +79,6 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
   },[new Date().getMonth()])
   const monthList = (checked: string, el: string) => {
     const check = new Date().getMonth() || checked;
-    console.log("🚀 ~ file: PrayerTimesCalendarSettings.tsx ~ line 78 ~ monthList ~ check", check)
     localStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum:  checked || new Date().getMonth()  }));
     // setMonths(parseInt(checked));
 

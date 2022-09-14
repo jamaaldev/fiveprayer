@@ -76,7 +76,7 @@ class ImportExportController
  public function fpGetTimetable(WP_REST_Request $request)
  {
   global $wpdb;
-  $results           = $wpdb->prepare("SELECT * FROM wp_fp_timetable "); //query to fetch record only from user_ip field
+  $results = $wpdb->prepare("SELECT * FROM wp_fp_timetable "); //query to fetch record only from user_ip field
   $prayersettingmeta = $wpdb->get_results($results);
   ob_start();
 

@@ -1,21 +1,14 @@
 <?php
 
 
-// date("m", strtotime(array_key_first($day)->date)) != $monthdate
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
-if (!defined('ABSPATH')) {
-    //If wordpress isn't loaded load it up.
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    include_once $path . '/wp-load.php';
-    // require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableMonthly.php');
-}
+
 class GenerateTimeTableMonthly
 {
     public function __construct()
     {
-        // $this->prayersettingmeta = $prayersettingmeta;
-        // $this->DynamicGenerate();
+       
         add_action('wp_enqueue_scripts', array($this,'tablemonth'));
     }
     public function tablemonth()
@@ -33,7 +26,6 @@ class GenerateTimeTableMonthly
 <div class="printer" id="divTo">
 	<link rel="stylesheet" type="text/css" media="print"
 		href=' <?php echo plugin_dir_url(__FILE__) . '../shortcodes/tablemonth.css' ?>'>
-	<!-- <link rel="stylesheet" type="text/css" media="print"  href="../../../../../../wp-content/plugins/fiveprayer_alpha/php/classes/shortcodes/tablemonth.css"> -->
 
 	<table id='divToPrint' class='FP_TablePrayer_'>
 		<thead class='waa'>
@@ -91,30 +83,30 @@ class GenerateTimeTableMonthly
             foreach ($prayersettingmeta as $day) {?>
 
 
-			<tr id=<?php echo $day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null ?>>
-				<td><?php echo $day->currentDate ?>
+			<tr id=<?php echo esc_html( $day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null );?>>
+				<td><?php echo esc_html($day->currentDate); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->fajr_begins)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->fajr_iqamah)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_iqamah))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->sunrise)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->sunrise))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->dhuhr_begins)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->dhuhr_begins))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->dhuhr_iqamah)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->dhuhr_iqamah))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->asr_begins)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->asr_begins))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->asr_iqamah)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->asr_iqamah))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->maghrib_begins)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->maghrib_begins))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->maghrib_iqamah)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->maghrib_iqamah))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->isha_begins)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->isha_begins))); ?>
 				</td>
-				<td><?php echo date("g:i A ", strtotime($day->isha_iqamah)) ?>
+				<td><?php echo esc_html(date("g:i A ", strtotime($day->isha_iqamah))); ?>
 				</td>
 
 			</tr>
@@ -133,21 +125,18 @@ class GenerateTimeTableMonthly
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 
-		jQuery('select').change(function(e) {
-			let month = e.target.value;
+		jQuery('select').on('change', function(e) {
+			const month = e.target.value;
 			jQuery('#divTo').load(
-				'<?php echo plugin_dir_url(__FILE__) . 'Test.php'; ?>', {
+				'<?php echo plugin_dir_url(__FILE__) . 'GenerateTimeTableDynamic.php'; ?>', {
 					newMonth: month
 				});
 		});
 	});
 	jQuery(document).ready(function() {
 
-		jQuery('#clickPrint').click(function(e) {
-			print()
-
-
-			// printTable('divTo')
+		jQuery('#clickPrint').on('click', function(e) {
+			print();
 		});
 	});
 </script> <?php

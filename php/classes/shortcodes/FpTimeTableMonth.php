@@ -17,7 +17,6 @@
            wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
            wp_enqueue_script('table_script', plugin_dir_url(__FILE__)  . '../../../build/index.js', '1.0.0', true);
 
-           wp_enqueue_script('jquery');
        }
 
 
