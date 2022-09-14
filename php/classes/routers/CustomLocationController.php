@@ -62,7 +62,8 @@ class CustomLocationController
     public function fpDeleteLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        $json = file_get_contents("php://input");
+        $json =  sanitize_text_field(file_get_contents("php://input"));
+
         // Converts it into a PHP object
         $data = json_decode($json, true);
 
@@ -77,7 +78,8 @@ class CustomLocationController
     public function fpUpdateLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        $json = file_get_contents("php://input");
+        $json =  sanitize_text_field(file_get_contents("php://input"));
+
         // Converts it into a PHP object
         $data = json_decode($json, true);
 
@@ -96,7 +98,8 @@ class CustomLocationController
     public function fpInsertLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        $json = file_get_contents("php://input");
+        $json =  sanitize_text_field(file_get_contents("php://input"));
+
         // Converts it into a PHP object
         $data = json_decode($json, true);
 

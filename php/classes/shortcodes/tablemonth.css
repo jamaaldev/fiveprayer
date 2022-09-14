@@ -1,84 +1,113 @@
 @media print {
+    @page{ 
+    size: auto;   
+    margin: 1cm;
 
-    #divToPrint {
+} 
+body print-preview-layout-settings{
+    display: block;
+    visibility: visible;
+}
+
+body * {
+        margin: 0 !important;
+        padding: 0 !important;
+      height: 100%;
+        visibility:hidden;
+        white-space: nowrap !important;
+        width: 100% !important;
+        
+    }
+    body .noPrint {
+        display: none;
+    }
+    body #divTo * {
+        visibility: visible;
+        margin: 0 !important; 
+        padding: 0 !important;
+      }
+    #divTo #divToPrint {
         border-collapse: collapse;
         width: 100%;
     }
-    #divToPrint th, #divToPrint td {
+    #divTo #divToPrint th, #divTo #divToPrint td {
         padding-inline: 3px !important;
         padding-block: 4px !important;
-        font-size: calc(0.6em + 0.1vw) !important;
+        /* font-size: calc(0.6em + 0.1vw) !important; */
+        font-size: calc(12px + (15 - 12) * ((100vw - 500px) / (1600 - 500)));
 
         border-width: 0 1px 1px 0;
         border: 1px solid black;
         text-align: center;
     }
     
-    #divToPrint .tbhead{
+    #divTo #divToPrint .tbhead{
         width: 100%;
         background: rgb(4 94 20) !important;
         color: aliceblue;
     }
     
-    #divToPrint #today-row{
-        background-color: #d2f847 !important;
-        color: #022f31;
-    }
-    #divToPrint .tbmonth{
+   
+    #divTo #divToPrint .tbmonth{
         background-color: #007076 !important;
         color: whitesmoke;
     }
-    #divToPrint #tbmonth{
+    #divTo #divToPrint #tbmonth{
         background-color: #a20000 !important;
         color: rgb(248, 245, 245);
     }
     
     
-    #divToPrint tr:nth-child(even){
+    #divTo #divToPrint tr:nth-child(even){
         background-color: #3c9a61 !important;
-        color: rgb(248, 246, 246);
+        color: rgb(248, 246, 246) !important;
     }
   
-    .tbmonth input{
-        display: none !important;
-    }
-    
+  
+  
 }
 
-#divToPrint {
-    border-collapse: collapse;
+#divTo #divToPrint {
+    border-collapse:collapse;
     width: 100%;
 }
-#divToPrint th, #divToPrint td {
+#divTo #divToPrint th, #divTo #divToPrint td {
     padding-inline: 0px;
     padding-block: 3px;
- 
+    /* font-size: calc(0.7em + 1vmin); */
+    /* font-size: calc(12px + (16px - 12px) * ((100vw - 1vw) / (5vw - 1vw))); */
+    font-size: calc(12px + (15 - 12) * ((100vw - 500px) / (1600 - 500)));
+
+    /* font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300))); */
+
+
     border-width: 0 1px 1px 0;
-    border: 1px solid black;
+    border: 1px solid rgb(37, 36, 37) ;
     text-align: center;
 }
 
-#divToPrint .tbhead{
+
+#divTo #divToPrint .tbhead{
     width: 100%;
     background: rgb(4 94 20);
     color: aliceblue;
 }
 
-#divToPrint #today-row{
+#divTo #divToPrint #today-row{
     background-color: #d2f847;
     color: #022f31;
 }
-#divToPrint .tbmonth{
+#divTo #divToPrint .tbmonth{
     background-color: #007076;
     color: whitesmoke;
 }
-#divToPrint #tbmonth{
+#divTo #divToPrint #tbmonth{
     background-color: #a20000;
     color: rgb(248, 245, 245);
 }
 
 
-#divToPrint tr:nth-child(even){
+#divTo #divToPrint tr:nth-child(even){
     background-color: #3c9a61;
     color: rgb(248, 246, 246);
 }

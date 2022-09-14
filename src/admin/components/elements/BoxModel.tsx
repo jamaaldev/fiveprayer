@@ -36,13 +36,13 @@ export function BoxModel(props: IBoxModelProps) {
             // for removing empty record
             // lines.splice(lines.length - 1, 1);
             const result = [];
-            const headers = lines[0].split(",");
-
+            // remove double quotes from a String
+            const headers = lines[0].replace(/['"]+/g, '').split(',');
             for (let i = 1; i < lines.length; i++) {
 
                 const obj = {};
-                const currentline = lines[i].split(",");
-
+                // remove double quotes from a String
+                const currentline = lines[i].replace(/['"]+/g, '').split(',');
                 for (let j = 0; j < headers.length; j++) {
                     obj[headers[j]] = currentline[j];
                 }

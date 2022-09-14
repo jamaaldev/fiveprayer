@@ -1,14 +1,12 @@
 {
-  "name": "startpluginreact",
+  "name": "fiveprayer",
   "version": "1.0.0",
-  "description": "start plugin simple react 17",
+  "description": "fiveprayer plugin simple react 17",
   "main": "index.js",
   "files": [
     "build",
     "php",
-    "/FivePrayer.php",
-    "/composer.json"
-    
+    "/FivePrayer.php"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,28 +28,29 @@
   "author": "jamaaldev",
   "license": "MIT",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.3",
+    "@reduxjs/toolkit": "^1.8.5",
     "@types/react-redux": "^7.1.24",
-    "@wordpress/dom-ready": "^3.14.0",
-    "@wordpress/element": "^4.12.0",
-    "@wordpress/scripts": "^23.6.0",
+    "@wordpress/dom-ready": "^3.17.0",
+    "@wordpress/element": "^4.15.0",
+    "@wordpress/scripts": "^23.7.2",
     "axios": "^0.27.2",
-    "cities.json": "^1.1.10",
+    "cities.json": "^1.1.13",
     "cities15k.json": "^1.1.2",
     "city-timezones": "^1.2.1",
     "country-codes-list": "^1.6.8",
-    "html-react-parser": "^3.0.1",
+    "html-react-parser": "^3.0.4",
+    "npm": "^8.19.2",
     "react-redux": "^8.0.2",
     "react-refresh": "^0.14.0",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.4.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.6",
-    "@types/node": "^18.6.3",
-    "@types/react": "^18.0.15",
+    "@types/jest": "^28.1.8",
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
-    "@types/styled-components": "^5.1.25",
-    "typescript": "^4.7.4"
+    "@types/styled-components": "^5.1.26",
+    "typescript": "^4.8.3"
   }
 }
