@@ -13,7 +13,6 @@ class GenerateTimeTableMonthly
     public function tablemonth()
     {
         wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
-        wp_enqueue_script('jquery');
     }
 
     public function DynamicGenerate()
