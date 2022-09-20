@@ -1,5 +1,4 @@
 
-import { useRef } from '@wordpress/element/build-types';
 import * as React from 'react';
 import { useUpdatePrayerTimeTableMutation } from '../../api/prayerTimeTableApi';
 import './css/FPBOXModel.scss'
@@ -12,7 +11,7 @@ export function BoxModel(props: IBoxModelProps) {
     const [filename, SetfileName] = React.useState<string>('');
     const [csvJSON, SetCSVJSON] = React.useState<string[]>([]);
     const refs = React.useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement>;
-    const [updateTimeTable] =  useUpdatePrayerTimeTableMutation();
+    const [updateTimeTable] = useUpdatePrayerTimeTableMutation();
 
     const FileUpload = (file) => {
 
@@ -23,7 +22,7 @@ export function BoxModel(props: IBoxModelProps) {
         // reading csv file
         const reader = new FileReader();
         reader.readAsText(csv);
-        reader.onload = () => { 
+        reader.onload = () => {
             const text = reader.result;
             let lines = [];
             const linesArray = text?.split('\n');
@@ -54,40 +53,40 @@ export function BoxModel(props: IBoxModelProps) {
         }
 
     };
-const ImportCSV = () =>{
-updateTimeTable(csvJSON);
-SetfileName('');
+    const ImportCSV = () => {
+        updateTimeTable(csvJSON);
+        SetfileName('');
 
-}
-if (refs?.current?.style) {
+    }
+    if (refs?.current?.style) {
 
-    refs.current.style.display = props.showPopup;
-}
-const ModelPoup = () => {
-    refs.current.style.display = "none";
+        refs.current.style.display = props.showPopup;
+    }
+    const ModelPoup = () => {
+        refs.current.style.display = "none";
 
-    props.SetShow(false);
+        props.SetShow(false);
 
-}
-return (
-    <div className='fp__model'>
+    }
+    return (
+        <div className='fp__model'>
 
-        <div ref={refs} id="myModal" className="modal">
-
-
-            <div className="modal-content">
-                <div onClick={ModelPoup} className="close">&times;</div>
+            <div ref={refs} id="myModal" className="modal">
 
 
-                <input onChange={FileUpload} type="file" id="actual-btn" hidden />
+                <div className="modal-content">
+                    <div onClick={ModelPoup} className="close">&times;</div>
 
-                <label htmlFor="actual-btn">Choose File</label>
 
-                <span id="file-chosen">{filename ? filename : 'No file chosen'}</span>
-                <button onClick={ImportCSV}>Import</button>
+                    <input onChange={FileUpload} type="file" id="actual-btn" hidden />
+
+                    <label htmlFor="actual-btn">Choose File</label>
+
+                    <span id="file-chosen">{filename ? filename : 'No file chosen'}</span>
+                    <button onClick={ImportCSV}>Import</button>
+                </div>
+
             </div>
-
         </div>
-    </div>
-);
+    );
 }
