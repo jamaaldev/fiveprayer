@@ -8,13 +8,11 @@ class GenerateTimeTableMonthly
 {
     public function __construct()
     {
-       
         add_action('wp_enqueue_scripts', array($this,'tablemonth'));
     }
     public function tablemonth()
     {
         wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
-        wp_enqueue_script('jquery');
     }
 
     public function DynamicGenerate()
@@ -33,10 +31,19 @@ class GenerateTimeTableMonthly
 				<th>
 					<form class="noPrint">
 						<select name="country">
-							<option value="" disabled selected>--select--</option>
+							<option value="" disabled selected>--Select Months--</option>
 							<option value="1">January</option>
 							<option value="2">February</option>
 							<option value="3">March</option>
+							<option value="4">April</option>
+							<option value="5">May</option>
+							<option value="6">June </option>
+							<option value="7">July</option>
+							<option value="8">August</option>
+							<option value="9">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
 						</select>
 					</form>
 					<input id='clickPrint' class='noPrint' type="button" value="print" />
@@ -71,11 +78,8 @@ class GenerateTimeTableMonthly
 		<tbody key={index}>
 
 			<?php
-                 // Return date/time info of a timestamp; then format the output
-                 $monthss = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
-            $mydate    = wp_date("j", null, $timezone = null);
-            $monthdate =  wp_date("n", null, $timezone = null);
-            $mydate    = wp_date("j", null, $timezone = null);
+            $monthss = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
+
             $monthdate =  $monthss['newMonth'] ? $monthss['newMonth'] : wp_date("n", null, $timezone = null) ;
             $yeardate = wp_date("Y", null, $timezone = null);
             $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array($yeardate,$monthdate));
@@ -83,7 +87,7 @@ class GenerateTimeTableMonthly
             foreach ($prayersettingmeta as $day) {?>
 
 
-			<tr id=<?php echo esc_html( $day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null );?>>
+			<tr id=<?php echo esc_html($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null);?>>
 				<td><?php echo esc_html($day->currentDate); ?>
 				</td>
 				<td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>
