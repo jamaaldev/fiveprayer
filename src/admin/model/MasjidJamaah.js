@@ -1,3 +1,4 @@
+// this is a feature that i am not done with it,
 class MasjidJamaah {
 
 constructor(times){

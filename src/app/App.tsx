@@ -8,7 +8,6 @@ import Support from "../admin/components/headertabs/pages/Support";
 import Welcome from "../admin/components/headertabs/pages/Welcome";
 import HeaderContent from "../admin/components/headertabs/HeaderContent";
 const App = () => {
-  console.log('am in app')
   return (
     <div className="fiveprayer">
       <HashRouter>
@@ -16,9 +15,9 @@ const App = () => {
         <Routes>
           <Route element={<HeaderContent />}>
             <Route path="/" element={<Welcome />} />
-            <Route path="/prayersettings" element={<PrayerSettings />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/settings/*" element={<Settings />} />
+            <Route path="prayersettings" element={<PrayerSettings />} />
+            <Route path="support" element={<Support />} />
+            <Route path="settings/*" element={<Settings />} />
           </Route>
         </Routes>
       </HashRouter>
