@@ -23,6 +23,7 @@ class GenerateTimeTableMonthly
 
 
 <div class="printer" id="divTo">
+	<img class="noDisplay" src="https://picsum.photos/200" alt="image">
 
 	<table id='divToPrint' class='FP_TablePrayer_'>
 		<thead id='waa'>

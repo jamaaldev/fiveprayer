@@ -1,20 +1,24 @@
 @media print  {
+
+    @page{ 
+        size: auto;
+    margin: -15mm 8mm 10mm 8mm !important;
+    } 
+   
     table, table * {
+        white-space: nowrap !important;
+      
         line-height:1.3 !important;
         border:  0 !important;
         margin: 0 !important;
         padding: 0 !important;
-        border-collapse: collapse;
-    
+        border-collapse: collapse !important;
+        font-size: 0 !important;
         background: transparent !important;
+      
     }
-    table {border: 1px solid rgba(0,0,0,0)}
 
-    @page{ 
-    size: 0;   
-    margin: 0;
 
-} 
 body print-preview-layout-settings{
     display: block;
     visibility: visible;
@@ -23,27 +27,49 @@ body print-preview-layout-settings{
    display: none;
     
     }
-
+ 
 
 body * {
-        margin: 0 !important;
-        padding: 0 !important;
-        visibility:hidden;
+  
+
+   
+    visibility:hidden;
+    width:fit-content !important;
+    height: fit-content !important;
+    clear: both;
+    margin:0 !important;
+    padding:0 !important;
+        box-sizing: border-box !important;
+        
+        font-size: 0 !important;
         white-space: nowrap !important;
-        /* width:30% !important; */
-        font-size:inherit !important;
+        line-height:1.3 !important;
+       
+     
+
     }
      .noPrint {
         display: none;
     }
+
+  
      .printer * {
         visibility: visible;
+        white-space: nowrap !important;
+        width:fit-content !important;
+        height: fit-content !important;
         margin: 0 !important; 
         padding: 0 !important;
+
       }
+      .noDisplay{
+        display: block;
+        border: #760000 solid 5px;
+        margin-bottom: 10px !important;
+    }
     .printer .FP_TablePrayer_ {
         border-collapse: collapse;
-        width: 100%;
+        width: 100% !important;
     }
     th,td{
         padding: -10 !important;
@@ -56,7 +82,7 @@ body * {
         /* font-size: calc(12px + (13 - 12) * ((100vw - 500px) / (1600 - 500))); */
 font-size: 14px !important;
         border-width: 0 1px 1px 0 !important;
-        border: 1px solid rgb(238, 4, 4) !important;
+        border: 1px solid rgb(44, 34, 34) !important;
         text-align: center !important;
     }
     
@@ -87,7 +113,10 @@ font-size: 14px !important;
 }
 
 @media screen {
-    
+    .noDisplay{
+        display: none;
+       
+    }
     .printer .FP_TablePrayer_ {
         border-collapse:collapse;
     width: 100%;
