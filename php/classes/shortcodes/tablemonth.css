@@ -1,8 +1,18 @@
-@media print  {
 
+@media print {
+    body {
+        display: table;
+        table-layout:fixed;
+       
+        
+        
+    }
+    header{
+        display: none !important;
+    }
     @page{ 
         size: auto;
-    margin: -15mm 8mm 10mm 8mm !important;
+    margin: 5mm 5mm 5mm 5mm !important;
     } 
    
     table, table * {
