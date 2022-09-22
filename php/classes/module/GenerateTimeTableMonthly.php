@@ -8,11 +8,11 @@ class GenerateTimeTableMonthly
 {
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', array($this,'tablemonth'));
+        add_action('wp_enqueue_scripts', array($this,'tablemonth'), 99);
     }
     public function tablemonth()
     {
-        wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+        wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css');
     }
 
     public function DynamicGenerate()
@@ -21,14 +21,13 @@ class GenerateTimeTableMonthly
 
         {?>
 
+
 <div class="printer" id="divTo">
-	<link rel="stylesheet" type="text/css" media="print"
-		href=' <?php echo plugin_dir_url(__FILE__) . '../shortcodes/tablemonth.css' ?>'>
 
 	<table id='divToPrint' class='FP_TablePrayer_'>
-		<thead class='waa'>
+		<thead id='waa'>
 			<tr class="tbmonth">
-				<th>
+				<th class="select_print">
 					<form class="noPrint">
 						<select name="country">
 							<option value="" disabled selected>--Select Months--</option>

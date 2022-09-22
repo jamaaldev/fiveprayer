@@ -1,4 +1,13 @@
 @media print  {
+    table, table * {
+        line-height:1.3 !important;
+        border:  0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-collapse: collapse;
+    
+        background: transparent !important;
+    }
     table {border: 1px solid rgba(0,0,0,0)}
 
     @page{ 
@@ -77,14 +86,16 @@ font-size: 14px !important;
   
 }
 
-.printer .FP_TablePrayer_ {
-    border-collapse:collapse;
+@media screen {
+    
+    .printer .FP_TablePrayer_ {
+        border-collapse:collapse;
     width: 100%;
 }
 .printer .FP_TablePrayer_ th, .printer .FP_TablePrayer_ td {
     padding-inline: 0px;
     padding-block: 3px;
-  
+    
     font-size: calc(12px + (19 - 12) * ((100vw - 500px) / (1600 - 500)));
 
 
@@ -129,12 +140,13 @@ border: none;
 
 }
 .printer .FP_TablePrayer_ .tbmonth .select_print select{
-border: none;
-flex: 0.5;
+    border: none;
+    flex: 0.5;
 
 }
 .printer .FP_TablePrayer_ .tbmonth .select_print .noPrint{
 flex: 0.5;
 
 
+}
 }
