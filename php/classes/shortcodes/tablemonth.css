@@ -133,11 +133,14 @@ font-size: 14px !important;
         border-collapse:collapse;
     width: 100%;
 }
+    .printer table.FP_TablePrayer_ thead {
+        vertical-align:0;
+}
 .printer .FP_TablePrayer_ th, .printer .FP_TablePrayer_ td {
     padding-inline: 0px;
     padding-block: 3px;
     
-    font-size: calc(12px + (19 - 12) * ((100vw - 500px) / (1600 - 500)));
+    /* font-size: calc(12px + (19 - 12) * ((100vw - 500px) / (1600 - 500))); */
 
 
 
@@ -174,20 +177,28 @@ font-size: 14px !important;
 
 .printer .FP_TablePrayer_ .tbmonth .select_print{
     display: flex;
-    flex: 1;
+   padding: 0;
+   margin: 0;
 }
-.printer .FP_TablePrayer_ .tbmonth .select_print select, .noPrint{
+.printer .FP_TablePrayer_ .tbmonth .select_print form{
+ margin-bottom: 0;
+}
+.printer .FP_TablePrayer_ .tbmonth .select_print select, #clickPrint{
 border: none;
-
+height: 100%;
 }
 .printer .FP_TablePrayer_ .tbmonth .select_print select{
     border: none;
-    flex: 0.5;
+  
 
 }
-.printer .FP_TablePrayer_ .tbmonth .select_print .noPrint{
-flex: 0.5;
 
+.printer .FP_TablePrayer_ .tbmonth .select_print #clickPrint{
+    border: none;
+   width: 100%;
+   height: inherit;
+   padding: 10px;
 
 }
+
 }
