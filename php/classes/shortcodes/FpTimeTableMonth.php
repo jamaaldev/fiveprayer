@@ -1,18 +1,15 @@
 <?php
 
-
  defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
-
  require_once(plugin_dir_path(__FILE__) . '../module/GenerateTimeTableMonthly.php');
-
 
  class FpTimetableMonth
  {
      public function __construct()
      {
          add_action('init', array($this, 'registerShortcodes'));
-         add_action('wp_enqueue_scripts', array($this,'tablemonth'));
+         add_action('wp_enqueue_scripts', array($this,'tablemonth'), 999);
      }
 
        public function tablemonth()

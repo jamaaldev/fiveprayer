@@ -8,7 +8,7 @@
      {
          add_action('init', array($this, 'registerShortcodes'));
          require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
-         add_action('wp_enqueue_scripts', array($this,'dailyPrayer'));
+         add_action('wp_enqueue_scripts', array($this,'dailyPrayer'),999);
      }
 public function dailyPrayer()
 {
@@ -40,18 +40,18 @@ public function registerShortcodes()
                     <tr>
                          <tr>
                               <td colspan="3">
-                              <div>
+                              
                               <?php array_map(function ($day) {
                                   echo $day->today == wp_date("j", null, $timezone = null) ? $day->currentDate : null;
                               }, $prayersettingmeta);?>
-                              </div>
-                              <div>
+                              
+                              
 
                               <?php array_map(function ($day) {
                                   $prayerToday = new NextPrayer($day);
                                   $this->highlight = $prayerToday->TodayPrayer();
                               }, $prayersettingmeta);?>
-                              </div>
+                             
                               <!-- <span>
                                    <?php echo 'Current Local time: ' . wp_date("g:i A", null, $timezone = null); ?>
 

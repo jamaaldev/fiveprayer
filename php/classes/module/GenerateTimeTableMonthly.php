@@ -12,7 +12,7 @@ class GenerateTimeTableMonthly
     }
     public function tablemonth()
     {
-        wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css');
+        // wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css');
     }
 
     public function DynamicGenerate()
@@ -23,7 +23,7 @@ class GenerateTimeTableMonthly
 
 
 <div class="printer" id="divTo">
-	<img class="noDisplay" src="https://picsum.photos/200" alt="image">
+	<!-- <img class="noDisplay" src="https://picsum.photos/200" alt="image"> -->
 
 	<table id='divToPrint' class='FP_TablePrayer_'>
 		<thead id='waa'>
@@ -140,7 +140,12 @@ class GenerateTimeTableMonthly
 	jQuery(document).ready(function() {
 
 		jQuery('#clickPrint').on('click', function(e) {
-			print();
+			
+			console.log("🚀 ~ file: GenerateTimeTableMonthly.php ~ line 147 ~ jQuery ~ e", e.target)
+			if(e.target){
+				print();
+
+			}
 		});
 	});
 </script> <?php

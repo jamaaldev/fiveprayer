@@ -1,39 +1,16 @@
 
 @media print {
-    /* body {
-        display: table;
-        table-layout:fixed;
-       
-        
-        
-    } */
-    header{
+ 
+    header,footer,.nv-big-title{
         display: none !important;
     }
     @page{ 
-        size: auto;
+        size: auto !important;
     margin: 5mm 5mm 5mm 5mm !important;
     } 
    
-    table, table * {
-        
-        white-space: nowrap !important;
-      
-        line-height:1.3 !important;
-        border:  0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-collapse: collapse !important;
-        font-size: 0 !important;
-        background: transparent !important;
-      
-    }
+   
 
-
-/* body print-preview-layout-settings{
-    display: block;
-    visibility: visible;
-} */
 .printer .FP_TablePrayer_ .tbmonth .select_print select, .noPrint{
    display: none;
     
@@ -44,20 +21,21 @@ body * {
   
 
    
-    visibility:hidden;
+    /* visibility:hidden; */
     max-width:none !important;
-    width:fit-content !important;
-    height: fit-content !important;
-    clear: both;
     margin:0 !important;
     padding:0 !important;
         box-sizing: border-box !important;
-        
-        font-size: 0 !important;
+        height: fit-content !important;
+
         white-space: nowrap !important;
-        line-height:1.3 !important;
+        /* line-height:1.3 !important; */
        
      
+
+    }
+    body:has(.printer){
+        width:fit-content !important;
 
     }
      .noPrint {
@@ -66,7 +44,7 @@ body * {
 
   
      .printer * {
-        visibility: visible;
+        /* visibility: visible; */
         white-space: nowrap !important;
         width:fit-content !important;
         height: fit-content !important;
