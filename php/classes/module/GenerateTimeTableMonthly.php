@@ -29,7 +29,7 @@ class GenerateTimeTableMonthly
 		<thead id='waa'>
 			<tr class="tbmonth">
 				<th class="select_print">
-					<form class="noPrint">
+					<form id="noPrint">
 						<select name="country">
 							<option value="" disabled selected>--Select Months--</option>
 							<option value="1">January</option>
@@ -46,7 +46,7 @@ class GenerateTimeTableMonthly
 							<option value="12">December</option>
 						</select>
 					</form>
-					<input id='clickPrint' class='noPrint' type="button" value="print" />
+					<input class='clickPrint' id='noPrint' type="button" value="print" />
 				</th>
 				<th td colspan="3">Fajr</th>
 
@@ -139,7 +139,7 @@ class GenerateTimeTableMonthly
 	});
 	jQuery(document).ready(function() {
 
-		jQuery('#clickPrint').on('click', function(e) {
+		jQuery('.clickPrint').on('click', function(e) {
 			
 			console.log("🚀 ~ file: GenerateTimeTableMonthly.php ~ line 147 ~ jQuery ~ e", e.target)
 			if(e.target){
