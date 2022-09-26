@@ -17,7 +17,8 @@
            wp_enqueue_script('jquery');
 
            wp_localize_script('table_script', 'table_ajax_url', array('ajax_url' => admin_url('admin-ajax.php')));
-           wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+         
+
        }
 
 
@@ -29,7 +30,7 @@
      public function fpTimetableMonth($atts)
      {
          $genTable = new GenerateTimeTableMonthly();
-
+         wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
          ob_start();
          $genTable->DynamicGenerate();
 
