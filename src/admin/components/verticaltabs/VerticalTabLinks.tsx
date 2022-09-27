@@ -7,13 +7,13 @@ function VerticalTabLinks() {
   return (
     <>
       <div className="vertical_tab">
-        <NavLink to={"/settings/generalsettings"}>
+        {/* <NavLink to={"/settings/generalsettings"}>
           <button className="tablinks vertical_tab">General Settings</button>
-        </NavLink>
+        </NavLink> */}
 
-        <NavLink to={"/settings/othersettings"}>
+        {/* <NavLink to={"/settings/othersettings"}>
           <button className="tablinks vertical_tab">Other Settings</button>
-        </NavLink>
+        </NavLink> */}
 
         <NavLink to={"/settings/prayerconfigration"}>
           <button className="tablinks vertical_tab">Prayer Configuration</button>

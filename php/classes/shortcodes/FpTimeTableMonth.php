@@ -9,20 +9,12 @@
      public function __construct()
      {
          add_action('init', array($this, 'registerShortcodes'));
-         add_action('wp_enqueue_scripts', array($this,'tablemonth'), 999);
      }
 
-       public function tablemonth()
-       {
-           wp_enqueue_script('jquery');
-
-           wp_localize_script('table_script', 'table_ajax_url', array('ajax_url' => admin_url('admin-ajax.php')));
-         
-
-       }
-
-
-     public function registerShortcodes()
+   
+    
+    
+    public function registerShortcodes()
      {
          add_shortcode('Fp_TimeTable_Monthly', array($this, 'fpTimetableMonth'));
      }
@@ -30,10 +22,11 @@
      public function fpTimetableMonth($atts)
      {
          $genTable = new GenerateTimeTableMonthly();
-         wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+
          ob_start();
          $genTable->DynamicGenerate();
-
+         
+         wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
 
          return ob_get_clean();
      }

@@ -10,8 +10,9 @@ const HeaderTabLinks = () => {
       <div className="tab">
         <div className="logo">
           {/* <img className="logos" src="/" alt="logo" width="120px"/> */}
+          <p className="five">Five</p> <span className="prayer">Prayer</span>
           {/* you can delete h3 after you insert your svg or img logo in img element */}
-          <h3>Beta App Prayer</h3>
+          
         </div>
         <NavLink to={"/"} end>
           <button className="tablinks dashboard">Welcome</button>
@@ -22,9 +23,9 @@ const HeaderTabLinks = () => {
         <NavLink to={"/settings/moresettings"}>
           <button className="tablinks settings">More Settings</button>
         </NavLink>
-        <NavLink to={"/support"}>
+        {/* <NavLink to={"/support"}>
           <button className="tablinks support">Support</button>
-        </NavLink>
+        </NavLink> */}
       </div>
     </>
   );

@@ -6,15 +6,7 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class GenerateTimeTableMonthly
 {
-    public function __construct()
-    {
-        add_action('wp_enqueue_scripts', array($this,'tablemonth'), 99);
-    }
-    public function tablemonth()
-    {
-        // wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css');
-    }
-
+ 
     public function DynamicGenerate()
     {
         global $wpdb;
@@ -23,7 +15,6 @@ class GenerateTimeTableMonthly
 
 
 <div class="printer" id="divTo">
-	<!-- <img class="noDisplay" src="https://picsum.photos/200" alt="image"> -->
 
 	<table id='divToPrint' class='FP_TablePrayer_'>
 		<thead id='waa'>
