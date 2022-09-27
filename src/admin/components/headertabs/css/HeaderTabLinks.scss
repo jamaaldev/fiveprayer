@@ -18,7 +18,7 @@ body {
   background: #f0f0f1;
 }
 :root {
-  --bbalp: rgba(28, 158, 82, 0.829);
+  --bbalp: rgba(5, 146, 40, 0.89);
   --bbcolor:var(--bbalp);
   --px-line: 3px;
 }
@@ -38,6 +38,19 @@ body {
   display: flex;
   max-width: 140px;
   padding-right: 20px;
+}
+.logo .five{
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight:100;
+  font-style: italic;
+  color:var(--bbalp);
+}
+.logo .prayer{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  color: var(--bbalp);
+  font-size: 25px;
 }
 /* Style the buttons that are used to open the tab content */
 .tab button {

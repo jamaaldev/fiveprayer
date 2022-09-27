@@ -1,40 +1,18 @@
 
 @media print {
-    /* body {
-        display: table;
-        table-layout:fixed;
-       
-        
-        
-    } */
-    header{
+ 
+    header,footer,.nv-big-title{
         display: none !important;
     }
+
     @page{ 
-        size: auto;
+        size: auto !important;
     margin: 5mm 5mm 5mm 5mm !important;
     } 
    
-    table, table * {
-        
-        white-space: nowrap !important;
-      
-        line-height:1.3 !important;
-        border:  0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-collapse: collapse !important;
-        font-size: 0 !important;
-        background: transparent !important;
-      
-    }
+   
 
-
-/* body print-preview-layout-settings{
-    display: block;
-    visibility: visible;
-} */
-.printer .FP_TablePrayer_ .tbmonth .select_print select, .noPrint{
+.printer .FP_TablePrayer_ .tbmonth .select_print select, #noPrint{
    display: none;
     
     }
@@ -42,31 +20,29 @@
 
 body * {
   
-
-   
-    visibility:hidden;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+font-weight:300 !important;
+line-height:1.4 !important;
     max-width:none !important;
-    width:fit-content !important;
-    height: fit-content !important;
-    clear: both;
     margin:0 !important;
     padding:0 !important;
         box-sizing: border-box !important;
-        
-        font-size: 0 !important;
+        height: fit-content !important;
+
         white-space: nowrap !important;
-        line-height:1.3 !important;
        
      
 
     }
-     .noPrint {
-        display: none;
+    body:has(.printer){
+        width:fit-content !important;
+
     }
+ 
 
   
      .printer * {
-        visibility: visible;
+        /* visibility: visible; */
         white-space: nowrap !important;
         width:fit-content !important;
         height: fit-content !important;
@@ -83,18 +59,14 @@ body * {
         border-collapse: collapse;
         width: 100% !important;
     }
-    /* th,td{
-        padding: -10 !important;
-        margin: 0 !important;
-    } */
+ 
     .printer .FP_TablePrayer_ th, .printer .FP_TablePrayer_ td {
+     
         padding: 0 !important;
         padding-inline: 3px !important;
-        padding-block:0px !important;
-        /* font-size: calc(12px + (13 - 12) * ((100vw - 500px) / (1600 - 500))); */
-font-size: 14px !important;
-        border-width: 0 1px 1px 0 !important;
-        border: 1px solid rgb(44, 34, 34) !important;
+        padding-block:3px !important;
+        /* border-width: 0 1px 1px 0 !important; */
+        border: 1px solid rgb(0, 0, 0) !important;
         text-align: center !important;
     }
     
@@ -145,7 +117,7 @@ font-size: 14px !important;
 
 
     border-width: 0 1px 1px 0;
-    border: 1px solid rgb(37, 36, 37) ;
+    border: 1px solid rgb(0, 0, 0) ;
     text-align: center;
 }
 
@@ -193,7 +165,7 @@ height: 100%;
 
 }
 
-.printer .FP_TablePrayer_ .tbmonth .select_print #clickPrint{
+.printer .FP_TablePrayer_ .tbmonth .select_print .clickPrint{
     border: none;
    width: 100%;
    height: inherit;

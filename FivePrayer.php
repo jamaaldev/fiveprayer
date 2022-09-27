@@ -25,6 +25,8 @@ class FivePrayerPlugin
 {
     public function __construct()
     {
+        add_action('wp_enqueue_scripts', array($this,'supportScripts'), 999);
+
         require_once(plugin_dir_path(__FILE__) . './php/classes/pages/FivePrayer_admin.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/enqueue/FivePrayer_enqueue.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/CustomLocationController.php');
@@ -42,7 +44,14 @@ class FivePrayerPlugin
     }
 
 
+    public function supportScripts()
+    {
 
+        wp_enqueue_script('jquery');
+        wp_localize_script('table_script', 'table_ajax_url', array('ajax_url' => admin_url('admin-ajax.php')));
+        
+        
+ }
 
 
 

@@ -6,15 +6,7 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class GenerateTimeTableMonthly
 {
-    public function __construct()
-    {
-        add_action('wp_enqueue_scripts', array($this,'tablemonth'), 99);
-    }
-    public function tablemonth()
-    {
-        wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css');
-    }
-
+ 
     public function DynamicGenerate()
     {
         global $wpdb;
@@ -23,13 +15,12 @@ class GenerateTimeTableMonthly
 
 
 <div class="printer" id="divTo">
-	<img class="noDisplay" src="https://picsum.photos/200" alt="image">
 
 	<table id='divToPrint' class='FP_TablePrayer_'>
 		<thead id='waa'>
 			<tr class="tbmonth">
 				<th class="select_print">
-					<form class="noPrint">
+					<form id="noPrint">
 						<select name="country">
 							<option value="" disabled selected>--Select Months--</option>
 							<option value="1">January</option>
@@ -46,7 +37,7 @@ class GenerateTimeTableMonthly
 							<option value="12">December</option>
 						</select>
 					</form>
-					<input id='clickPrint' class='noPrint' type="button" value="print" />
+					<input class='clickPrint' id='noPrint' type="button" value="print" />
 				</th>
 				<th td colspan="3">Fajr</th>
 
@@ -139,8 +130,13 @@ class GenerateTimeTableMonthly
 	});
 	jQuery(document).ready(function() {
 
-		jQuery('#clickPrint').on('click', function(e) {
-			print();
+		jQuery('.clickPrint').on('click', function(e) {
+			
+			console.log("🚀 ~ file: GenerateTimeTableMonthly.php ~ line 147 ~ jQuery ~ e", e.target)
+			if(e.target){
+				print();
+
+			}
 		});
 	});
 </script> <?php
