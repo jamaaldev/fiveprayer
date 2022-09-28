@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { locationApi } from "../admin/api/locationApi";
+import { customLocationApi } from "../admin/api/customLocationApi";
 import { prayerTimeTableApi } from "../admin/api/prayerTimeTableApi";
 import prayerReducer from "../admin/features/calendars/prayerTimeCalendar";
 import searchTownCityReducer from "../admin/features/search/searchTownCity";
@@ -15,7 +15,7 @@ export const store = configureStore({
     IqamaDelay: IqamaDelayReducer,
     TunePrayerTime:TunePrayerTimeReducer,
     // Add the generated reducer as a specific top-level slice
-    [locationApi.reducerPath]: locationApi.reducer,
+    [customLocationApi.reducerPath]: customLocationApi.reducer,
     [prayerTimeTableApi.reducerPath]: prayerTimeTableApi.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,

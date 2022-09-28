@@ -32,6 +32,7 @@ class FivePrayerPlugin
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/CustomLocationController.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/PrayerTimeTableController.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/PrayerSettingsMetaController.php');
+        require_once(plugin_dir_path(__FILE__) . './php/classes/routers/GetInfoWordpressController.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/shortcodes/FpTimeTableMonth.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/shortcodes/FpVerticalDailyPrayer.php');
         new FivePrayer_admin();
@@ -39,6 +40,7 @@ class FivePrayerPlugin
         new CustomLocationController();
         new PrayerTimeTableController();
         new PrayerSettingsMetaController();
+        new GetInfoWordpressController();
         new FpTimetableMonth();
         new FpVerticalDailyPrayer();
     }
