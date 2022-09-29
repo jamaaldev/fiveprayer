@@ -7,7 +7,6 @@ function Welcome() {
     info:{'Site_title':'name','Site_tagline':'description'}
   }
   const { data } = useGetBlogInfoQuery(infoWP);
-  console.log("🚀 ~ file: Welcome.tsx ~ line 6 ~ Welcome ~ data", data)
 
   return (
     <>
