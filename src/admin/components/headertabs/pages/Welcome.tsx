@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useGetBlogInfoQuery } from "../../../api/getInfoWordpressApi";
-
+//https://developer.wordpress.org/reference/functions/get_bloginfo/
 function Welcome() {
   const infoWP = {
     router: 'fp_infoblog',
@@ -12,8 +12,8 @@ function Welcome() {
   return (
     <>
       <div id="Dashboard" className="tabcontent">
-        <p className="pheadline">Welcome</p>
-        <p>Welcome is the capital city of England.</p>
+        <p className="pheadline">Hello {data?.Current_user}</p>
+        <p>Welcome to FivePrayer.</p>
       </div>
     </>
   );

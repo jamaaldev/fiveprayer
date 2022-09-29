@@ -35,12 +35,14 @@ class GetInfoWordpressController
    
            $Site_title = sanitize_title(json_encode($data['Site_title']));
            $Site_tagline = sanitize_title(json_encode($data['Site_tagline']));
-           
+           $current_user = wp_get_current_user();
+         
 
     
             if($data){
                 return array('Site_title' => esc_html(sanitize_text_field( get_bloginfo( $Site_title ))),
-                'Site_tagline' => esc_html(sanitize_text_field( get_bloginfo( $Site_tagline )))
+                'Site_tagline' => esc_html(sanitize_text_field( get_bloginfo( $Site_tagline ))),
+                'Current_user' => esc_html(sanitize_text_field( $current_user->user_login))
 
             );
             }
