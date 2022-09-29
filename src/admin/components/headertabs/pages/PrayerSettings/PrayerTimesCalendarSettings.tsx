@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { RootState } from '../../../../../app/store';
-import { useGetLocationQuery } from '../../../../api/locationApi';
+import { useGetLocationQuery } from '../../../../api/customLocationApi';
 import { useGetprayerSettingsMetaAPIQuery, useInsertprayerSettingsMetaAPIMutation } from '../../../../api/prayerSettingsMetaAPI';
 import { AsrChecked, CalCMethod, HigherChecked, ListCityTown, LocationChecked, MedothChecked, MidnightChecked, MonthChecked, NameAndMethod } from '../../../../features/search/searchTownCity';
 import FPDropList from '../../../elements/FPDropList';

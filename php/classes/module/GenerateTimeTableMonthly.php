@@ -132,7 +132,6 @@ class GenerateTimeTableMonthly
 
 		jQuery('.clickPrint').on('click', function(e) {
 			
-			console.log("🚀 ~ file: GenerateTimeTableMonthly.php ~ line 147 ~ jQuery ~ e", e.target)
 			if(e.target){
 				print();
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import '../../elements/css/FPInput.scss';
 import { useState, useRef, useEffect, useCallback, useMemo, useReducer } from 'react';
 import styled from 'styled-components';
-import { useDeleteLocationMutation, useGetLocationQuery, useInsertLocationMutation, useUpdateLocationMutation } from '../../../api/locationApi';
+import { useDeleteLocationMutation, useGetLocationQuery, useInsertLocationMutation, useUpdateLocationMutation } from '../../../api/customLocationApi';
 import { LocationChecked, LocationCity } from '../../../features/search/searchTownCity';
 export const CustomLocation = () => {
   const [country, setCountry] = useState<LocationCity | undefined | string | any>('');

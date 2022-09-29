@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface PrayerState {
   value: number,
@@ -25,16 +24,7 @@ export const prayerSlice = createSlice({
     Calender: (state,{payload}) => {
       state.calendar = payload;
     },
- /*    optSelect: (state) => {
-      state.selectList = state.listMonth.map(
-        (el, indexed) =>
-          `
-        <option key={${indexed}} className="BPlabel" value={${indexed}}>
-          {${el}}
-        </option>
-        `,
-      );
-    }, */
+
   },
 });
 

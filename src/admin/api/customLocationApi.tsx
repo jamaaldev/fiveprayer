@@ -2,7 +2,7 @@ import { LocationCity, SearchTownCityState } from '../features/search/searchTown
 import { emptySplitApi } from './emptySplitApi'
 
 
-export const locationApi = emptySplitApi.injectEndpoints({
+export const customLocationApi = emptySplitApi.injectEndpoints({
     endpoints:(builder) =>({
       
         getLocation: builder.query<LocationCity[],string>({
@@ -37,4 +37,4 @@ export const locationApi = emptySplitApi.injectEndpoints({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const {useGetLocationQuery,useUpdateLocationMutation,useInsertLocationMutation,useDeleteLocationMutation} = locationApi;
+export const {useGetLocationQuery,useUpdateLocationMutation,useInsertLocationMutation,useDeleteLocationMutation} = customLocationApi;

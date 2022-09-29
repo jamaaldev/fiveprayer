@@ -1,5 +1,4 @@
 import { createSlice,current  } from "@reduxjs/toolkit";
-import type { PayloadAction } from '@reduxjs/toolkit'
 
 
 export interface IqamaDelayState {

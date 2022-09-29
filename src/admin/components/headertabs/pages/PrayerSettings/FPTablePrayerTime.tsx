@@ -38,7 +38,7 @@ function FPTablePrayerTime({calendar}) {
       <th>Date</th>
       <th>Fajr</th>
       <th>Fajr Iqamah</th>
-      <th>Fajr Masjid Iqamah</th>
+      {/* <th>Fajr Masjid Iqamah</th> */}
       <th>Sunrise</th>
       <th>Dhuhr</th>
       <th>Dhuhr Iqamah</th>
@@ -57,7 +57,7 @@ function FPTablePrayerTime({calendar}) {
     <td>{calendars?.currentDate}</td>
     <td>{calendars?.fajr_begins}</td>
     <td>{calendars?.fajr_iqamah}</td>
-    <td>{calendars?.fajr_masjid_jamaah}</td>
+    {/* <td>{calendars?.fajr_masjid_jamaah}</td> */}
     <td>{calendars?.sunrise}</td>
     <td>{calendars?.dhuhr_begins}</td>
     <td>{calendars?.dhuhr_iqamah}</td>
