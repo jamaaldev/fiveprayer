@@ -7,12 +7,14 @@ class GetInfoWordpressController
     public function __construct()
     {
         add_action('rest_api_init', array($this, 'prayer_settings_meta_route'));
+        
+
     }
 
     public function prayer_settings_meta_route()
     {
     
-
+      
         register_rest_route('fp/v1', '/fp_infoblog', array(
              'methods' => WP_REST_Server::ALLMETHODS,
              'callback' => array($this, 'fp_getInfoWordpress'),
@@ -47,6 +49,6 @@ class GetInfoWordpressController
             );
             }
     
-       
+            exit();
     }
 }

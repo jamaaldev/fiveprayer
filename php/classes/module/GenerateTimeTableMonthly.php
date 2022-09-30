@@ -123,7 +123,7 @@ class GenerateTimeTableMonthly
 		jQuery('select').on('change', function(e) {
 			const month = e.target.value;
 			jQuery('#divTo').load(
-				'<?php echo plugin_dir_url(__FILE__) . 'GenerateTimeTableDynamic.php'; ?>', {
+				'<?php echo esc_html(plugin_dir_url(__FILE__) . 'GenerateTimeTableDynamic.php'); ?>', {
 					newMonth: month
 				});
 		});

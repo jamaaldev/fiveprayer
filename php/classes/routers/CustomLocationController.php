@@ -72,7 +72,7 @@ class CustomLocationController
         $wpdb->delete('wp_fp_location_city', array('id' => $id));
 
         return $request;
-
+        exit();
     }
 
     public function fpUpdateLocation(WP_REST_Request $request)
@@ -92,7 +92,7 @@ class CustomLocationController
 
         $wpdb->update('wp_fp_location_city', array('id' => $id, 'country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng), array('id' => $id));
         return $request->get_params();
-
+        exit();
     }
 
     public function fpInsertLocation(WP_REST_Request $request)
@@ -113,7 +113,7 @@ class CustomLocationController
         $wpdb->insert('wp_fp_location_city', array('country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng));
 
         return $request->get_params();
-
+        exit();
     }
 
     public function fpGetLocation(WP_REST_Request $request)
@@ -125,7 +125,7 @@ class CustomLocationController
         if ($locationList) {
             return $locationList;
         }
-
+        exit();
     }
 
 }
