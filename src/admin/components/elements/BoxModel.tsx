@@ -14,9 +14,14 @@ export function BoxModel(props: IBoxModelProps) {
     const [updateTimeTable] = useUpdatePrayerTimeTableMutation();
 
     const FileUpload = (file) => {
+   
+        if(file.target.files[0].type.split('/')[1] === 'csv'){
 
-        SetfileName(file.target.files[0].name)
-        ConvertCSVToJSON(file.target.files[0])
+            SetfileName(file.target.files[0].name)
+            ConvertCSVToJSON(file.target.files[0])
+        } else{
+            alert('please choose csv file')
+        }
     }
     const ConvertCSVToJSON = (csv) => {
         // reading csv file
@@ -54,9 +59,18 @@ export function BoxModel(props: IBoxModelProps) {
 
     };
     const ImportCSV = () => {
-        updateTimeTable(csvJSON);
-        SetfileName('');
 
+        if(csvJSON.length !== 0){
+            updateTimeTable(csvJSON);
+            SetfileName('');
+            SetCSVJSON([]);
+            refs.current.style.display = "none";
+    
+            props.SetShow(false);
+          
+        } else {
+            alert('please upload your csv file')
+        }
     }
     if (refs?.current?.style) {
 
@@ -78,7 +92,7 @@ export function BoxModel(props: IBoxModelProps) {
                     <div onClick={ModelPoup} className="close">&times;</div>
 
 
-                    <input onChange={FileUpload} type="file" id="actual-btn" hidden />
+                    <input onChange={FileUpload} type="file"  accept=".csv"   id="actual-btn" hidden />
 
                     <label htmlFor="actual-btn">Choose File</label>
 
