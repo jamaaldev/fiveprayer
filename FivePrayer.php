@@ -4,16 +4,16 @@
  *
  * @package     FivePrayer
  * @author      Jamaaldev
- * @copyright   2022 Jamaal Mahamed or Company Name
- * @license     GPL-2.0-or-later
+ * @copyright   2022 Jamaal Mahamed 
+ * @license     GPL-3.0-or-later
  *
  * @wordpress-plugin
  * Plugin Name: FivePrayer
- * Plugin URI:  https://example.com/plugin-name
+ * Plugin URI:  https://fiveprayer.com
  * Description: FivePrayer - Plugin is For Muslim PrayerTimes.
  * Version:     1.0.0
  * Author:      Jamaaldev
- * Author URI:  https://example.com
+ * Author URI:  https://profiles.wordpress.org/jamaaldev/
  * Text Domain: fiveprayer-slug
  * License:     GPL v3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt

@@ -14,7 +14,6 @@ const PrayerSettings = () => {
     <>
       <div id='PrayerSettings' className='tabcontent'>
         <SectionContainer>
-          {/* <p className="pheadline">Prayer Times Calendar Settings.</p> */}
 
           <Section>
             {/* left */}

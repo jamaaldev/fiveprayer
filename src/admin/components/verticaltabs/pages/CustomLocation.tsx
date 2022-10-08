@@ -71,7 +71,6 @@ export const CustomLocation = () => {
   return (
     <Location__Container id='location__setting' className='vertical_tabcontent'>
       <p className='pheadline'>Custom Location Setting</p>
-      <p>Location Address AutoComplete is the capital city of England.</p>
       <div className='location__col2'>
         <div className='FP__input__container'>
           <input className='FP__input' type='text' name='country' value={country} onChange={addLocationHandle} placeholder='Add Country' />

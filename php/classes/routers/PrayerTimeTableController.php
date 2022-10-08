@@ -41,7 +41,6 @@ class PrayerTimeTableController
         $wpdb->query("TRUNCATE TABLE `wp_fp_timetable`");
 
         foreach ($data as $day) {
-            // return $day['fajr'];
             $wpdb->insert(
                 'wp_fp_timetable',
                 array(
@@ -50,16 +49,12 @@ class PrayerTimeTableController
                  'fajr_begins'        => sanitize_text_field(stripslashes($day['fajr_begins'])),
                  'fajr_iqamah'        => sanitize_text_field(stripslashes($day['fajr_iqamah'])),
                  'fajr_masjid_jamaah' => sanitize_text_field(stripslashes($day['fajr_masjid_jamaah'])),
-     //    'fajr_iqamah' => sanitize_text_field(stripslashes($day[null])),
                  'dhuhr_begins'       => sanitize_text_field(stripslashes($day['dhuhr_begins'])),
                  'dhuhr_iqamah'       => sanitize_text_field(stripslashes($day['dhuhr_iqamah'])),
-     //    'zuhr_iqamah' => sanitize_text_field(stripslashes($day[null])),
                  'asr_begins'         => sanitize_text_field(stripslashes($day['asr_begins'])),
                  'asr_iqamah'         => sanitize_text_field(stripslashes($day['asr_iqamah'])),
-     //    'asr_iqamah' => sanitize_text_field(stripslashes($day[null])),
                  'maghrib_begins'     => sanitize_text_field(stripslashes($day['maghrib_begins'])),
                  'maghrib_iqamah'     => sanitize_text_field(stripslashes($day['maghrib_iqamah'])),
-     //    'maghrib_iqamah' => sanitize_text_field(stripslashes($day[null])),
                  'isha_begins'        => sanitize_text_field(stripslashes($day['isha_begins'])),
                  'isha_iqamah'        => sanitize_text_field(stripslashes($day['isha_iqamah'])),
                  'midnight'           => sanitize_text_field(stripslashes($day['midnight'])),
@@ -89,16 +84,12 @@ class PrayerTimeTableController
                  'fajr_iqamah'        => sanitize_text_field(date("g:i A ", strtotime($day->fajr_iqamah))),
                  'fajr_masjid_jamaah' => sanitize_text_field(date("g:i A ", strtotime($day->fajr_masjid_jamaah))),
                  'sunrise'            => sanitize_text_field(date("g:i A ", strtotime($day->sunrise))),
-     //    'fajr_iqamah' => $day[null],
                  'dhuhr_begins'       => sanitize_text_field(date("g:i A ", strtotime($day->dhuhr_begins))),
                  'dhuhr_iqamah'       => sanitize_text_field(date("g:i A ", strtotime($day->dhuhr_iqamah))),
-     //    'zuhr_iqamah' => $day[null],
                  'asr_begins'         => sanitize_text_field(date("g:i A ", strtotime($day->asr_begins))),
                  'asr_iqamah'         => sanitize_text_field(date("g:i A ", strtotime($day->asr_iqamah))),
-     //    'asr_iqamah' => $day[null],
                  'maghrib_begins'     => sanitize_text_field(date("g:i A ", strtotime($day->maghrib_begins))),
                  'maghrib_iqamah'     => sanitize_text_field(date("g:i A ", strtotime($day->maghrib_iqamah))),
-     //    'maghrib_iqamah' => $day[null],
                  'isha_begins'        => sanitize_text_field(date("g:i A ", strtotime($day->isha_begins))),
                  'isha_iqamah'        => sanitize_text_field(date("g:i A ", strtotime($day->isha_iqamah))),
                  'midnight'           => sanitize_text_field(date("g:i A ", strtotime($day->midnight))),
