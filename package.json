@@ -1,7 +1,7 @@
 {
   "name": "fiveprayer",
   "version": "1.0.0",
-  "description": "fiveprayer plugin simple react 17",
+  "description": "Five Prayer is Muslim PrayerTimes",
   "main": "index.js",
   "files": [
     "build",

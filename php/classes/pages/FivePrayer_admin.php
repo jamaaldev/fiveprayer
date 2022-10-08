@@ -6,15 +6,9 @@ class FivePrayer_admin
      public function __construct()
      {
           add_action('admin_menu', array($this, 'fiveprayer_init_menu'));
-          add_action('admin_notices', array($this, 'my_admin_notice'));
      }
      
-     public function my_admin_notice()
-     {
-          echo '<div class="updated">
-           <p>I am a little yellow notice.</p>
-        </div>';
-     }
+  
 
      /**
       * Init Admin Menu.
