@@ -5,7 +5,7 @@ export const getInfoWordpress = emptySplitApi.injectEndpoints({
     endpoints:(builder) =>({
       
         getBlogInfo: builder.query({
-            query:(methods) => ({ url: `fp/v1/${methods.router}`, method: 'PUT', body: methods.info ,headers:{
+            query:(methods) => ({ url: `fp/v1/${methods.router}`, method: 'POST', body: methods.info ,headers:{
                 'X-WP-Nonce': prayerData?.nonce
                 
                
