@@ -1,0 +1,193 @@
+@media print {
+
+    header,
+    footer,
+    .nv-big-title {
+        display: none !important;
+    }
+
+    @page {
+        size: auto !important;
+        margin: 5mm 5mm 5mm 5mm !important;
+    }
+
+
+
+    .printer .FP_TablePrayer_ .tbmonth .select_print select,
+    #noPrint {
+        display: none;
+
+    }
+
+
+    body * {
+
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+        font-weight: 300 !important;
+        line-height: 1.4 !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        height: fit-content !important;
+
+        white-space: nowrap !important;
+
+
+
+    }
+
+    body:has(.printer) {
+        width: fit-content !important;
+
+    }
+
+
+
+    .printer * {
+        /* visibility: visible; */
+        white-space: nowrap !important;
+        width: fit-content !important;
+        height: fit-content !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+    }
+
+    .noDisplay {
+        display: block;
+        border: #760000 solid 5px;
+        margin-bottom: 10px !important;
+    }
+
+    .printer .FP_TablePrayer_ {
+        border-collapse: collapse;
+        width: 100% !important;
+    }
+
+    .printer .FP_TablePrayer_ th,
+    .printer .FP_TablePrayer_ td {
+
+        padding: 0 !important;
+        padding-inline: 3px !important;
+        padding-block: 3px !important;
+        /* border-width: 0 1px 1px 0 !important; */
+        border: 1px solid rgb(0, 0, 0) !important;
+        text-align: center !important;
+    }
+
+    .printer .FP_TablePrayer_ .tbhead {
+        width: 100%;
+        background: rgb(4 94 20) !important;
+        color: aliceblue;
+    }
+
+
+    .printer .FP_TablePrayer_ .tbmonth {
+        background-color: #007076 !important;
+        color: whitesmoke;
+    }
+
+    .printer .FP_TablePrayer_ #tbmonth {
+        background-color: #a20000 !important;
+        color: rgb(248, 245, 245);
+    }
+
+
+    .printer .FP_TablePrayer_ tr:nth-child(even) {
+        background-color: #3c9a61 !important;
+        color: rgb(248, 246, 246) !important;
+    }
+
+
+
+}
+
+@media screen {
+    .noDisplay {
+        display: none;
+
+    }
+
+    .printer .FP_TablePrayer_ {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .printer table.FP_TablePrayer_ thead {
+        vertical-align: 0;
+    }
+
+    .printer .FP_TablePrayer_ th,
+    .printer .FP_TablePrayer_ td {
+        padding-inline: 0px;
+        padding-block: 3px;
+
+        /* font-size: calc(12px + (19 - 12) * ((100vw - 500px) / (1600 - 500))); */
+
+
+
+        border-width: 0 1px 1px 0;
+        border: 1px solid rgb(0, 0, 0);
+        text-align: center;
+    }
+
+
+    .printer .FP_TablePrayer_ .tbhead {
+        width: 100%;
+        background: rgb(4 94 20);
+        color: aliceblue;
+    }
+
+    .printer .FP_TablePrayer_ #today-row {
+        background-color: #d2f847;
+        color: #022f31;
+    }
+
+    .printer .FP_TablePrayer_ .tbmonth {
+        background-color: #007076;
+        color: whitesmoke;
+    }
+
+    .printer .FP_TablePrayer_ #tbmonth {
+        background-color: #a20000;
+        color: rgb(248, 245, 245);
+    }
+
+
+    .printer .FP_TablePrayer_ tr:nth-child(even) {
+        background-color: #3c9a61;
+        color: rgb(248, 246, 246);
+    }
+
+    .printer .FP_TablePrayer_ .tbmonth .select_print {
+        display: flex;
+        padding: 0;
+        margin: 0;
+    }
+
+    .printer .FP_TablePrayer_ .tbmonth .select_print form {
+        margin-bottom: 0;
+    }
+
+    .printer .FP_TablePrayer_ .tbmonth .select_print select,
+    #clickPrint {
+        border: none;
+        height: 100%;
+    }
+
+    .printer .FP_TablePrayer_ .tbmonth .select_print select {
+        border: none;
+
+
+    }
+
+    .printer .FP_TablePrayer_ .tbmonth .select_print .clickPrint {
+        border: none;
+        width: 100%;
+        height: inherit;
+        padding: 10px;
+
+    }
+
+}
