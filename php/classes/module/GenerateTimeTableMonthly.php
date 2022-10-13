@@ -2,11 +2,15 @@
 
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
+require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
 
 
-class GenerateTimeTableMonthly
+class FivePrayer_GenerateTimeTableMonthly
 {
- 
+ function changeMonth(){
+	 $insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
+	 $insertDynamicTimeTableMonthly->insertDynamicTimeTable();
+ }
     public function DynamicGenerate()
     {
         global $wpdb;
@@ -122,8 +126,10 @@ class GenerateTimeTableMonthly
 
 		jQuery('select').on('change', function(e) {
 			const month = e.target.value;
-			jQuery('#divTo').load(
-				'<?php echo esc_html(plugin_dir_url(__FILE__) . 'GenerateTimeTableDynamic.php'); ?>', {
+			jQuery('body').load(
+				'<?php
+					$this->changeMonth();
+					  ?>', {
 					newMonth: month
 				});
 		});

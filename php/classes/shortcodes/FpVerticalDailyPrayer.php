@@ -1,7 +1,7 @@
 <?php
  defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
- class FpVerticalDailyPrayer
+ class FivePrayer_FpVerticalDailyPrayer
  {
      public $highlight;
      public function __construct()
@@ -48,7 +48,7 @@ public function registerShortcodes()
                               
 
                               <?php array_map(function ($day) {
-                                  $prayerToday = new NextPrayer($day);
+                                  $prayerToday = new FivePrayer_NextPrayer($day);
                                   $this->highlight = $prayerToday->TodayPrayer();
                               }, $prayersettingmeta);?>
                              

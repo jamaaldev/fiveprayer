@@ -37,12 +37,12 @@ class FivePrayerPlugin
         require_once(plugin_dir_path(__FILE__) . './php/classes/shortcodes/FpVerticalDailyPrayer.php');
         new FivePrayer_admin();
         new FivePrayer_enqueue();
-        new CustomLocationController();
-        new PrayerTimeTableController();
-        new PrayerSettingsMetaController();
-        new GetInfoWordpressController();
-        new FpTimetableMonth();
-        new FpVerticalDailyPrayer();
+        new FivePrayer_CustomLocationController();
+        new FivePrayer_PrayerTimeTableController();
+        new FivePrayer_PrayerSettingsMetaController();
+        new FivePrayer_GetInfoWordpressController();
+        new FivePrayer_FpTimetableMonth();
+        new FivePrayer_FpVerticalDailyPrayer();
     }
 
 

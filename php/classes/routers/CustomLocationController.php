@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
-class CustomLocationController
+class FivePrayer_CustomLocationController
 {
     public function __construct()
     {

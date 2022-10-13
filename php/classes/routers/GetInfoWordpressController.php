@@ -2,7 +2,7 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
-class GetInfoWordpressController
+class FivePrayer_GetInfoWordpressController
 {
     public function __construct()
     {

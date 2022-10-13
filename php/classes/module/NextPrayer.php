@@ -3,7 +3,7 @@
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 
-class NextPrayer
+class FivePrayer_NextPrayer
 {
     public $day;
 

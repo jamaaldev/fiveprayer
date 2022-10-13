@@ -57,7 +57,7 @@ export type CalCMethod = {
 
 export interface SearchTownCityState {
   
-  CityTown:string,
+  CityTown:Object[],
   CalcMethods:CalCMethod[],
   HigherLats:NameAndMethod[],
   MidnightMode:NameAndMethod[],
@@ -72,14 +72,12 @@ export interface SearchTownCityState {
   midnightChecked:string,
   medothChecked:string,
   asrChecked:string,
-
 }
 
 
 const initialState:SearchTownCityState = {
 
-  CityTown: "",
-  
+  CityTown: [],
   CalcMethods: methodsForCalc,
   HigherLats: methodsHigherLats,
   MidnightMode: methodsMidnightCalc,
