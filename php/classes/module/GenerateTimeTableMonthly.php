@@ -3,6 +3,7 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
+require_once(plugin_dir_path( __FILE__ ) . '../module/Validator.php');
 
 
 class FivePrayer_GenerateTimeTableMonthly
@@ -13,6 +14,7 @@ class FivePrayer_GenerateTimeTableMonthly
 	}
     public function DynamicGenerate()
     {
+		$validateChecker = new FivePrayer_Validator();
         global $wpdb;
 
         {?>
@@ -72,16 +74,17 @@ class FivePrayer_GenerateTimeTableMonthly
 		<tbody key={index}>
 
 			<?php
-            $monthss = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
-
-            $monthdate =  $monthss['newMonth'] ? $monthss['newMonth'] : wp_date("n", null, $timezone = null) ;
+				$month = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
+				
+				$monthNumber =  $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null) ;
+				$monthValid = $validateChecker->MonthlyNumber($monthNumber);
             $yeardate = wp_date("Y", null, $timezone = null);
-            $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array($yeardate,$monthdate));
+            $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array($yeardate,$monthValid));
             $prayersettingmeta = $wpdb->get_results($ourQueryTableGen);
             foreach ($prayersettingmeta as $day) {?>
 
 
-			<tr id=<?php echo esc_html($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null);?>>
+			<tr id=<?php echo esc_attr($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null);?>>
 				<td><?php echo esc_html($day->currentDate); ?>
 				</td>
 				<td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>

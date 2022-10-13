@@ -65,7 +65,7 @@ public function registerShortcodes()
                               <th>Begins</th>
                               <th>Iqamah</th>
                          </tr>
-                         <tr class="<?php echo esc_html($this->highlight == 'fajr' ? 'fp__highlight' : null) ?>">
+                         <tr class="<?php echo esc_attr($this->highlight == 'fajr' ? 'fp__highlight' : null) ?>">
                               <th>Fajr</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->fajr_begins)) : null);
@@ -74,14 +74,14 @@ public function registerShortcodes()
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->fajr_iqamah)) : null);
                                 }, $prayersettingmeta);?></td>
                          </tr>
-                         <tr class="<?php echo esc_html($this->highlight == 'sunrise' ? 'fp__highlight' : null) ?>">
+                         <tr class="<?php echo esc_attr($this->highlight == 'sunrise' ? 'fp__highlight' : null) ?>">
                               <th >Sunrise</th>
                               <td colspan="2"><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->sunrise)) : null);
                               }, $prayersettingmeta);?></td>
 
                          </tr>
-                         <tr class="<?php echo esc_html($this->highlight == 'dhuhr' ? 'fp__highlight' : null) ?>">
+                         <tr class="<?php echo esc_attr($this->highlight == 'dhuhr' ? 'fp__highlight' : null) ?>">
                               <th>Dhuhr</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->dhuhr_begins)) : null);
@@ -90,7 +90,7 @@ public function registerShortcodes()
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->dhuhr_iqamah)) : null);
                                 }, $prayersettingmeta);?></td>
                          </tr>
-                         <tr class="<?php echo esc_html($this->highlight == 'asr' ? 'fp__highlight' : null) ?>">
+                         <tr class="<?php echo esc_attr($this->highlight == 'asr' ? 'fp__highlight' : null) ?>">
                               <th>Asr</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->asr_begins)) : null);
@@ -99,7 +99,7 @@ public function registerShortcodes()
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->asr_iqamah)) : null);
                                 }, $prayersettingmeta);?></td>
                          </tr>
-                         <tr class="<?php echo esc_html($this->highlight == 'maqhrib' ? 'fp__highlight' : null) ?>">
+                         <tr class="<?php echo esc_attr($this->highlight == 'maqhrib' ? 'fp__highlight' : null) ?>">
                               <th>Maghrib</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->maghrib_begins)) : null);
@@ -108,7 +108,7 @@ public function registerShortcodes()
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->maghrib_iqamah)) : null);
                                 }, $prayersettingmeta);?></td>
                          </tr>
-                         <tr class="<?php echo esc_html($this->highlight == 'isha' ? 'fp__highlight' : null) ?>">
+                         <tr class="<?php echo esc_attr($this->highlight == 'isha' ? 'fp__highlight' : null) ?>">
                               <th>Isha</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->isha_begins)) : null);
