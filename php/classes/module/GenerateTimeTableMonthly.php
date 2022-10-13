@@ -19,7 +19,6 @@ class FivePrayer_GenerateTimeTableMonthly
 
 
 <div class="printer" id="divTo">
-<!-- <link rel="stylesheet" href=<?php echo plugin_dir_url(__FILE__) . '../shortcodes/tablemonth.css';?>> -->
 	<table id='divToPrint' class='FP_TablePrayer_'>
 		<thead id='waa'>
 			<tr class="tbmonth">
