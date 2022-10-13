@@ -9,24 +9,35 @@
      public function __construct()
      {
          add_action('init', array($this, 'registerShortcodes'));
+         add_action('wp_enqueue_scripts', array($this,'loadmeFirst'));
+
        
         }
         
         
         
         
+        public function loadmeFirst()
+        {
+            global $post;
+
+            if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'Fp_TimeTable_Monthly') ) {
+                wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+            }
+            
+        }
         public function registerShortcodes()
         {
             add_shortcode('Fp_TimeTable_Monthly', array($this, 'fpTimetableMonth'));
-            
+
         }
         
         public function fpTimetableMonth()
         {
-            wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
+            ob_start();
+            $this->loadmeFirst();
             $genTable = new FivePrayer_GenerateTimeTableMonthly();
             
-            ob_start();
             $genTable->DynamicGenerate();
             
 

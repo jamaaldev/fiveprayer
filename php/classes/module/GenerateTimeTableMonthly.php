@@ -10,7 +10,7 @@ class FivePrayer_GenerateTimeTableMonthly
  function changeMonth(){
 	 $insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
 	 $insertDynamicTimeTableMonthly->insertDynamicTimeTable();
- }
+	}
     public function DynamicGenerate()
     {
         global $wpdb;
@@ -19,7 +19,7 @@ class FivePrayer_GenerateTimeTableMonthly
 
 
 <div class="printer" id="divTo">
-
+<!-- <link rel="stylesheet" href=<?php echo plugin_dir_url(__FILE__) . '../shortcodes/tablemonth.css';?>> -->
 	<table id='divToPrint' class='FP_TablePrayer_'>
 		<thead id='waa'>
 			<tr class="tbmonth">
