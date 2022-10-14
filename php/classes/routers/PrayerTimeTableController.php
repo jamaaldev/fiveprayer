@@ -32,35 +32,35 @@ class FivePrayer_PrayerTimeTableController
     public function fpInsertTimetable(WP_REST_Request $request)
     {
         global $wpdb;
-        $json =  sanitize_text_field(file_get_contents("php://input"));
+        $json =  sanitize_text_field($request->get_body());
 
         // Converts it into a PHP object
         $data = json_decode($json, true);
 
         // $wpdb->delete( "DELETE TABLE IF EXISTS wp_fp_timetable" );
         $wpdb->query("TRUNCATE TABLE `wp_fp_timetable`");
-
-        foreach ($data as $day) {
+        
+        foreach ($data as $prayer) {
             $wpdb->insert(
                 'wp_fp_timetable',
                 array(
-                 'date'               => sanitize_text_field(stripslashes($day['date'])),
-                 'currentDate'        => sanitize_text_field(stripslashes($day['currentDate'])),
-                 'fajr_begins'        => sanitize_text_field(stripslashes($day['fajr_begins'])),
-                 'fajr_iqamah'        => sanitize_text_field(stripslashes($day['fajr_iqamah'])),
-                 'fajr_masjid_jamaah' => sanitize_text_field(stripslashes($day['fajr_masjid_jamaah'])),
-                 'dhuhr_begins'       => sanitize_text_field(stripslashes($day['dhuhr_begins'])),
-                 'dhuhr_iqamah'       => sanitize_text_field(stripslashes($day['dhuhr_iqamah'])),
-                 'asr_begins'         => sanitize_text_field(stripslashes($day['asr_begins'])),
-                 'asr_iqamah'         => sanitize_text_field(stripslashes($day['asr_iqamah'])),
-                 'maghrib_begins'     => sanitize_text_field(stripslashes($day['maghrib_begins'])),
-                 'maghrib_iqamah'     => sanitize_text_field(stripslashes($day['maghrib_iqamah'])),
-                 'isha_begins'        => sanitize_text_field(stripslashes($day['isha_begins'])),
-                 'isha_iqamah'        => sanitize_text_field(stripslashes($day['isha_iqamah'])),
-                 'midnight'           => sanitize_text_field(stripslashes($day['midnight'])),
-                 'sunrise'            => sanitize_text_field(stripslashes($day['sunrise'])),
-                 'className'          => sanitize_text_field(stripslashes($day['className'])),
-                 'today'              => sanitize_text_field(stripslashes($day['today']))
+                 'date'               => sanitize_text_field(stripslashes($prayer['date'])),
+                 'currentDate'        => sanitize_text_field(stripslashes($prayer['currentDate'])),
+                 'fajr_begins'        => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['fajr_begins'])))),
+                 'fajr_iqamah'        => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['fajr_iqamah'])))),
+                 'fajr_masjid_jamaah' => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['fajr_masjid_jamaah'])))),
+                 'dhuhr_begins'       => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['dhuhr_begins'])))),
+                 'dhuhr_iqamah'       => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['dhuhr_iqamah'])))),
+                 'asr_begins'         => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['asr_begins'])))),
+                 'asr_iqamah'         => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['asr_iqamah'])))),
+                 'maghrib_begins'     => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['maghrib_begins'])))),
+                 'maghrib_iqamah'     => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['maghrib_iqamah'])))),
+                 'isha_begins'        => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['isha_begins'])))),
+                 'isha_iqamah'        => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['isha_iqamah'])))),
+                 'midnight'           => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['midnight'])))),
+                 'sunrise'            => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['sunrise'])))),
+                 'className'          => sanitize_text_field(stripslashes($prayer['className'])),
+                 'today'              => sanitize_text_field(stripslashes($prayer['today']))
                 ),
             );
         }
@@ -76,25 +76,25 @@ class FivePrayer_PrayerTimeTableController
         ob_start();
         
         if ($prayerTimeTable) {
-            return array_map(function ($day) {
+            return array_map(function ($prayer) {
                 return array(
-                 'date'               => sanitize_text_field($day->date),
-                 'currentDate'        => sanitize_text_field($day->currentDate),
-                 'fajr_begins'        => sanitize_text_field(date("g:i A ", strtotime($day->fajr_begins))),
-                 'fajr_iqamah'        => sanitize_text_field(date("g:i A ", strtotime($day->fajr_iqamah))),
-                 'fajr_masjid_jamaah' => sanitize_text_field(date("g:i A ", strtotime($day->fajr_masjid_jamaah))),
-                 'sunrise'            => sanitize_text_field(date("g:i A ", strtotime($day->sunrise))),
-                 'dhuhr_begins'       => sanitize_text_field(date("g:i A ", strtotime($day->dhuhr_begins))),
-                 'dhuhr_iqamah'       => sanitize_text_field(date("g:i A ", strtotime($day->dhuhr_iqamah))),
-                 'asr_begins'         => sanitize_text_field(date("g:i A ", strtotime($day->asr_begins))),
-                 'asr_iqamah'         => sanitize_text_field(date("g:i A ", strtotime($day->asr_iqamah))),
-                 'maghrib_begins'     => sanitize_text_field(date("g:i A ", strtotime($day->maghrib_begins))),
-                 'maghrib_iqamah'     => sanitize_text_field(date("g:i A ", strtotime($day->maghrib_iqamah))),
-                 'isha_begins'        => sanitize_text_field(date("g:i A ", strtotime($day->isha_begins))),
-                 'isha_iqamah'        => sanitize_text_field(date("g:i A ", strtotime($day->isha_iqamah))),
-                 'midnight'           => sanitize_text_field(date("g:i A ", strtotime($day->midnight))),
-                 'className'          => sanitize_text_field($day->className),
-                 'today'              => sanitize_text_field($day->today)
+                 'date'               => sanitize_text_field($prayer->date),
+                 'currentDate'        => sanitize_text_field($prayer->currentDate),
+                 'fajr_begins'        => sanitize_text_field(date("g:i A ", strtotime($prayer->fajr_begins))),
+                 'fajr_iqamah'        => sanitize_text_field(date("g:i A ", strtotime($prayer->fajr_iqamah))),
+                 'fajr_masjid_jamaah' => sanitize_text_field(date("g:i A ", strtotime($prayer->fajr_masjid_jamaah))),
+                 'sunrise'            => sanitize_text_field(date("g:i A ", strtotime($prayer->sunrise))),
+                 'dhuhr_begins'       => sanitize_text_field(date("g:i A ", strtotime($prayer->dhuhr_begins))),
+                 'dhuhr_iqamah'       => sanitize_text_field(date("g:i A ", strtotime($prayer->dhuhr_iqamah))),
+                 'asr_begins'         => sanitize_text_field(date("g:i A ", strtotime($prayer->asr_begins))),
+                 'asr_iqamah'         => sanitize_text_field(date("g:i A ", strtotime($prayer->asr_iqamah))),
+                 'maghrib_begins'     => sanitize_text_field(date("g:i A ", strtotime($prayer->maghrib_begins))),
+                 'maghrib_iqamah'     => sanitize_text_field(date("g:i A ", strtotime($prayer->maghrib_iqamah))),
+                 'isha_begins'        => sanitize_text_field(date("g:i A ", strtotime($prayer->isha_begins))),
+                 'isha_iqamah'        => sanitize_text_field(date("g:i A ", strtotime($prayer->isha_iqamah))),
+                 'midnight'           => sanitize_text_field(date("g:i A ", strtotime($prayer->midnight))),
+                 'className'          => sanitize_text_field($prayer->className),
+                 'today'              => sanitize_text_field($prayer->today)
 
                 );
             }, $prayerTimeTable);

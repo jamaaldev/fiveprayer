@@ -62,12 +62,8 @@ class FivePrayer_CustomLocationController
     public function fpDeleteLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        $json =  sanitize_text_field(file_get_contents("php://input"));
+        $id = sanitize_text_field($request['id']);
 
-        // Converts it into a PHP object
-        $data = json_decode($json, true);
-
-        $id = $data['id'];
 
         $wpdb->delete('wp_fp_location_city', array('id' => $id));
 
@@ -78,17 +74,12 @@ class FivePrayer_CustomLocationController
     public function fpUpdateLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        $json =  sanitize_text_field(file_get_contents("php://input"));
-
-        // Converts it into a PHP object
-        $data = json_decode($json, true);
-
-        $id      = $data['id'];
-        $country = $data['country'];
-        $city    = $data['city'];
-        $lat     = $data['lat'];
-        $lng     = $data['lng'];
-
+      
+        $id = sanitize_text_field($request['id']);
+        $country = sanitize_text_field($request['country']);
+        $city    = sanitize_text_field($request['city']);
+        $lat     = sanitize_text_field($request['lat']);
+        $lng     = sanitize_text_field($request['lng']);
 
         $wpdb->update('wp_fp_location_city', array('id' => $id, 'country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng), array('id' => $id));
         return $request->get_params();
@@ -98,15 +89,11 @@ class FivePrayer_CustomLocationController
     public function fpInsertLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        $json =  sanitize_text_field(file_get_contents("php://input"));
 
-        // Converts it into a PHP object
-        $data = json_decode($json, true);
-
-        $country = $data['country'];
-        $city    = $data['city'];
-        $lat     = $data['lat'];
-        $lng     = $data['lng'];
+        $country = sanitize_text_field($request['country']);
+        $city    = sanitize_text_field($request['city']);
+        $lat     = sanitize_text_field($request['lat']);
+        $lng     = sanitize_text_field($request['lng']);
 
     
 

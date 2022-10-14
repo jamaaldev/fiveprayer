@@ -38,7 +38,7 @@ export function BoxModel(props: IBoxModelProps) {
             });
 
             // for removing empty record
-            // lines.splice(lines.length - 1, 1);
+            lines.splice(lines.length - 1, 1);
             const result:object[] = [];
             // remove double quotes from a String
             const headers = lines[0].replace(/['"]+/g, '').split(',');
