@@ -28,11 +28,11 @@ public function registerShortcodes()
       $monthdate =  wp_date("n", null, $timezone = null);
       $yeardate = wp_date("Y", null, $timezone = null);
      
-    //   $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
-      $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate " );
+    //   $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
+      $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate " );
 
       ob_start();
-      if ($prayersettingmeta) {
+      if ($todayPrayerTable) {
           ?>
 
             <table  class='FP_DairyPrayer_'>
@@ -43,14 +43,14 @@ public function registerShortcodes()
                               
                               <?php array_map(function ($day) {
                                   echo $day->today == wp_date("j", null, $timezone = null) ? $day->currentDate : null;
-                              }, $prayersettingmeta);?>
+                              }, $todayPrayerTable);?>
                               
                               
 
                               <?php array_map(function ($day) {
                                   $prayerToday = new FivePrayer_NextPrayer($day);
                                   $this->highlight = $prayerToday->TodayPrayer();
-                              }, $prayersettingmeta);?>
+                              }, $todayPrayerTable);?>
                              
                               <!-- <span>
                                    <?php echo esc_html('Local time: ' . wp_date("g:i A", null, $timezone = null)); ?>
@@ -69,53 +69,53 @@ public function registerShortcodes()
                               <th>Fajr</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->fajr_begins)) : null);
-                              }, $prayersettingmeta);?></td>
+                              }, $todayPrayerTable);?></td>
                                 <td><?php array_map(function ($day) {
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->fajr_iqamah)) : null);
-                                }, $prayersettingmeta);?></td>
+                                }, $todayPrayerTable);?></td>
                          </tr>
                          <tr class="<?php echo esc_attr($this->highlight == 'sunrise' ? 'fp__highlight' : null) ?>">
                               <th >Sunrise</th>
                               <td colspan="2"><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->sunrise)) : null);
-                              }, $prayersettingmeta);?></td>
+                              }, $todayPrayerTable);?></td>
 
                          </tr>
                          <tr class="<?php echo esc_attr($this->highlight == 'dhuhr' ? 'fp__highlight' : null) ?>">
                               <th>Dhuhr</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->dhuhr_begins)) : null);
-                              }, $prayersettingmeta);?></td>
+                              }, $todayPrayerTable);?></td>
                                 <td><?php array_map(function ($day) {
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->dhuhr_iqamah)) : null);
-                                }, $prayersettingmeta);?></td>
+                                }, $todayPrayerTable);?></td>
                          </tr>
                          <tr class="<?php echo esc_attr($this->highlight == 'asr' ? 'fp__highlight' : null) ?>">
                               <th>Asr</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->asr_begins)) : null);
-                              }, $prayersettingmeta);?></td>
+                              }, $todayPrayerTable);?></td>
                                 <td><?php array_map(function ($day) {
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->asr_iqamah)) : null);
-                                }, $prayersettingmeta);?></td>
+                                }, $todayPrayerTable);?></td>
                          </tr>
                          <tr class="<?php echo esc_attr($this->highlight == 'maqhrib' ? 'fp__highlight' : null) ?>">
                               <th>Maghrib</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->maghrib_begins)) : null);
-                              }, $prayersettingmeta);?></td>
+                              }, $todayPrayerTable);?></td>
                                 <td><?php array_map(function ($day) {
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->maghrib_iqamah)) : null);
-                                }, $prayersettingmeta);?></td>
+                                }, $todayPrayerTable);?></td>
                          </tr>
                          <tr class="<?php echo esc_attr($this->highlight == 'isha' ? 'fp__highlight' : null) ?>">
                               <th>Isha</th>
                               <td><?php array_map(function ($day) {
                                   echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->isha_begins)) : null);
-                              }, $prayersettingmeta);?></td>
+                              }, $todayPrayerTable);?></td>
                                 <td><?php array_map(function ($day) {
                                     echo esc_html($day->today == getdate()["mday"] ? date("g:i A ", strtotime($day->isha_iqamah)) : null);
-                                }, $prayersettingmeta);?></td>
+                                }, $todayPrayerTable);?></td>
                          </tr>
 
 
