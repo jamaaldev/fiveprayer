@@ -12,7 +12,7 @@ class FivePrayer_DynamicTimeTableMonthly{
             if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             {
                 $genTable = new FivePrayer_GenerateTimeTableMonthly();
-                $genTable->DynamicGenerate();    
+                $genTable->DynamicGenerateCalendar();    
              
             }
         }

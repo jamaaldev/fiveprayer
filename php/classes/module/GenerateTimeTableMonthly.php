@@ -17,7 +17,7 @@ class FivePrayer_GenerateTimeTableMonthly
 	 $insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
 	 $insertDynamicTimeTableMonthly->insertDynamicTimeTable();
 	}
-    public function DynamicGenerate()
+    public function DynamicGenerateCalendar()
     {
 		$validatorChecker = new FivePrayer_Validator();
         global $wpdb;

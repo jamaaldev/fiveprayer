@@ -38,7 +38,7 @@
             $this->loadmeFirst();
             $genTable = new FivePrayer_GenerateTimeTableMonthly();
             
-            $genTable->DynamicGenerate();
+            $genTable->DynamicGenerateCalendar();
             
 
          return ob_get_clean();
