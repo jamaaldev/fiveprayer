@@ -1,5 +1,6 @@
 <?php
  defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
+ require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
 
  class FivePrayer_FpVerticalDailyPrayer
  {
@@ -7,7 +8,6 @@
      public function __construct()
      {
          add_action('init', array($this, 'registerShortcodes'));
-         require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
          add_action('wp_enqueue_scripts', array($this,'dailyPrayer'),999);
      }
 public function dailyPrayer()
@@ -60,7 +60,7 @@ public function registerShortcodes()
                          </td>
                          </tr>
 
-                         <tr class='tbhead'>
+                         <tr class='fiveprayer__tbhead'>
                               <th>Prayer</th>
                               <th>Begins</th>
                               <th>Iqamah</th>

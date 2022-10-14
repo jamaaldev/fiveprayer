@@ -2,13 +2,14 @@
 
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
-require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
 require_once(plugin_dir_path( __FILE__ ) . '../module/Validator.php');
 
 
 class FivePrayer_GenerateTimeTableMonthly
 {
  function changeCalendarMonth(){
+	require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
+
 	 $insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
 	 $insertDynamicTimeTableMonthly->insertDynamicTimeTable();
 	}
@@ -20,12 +21,12 @@ class FivePrayer_GenerateTimeTableMonthly
         {?>
 
 
-<div class="printer" id="divTo">
-	<table id='divToPrint' class='FP_TablePrayer_'>
-		<thead id='waa'>
-			<tr class="tbmonth">
-				<th class="select_print">
-					<form id="noPrint">
+<div class="fiveprayer__printer" id="fiveprayer__divTo">
+	<table id='fiveprayer__divToPrint' class='fiveprayer__TablePrayer_'>
+		<thead id='fiveprayer__waa'>
+			<tr class="fiveprayer__tbmonth">
+				<th class="fiveprayer__select_print">
+					<form id="fiveprayer__noPrint">
 						<select name="country">
 							<option value="" disabled selected>--Select Months--</option>
 							<option value="1">January</option>
@@ -42,7 +43,7 @@ class FivePrayer_GenerateTimeTableMonthly
 							<option value="12">December</option>
 						</select>
 					</form>
-					<input class='clickPrint' id='noPrint' type="button" value="print" />
+					<input class='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
 				</th>
 				<th td colspan="3">Fajr</th>
 
@@ -55,7 +56,7 @@ class FivePrayer_GenerateTimeTableMonthly
 				<th td colspan="2">Isha</th>
 
 			</tr>
-			<tr id="tbmonth">
+			<tr id="fiveprayer__tbmonth">
 				<th>Date</th>
 				<th> Begins</th>
 				<th> Iqamah</th>
@@ -129,16 +130,14 @@ class FivePrayer_GenerateTimeTableMonthly
 		jQuery('select').on('change', function(e) {
 			const month = e.target.value;
 			jQuery('body').load(
-				'<?php
-					$this->changeCalendarMonth();
-					  ?>', {
+				'<?php $this->changeCalendarMonth(); ?>', {
 					newMonth: month
 				});
 		});
 	});
 	jQuery(document).ready(function() {
 
-		jQuery('.clickPrint').on('click', function(e) {
+		jQuery('.fiveprayer__clickPrint').on('click', function(e) {
 			
 			if(e.target){
 				print();
