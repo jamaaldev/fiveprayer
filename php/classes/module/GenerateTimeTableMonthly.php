@@ -8,7 +8,7 @@ require_once(plugin_dir_path( __FILE__ ) . '../module/Validator.php');
 
 class FivePrayer_GenerateTimeTableMonthly
 {
- function changeMonth(){
+ function changeCalendarMonth(){
 	 $insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
 	 $insertDynamicTimeTableMonthly->insertDynamicTimeTable();
 	}
@@ -130,7 +130,7 @@ class FivePrayer_GenerateTimeTableMonthly
 			const month = e.target.value;
 			jQuery('body').load(
 				'<?php
-					$this->changeMonth();
+					$this->changeCalendarMonth();
 					  ?>', {
 					newMonth: month
 				});
