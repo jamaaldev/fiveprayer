@@ -22,11 +22,11 @@ function FPTablePrayerTime({calendar}) {
    if(timetable?.length){
   
      const newone = timetable?.filter((table:FPCalendar) => {
-     return  new Date(table.date).getFullYear() === new Date().getFullYear() &&  new Date(table.date).getMonth() === ( Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum ) || new Date().getMonth());
+     return  new Date(table.date).getFullYear() === new Date().getFullYear() &&  new Date(table.date).getMonth() === ( Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum ) || new Date().getMonth());
      }) 
      SetMonth(newone)
     }
- },[timetable, new Date().getMonth(), Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
+ },[timetable, new Date().getMonth(), Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
 
   return (
     <div>

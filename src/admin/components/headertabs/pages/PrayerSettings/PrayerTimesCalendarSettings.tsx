@@ -22,48 +22,48 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
   const { asrChecked, monthChecked, midnightChecked, locationChecked, higherChecked, medothChecked, ListCity, CalcMethods, HigherLats, MidnightMode, AsrMedoths, CityTown } = useSelector((state: RootState) => state.searchtowncity);
   const dispatch = useDispatch();
 
-  if (localStorage.getItem('asrcalculation') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'asrcalculation')[0]?.['meta-key'] === 'asrcalculation') {
-    localStorage.setItem('asrcalculation', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'asrcalculation')[0]?.value);
+  if (sessionStorage.getItem('asrcalculation') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'asrcalculation')[0]?.['meta-key'] === 'asrcalculation') {
+    sessionStorage.setItem('asrcalculation', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'asrcalculation')[0]?.value);
   }
-  if (localStorage.getItem('location') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'location')[0]?.['meta-key'] === 'location') {
-    localStorage.setItem('location', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'location')[0]?.value);
+  if (sessionStorage.getItem('location') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'location')[0]?.['meta-key'] === 'location') {
+    sessionStorage.setItem('location', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'location')[0]?.value);
   }
-  if (localStorage.getItem('midnightcalculation') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'midnightcalculation')[0]?.['meta-key'] === 'midnightcalculation') {
-    localStorage.setItem('midnightcalculation', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'midnightcalculation')[0]?.value);
+  if (sessionStorage.getItem('midnightcalculation') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'midnightcalculation')[0]?.['meta-key'] === 'midnightcalculation') {
+    sessionStorage.setItem('midnightcalculation', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'midnightcalculation')[0]?.value);
   }
-  if (localStorage.getItem('higherlatitude') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'higherlatitude')[0]?.['meta-key'] === 'higherlatitude') {
-    localStorage.setItem('higherlatitude', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'higherlatitude')[0]?.value);
+  if (sessionStorage.getItem('higherlatitude') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'higherlatitude')[0]?.['meta-key'] === 'higherlatitude') {
+    sessionStorage.setItem('higherlatitude', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'higherlatitude')[0]?.value);
   }
-  if (localStorage.getItem('calcmedthod') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'calcmedthod')[0]?.['meta-key'] === 'calcmedthod') {
-    localStorage.setItem('calcmedthod', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'calcmedthod')[0]?.value);
+  if (sessionStorage.getItem('calcmedthod') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'calcmedthod')[0]?.['meta-key'] === 'calcmedthod') {
+    sessionStorage.setItem('calcmedthod', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'calcmedthod')[0]?.value);
 
   }
 
   const dropReset = (reset) => {};
 
   const calcMethodsList = (checked: EventTarget, el: CalCMethod, meta) => {
-    localStorage.setItem('calcmedthod', JSON.stringify(el));
+    sessionStorage.setItem('calcmedthod', JSON.stringify(el));
     const calcmedoth = { value: el, meta: meta };
     insertprayersettingmeta(calcmedoth);
     dispatch(MedothChecked(el.method));
   };
 
   const higherMethodsList = (checked: EventTarget, el: NameAndMethod, meta) => {
-    localStorage.setItem('higherlatitude', JSON.stringify(el));
+    sessionStorage.setItem('higherlatitude', JSON.stringify(el));
     const higher = { value: el, meta: meta };
     insertprayersettingmeta(higher);
     // dispatch(HigherChecked(el.method));
   };
 
   const midnightModeMethodsList = (checked: EventTarget, el: NameAndMethod, meta) => {
-    localStorage.setItem('midnightcalculation', JSON.stringify(el));
+    sessionStorage.setItem('midnightcalculation', JSON.stringify(el));
     const midnight = { value: el, meta: meta };
     insertprayersettingmeta(midnight);
     // dispatch(MidnightChecked(el.method));
   };
 
   const asrMedothsMethodsList = (checked: EventTarget, el: NameAndMethod, meta) => {
-    localStorage.setItem('asrcalculation', JSON.stringify(el));
+    sessionStorage.setItem('asrcalculation', JSON.stringify(el));
     const asrcal = { value: el, meta: meta };
     insertprayersettingmeta(asrcal);
     // dispatch(AsrChecked(el.method));
@@ -74,28 +74,28 @@ export default function PrayerTimesCalendarSettings (props: IPrayerTimesCalendar
     return monthName[month];
   }
   React.useEffect(()=>{
-    localStorage.setItem('monthselect', JSON.stringify({ monthName: monthFullName(new Date().getMonth()), monthNum:  new Date().getMonth() || new Date().getMonth()  }));
+    sessionStorage.setItem('monthselect', JSON.stringify({ monthName: monthFullName(new Date().getMonth()), monthNum:  new Date().getMonth() || new Date().getMonth()  }));
 
   },[new Date().getMonth()])
   const monthList = (checked: string, el: string) => {
     const check = new Date().getMonth() || checked;
-    localStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum:  checked || new Date().getMonth()  }));
+    sessionStorage.setItem('monthselect', JSON.stringify({ monthName: el, monthNum:  checked || new Date().getMonth()  }));
     // setMonths(parseInt(checked));
 
     dispatch(MonthChecked(el));
   };
 const checkAutoMonth = () =>{
    
-  return monthFullName( new Date().getMonth()) || localStorage.getItem('monthselect') ? JSON.parse(localStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(localStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()));
+  return monthFullName( new Date().getMonth()) || sessionStorage.getItem('monthselect') ? JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthName : monthFullName(Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()));
 }
   const locationList = React.useCallback(
     (checked: EventTarget, el: ListCityTown, meta: string) => {
-      localStorage.setItem('location', JSON.stringify(el));
+      sessionStorage.setItem('location', JSON.stringify(el));
       const loc = { value: el, meta: meta };
       insertprayersettingmeta(loc);
      
     },
-    [localStorage.getItem('location'), isSuccess]
+    [sessionStorage.getItem('location'), isSuccess]
   );
 
   let listMonthList = listMonth.map((el, indexed) => (
@@ -155,7 +155,7 @@ const checkAutoMonth = () =>{
             holder={'Location,City'}
             label={'Search Location'}
             options={listCityList}
-            checked={localStorage.getItem('location') ? JSON.parse(localStorage?.getItem('location') as string)?.city : ''}
+            checked={sessionStorage.getItem('location') ? JSON.parse(sessionStorage?.getItem('location') as string)?.city : ''}
           />
         
         </Container>
@@ -166,7 +166,7 @@ const checkAutoMonth = () =>{
             holder={'Higher Latitude Adjustment Method'}
             label={'Select Higher Latitude Adjustment Method'}
             options={higherLatList}
-            checked={localStorage.getItem('higherlatitude') ? JSON.parse(localStorage?.getItem('higherlatitude') as string)?.name : ''}
+            checked={sessionStorage.getItem('higherlatitude') ? JSON.parse(sessionStorage?.getItem('higherlatitude') as string)?.name : ''}
           />
 
           <FPDropList
@@ -175,7 +175,7 @@ const checkAutoMonth = () =>{
             holder={'Method (Learn more about calculation)'}
             label={'Select Calculation Methods'}
             options={calcMethodList}
-            checked={localStorage.getItem('calcmedthod') ? JSON.parse(localStorage?.getItem('calcmedthod') as string)?.name : ''}
+            checked={sessionStorage.getItem('calcmedthod') ? JSON.parse(sessionStorage?.getItem('calcmedthod') as string)?.name : ''}
           />
         </Container>
         <Container onClick={(e) => dropReset(e.target)}>
@@ -185,7 +185,7 @@ const checkAutoMonth = () =>{
             holder={'Only affects Asr calculation'}
             label={'Select Juristic School'}
             options={asrMedothList}
-            checked={localStorage.getItem('asrcalculation') ? JSON.parse(localStorage?.getItem('asrcalculation') as string)?.name : ''}
+            checked={sessionStorage.getItem('asrcalculation') ? JSON.parse(sessionStorage?.getItem('asrcalculation') as string)?.name : ''}
           />
 
           <FPDropList
@@ -194,7 +194,7 @@ const checkAutoMonth = () =>{
             holder={'Midnight Calculation Mode'}
             label={'Select Midnight Calculation Mode'}
             options={midnightModeList}
-            checked={localStorage.getItem('midnightcalculation') ? JSON.parse(localStorage?.getItem('midnightcalculation') as string)?.name : ''}
+            checked={sessionStorage.getItem('midnightcalculation') ? JSON.parse(sessionStorage?.getItem('midnightcalculation') as string)?.name : ''}
           />
         </Container>
       </Left>

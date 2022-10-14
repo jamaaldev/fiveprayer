@@ -87,7 +87,7 @@ const initialState:SearchTownCityState = {
   check: [],
   locationChecked:{country:'', lat:'', lng:'', city:'', id:''},
   higherChecked: '',
-  monthChecked: Number(localStorage.getItem('month')) ? Number(localStorage.getItem('month')) : new Date().getMonth(),
+  monthChecked: Number(sessionStorage.getItem('month')) ? Number(sessionStorage.getItem('month')) : new Date().getMonth(),
   midnightChecked:'',
   asrChecked: '',
   medothChecked: '',

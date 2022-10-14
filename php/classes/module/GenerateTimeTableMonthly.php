@@ -78,9 +78,9 @@ class FivePrayer_GenerateTimeTableMonthly
 				
 				$monthNumber =  $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null) ;
 				$monthValid = $validateChecker->MonthlyNumber($monthNumber);
-            $yeardate = wp_date("Y", null, $timezone = null);
-            $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array($yeardate,$monthValid));
-            $prayersettingmeta = $wpdb->get_results($ourQueryTableGen);
+				$yeardate = wp_date("Y", null, $timezone = null);
+				$ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array($yeardate,$monthValid));
+				$prayersettingmeta = $wpdb->get_results($ourQueryTableGen);
             foreach ($prayersettingmeta as $day) {?>
 
 

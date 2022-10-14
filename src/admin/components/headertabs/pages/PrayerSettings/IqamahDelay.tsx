@@ -19,48 +19,48 @@ const [show,SetShow] = React.useState<boolean>(false);
 
   }
   //IQFajr
-  if (localStorage.getItem('IQFajr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr') {
+  if (sessionStorage.getItem('IQFajr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value;
 
-    localStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
+    sessionStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.['meta-key'] === 'IQFajr') {
-    localStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
+    sessionStorage.setItem('IQFajr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQFajr')[0]?.value);
 
   }
   //IQDhuhr
-  if (localStorage.getItem('IQDhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
+  if (sessionStorage.getItem('IQDhuhr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value;
 
-    localStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
+    sessionStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.['meta-key'] === 'IQDhuhr') {
-    localStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
+    sessionStorage.setItem('IQDhuhr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQDhuhr')[0]?.value);
 
   }
   //IQAsr
-  if (localStorage.getItem('IQAsr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr') {
+  if (sessionStorage.getItem('IQAsr') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value;
 
-    localStorage.setItem('IQAsr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value);
+    sessionStorage.setItem('IQAsr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.['meta-key'] === 'IQAsr') {
-    localStorage.setItem('IQAsr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value);
+    sessionStorage.setItem('IQAsr', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQAsr')[0]?.value);
 
   }
   //IQMaghrib
-  if (localStorage.getItem('IQMaghrib') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib') {
+  if (sessionStorage.getItem('IQMaghrib') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value;
 
-    localStorage.setItem('IQMaghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value);
+    sessionStorage.setItem('IQMaghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.['meta-key'] === 'IQMaghrib') {
-    localStorage.setItem('IQMaghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value);
+    sessionStorage.setItem('IQMaghrib', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQMaghrib')[0]?.value);
 
   }
   //IQIsha
-  if (localStorage.getItem('IQIsha') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha') {
+  if (sessionStorage.getItem('IQIsha') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value;
 
-    localStorage.setItem('IQIsha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value);
+    sessionStorage.setItem('IQIsha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value);
   } else if (getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.['meta-key'] === 'IQIsha') {
-    localStorage.setItem('IQIsha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value);
+    sessionStorage.setItem('IQIsha', getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'IQIsha')[0]?.value);
 
   }
 
@@ -72,15 +72,15 @@ const [show,SetShow] = React.useState<boolean>(false);
           <br />
         </p>
         <Container>
-          <FPInput val={localStorage.getItem('IQFajr')} holder={'IQFajr'} />
-          <FPInput val={localStorage.getItem('IQDhuhr')} holder={'IQDhuhr'} />
+          <FPInput val={sessionStorage.getItem('IQFajr')} holder={'IQFajr'} />
+          <FPInput val={sessionStorage.getItem('IQDhuhr')} holder={'IQDhuhr'} />
         </Container>
         <Container>
-          <FPInput val={localStorage.getItem('IQAsr')} holder={'IQAsr'} />
-          <FPInput val={localStorage.getItem('IQMaghrib')} holder={'IQMaghrib'} />
+          <FPInput val={sessionStorage.getItem('IQAsr')} holder={'IQAsr'} />
+          <FPInput val={sessionStorage.getItem('IQMaghrib')} holder={'IQMaghrib'} />
         </Container>
         <Container>
-          <FPInput val={localStorage.getItem('IQIsha')} holder={'IQIsha'} />
+          <FPInput val={sessionStorage.getItem('IQIsha')} holder={'IQIsha'} />
           <div className='middle_container'>
             <label>Upload CSV Timings</label>
             {/* <input title='sdsdsd' type="file" className="middle_button FP__custom-file-input"/> */}
