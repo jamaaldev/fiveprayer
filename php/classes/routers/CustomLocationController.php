@@ -65,7 +65,7 @@ class FivePrayer_CustomLocationController
     public function fpDeleteLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        if(is_numeric(sanitize_text_field($request['id']))){
+        if($this->customeValid->customLocationDelete($request)){
             $id = sanitize_text_field($request['id']);
     
             $wpdb->delete('wp_fp_location_city', array('id' => $id));
@@ -81,7 +81,7 @@ class FivePrayer_CustomLocationController
     public function fpUpdateLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        if($this->customeValid->customLocation($request)){
+        if($this->customeValid->customLocationUpdate($request)){
 
             $id = sanitize_text_field($request['id']);
             $country = sanitize_text_field($request['country']);
@@ -102,7 +102,7 @@ class FivePrayer_CustomLocationController
     {
         global $wpdb;
      
-        if($this->customeValid->customLocation($request)){
+        if($this->customeValid->customLocationInsert($request)){
             $country = sanitize_text_field($request['country']);
             $city    = sanitize_text_field($request['city']);
             $lat     = sanitize_text_field($request['lat']);

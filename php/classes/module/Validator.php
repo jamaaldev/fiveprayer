@@ -12,7 +12,7 @@ class FivePrayer_Validator {
             return  wp_date("n", null, $timezone = null);
         }
     }
-    function customLocation($arg){
+    function customLocationInsert($arg){
 
         if(!is_numeric(sanitize_text_field($arg['country'])) && !is_numeric(sanitize_text_field($arg['city'])) && is_numeric(sanitize_text_field($arg['lat'])) && is_numeric(sanitize_text_field($arg['lng'])))
         {
@@ -20,7 +20,23 @@ class FivePrayer_Validator {
         } else {
             return false;
         }
+       
+       
+    }
+    function customLocationUpdate($arg){
+
         if(is_numeric(sanitize_text_field($arg['id'])) && !is_numeric(sanitize_text_field($arg['country'])) && !is_numeric(sanitize_text_field($arg['city'])) && is_numeric(sanitize_text_field($arg['lat'])) && is_numeric(sanitize_text_field($arg['lng'])))
+        {
+            return true;
+        } else {
+            return false;
+        }
+       
+       
+    }
+    function customLocationDelete($arg){
+
+        if(is_numeric(sanitize_text_field($arg['id'])))
         {
             return true;
         } else {
