@@ -61,7 +61,7 @@ class FivePrayer_PrayerTimeTableController
                  'sunrise'            => sanitize_text_field(date(' H:i ', strtotime(stripslashes($prayer['sunrise'])))),
                  'className'          => sanitize_text_field(stripslashes($prayer['className'])),
                  'today'              => sanitize_text_field(stripslashes($prayer['today']))
-                ),
+                )
             );
         }
 
