@@ -3,9 +3,11 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class FivePrayer_CustomLocationController
 {
+    public $customeValid;
     public function __construct()
     {
         add_action('rest_api_init', array($this, 'customLocationRoute'));
+        $this->customeValid = new FivePrayer_Validator();
 
     }
 
@@ -13,6 +15,7 @@ class FivePrayer_CustomLocationController
 
     public function customLocationRoute()
     {
+
 
         // register_rest_route() handles more arguments but we are going to stick to the basics for now.
         register_rest_route('fp/v1', '/fp_location', array(
@@ -62,10 +65,14 @@ class FivePrayer_CustomLocationController
     public function fpDeleteLocation(WP_REST_Request $request)
     {
         global $wpdb;
-        $id = sanitize_text_field($request['id']);
+        if(is_numeric(sanitize_text_field($request['id']))){
+            $id = sanitize_text_field($request['id']);
+    
+            $wpdb->delete('wp_fp_location_city', array('id' => $id));
 
-
-        $wpdb->delete('wp_fp_location_city', array('id' => $id));
+        }else {
+            wp_send_json_error( array('id' => 'must be number'), 400);
+        }
 
         return $request;
         exit();
@@ -74,14 +81,19 @@ class FivePrayer_CustomLocationController
     public function fpUpdateLocation(WP_REST_Request $request)
     {
         global $wpdb;
-      
-        $id = sanitize_text_field($request['id']);
-        $country = sanitize_text_field($request['country']);
-        $city    = sanitize_text_field($request['city']);
-        $lat     = sanitize_text_field($request['lat']);
-        $lng     = sanitize_text_field($request['lng']);
+        if($this->customeValid->customLocation($request)){
 
-        $wpdb->update('wp_fp_location_city', array('id' => $id, 'country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng), array('id' => $id));
+            $id = sanitize_text_field($request['id']);
+            $country = sanitize_text_field($request['country']);
+            $city    = sanitize_text_field($request['city']);
+            $lat     = sanitize_text_field($request['lat']);
+            $lng     = sanitize_text_field($request['lng']);
+    
+            $wpdb->update('wp_fp_location_city', array('id' => $id, 'country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng), array('id' => $id));
+        } else {
+            wp_send_json_error( array('country' => 'must be string','city' => 'must be string','lat' => 'must be number','lng' => 'must be number'), 400);
+        }
+
         return $request->get_params();
         exit();
     }
@@ -89,15 +101,19 @@ class FivePrayer_CustomLocationController
     public function fpInsertLocation(WP_REST_Request $request)
     {
         global $wpdb;
+     
+        if($this->customeValid->customLocation($request)){
+            $country = sanitize_text_field($request['country']);
+            $city    = sanitize_text_field($request['city']);
+            $lat     = sanitize_text_field($request['lat']);
+            $lng     = sanitize_text_field($request['lng']);
+        
+            $wpdb->insert('wp_fp_location_city', array('country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng));
 
-        $country = sanitize_text_field($request['country']);
-        $city    = sanitize_text_field($request['city']);
-        $lat     = sanitize_text_field($request['lat']);
-        $lng     = sanitize_text_field($request['lng']);
-
-    
-
-        $wpdb->insert('wp_fp_location_city', array('country' => $country, 'city' => $city, 'lat' => $lat, 'lng' => $lng));
+        } else {
+            wp_send_json_error( array('country' => 'must be string','city' => 'must be string','lat' => 'must be number','lng' => 'must be number'), 400);
+        }
+      
 
         return $request->get_params();
         exit();

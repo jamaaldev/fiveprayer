@@ -21,9 +21,9 @@ class FivePrayer_enqueue
  */
 public function fiveprayer_admin_enqueue_scripts()
 {
-    // $valid_pages = array("etc","etc","etc");
-    $valid_pages = array("fiveprayer");
-    $page = (isset($_GET['page'])) ? $_GET['page'] : 0;
+  
+    $page = isset($_GET['page']) ? sanitize_title( $_GET['page']) : 0;
+
     if ($page === 'fiveprayer') {
         wp_enqueue_style('fiveprayer-style', plugin_dir_url(__FILE__) . '../../../build/index.css');
         wp_enqueue_script('fiveprayer-script', plugin_dir_url(__FILE__) . '../../../build/index.js', array( 'wp-element' ), '1.0.0', true);

@@ -31,6 +31,7 @@ public function registerShortcodes()
      
     //   $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
       $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate " );
+
       if ($todayPrayerTable) {
           ob_start();
           ?>

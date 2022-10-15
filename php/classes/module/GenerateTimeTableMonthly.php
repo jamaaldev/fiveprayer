@@ -8,7 +8,6 @@ class FivePrayer_GenerateTimeTableMonthly
 {
 	public function __construct()
     {
-		require_once(plugin_dir_path( __FILE__ ) . '../module/Validator.php');
         require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
 
     }
@@ -80,9 +79,9 @@ class FivePrayer_GenerateTimeTableMonthly
 
 			<?php
 				$month = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
-				
+			
 				$monthNumber =  $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null) ;
-				
+			
 				$ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array(wp_date("Y", null, $timezone = null),$validatorChecker->MonthlyNumber($monthNumber)));
 				$timeTableMonthly = $wpdb->get_results($ourQueryTableGen);
             foreach ($timeTableMonthly as $day) {?>

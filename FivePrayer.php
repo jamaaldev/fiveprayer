@@ -23,10 +23,11 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class FivePrayerPlugin
 {
+  
     public function __construct()
     {
         add_action('wp_enqueue_scripts', array($this,'supportScripts'), 999);
-
+		require_once(plugin_dir_path( __FILE__ ) . './php/classes/module/Validator.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/pages/FivePrayer_admin.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/enqueue/FivePrayer_enqueue.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/CustomLocationController.php');

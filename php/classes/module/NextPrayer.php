@@ -5,15 +5,7 @@ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 class FivePrayer_NextPrayer
 {
-    // public $prayer;
-
-    // public function __construct($prayer)
-    // {
-    //     $prayer = $prayer;
-    // }
-
-
-
+  
        public function TodayPrayer($prayer)
        {
            $timeHour = wp_date("H", null, $timezone = null);
