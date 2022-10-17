@@ -1,6 +1,9 @@
 <?php
  defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
- require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
+ 
+ if(!class_exists('FivePrayer_FpVerticalDailyPrayer')){
+     require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
+
 
  class FivePrayer_FpVerticalDailyPrayer
  {
@@ -131,3 +134,4 @@ public function registerShortcodes()
       return ob_get_clean();
   }
  }
+}

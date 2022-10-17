@@ -2,8 +2,13 @@
 
  defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
- require_once(plugin_dir_path(__FILE__) . '../module/GenerateTimeTableMonthly.php');
+ 
+ if(!class_exists('FivePrayer_FpTimetableMonth')){
 
+    require_once(plugin_dir_path(__FILE__) . '../module/GenerateTimeTableMonthly.php');
+
+
+ 
  class FivePrayer_FpTimetableMonth
  {
      public function __construct()
@@ -38,9 +43,10 @@
             $this->loadmeFirst();
             $genTable = new FivePrayer_GenerateTimeTableMonthly();
             
-            $genTable->DynamicGenerateCalendar();
+            wp_kses_post( $genTable->DynamicGenerateCalendar());
             
 
          return ob_get_clean();
      }
  }
+}

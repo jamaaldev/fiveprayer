@@ -2,6 +2,8 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayer_NextPrayer')){
+
 
 class FivePrayer_NextPrayer
 {
@@ -74,4 +76,5 @@ return $highlight = 'isha';
 
            return $highlight;
        }
+}
 }

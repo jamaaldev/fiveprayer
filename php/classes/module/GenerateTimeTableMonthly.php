@@ -3,6 +3,8 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayer_GenerateTimeTableMonthly')){
+
 
 class FivePrayer_GenerateTimeTableMonthly
 {
@@ -12,9 +14,11 @@ class FivePrayer_GenerateTimeTableMonthly
 
     }
  function changeCalendarMonth(){
+	
 
-	 $insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
-	 $insertDynamicTimeTableMonthly->insertDynamicTimeTable();
+		$insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
+		$insertDynamicTimeTableMonthly->insertDynamicTimeTable();
+	
 	}
     public function DynamicGenerateCalendar()
     {
@@ -132,7 +136,7 @@ class FivePrayer_GenerateTimeTableMonthly
 		jQuery('select').on('change', function(e) {
 			const month = e.target.value;
 			jQuery('body').load(
-				'<?php $this->changeCalendarMonth(); ?>', {
+				'', {
 					newMonth: month
 				});
 		});
@@ -149,4 +153,5 @@ class FivePrayer_GenerateTimeTableMonthly
 	});
 </script> <?php
     }
+}
 }

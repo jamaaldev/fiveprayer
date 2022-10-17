@@ -2,6 +2,9 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayer_GetInfoWordpressController')){
+
+
 class FivePrayer_GetInfoWordpressController
 {
     public function __construct()
@@ -37,8 +40,10 @@ class FivePrayer_GetInfoWordpressController
                 'Current_user' => wp_get_current_user()->user_login
 
             );
+           
             }
     
             exit();
     }
+}
 }

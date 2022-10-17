@@ -21,6 +21,10 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayerPlugin')){
+
+
+
 class FivePrayerPlugin
 {
   
@@ -36,6 +40,7 @@ class FivePrayerPlugin
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/GetInfoWordpressController.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/shortcodes/FpTimeTableMonth.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/shortcodes/FpVerticalDailyPrayer.php');
+
         new FivePrayer_admin();
         new FivePrayer_enqueue();
         new FivePrayer_CustomLocationController();
@@ -44,6 +49,7 @@ class FivePrayerPlugin
         new FivePrayer_GetInfoWordpressController();
         new FivePrayer_FpTimetableMonth();
         new FivePrayer_FpVerticalDailyPrayer();
+
     }
 
 
@@ -131,3 +137,4 @@ register_activation_hook(__FILE__, array($fivePrayerPlugin,'activate'));
 register_deactivation_hook(__FILE__, array($fivePrayerPlugin,'deactivate'));
 
 //uninstall
+}

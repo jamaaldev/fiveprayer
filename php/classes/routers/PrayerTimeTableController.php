@@ -2,6 +2,9 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayer_PrayerTimeTableController')){
+
+
 class FivePrayer_PrayerTimeTableController
 {
     public function __construct()
@@ -102,4 +105,5 @@ class FivePrayer_PrayerTimeTableController
         }
         exit();
     }
+}
 }
