@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayer_admin')){
+
+
 class FivePrayer_admin
 {
      public function __construct()
@@ -27,6 +30,7 @@ class FivePrayer_admin
       */
      public function fiveprayer_admin_page()
      {
-          require_once plugin_dir_path(__FILE__) . './fiveprayer_index.php'; // plugin_dir_path marka rabto inaad soo gashato pagekaan ku xiratiid
+          require_once plugin_dir_path(__FILE__) . './fiveprayer_index.php'; 
      }
+}
 }

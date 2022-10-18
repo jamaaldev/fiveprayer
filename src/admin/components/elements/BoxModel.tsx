@@ -9,7 +9,7 @@ export interface IBoxModelProps {
 
 export function BoxModel(props: IBoxModelProps) {
     const [filename, SetfileName] = React.useState<string>('');
-    const [csvJSON, SetCSVJSON] = React.useState<string[]>([]);
+    const [csvJSON, SetCSVJSON] = React.useState<object[]>([]);
     const refs = React.useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement>;
     const [updateTimeTable] = useUpdatePrayerTimeTableMutation();
 
@@ -28,9 +28,9 @@ export function BoxModel(props: IBoxModelProps) {
         const reader = new FileReader();
         reader.readAsText(csv);
         reader.onload = () => {
-            const text = reader.result;
-            let lines = [];
-            const linesArray = text?.split('\n');
+            const text:string | ArrayBuffer | null = reader.result as string;
+            let lines:string[] = [];
+            const linesArray:string[] = text?.split('\n');
             // for trimming and deleting extra space 
             linesArray.forEach((e: any) => {
                 const row = e.replace(/[\s]+[,]+|[,]+[\s]+/g, ',').trim();
@@ -38,13 +38,13 @@ export function BoxModel(props: IBoxModelProps) {
             });
 
             // for removing empty record
-            // lines.splice(lines.length - 1, 1);
-            const result = [];
+            lines.splice(lines.length - 1, 1);
+            const result:object[] = [];
             // remove double quotes from a String
             const headers = lines[0].replace(/['"]+/g, '').split(',');
             for (let i = 1; i < lines.length; i++) {
 
-                const obj = {};
+                const obj:object = {};
                 // remove double quotes from a String
                 const currentline = lines[i].replace(/['"]+/g, '').split(',');
                 for (let j = 0; j < headers.length; j++) {

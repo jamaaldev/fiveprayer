@@ -2,7 +2,10 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
-class GetInfoWordpressController
+if(!class_exists('FivePrayer_GetInfoWordpressController')){
+
+
+class FivePrayer_GetInfoWordpressController
 {
     public function __construct()
     {
@@ -29,26 +32,18 @@ class GetInfoWordpressController
 
     public function fp_getInfoWordpress(WP_REST_Request $request)
     {
-           // $json = file_get_contents("php://input");
-           $json =  sanitize_text_field(file_get_contents("php://input"));
-
-           // Converts it into a PHP object
-           $data = json_decode($json, true);
-   
-           $Site_title = sanitize_title(json_encode($data['Site_title']));
-           $Site_tagline = sanitize_title(json_encode($data['Site_tagline']));
-           $current_user = wp_get_current_user();
+        
          
-
-    
-            if($data){
-                return array('Site_title' => esc_html(sanitize_text_field( get_bloginfo( $Site_title ))),
-                'Site_tagline' => esc_html(sanitize_text_field( get_bloginfo( $Site_tagline ))),
-                'Current_user' => esc_html(sanitize_text_field( $current_user->user_login))
+            if(wp_get_current_user()->user_login){
+                return array('Site_title' =>  get_bloginfo( sanitize_title(sanitize_text_field($request['Site_title'])) ),
+                'Site_tagline' =>  get_bloginfo( sanitize_title(sanitize_text_field($request['Site_tagline'])) ),
+                'Current_user' => wp_get_current_user()->user_login
 
             );
+           
             }
     
             exit();
     }
+}
 }

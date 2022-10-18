@@ -57,7 +57,7 @@ export type CalCMethod = {
 
 export interface SearchTownCityState {
   
-  CityTown:string,
+  CityTown:Object[],
   CalcMethods:CalCMethod[],
   HigherLats:NameAndMethod[],
   MidnightMode:NameAndMethod[],
@@ -72,14 +72,12 @@ export interface SearchTownCityState {
   midnightChecked:string,
   medothChecked:string,
   asrChecked:string,
-
 }
 
 
 const initialState:SearchTownCityState = {
 
-  CityTown: "",
-  
+  CityTown: [],
   CalcMethods: methodsForCalc,
   HigherLats: methodsHigherLats,
   MidnightMode: methodsMidnightCalc,
@@ -89,7 +87,7 @@ const initialState:SearchTownCityState = {
   check: [],
   locationChecked:{country:'', lat:'', lng:'', city:'', id:''},
   higherChecked: '',
-  monthChecked: Number(localStorage.getItem('month')) ? Number(localStorage.getItem('month')) : new Date().getMonth(),
+  monthChecked: Number(sessionStorage.getItem('month')) ? Number(sessionStorage.getItem('month')) : new Date().getMonth(),
   midnightChecked:'',
   asrChecked: '',
   medothChecked: '',

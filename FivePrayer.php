@@ -21,12 +21,17 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayerPlugin')){
+
+
+
 class FivePrayerPlugin
 {
+  
     public function __construct()
     {
         add_action('wp_enqueue_scripts', array($this,'supportScripts'), 999);
-
+		require_once(plugin_dir_path( __FILE__ ) . './php/classes/module/Validator.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/pages/FivePrayer_admin.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/enqueue/FivePrayer_enqueue.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/CustomLocationController.php');
@@ -35,14 +40,16 @@ class FivePrayerPlugin
         require_once(plugin_dir_path(__FILE__) . './php/classes/routers/GetInfoWordpressController.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/shortcodes/FpTimeTableMonth.php');
         require_once(plugin_dir_path(__FILE__) . './php/classes/shortcodes/FpVerticalDailyPrayer.php');
+
         new FivePrayer_admin();
         new FivePrayer_enqueue();
-        new CustomLocationController();
-        new PrayerTimeTableController();
-        new PrayerSettingsMetaController();
-        new GetInfoWordpressController();
-        new FpTimetableMonth();
-        new FpVerticalDailyPrayer();
+        new FivePrayer_CustomLocationController();
+        new FivePrayer_PrayerTimeTableController();
+        new FivePrayer_PrayerSettingsMetaController();
+        new FivePrayer_GetInfoWordpressController();
+        new FivePrayer_FpTimetableMonth();
+        new FivePrayer_FpVerticalDailyPrayer();
+
     }
 
 
@@ -130,3 +137,4 @@ register_activation_hook(__FILE__, array($fivePrayerPlugin,'activate'));
 register_deactivation_hook(__FILE__, array($fivePrayerPlugin,'deactivate'));
 
 //uninstall
+}

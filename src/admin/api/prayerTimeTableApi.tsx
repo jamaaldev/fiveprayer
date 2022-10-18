@@ -13,8 +13,8 @@ export const prayerTimeTableApi = emptySplitApi.injectEndpoints({
             }}),
             providesTags:[{ type: "prayerTimeTableTag"}]
         }),
-        updatePrayerTimeTable: builder.mutation<void,SearchTownCityState>({
-            query:({ monthChecked, ...put }) => ({ url: `fp/v1/fp_prayertimetable`, method: 'POST', body: put,headers:{
+        updatePrayerTimeTable: builder.mutation<void,object[]>({
+            query:({  ...put }) => ({ url: `fp/v1/fp_prayertimetable`, method: 'POST', body: put,headers:{
                 'X-WP-Nonce': prayerData?.nonce,
             } }),
             invalidatesTags: [{ type: 'prayerTimeTableTag'}],

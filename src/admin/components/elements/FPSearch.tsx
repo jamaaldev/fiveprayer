@@ -26,7 +26,7 @@ function FPSearch({ holder, label, options, checked, name }) {
   };
   const dropSelected = (selected: EventTarget) => {};
 
-  useEffect(() => {}, [localStorage.getItem('city'), dropclick, droplist]);
+  useEffect(() => {}, [sessionStorage.getItem('city'), dropclick, droplist]);
   const dropClicks = (drop) => {
     if (droplist?.current) {
       node = droplist?.current;

@@ -1,18 +1,13 @@
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import * as React from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { CityTownSearch, DropReset } from "../../features/search/searchTownCity";
-import { useRef, useState,useMemo,useEffect } from "react";
-import parse, { domToReact } from "html-react-parser";
+import {  useDispatch } from "react-redux";
+import {  useState,useEffect } from "react";
 
-// import "../elements/css/FPInput.scss";
-import { RootState } from "../../../app/store";
 type FPType ={
  isloading:boolean, name: string; holder: string; label: string; checked:string; options: JSX.Element[];
 }
 function FPDropList({ holder, label, options, checked, name,isloading }:FPType) {
-  const {monthChecked, ListCity, locationChecked, CalcMethods, HigherLats, MidnightMode, AsrMedoths,CityTown } = useSelector((state:RootState) => state.searchtowncity);
   
 
   const [search, setSearch] = useState<string>();

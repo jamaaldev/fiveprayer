@@ -1,7 +1,7 @@
 === Five Prayer ===
 Contributors: jamaaldev
 Tags: prayer,muslim,fiveprayer
-Donate link: https://fiveprayer.com/donation
+Donate link: https://www.buymeacoffee.com/jamaaldev
 Requires at least: 5.9
 Tested up to: 6.0.2
 Requires PHP: 5.6

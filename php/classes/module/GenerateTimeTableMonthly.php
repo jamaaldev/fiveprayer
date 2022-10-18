@@ -3,24 +3,31 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
+if(!class_exists('FivePrayer_GenerateTimeTableMonthly')){
 
-class GenerateTimeTableMonthly
+
+class FivePrayer_GenerateTimeTableMonthly
 {
- 
-    public function DynamicGenerate()
+	public function __construct()
     {
+        require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
+
+    }
+
+    public function DynamicGenerateCalendar()
+    {
+		$validatorChecker = new FivePrayer_Validator();
         global $wpdb;
 
         {?>
 
 
-<div class="printer" id="divTo">
-
-	<table id='divToPrint' class='FP_TablePrayer_'>
-		<thead id='waa'>
-			<tr class="tbmonth">
-				<th class="select_print">
-					<form id="noPrint">
+<div class="fiveprayer__printer" id="fiveprayer__divTo">
+	<table id='fiveprayer__divToPrint' class='fiveprayer__TablePrayer_'>
+		<thead id='fiveprayer__waa'>
+			<tr class="fiveprayer__tbmonth">
+				<th class="fiveprayer__select_print">
+					<form id="fiveprayer__noPrint">
 						<select name="country">
 							<option value="" disabled selected>--Select Months--</option>
 							<option value="1">January</option>
@@ -37,7 +44,7 @@ class GenerateTimeTableMonthly
 							<option value="12">December</option>
 						</select>
 					</form>
-					<input class='clickPrint' id='noPrint' type="button" value="print" />
+					<input class='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
 				</th>
 				<th td colspan="3">Fajr</th>
 
@@ -50,7 +57,7 @@ class GenerateTimeTableMonthly
 				<th td colspan="2">Isha</th>
 
 			</tr>
-			<tr id="tbmonth">
+			<tr id="fiveprayer__tbmonth">
 				<th>Date</th>
 				<th> Begins</th>
 				<th> Iqamah</th>
@@ -69,16 +76,16 @@ class GenerateTimeTableMonthly
 		<tbody key={index}>
 
 			<?php
-            $monthss = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
+				$month = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
+			
+				$monthNumber =  $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null) ;
+			
+				$ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array(wp_date("Y", null, $timezone = null),$validatorChecker->MonthlyNumber($monthNumber)));
+				$timeTableMonthly = $wpdb->get_results($ourQueryTableGen);
+            foreach ($timeTableMonthly as $day) {?>
 
-            $monthdate =  $monthss['newMonth'] ? $monthss['newMonth'] : wp_date("n", null, $timezone = null) ;
-            $yeardate = wp_date("Y", null, $timezone = null);
-            $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array($yeardate,$monthdate));
-            $prayersettingmeta = $wpdb->get_results($ourQueryTableGen);
-            foreach ($prayersettingmeta as $day) {?>
 
-
-			<tr id=<?php echo esc_html($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null);?>>
+			<tr id=<?php echo esc_attr($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null);?>>
 				<td><?php echo esc_html($day->currentDate); ?>
 				</td>
 				<td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>
@@ -122,15 +129,15 @@ class GenerateTimeTableMonthly
 
 		jQuery('select').on('change', function(e) {
 			const month = e.target.value;
-			jQuery('#divTo').load(
-				'<?php echo esc_html(plugin_dir_url(__FILE__) . 'GenerateTimeTableDynamic.php'); ?>', {
+			jQuery('body').load(
+				'', {
 					newMonth: month
 				});
 		});
 	});
 	jQuery(document).ready(function() {
 
-		jQuery('.clickPrint').on('click', function(e) {
+		jQuery('.fiveprayer__clickPrint').on('click', function(e) {
 			
 			if(e.target){
 				print();
@@ -140,4 +147,5 @@ class GenerateTimeTableMonthly
 	});
 </script> <?php
     }
+}
 }

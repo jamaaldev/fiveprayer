@@ -23,7 +23,7 @@
 
     }
 
-    .FP_DairyPrayer_ .tbhead {
+    .FP_DairyPrayer_ .fiveprayer__tbhead {
         background: rgb(4 94 20) !important;
         color: aliceblue !important;
         text-align: center !important;
@@ -33,14 +33,14 @@
         background-color: #d2f847 !important;
     }
 
-    .iqamah_next {
+    .fiveprayer__iqamah_next {
         font-size: 18px;
         color: hsl(131deg 92% 19%);
         font-weight: 700;
 
     }
 
-    .iqamah_time {
+    .fiveprayer__iqamah_time {
         font-size: 40px;
         color: hsl(131deg 92% 19%);
         font-weight: 700;
@@ -62,23 +62,23 @@
         text-align: center;
     }
 
-    .FP_DairyPrayer_ .tbhead {
+     .fiveprayer__tbhead {
         background: rgb(4 94 20);
         color: aliceblue;
     }
 
-    .FP_DairyPrayer_ .fp__highlight {
+     .fp__highlight {
         background-color: #d2f847;
     }
 
-    .iqamah_next {
+    .fiveprayer__iqamah_next {
         font-size: 18px;
         color: hsl(131deg 92% 19%);
         font-weight: 700;
 
     }
 
-    .iqamah_time {
+    .fiveprayer__iqamah_time {
         font-size: 40px;
         color: hsl(131deg 92% 19%);
         font-weight: 700;
