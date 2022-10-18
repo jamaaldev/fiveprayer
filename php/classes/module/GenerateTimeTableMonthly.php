@@ -13,13 +13,7 @@ class FivePrayer_GenerateTimeTableMonthly
         require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
 
     }
- function changeCalendarMonth(){
-	
 
-		$insertDynamicTimeTableMonthly = new FivePrayer_DynamicTimeTableMonthly();
-		$insertDynamicTimeTableMonthly->insertDynamicTimeTable();
-	
-	}
     public function DynamicGenerateCalendar()
     {
 		$validatorChecker = new FivePrayer_Validator();
