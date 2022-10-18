@@ -1,0 +1,87 @@
+.FP__input__container{
+flex: 1;
+}
+
+ .FP_drop_list_ .FP__input , .FP__input__container .FP__input {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 8px 2px;
+    border: none;
+    color: var(--bbcolor);
+    border: 1px solid #e1e7ec;
+    background: whitesmoke;
+    text-indent: 5px;
+    cursor: pointer;
+  }
+  
+  label {
+    color: var(--bbcolor);
+  }
+  .middle_container {
+    display: flex;
+    flex-direction: column;
+    color: var(--bbcolor);
+  }
+  .middle_button {
+    font-size: 15px;
+    // margin-bottom: 5px;
+    
+    width: 100%;
+    padding: 14px 8px;
+    font-weight: 500;
+    // flex: 1;
+    border-radius: 4px;
+    border: none;
+    /* color: var(--bbcolor); */
+    border: 1px solid #e1e7ec;
+    background-color: var(--bbalp);
+    color: rgba(247, 252, 247, 0.753);
+
+    backdrop-filter: hue-rotate(100deg);
+    /* background: #e8f5e9; */
+    cursor: pointer;
+  }
+  .FP__input__container .FP-input {
+    margin-bottom: 5px;
+
+    width: 100%;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 2px;
+    border-radius: 4px;
+    border: none;
+    color: var(--bbcolor);
+    border: 1px solid #e1e7ec;
+    background: whitesmoke;
+    cursor: pointer;
+  }
+  label {
+    color: var(--bbcolor);
+  }
+  
+
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  background: beige;
+  border-radius: 4px;
+  padding-top: 5px;
+  z-index: 10;
+  option {
+    padding: 5px;
+  }
+  option:hover {
+    background-color: antiquewhite;
+    cursor: pointer;
+  }
+   
+}
