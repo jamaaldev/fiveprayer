@@ -8,11 +8,6 @@ declare const FivePrayerData:{
 };
 
 function Welcome() {
-  const infoWP = {
-    router: 'fp_infoblog',
-    info:{'Site_title':'name','Site_tagline':'description'}
-  }
-  const { data } = useGetBlogInfoQuery(infoWP);
 
   return (
     <>
