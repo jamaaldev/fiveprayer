@@ -10,7 +10,8 @@ export const CustomLocation = () => {
   const [lat, setLat] = useState<LocationCity | undefined | string | any>('');
   const [lng, setLng] = useState<LocationCity | undefined | string | any>('');
   const [id, setId] = useState<LocationCity | undefined | string | any>('');
-  const { data: locationcity, isLoading, isSuccess, isFetching, isError } = useGetLocationQuery('fp_location');
+  const [errordata, setErrorData] = useState<undefined | string | any>('');
+  const { data: locationcity, isLoading, isSuccess, isFetching,error } = useGetLocationQuery('fp_location');
   const [insertLocation] = useInsertLocationMutation();
   const [deleteLocation] = useDeleteLocationMutation();
   const [updatelocation] = useUpdateLocationMutation();
@@ -31,10 +32,15 @@ export const CustomLocation = () => {
     setId(el.id);
   };
 
-  const listInsertUpdate = () => {
+  const listInsertUpdate = async () => {
     // insert
+    
     if (!id && country && city && lat && lng) {
-      insertLocation({ country, city, lat, lng });
+      try {
+        const payload = await insertLocation({ country, city, lat, lng }).unwrap();
+      } catch (error) {
+        setErrorData(error.data.data)
+      }
       setCountry('');
       setCity('');
       setLat('');
@@ -44,7 +50,13 @@ export const CustomLocation = () => {
     }
     // update
     if (id && country && city && lat && lng) {
-      updatelocation({ id, country, city, lat, lng });
+      
+      try {
+        const payload = await updatelocation({ id, country, city, lat, lng }).unwrap();
+      } catch (error) {
+        setErrorData(error.data.data)
+
+      }
       setCountry('');
       setCity('');
       setLat('');
@@ -54,6 +66,7 @@ export const CustomLocation = () => {
   };
 
   const addLocationHandle = (e) => {
+
     if (e.target.name === 'country') {
       setCountry(e.target.value);
     }
@@ -109,6 +122,17 @@ export const CustomLocation = () => {
           )}
         </div>
       </div>
+        {errordata ?
+      <div>
+        
+        <h1>Error Information</h1>
+        <div>Country {errordata?.country}</div>
+        <div>Location {errordata?.city}</div>
+        <div>lat {errordata?.lat}</div>
+        <div>lng {errordata?.lng}</div>
+        
+      </div>
+        : ''}        
     </Location__Container>
   );
 };

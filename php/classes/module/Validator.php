@@ -15,9 +15,9 @@ class FivePrayer_Validator {
             return  wp_date("n", null, $timezone = null);
         }
     }
-    function customLocationInsert($arg){
+    function customLocationInsert($data){
 
-        if(!is_numeric(sanitize_text_field($arg['country'])) && !is_numeric(sanitize_text_field($arg['city'])) && is_numeric(sanitize_text_field($arg['lat'])) && is_numeric(sanitize_text_field($arg['lng'])))
+        if(!is_numeric(sanitize_text_field($data['country'])) && !is_numeric(sanitize_text_field($data['city'])) && is_numeric(sanitize_text_field($data['lat'])) && is_numeric(sanitize_text_field($data['lng'])))
         {
             return true;
         } else {
@@ -26,9 +26,9 @@ class FivePrayer_Validator {
        
        
     }
-    function customLocationUpdate($arg){
+    function customLocationUpdate($data){
 
-        if(is_numeric(sanitize_text_field($arg['id'])) && !is_numeric(sanitize_text_field($arg['country'])) && !is_numeric(sanitize_text_field($arg['city'])) && is_numeric(sanitize_text_field($arg['lat'])) && is_numeric(sanitize_text_field($arg['lng'])))
+        if(is_numeric(sanitize_text_field($data['id'])) && !is_numeric(sanitize_text_field($data['country'])) && !is_numeric(sanitize_text_field($data['city'])) && is_numeric(sanitize_text_field($data['lat'])) && is_numeric(sanitize_text_field($data['lng'])))
         {
             return true;
         } else {
@@ -37,9 +37,9 @@ class FivePrayer_Validator {
        
        
     }
-    function customLocationDelete($arg){
+    function customLocationDelete($data){
 
-        if(is_numeric(sanitize_text_field($arg['id'])))
+        if(is_numeric(sanitize_text_field($data['id'])))
         {
             return true;
         } else {
@@ -50,5 +50,7 @@ class FivePrayer_Validator {
     }
 
 }
+
+
 
 }

@@ -8,11 +8,7 @@ if(!class_exists('FivePrayer_GenerateTimeTableMonthly')){
 
 class FivePrayer_GenerateTimeTableMonthly
 {
-	public function __construct()
-    {
-        require_once(plugin_dir_path( __FILE__ ) . '../module/GenerateTimeTableDynamic.php');
 
-    }
 
     public function DynamicGenerateCalendar()
     {
