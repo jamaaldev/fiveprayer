@@ -1,6 +1,6 @@
 import { LocationCity, SearchTownCityState } from '../features/search/searchTownCity';
 import { emptySplitApi } from './emptySplitApi'
-
+declare const prayerData;
 
 export const customLocationApi = emptySplitApi.injectEndpoints({
     endpoints:(builder) =>({

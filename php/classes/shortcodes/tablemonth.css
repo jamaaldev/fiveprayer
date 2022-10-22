@@ -14,7 +14,7 @@
 
 
     .fiveprayer__select_print select,
-    #fiveprayer__noPrint {
+    #fiveprayer__noPrint,.wp-block-post-title{
         display: none;
 
     }
