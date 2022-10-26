@@ -51,6 +51,7 @@
 
     .FP_DairyPrayer_ {
         border-collapse: collapse;
+        width: 100%;
     }
 
     .FP_DairyPrayer_ th,
