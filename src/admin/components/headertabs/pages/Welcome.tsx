@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useGetBlogInfoQuery } from "../../../api/getInfoWordpressApi";
 //https://developer.wordpress.org/reference/functions/get_bloginfo/
 // https://developer.wordpress.org/reference/functions/wp_add_inline_script/
 
