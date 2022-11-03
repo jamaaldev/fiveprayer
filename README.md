@@ -59,7 +59,7 @@ I am very sorry at the moment I am working alone and still need to finish more t
 
 == Changelog ==
 = 1.0.1 =
-* improved ShortCode Timetable Prayer With Printer Option outside Table or inside table row.
+* improved ShortCode Timetable Monthly Prayer With Printer Option outside Table or inside table row.
 * Tested for compatibility with WP version 6.1
 
 
@@ -71,6 +71,8 @@ I am very sorry at the moment I am working alone and still need to finish more t
 == Upgrade Notice ==
 = 1.0.1 =
 * Tested for compatibility with WP version 6.1
+* improved ShortCode Timetable Monthly Prayer With Printer Option outside Table or inside table row.
+
 
 = 1.0.0 =
 * First release.
