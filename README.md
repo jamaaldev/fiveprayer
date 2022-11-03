@@ -1,11 +1,11 @@
 === Five Prayer ===
 Contributors: jamaaldev
-Tags: prayer,muslim,fiveprayer
+Tags: prayer,muslim,five,fiveprayer
 Donate link: https://www.buymeacoffee.com/jamaaldev
 Requires at least: 5.9
-Tested up to: 6.0.3
+Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -24,7 +24,8 @@ Five Prayer Plugin is perfect for:
 * Many More Features are Coming in Future
 
 * ShortCode.
- - `[Fp_TimeTable_Monthly]`   Displaying Monthly Timetable Prayer 
+ - `[Fp_TimeTable_Monthly]`   Displaying Monthly Timetable Prayer With Printer
+ - `[Fp_TimeTable_Monthly  printer_option="outside"]`   Displaying Monthly Timetable Prayer With Printer outside Table
  - `[Fp_Vertical_Daily_Prayer]`   Displaying Today Timetable Prayer Vertically
 
 
@@ -57,11 +58,19 @@ I am very sorry at the moment I am working alone and still need to finish more t
 3. FivePrayer go to Prayer Settings Fill Everything and Press Generate Calendar
 
 == Changelog ==
+= 1.0.1 =
+* improved ShortCode Timetable Prayer With Printer Option outside Table or inside table row.
+* Tested for compatibility with WP version 6.1
+
+
 = 1.0.0 =
 * First release.
 * Feature ShortCode Monthly Calendar with Printer Option.
 * Feature ShortCode Daily Prayer Times.
 
 == Upgrade Notice ==
+= 1.0.1 =
+* Tested for compatibility with WP version 6.1
+
 = 1.0.0 =
 * First release.
