@@ -13,8 +13,8 @@
 
 
 
-    .fiveprayer__select_print select,
-    #fiveprayer__noPrint,.wp-block-post-title{
+    
+    #fiveprayer__noPrint,.wp-block-post-title,.wp-container-6,.fiveprayer__printer_option select{
         display: none;
 
     }
@@ -113,15 +113,33 @@
         border-collapse: collapse;
         width: 100%;
     }
+.fiveprayer__printer_option{
+    display: flex;
+    justify-content: space-between;
+}
+.fiveprayer__printer_option select{
+	padding: 9px;
+}
 
+.fiveprayer__clickPrint{
+	padding: 9px;
+    background: azure;
+    cursor: pointer;
+}
+.fiveprayer__printer_option form{
+    display: contents;
+}
+#fiveprayer__noPrint > th{
+   border: none;
+}
     .fiveprayer__printer thead {
         vertical-align: 0;
     }
 
     .fiveprayer__printer th,
     .fiveprayer__printer td {
-        padding-inline: 0px;
-        padding-block: 3px;
+        /* padding-inline: 0px;
+        padding-block: 3px; */
 
         border-width: 0 1px 1px 0;
         border: 1px solid rgb(0, 0, 0);
@@ -149,7 +167,10 @@
         background-color: #a20000;
         color: rgb(248, 245, 245);
     }
-
+#fiveprayer__divTo,#fiveprayer__divToPrint{
+    width: 100%;
+    max-width: 100%;
+}
 
     .fiveprayer__printer tr:nth-child(even) {
         background-color: #3c9a61;
@@ -158,6 +179,7 @@
 
     .fiveprayer__select_print {
         display: flex;
+        /* align-items: center; */
         padding: 0;
         margin: 0;
     }
@@ -174,15 +196,16 @@
 
      .fiveprayer__select_print select {
         border: none;
+        align-self: center;
 
 
     }
 
      .fiveprayer__select_print .fiveprayer__clickPrint {
         border: none;
-        width: 100%;
+        /* width: 100%;
         height: inherit;
-        padding: 10px;
+        padding: 10px; */
 
     }
 

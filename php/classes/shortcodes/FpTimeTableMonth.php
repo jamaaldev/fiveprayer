@@ -37,13 +37,17 @@
 
         }
         
-        public function fpTimetableMonth()
+        public function fpTimetableMonth($atts)
         {
             ob_start();
             $this->loadmeFirst();
+            $attributes = shortcode_atts( [
+                'printer_option' => 'inside'
+            ], $atts);
+
             $genTable = new FivePrayer_GenerateTimeTableMonthly();
             
-            wp_kses_post( $genTable->DynamicGenerateCalendar());
+            wp_kses_post( $genTable->DynamicGenerateCalendar($attributes));
             
 
          return ob_get_clean();
