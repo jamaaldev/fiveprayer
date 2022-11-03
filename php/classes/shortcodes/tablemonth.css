@@ -117,6 +117,15 @@
     display: flex;
     justify-content: space-between;
 }
+.fiveprayer__printer_option select{
+	padding: 9px;
+}
+
+.fiveprayer__clickPrint{
+	padding: 9px;
+    background: azure;
+    cursor: pointer;
+}
 .fiveprayer__printer_option form{
     display: contents;
 }

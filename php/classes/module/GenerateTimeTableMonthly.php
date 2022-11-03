@@ -14,7 +14,6 @@ class FivePrayer_GenerateTimeTableMonthly
     {
 		$validatorChecker = new FivePrayer_Validator();
         global $wpdb;
-		BugFu::log($attributes);
 
         {?>
 
@@ -60,7 +59,7 @@ class FivePrayer_GenerateTimeTableMonthly
             <?php
             } ?>
             <?php
-            if($attributes["printer_option"] !== "outside"){
+            if($attributes["printer_option"] === "inside"){
                 ?>
             <tr class="fiveprayer__tbmonth">
                 <th class="fiveprayer__select_print fiveprayer__printer_option">
