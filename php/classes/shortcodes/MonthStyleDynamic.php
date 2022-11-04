@@ -1,3 +1,22 @@
+<?php
+ defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
+
+ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
+     class FivePrayer_MonthStyleDynamic
+     {
+         public function monthStyleDynamic()
+         {
+             global $post;
+             $colorREd = 'red';
+
+             if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Fp_TimeTable_Monthly')) {
+                 ?>
+<!-- Start Inline CSS Style -->
+<style>
+:root {
+    --bg-red: <?=$colorREd;
+                 ?>
+}
 
 @media print {
 
@@ -14,8 +33,11 @@
 
 
 
-    
-    #fiveprayer__noPrint,.wp-block-post-title,.wp-container-6,.fiveprayer__printer_option select{
+
+    #fiveprayer__noPrint,
+    .wp-block-post-title,
+    .wp-container-6,
+    .fiveprayer__printer_option select {
         display: none;
 
     }
@@ -75,25 +97,25 @@
         text-align: center !important;
     }
 
-     .fiveprayer__tbhead {
+    .fiveprayer__tbhead {
         width: 100%;
         background: rgb(4 94 20) !important;
         color: aliceblue;
     }
 
 
-     .fiveprayer__tbmonth {
-        background-color: #007076 !important;
+    .fiveprayer__tbmonth {
+        background-color: var(--bg-red) !important;
         color: whitesmoke;
     }
 
-     #fiveprayer__tbmonth {
+    #fiveprayer__tbmonth {
         background-color: #a20000 !important;
         color: rgb(248, 245, 245);
     }
 
 
-     .fiveprayer__printer tr:nth-child(even) {
+    .fiveprayer__printer tr:nth-child(even) {
         background-color: #3c9a61 !important;
         color: rgb(248, 246, 246) !important;
     }
@@ -104,35 +126,40 @@
 
 @media screen {
 
- 
+
     .fiveprayer__noDisplay {
         display: none;
 
     }
 
-    .fiveprayer__printer  {
+    .fiveprayer__printer {
         border-collapse: collapse;
         width: 100%;
     }
-.fiveprayer__printer_option{
-    display: flex;
-    justify-content: space-between;
-}
-.fiveprayer__printer_option select{
-	padding: 9px;
-}
 
-.fiveprayer__clickPrint{
-	padding: 9px;
-    background: azure;
-    cursor: pointer;
-}
-.fiveprayer__printer_option form{
-    display: contents;
-}
-#fiveprayer__noPrint > th{
-   border: none;
-}
+    .fiveprayer__printer_option {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .fiveprayer__printer_option select {
+        padding: 9px;
+    }
+
+    .fiveprayer__clickPrint {
+        padding: 9px;
+        background: azure;
+        cursor: pointer;
+    }
+
+    .fiveprayer__printer_option form {
+        display: contents;
+    }
+
+    #fiveprayer__noPrint>th {
+        border: none;
+    }
+
     .fiveprayer__printer thead {
         vertical-align: 0;
     }
@@ -140,7 +167,7 @@
     .fiveprayer__printer th,
     .fiveprayer__printer td {
         /* padding-inline: 0px;
-        padding-block: 3px; */
+padding-block: 3px; */
 
         border-width: 0 1px 1px 0;
         border: 1px solid rgb(0, 0, 0);
@@ -154,24 +181,26 @@
         color: aliceblue;
     }
 
-      #today-row {
+    #today-row {
         background-color: #d2f847;
         color: #022f31;
     }
 
     .fiveprayer__tbmonth {
-        background-color: #007076;
+        background-color: var(--bg-red);
         color: whitesmoke;
     }
 
-     #fiveprayer__tbmonth {
+    #fiveprayer__tbmonth {
         background-color: #a20000;
         color: rgb(248, 245, 245);
     }
-#fiveprayer__divTo,#fiveprayer__divToPrint{
-    width: 100%;
-    max-width: 100%;
-}
+
+    #fiveprayer__divTo,
+    #fiveprayer__divToPrint {
+        width: 100%;
+        max-width: 100%;
+    }
 
     .fiveprayer__printer tr:nth-child(even) {
         background-color: #3c9a61;
@@ -195,19 +224,26 @@
         height: 100%;
     }
 
-     .fiveprayer__select_print select {
+    .fiveprayer__select_print select {
         border: none;
         align-self: center;
 
 
     }
 
-     .fiveprayer__select_print .fiveprayer__clickPrint {
+    .fiveprayer__select_print .fiveprayer__clickPrint {
         border: none;
         /* width: 100%;
-        height: inherit;
-        padding: 10px; */
+height: inherit;
+padding: 10px; */
 
     }
 
 }
+</style>
+<!-- End Inline CSS Style -->
+<?php
+             }
+         }
+     }
+ }
