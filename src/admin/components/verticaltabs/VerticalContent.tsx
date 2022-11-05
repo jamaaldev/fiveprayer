@@ -3,7 +3,7 @@ import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 import GeneralSettings from "./pages/GeneralSettings";
 import PrayerConfigration from "./pages/PrayerConfigration";
-import OtherSettings from "./pages/OtherSettings";
+import CustomizingDesign from "./pages/CustomizingDesign";
 function VerticalContent() {
   return (
     <>
@@ -11,7 +11,7 @@ function VerticalContent() {
         <Routes>
           <Route index element={<GeneralSettings />} />
           <Route path="generalsettings" element={<GeneralSettings />} />
-          <Route path="othersettings" element={<OtherSettings />} />
+          <Route path="customizingdesign/*" element={<CustomizingDesign />} />
           <Route path="prayerconfigration/*" element={<PrayerConfigration />} />
         </Routes>
       </div>
