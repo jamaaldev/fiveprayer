@@ -37,19 +37,19 @@
     #fiveprayer__noPrint,
     .wp-block-post-title,
     .wp-container-6,
-    .fiveprayer__printer_option select {
+    .fiveprayer__printer_option select,.wp-block-image {
         display: none;
 
     }
 
-    .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6,.wp-block-image img{
-        width: 0;
-        height: 0;
+    .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6,.wp-block-image {
+        
         font-size: 0px;
 
     }
     .fiveprayer__printer{
-    font-size: 17px;
+
+    font-size: 17px ;
 
 
 }
