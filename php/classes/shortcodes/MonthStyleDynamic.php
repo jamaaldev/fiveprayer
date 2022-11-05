@@ -7,7 +7,7 @@
          public function monthStyleDynamic()
          {
              global $post;
-             $colorREd = 'red';
+             $colorREd = '#007076';
 
              if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Fp_TimeTable_Monthly')) {
                  ?>
@@ -33,15 +33,14 @@
 
 
 
-
     #fiveprayer__noPrint,
     .wp-block-post-title,
     .wp-container-6,
-    .fiveprayer__printer_option select,.wp-block-image {
+    .fiveprayer__printer_option select,.wp-block-image,aside,.widget-area.sidebar-primary {
         display: none;
-
+        
     }
-
+  
     .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6,.wp-block-image {
         
         font-size: 0px;
