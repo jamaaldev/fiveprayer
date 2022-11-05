@@ -42,6 +42,17 @@
 
     }
 
+    .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6{
+        /* width: 0; */
+        font-size: 0px;
+
+    }
+    .fiveprayer__printer{
+    font-size: 17px;
+
+
+}
+
 
     body * {
 
@@ -92,7 +103,7 @@
         padding: 0 !important;
         padding-inline: 3px !important;
         padding-block: 3px !important;
-        /* border-width: 0 1px 1px 0 !important; */
+        border-width: 0 1px 1px 0 !important;
         border: 1px solid rgb(0, 0, 0) !important;
         text-align: center !important;
     }
@@ -164,16 +175,17 @@
         vertical-align: 0;
     }
 
+
     .fiveprayer__printer th,
     .fiveprayer__printer td {
-        /* padding-inline: 0px;
-padding-block: 3px; */
 
-        border-width: 0 1px 1px 0;
-        border: 1px solid rgb(0, 0, 0);
-        text-align: center;
+        padding: 0 ;
+        padding-inline: 3px ;
+        padding-block: 3px ;
+        border-width: 0 1px 1px 0 ;
+        border: 1px solid rgb(0, 0, 0) ;
+        text-align: center ;
     }
-
 
     .fiveprayer__tbhead {
         width: 100%;
@@ -196,11 +208,6 @@ padding-block: 3px; */
         color: rgb(248, 245, 245);
     }
 
-    #fiveprayer__divTo,
-    #fiveprayer__divToPrint {
-        width: 100%;
-        max-width: 100%;
-    }
 
     .fiveprayer__printer tr:nth-child(even) {
         background-color: #3c9a61;
