@@ -42,8 +42,9 @@
 
     }
 
-    .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6{
-        /* width: 0; */
+    .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6,.wp-block-image img{
+        width: 0;
+        height: 0;
         font-size: 0px;
 
     }
@@ -143,11 +144,14 @@
 
     }
 
-    .fiveprayer__printer {
+    #fiveprayer__divTo {
         border-collapse: collapse;
-        width: 100%;
+        max-width: inherit;
     }
-
+#fiveprayer__divToPrint{
+    /* margin: auto; */
+    width: 100%;
+}
     .fiveprayer__printer_option {
         display: flex;
         justify-content: space-between;
@@ -166,6 +170,7 @@
     .fiveprayer__printer_option form {
         display: contents;
     }
+  
 
     #fiveprayer__noPrint>th {
         border: none;
