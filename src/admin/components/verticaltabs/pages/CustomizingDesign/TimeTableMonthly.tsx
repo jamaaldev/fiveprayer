@@ -16,6 +16,7 @@
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
 import * as React from 'react';
+import FPCalendarMonthly from './CalendarMonthly';
 
 export interface ITimeTableMonthlyProps {
 }
@@ -26,6 +27,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
        <div id='Customizing' className='tabcontent'>
         <h3>TimeTableMonthly</h3>
         <p>Customizing TimeTable Theme</p>
+        <FPCalendarMonthly/>
       </div>
     </div>
   );

@@ -9,13 +9,13 @@
              global $post;
              $colorREd = '#007076';
 
-             if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Fp_TimeTable_Monthly')) {
-                 ?>
+
+             ?>
 <!-- Start Inline CSS Style -->
 <style>
 :root {
     --bg-red: <?=$colorREd;
-                 ?>
+             ?>
 }
 
 @media print {
@@ -203,7 +203,7 @@
     }
 
     .fiveprayer__tbmonth {
-        background-color: var(--bg-red);
+        background-color: var(--bg-red) !important;
         color: whitesmoke;
     }
 
@@ -254,7 +254,7 @@ padding: 10px; */
 </style>
 <!-- End Inline CSS Style -->
 <?php
-             }
+
          }
      }
  }

@@ -1,7 +1,6 @@
 import '../../css/FPTablePrayer.scss'
 
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
-import { useDispatch } from 'react-redux';
 import React from 'react';
 
 export type FPCalendar ={
