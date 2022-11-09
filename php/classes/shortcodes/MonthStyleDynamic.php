@@ -7,15 +7,44 @@
          public function monthStyleDynamic()
          {
              global $post;
-             $colorREd = '#007076';
+             global $wpdb;
+             $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_prayer_settings_meta ");
+             $result = json_encode($prayersettingmeta);
+             $setcolors = json_decode($result, true);
 
+             $filteredColorFirst = array_filter(
+                 $setcolors,
+                 function ($val) {
+                     return $val['meta-key'] === "first";
+                 }
+             );
+             $filteredColorSecond = array_filter(
+                 $setcolors,
+                 function ($val) {
+                     return $val['meta-key'] === "second";
+                 }
+             );
+         
+             $getColorFirst = array_map(function($key,$value){
+                return $value["value"];
+             }, array_keys($filteredColorFirst), array_values($filteredColorFirst));
+
+             $getColorSecond = array_map(function($key,$value){
+                return $value["value"];
+             }, array_keys($filteredColorSecond), array_values($filteredColorSecond));
+            
+        
+             
+             $colorFirst = trim($getColorFirst[0], '"');
+             $colorSecond = trim($getColorSecond[0], '"');
+             
 
              ?>
 <!-- Start Inline CSS Style -->
 <style>
 :root {
-    --bg-red: <?=$colorREd;
-             ?>
+    --bg-first: <?=$colorFirst ?>;
+    --bg-second: <?=$colorSecond ?>;
 }
 
 @media print {
@@ -115,13 +144,13 @@
     }
 
 
-    .fiveprayer__tbmonth {
-        background-color: var(--bg-red) !important;
+    .fiveprayer__tbmonthfirst {
+        background-color: var(--bg-first) !important;
         color: whitesmoke;
     }
 
-    #fiveprayer__tbmonth {
-        background-color: #a20000 !important;
+    #fiveprayer__tbmonthsecond {
+        background-color: var(--bg-second) !important;
         color: rgb(248, 245, 245);
     }
 
@@ -202,13 +231,13 @@
         color: #022f31;
     }
 
-    .fiveprayer__tbmonth {
-        background-color: var(--bg-red) !important;
+    .fiveprayer__tbmonthfirst {
+        background-color: var(--bg-first) ;
         color: whitesmoke;
     }
 
-    #fiveprayer__tbmonth {
-        background-color: #a20000;
+    #fiveprayer__tbmonthsecond {
+        background-color:var(--bg-second);
         color: rgb(248, 245, 245);
     }
 

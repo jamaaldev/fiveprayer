@@ -44,7 +44,7 @@ class FivePrayer_GenerateTimeTableMonthly
                 </form>
                 <input class='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
             </div>
-            <tr class="fiveprayer__tbmonth">
+            <tr class="fiveprayer__tbmonthfirst">
                 <th class="emty__th"></th>
                 <th td colspan="3">Fajr</th>
 
@@ -96,7 +96,7 @@ class FivePrayer_GenerateTimeTableMonthly
             </tr>
             <?php
                 } ?>
-            <tr id="fiveprayer__tbmonth">
+            <tr id="fiveprayer__tbmonthsecond">
                 <th>Date</th>
                 <th> Begins</th>
                 <th> Iqamah</th>

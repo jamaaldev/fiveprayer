@@ -16,109 +16,122 @@
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from 'react'
+import styled, { css } from 'styled-components';
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
-type Props = {}
 
-function CalendarMonthly({ }: Props) {
-  const {data:timetable,isFetching,isLoading} = useGetPrayerTimeTableQuery('fp_prayertimetable');
-  const [month,SetMonth] = React.useState<FPCalendar[]>();
+type Props = { first, second, rowEven }
 
-  React.useEffect(()=>{
-   
-    if(timetable?.length){
-   
-      const newone = timetable?.filter((table:FPCalendar) => {
-      return  new Date(table.date).getFullYear() === new Date().getFullYear() &&  new Date(table.date).getMonth() === ( Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum ) || new Date().getMonth());
-      }) 
+function CalendarMonthly({ first, second, rowEven }: Props) {
+  const { data: timetable, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
+  const [month, SetMonth] = React.useState<FPCalendar[]>();
+  
+  localStorage.setItem('even',rowEven);
+  React.useEffect(() => {
+    
+    if (timetable?.length) {
+
+      const newone = timetable?.filter((table: FPCalendar) => {
+        return new Date(table.date).getFullYear() === new Date().getFullYear() && new Date(table.date).getMonth() === (Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum) || new Date().getMonth());
+      })
       SetMonth(newone)
-     }
-  },[timetable, new Date().getMonth(), Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
- 
+    }
+  }, [timetable, new Date().getMonth(), Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
+
 
   return (
-  
-      <div className="fiveprayer__printer" id="fiveprayer__divTo">
-        <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
-          <thead id='fiveprayer__waa'>
 
-            <div className="fiveprayer__printer_option ">
-              <form id="fiveprayer__noPrint">
-                <select name="country">
-                  <option value="" disabled selected>--Select Months--</option>
-                  <option value="1">January</option>
-                  <option value="2">February</option>
-                  <option value="3">March</option>
-                  <option value="4">April</option>
-                  <option value="5">May</option>
-                  <option value="6">June </option>
-                  <option value="7">July</option>
-                  <option value="8">August</option>
-                  <option value="9">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-              </form>
-              <input className='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
-            </div>
-            <tr className="fiveprayer__tbmonth"  >
-              <th >
-              </th>
+    <FivePrinter coloreven={rowEven} className="fiveprayer__printer"  id="fiveprayer__divTo">
+      <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
+        <thead id='fiveprayer__waa'>
 
-              <th td colspan="3">Fajr</th>
+          <div className="fiveprayer__printer_option ">
+            <form id="fiveprayer__noPrint">
+              <select name="country">
+                <option value="" disabled selected>--Select Months--</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June </option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </form>
+            <input className='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
+          </div>
+          <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: first }} >
+            <th >
+            </th>
 
-              <th td colspan="2">Dhuhr</th>
+            <th td colspan="3">Fajr</th>
 
-              <th td colspan="2">Asr</th>
+            <th td colspan="2">Dhuhr</th>
 
-              <th td colspan="2">Maghrib</th>
+            <th td colspan="2">Asr</th>
 
-              <th td colspan="2">Isha</th>
+            <th td colspan="2">Maghrib</th>
 
+            <th td colspan="2">Isha</th>
+
+          </tr>
+
+          <tr className="fiveprayer__tbmonthsecond" style={{ backgroundColor: second }}>
+            <th>Date</th>
+            <th> Begins</th>
+            <th> Iqamah</th>
+            <th>Sunrise</th>
+            <th> Begins</th>
+            <th> Iqamah</th>
+            <th> Begins</th>
+            <th> Iqamah</th>
+            <th> Begins</th>
+            <th> Iqamah</th>
+            <th> Begins</th>
+            <th> Iqamah</th>
+          </tr>
+        </thead>
+
+        <tbody  >
+          {month?.map((calendars: FPCalendar, index: number) => (
+            <tr  key={index} id={calendars?.today === new Date().getDate().toString() ? 'today-row' : null}>
+              <td >{calendars?.currentDate}</td>
+              <td>{calendars?.fajr_begins}</td>
+              <td>{calendars?.fajr_iqamah}</td>
+              {/* <td>{calendars?.fajr_masjid_jamaah}</td> */}
+              <td>{calendars?.sunrise}</td>
+              <td>{calendars?.dhuhr_begins}</td>
+              <td>{calendars?.dhuhr_iqamah}</td>
+              <td>{calendars?.asr_begins}</td>
+              <td>{calendars?.asr_iqamah}</td>
+              <td>{calendars?.maghrib_begins}</td>
+              <td>{calendars?.maghrib_iqamah}</td>
+              <td>{calendars?.isha_begins}</td>
+              <td>{calendars?.isha_iqamah}</td>
             </tr>
+          ))}
 
-            <tr id="fiveprayer__tbmonth" >
-              <th>Date</th>
-              <th> Begins</th>
-              <th> Iqamah</th>
-              <th>Sunrise</th>
-              <th> Begins</th>
-              <th> Iqamah</th>
-              <th> Begins</th>
-              <th> Iqamah</th>
-              <th> Begins</th>
-              <th> Iqamah</th>
-              <th> Begins</th>
-              <th> Iqamah</th>
-            </tr>
-          </thead>
+        </tbody>
+      </table>
 
-          <tbody  >
-          {month?.map((calendars:FPCalendar,index:number) => (
-    <tr key={index} id={calendars?.today === new Date().getDate().toString() ?  'today-row'  : null  }>
-    <td>{calendars?.currentDate}</td>
-    <td>{calendars?.fajr_begins}</td>
-    <td>{calendars?.fajr_iqamah}</td>
-    {/* <td>{calendars?.fajr_masjid_jamaah}</td> */}
-    <td>{calendars?.sunrise}</td>
-    <td>{calendars?.dhuhr_begins}</td>
-    <td>{calendars?.dhuhr_iqamah}</td>
-    <td>{calendars?.asr_begins}</td>
-    <td>{calendars?.asr_iqamah}</td>
-    <td>{calendars?.maghrib_begins}</td>
-    <td>{calendars?.maghrib_iqamah}</td>
-    <td>{calendars?.isha_begins}</td>
-    <td>{calendars?.isha_iqamah}</td>
-  </tr>
- ))}
-
- </tbody>
-        </table>
-      </div>
-   
+    </FivePrinter>
 
   )
 
 }
 
+const FivePrinter = styled.div`
+
+${props => props.coloreven && css`
+tr:nth-child(even) {
+  background-color: ${props.coloreven};
+}
+`};
+color: rgb(36, 28, 28);
+
+`;
 export default CalendarMonthly

@@ -16,18 +16,68 @@
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
 import * as React from 'react';
-import FPCalendarMonthly from './CalendarMonthly';
-
+import CalendarMonthly from './CalendarMonthly';
+import { HexAlphaColorPicker } from "react-colorful";
+import "../css/ColorPicker.scss"
+import { useInsertprayerSettingsMetaAPIMutation } from '../../../../api/prayerSettingsMetaAPI';
 export interface ITimeTableMonthlyProps {
 }
 
 export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
+  const [colorFirstHead, setColorFirstHead] = React.useState("#000102");
+  const [colorSecondHead, setColorSecondHead] = React.useState("#ff7700");
+  const [colorEvenRow, setColorEvenRow] = React.useState("#0059ff");
+  const [colorHighLightRow, setColorHighLightRow] = React.useState("#73ff00");
+  const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
+
+  const firstHead = (value,meta) =>{
+    setColorFirstHead(value)
+    const colorSet = { value: value, meta: meta };
+    // insertprayersettingmeta(colorSet);
+  }
+  const secondHead = (value,meta) =>{
+    setColorSecondHead(value)
+    const colorSet = { value: value, meta: meta };
+    insertprayersettingmeta(colorSet);
+  }
+  const eventRow = (value,meta) =>{
+    setColorEvenRow(value)
+    const colorSet = { value: value, meta: meta };
+    // insertprayersettingmeta(colorSet);
+  }
   return (
     <div>
-       <div id='Customizing' className='tabcontent'>
+      <div id='Customizing' className='tabcontent'>
         <h3>TimeTableMonthly</h3>
         <p>Customizing TimeTable Theme</p>
-        <FPCalendarMonthly/>
+        <div className="container">
+          <div className="clr-picker">
+            <div className="first">
+              <span>First Head Color</span>
+              <HexAlphaColorPicker color={colorFirstHead} onChange={(value) => firstHead(value,'first')} />
+            </div>
+            <div className="second">
+              <span>Second Head Color</span>
+              <HexAlphaColorPicker color={colorSecondHead} onChange={(value) => secondHead(value,'second')} />
+            </div>
+
+            <div className="even">
+              <span>Even Row Color</span>
+              <HexAlphaColorPicker color={colorEvenRow} onChange={(value) => eventRow(value,'even')}  />
+            </div>
+            <div className="highlight">
+              <span>HightLight Row Color</span>
+              <HexAlphaColorPicker color={colorHighLightRow} onChange={setColorHighLightRow} />
+            </div>
+
+
+
+          </div>
+          <div className="calendar-prayer">
+            <CalendarMonthly first={colorFirstHead} second={colorSecondHead} rowEven={colorEvenRow} />
+
+          </div>
+        </div>
       </div>
     </div>
   );
