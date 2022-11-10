@@ -33,7 +33,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   const firstHead = (value,meta) =>{
     setColorFirstHead(value)
     const colorSet = { value: value, meta: meta };
-    // insertprayersettingmeta(colorSet);
+    insertprayersettingmeta(colorSet);
   }
   const secondHead = (value,meta) =>{
     setColorSecondHead(value)
@@ -42,6 +42,11 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   }
   const eventRow = (value,meta) =>{
     setColorEvenRow(value)
+    const colorSet = { value: value, meta: meta };
+    // insertprayersettingmeta(colorSet);
+  }
+  const eventRowHighlight = (value,meta) =>{
+    setColorHighLightRow(value)
     const colorSet = { value: value, meta: meta };
     // insertprayersettingmeta(colorSet);
   }
@@ -67,14 +72,14 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
             </div>
             <div className="highlight">
               <span>HightLight Row Color</span>
-              <HexAlphaColorPicker color={colorHighLightRow} onChange={setColorHighLightRow} />
+              <HexAlphaColorPicker color={colorHighLightRow} onChange={(value) => eventRowHighlight(value,'highlight')} />
             </div>
 
 
 
           </div>
           <div className="calendar-prayer">
-            <CalendarMonthly first={colorFirstHead} second={colorSecondHead} rowEven={colorEvenRow} />
+            <CalendarMonthly first={colorFirstHead} second={colorSecondHead} rowEven={colorEvenRow} rowHighlight={colorHighLightRow}/>
 
           </div>
         </div>

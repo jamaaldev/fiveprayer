@@ -24,20 +24,20 @@
                      return $val['meta-key'] === "second";
                  }
              );
-         
-             $getColorFirst = array_map(function($key,$value){
-                return $value["value"];
+
+             $getColorFirst = array_map(function ($key, $value) {
+                 return $value["value"];
              }, array_keys($filteredColorFirst), array_values($filteredColorFirst));
 
-             $getColorSecond = array_map(function($key,$value){
-                return $value["value"];
+             $getColorSecond = array_map(function ($key, $value) {
+                 return $value["value"];
              }, array_keys($filteredColorSecond), array_values($filteredColorSecond));
-            
-        
-             
+
+
+
              $colorFirst = trim($getColorFirst[0], '"');
              $colorSecond = trim($getColorSecond[0], '"');
-             
+
 
              ?>
 <!-- Start Inline CSS Style -->
@@ -125,6 +125,11 @@
         border-collapse: collapse;
         width: 100% !important;
     }
+    #fiveprayer__divToPrint{
+    /* margin: auto; */
+    width: 100%;
+    border-collapse: collapse;
+}
 
     .fiveprayer__printer th,
     .fiveprayer__printer td {
@@ -133,7 +138,7 @@
         padding-inline: 3px !important;
         padding-block: 3px !important;
         border-width: 0 1px 1px 0 !important;
-        border: 1px solid rgb(0, 0, 0) !important;
+        border: 1px solid #00000024 !important;
         text-align: center !important;
     }
 
@@ -179,6 +184,7 @@
 #fiveprayer__divToPrint{
     /* margin: auto; */
     width: 100%;
+    border-collapse: collapse;
 }
     .fiveprayer__printer_option {
         display: flex;
@@ -216,7 +222,7 @@
         padding-inline: 3px ;
         padding-block: 3px ;
         border-width: 0 1px 1px 0 ;
-        border: 1px solid rgb(0, 0, 0) ;
+        border: 1px solid #00000024;
         text-align: center ;
     }
 

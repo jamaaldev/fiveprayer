@@ -3,27 +3,23 @@
 
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
-if(!class_exists('FivePrayer_GenerateTimeTableMonthly')){
-
-
-class FivePrayer_GenerateTimeTableMonthly
-{
-
-
-    public function DynamicGenerateCalendar($attributes)
+if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
+    class FivePrayer_GenerateTimeTableMonthly
     {
-		$validatorChecker = new FivePrayer_Validator();
-        global $wpdb;
+        public function DynamicGenerateCalendar($attributes)
+        {
+            $validatorChecker = new FivePrayer_Validator();
+            global $wpdb;
 
-        {?>
+            {?>
 
 
 <div class="fiveprayer__printer" id="fiveprayer__divTo">
     <table id='fiveprayer__divToPrint' class='fiveprayer__TablePrayer_'>
         <thead id='fiveprayer__waa'>
-            <?php 
-            if($attributes["printer_option"] === "outside"){
-                ?>
+            <?php
+                if ($attributes["printer_option"] === "outside") {
+                    ?>
             <div class="fiveprayer__printer_option ">
                 <form id="fiveprayer__noPrint">
                     <select name="country">
@@ -57,11 +53,11 @@ class FivePrayer_GenerateTimeTableMonthly
                 <th td colspan="2">Isha</th>
             </tr>
             <?php
-            } ?>
+                } ?>
             <?php
-            if($attributes["printer_option"] === "inside"){
-                ?>
-            <tr class="fiveprayer__tbmonth">
+                if ($attributes["printer_option"] === "inside") {
+                    ?>
+            <tr class="fiveprayer__tbmonthfirst">
                 <th class="fiveprayer__select_print fiveprayer__printer_option">
                     <form id="fiveprayer__noPrint">
                         <select name="country">
@@ -115,13 +111,13 @@ class FivePrayer_GenerateTimeTableMonthly
         <tbody key={index}>
 
             <?php
-				$month = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
-			
-				$monthNumber =  $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null) ;
-			
-				$ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array(wp_date("Y", null, $timezone = null),$validatorChecker->MonthlyNumber($monthNumber)));
-				$timeTableMonthly = $wpdb->get_results($ourQueryTableGen);
-            foreach ($timeTableMonthly as $day) {?>
+                $month = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
+
+                $monthNumber =  $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null) ;
+
+                $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array(wp_date("Y", null, $timezone = null),$validatorChecker->MonthlyNumber($monthNumber)));
+                $timeTableMonthly = $wpdb->get_results($ourQueryTableGen);
+                foreach ($timeTableMonthly as $day) {?>
 
 
             <tr id=<?php echo esc_attr($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null);?>>
@@ -152,7 +148,7 @@ class FivePrayer_GenerateTimeTableMonthly
 
             </tr>
             <?php }
-            ?>
+                ?>
         </tbody>
 
     </table>
@@ -160,8 +156,8 @@ class FivePrayer_GenerateTimeTableMonthly
 
 <?php
 
-        }
-        ?>
+            }
+            ?>
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
@@ -185,6 +181,6 @@ jQuery(document).ready(function() {
     });
 });
 </script> <?php
+        }
     }
-}
 }

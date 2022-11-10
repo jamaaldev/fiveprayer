@@ -19,9 +19,9 @@ import React from 'react'
 import styled, { css } from 'styled-components';
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
 
-type Props = { first, second, rowEven }
+type Props = { first, second, rowEven,rowHighlight }
 
-function CalendarMonthly({ first, second, rowEven }: Props) {
+function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
   const { data: timetable, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
   const [month, SetMonth] = React.useState<FPCalendar[]>();
   
@@ -40,11 +40,11 @@ function CalendarMonthly({ first, second, rowEven }: Props) {
 
   return (
 
-    <FivePrinter coloreven={rowEven} className="fiveprayer__printer"  id="fiveprayer__divTo">
+    <FivePrinter coloreven={rowEven} colorhigh={rowHighlight} className="fiveprayer__printer"  id="fiveprayer__divTo">
       <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
         <thead id='fiveprayer__waa'>
 
-          <div className="fiveprayer__printer_option ">
+          {/* <div className="fiveprayer__printer_option ">
             <form id="fiveprayer__noPrint">
               <select name="country">
                 <option value="" disabled selected>--Select Months--</option>
@@ -63,7 +63,7 @@ function CalendarMonthly({ first, second, rowEven }: Props) {
               </select>
             </form>
             <input className='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
-          </div>
+          </div> */}
           <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: first }} >
             <th >
             </th>
@@ -125,13 +125,25 @@ function CalendarMonthly({ first, second, rowEven }: Props) {
 }
 
 const FivePrinter = styled.div`
+   th,
+     td {
 
-${props => props.coloreven && css`
-tr:nth-child(even) {
-  background-color: ${props.coloreven};
+        padding: 0 ;
+        padding-inline: 3px ;
+        padding-block: 7px ;
+      
+    }
+#today-row{
+  background-color: ${props => props.colorhigh} ;
 }
-`};
+tr:nth-child(even) {
+  background-color: ${props => props.coloreven};
+}
+
 color: rgb(36, 28, 28);
 
 `;
+
+
+
 export default CalendarMonthly
