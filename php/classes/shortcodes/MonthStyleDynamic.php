@@ -7,15 +7,44 @@
          public function monthStyleDynamic()
          {
              global $post;
-             $colorREd = 'red';
+             global $wpdb;
+             $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_prayer_settings_meta ");
+             $result = json_encode($prayersettingmeta);
+             $setcolors = json_decode($result, true);
 
-             if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Fp_TimeTable_Monthly')) {
-                 ?>
+             $filteredColorFirst = array_filter(
+                 $setcolors,
+                 function ($val) {
+                     return $val['meta-key'] === "first";
+                 }
+             );
+             $filteredColorSecond = array_filter(
+                 $setcolors,
+                 function ($val) {
+                     return $val['meta-key'] === "second";
+                 }
+             );
+
+             $getColorFirst = array_map(function ($key, $value) {
+                 return $value["value"];
+             }, array_keys($filteredColorFirst), array_values($filteredColorFirst));
+
+             $getColorSecond = array_map(function ($key, $value) {
+                 return $value["value"];
+             }, array_keys($filteredColorSecond), array_values($filteredColorSecond));
+
+
+
+             $colorFirst = trim($getColorFirst[0], '"');
+             $colorSecond = trim($getColorSecond[0], '"');
+
+
+             ?>
 <!-- Start Inline CSS Style -->
 <style>
 :root {
-    --bg-red: <?=$colorREd;
-                 ?>
+    --bg-first: <?=$colorFirst ?>;
+    --bg-second: <?=$colorSecond ?>;
 }
 
 @media print {
@@ -33,22 +62,22 @@
 
 
 
-
     #fiveprayer__noPrint,
     .wp-block-post-title,
     .wp-container-6,
-    .fiveprayer__printer_option select {
+    .fiveprayer__printer_option select,.wp-block-image,aside,.widget-area.sidebar-primary {
         display: none;
-
+        
     }
-
-    .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6{
-        /* width: 0; */
+  
+    .entry-content,.entry-content h1, .entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6,.wp-block-image {
+        
         font-size: 0px;
 
     }
     .fiveprayer__printer{
-    font-size: 17px;
+
+    font-size: 17px ;
 
 
 }
@@ -96,6 +125,11 @@
         border-collapse: collapse;
         width: 100% !important;
     }
+    #fiveprayer__divToPrint{
+    /* margin: auto; */
+    width: 100%;
+    border-collapse: collapse;
+}
 
     .fiveprayer__printer th,
     .fiveprayer__printer td {
@@ -104,7 +138,7 @@
         padding-inline: 3px !important;
         padding-block: 3px !important;
         border-width: 0 1px 1px 0 !important;
-        border: 1px solid rgb(0, 0, 0) !important;
+        border: 1px solid #00000024 !important;
         text-align: center !important;
     }
 
@@ -115,13 +149,13 @@
     }
 
 
-    .fiveprayer__tbmonth {
-        background-color: var(--bg-red) !important;
+    .fiveprayer__tbmonthfirst {
+        background-color: var(--bg-first) !important;
         color: whitesmoke;
     }
 
-    #fiveprayer__tbmonth {
-        background-color: #a20000 !important;
+    #fiveprayer__tbmonthsecond {
+        background-color: var(--bg-second) !important;
         color: rgb(248, 245, 245);
     }
 
@@ -143,11 +177,15 @@
 
     }
 
-    .fiveprayer__printer {
+    #fiveprayer__divTo {
         border-collapse: collapse;
-        width: 100%;
+        max-width: inherit;
     }
-
+#fiveprayer__divToPrint{
+    /* margin: auto; */
+    width: 100%;
+    border-collapse: collapse;
+}
     .fiveprayer__printer_option {
         display: flex;
         justify-content: space-between;
@@ -166,6 +204,7 @@
     .fiveprayer__printer_option form {
         display: contents;
     }
+  
 
     #fiveprayer__noPrint>th {
         border: none;
@@ -183,7 +222,7 @@
         padding-inline: 3px ;
         padding-block: 3px ;
         border-width: 0 1px 1px 0 ;
-        border: 1px solid rgb(0, 0, 0) ;
+        border: 1px solid #00000024;
         text-align: center ;
     }
 
@@ -198,13 +237,13 @@
         color: #022f31;
     }
 
-    .fiveprayer__tbmonth {
-        background-color: var(--bg-red);
+    .fiveprayer__tbmonthfirst {
+        background-color: var(--bg-first) ;
         color: whitesmoke;
     }
 
-    #fiveprayer__tbmonth {
-        background-color: #a20000;
+    #fiveprayer__tbmonthsecond {
+        background-color:var(--bg-second);
         color: rgb(248, 245, 245);
     }
 
@@ -250,7 +289,7 @@ padding: 10px; */
 </style>
 <!-- End Inline CSS Style -->
 <?php
-             }
+
          }
      }
  }
