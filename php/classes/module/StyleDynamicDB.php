@@ -38,34 +38,64 @@ if (!class_exists('FivePrayer_StyleDynamicDB')) {
                     return $val['meta-key'] === "secondclr";
                 }
             );
+            $filteredColorEvenRowBg = array_filter(
+                $setcolors,
+                function ($val) {
+                    return $val['meta-key'] === "evenbg";
+                }
+            );
+            $filteredColorEvenRowClr = array_filter(
+                $setcolors,
+                function ($val) {
+                    return $val['meta-key'] === "evenclr";
+                }
+            );
 
-            $getColorFirstBg = array_map(function ($key, $value) {
-                return $value["value"];
-            }, array_keys($filteredColorFirstBg), array_values($filteredColorFirstBg));
 
-            $getColorFirstClr = array_map(function ($key, $value) {
-                return $value["value"];
-            }, array_keys($filteredColorFirstClr), array_values($filteredColorFirstClr));
 
-            $getColorSecondBg = array_map(function ($key, $value) {
-                return $value["value"];
-            }, array_keys($filteredColorSecondBg), array_values($filteredColorSecondBg));
-            $getColorSecondClr = array_map(function ($key, $value) {
-                return $value["value"];
-            }, array_keys($filteredColorSecondClr), array_values($filteredColorSecondClr));
 
 
             if ($color === 'firstbg') {
+                $getColorFirstBg = array_map(function ($key, $value) {
+                    return $value["value"];
+                }, array_keys($filteredColorFirstBg), array_values($filteredColorFirstBg));
+
+
                 return $colorFirstBg = trim($getColorFirstBg[0], '"');
             }
+
             if ($color === 'firstclr') {
+                $getColorFirstClr = array_map(function ($key, $value) {
+                    return $value["value"];
+                }, array_keys($filteredColorFirstClr), array_values($filteredColorFirstClr));
                 return $colorFirstClr = trim($getColorFirstClr[0], '"');
             }
+
             if ($color === 'secondbg') {
+                $getColorSecondBg = array_map(function ($key, $value) {
+                    return $value["value"];
+                }, array_keys($filteredColorSecondBg), array_values($filteredColorSecondBg));
                 return $colorSecondBg = trim($getColorSecondBg[0], '"');
             }
             if ($color === 'secondclr') {
+                $getColorSecondClr = array_map(function ($key, $value) {
+                    return $value["value"];
+                }, array_keys($filteredColorSecondClr), array_values($filteredColorSecondClr));
+
                 return $colorSecondClr = trim($getColorSecondClr[0], '"');
+            }
+            if ($color === 'evenrowbg') {
+                $getColorEvenRowBg = array_map(function ($key, $value) {
+                    return $value["value"];
+                }, array_keys($filteredColorEvenRowBg), array_values($filteredColorEvenRowBg));
+                return $colorEvenRowBg = trim($getColorEvenRowBg[0], '"');
+            }
+            if ($color === 'evenrowclr') {
+                $getColorEvenRowClr = array_map(function ($key, $value) {
+                    return $value["value"];
+                }, array_keys($filteredColorEvenRowClr), array_values($filteredColorEvenRowClr));
+
+                return $colorEvenRowClr = trim($getColorEvenRowClr[0], '"');
             }
         }
     }
