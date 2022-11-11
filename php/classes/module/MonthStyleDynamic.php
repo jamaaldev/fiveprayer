@@ -14,6 +14,16 @@
              $colorFirstClr = $monthstyle->StyleDynamic('firstclr');
              $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
              $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
+             wp_add_inline_script('fiveprayer-script', 'const FivePrayerStyleMonth = ' . json_encode(array(
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+
+                'firstbg' =>  sanitize_title($colorFirstBg),
+                'firstclr' => sanitize_title($colorFirstClr),
+                'secondbg' =>  sanitize_title($colorSecondBg),
+                'secondclr' => sanitize_title($colorSecondClr)
+
+
+            )), 'before');
 
 
              ?>

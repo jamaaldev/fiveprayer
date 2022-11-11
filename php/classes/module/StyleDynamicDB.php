@@ -49,10 +49,10 @@ if (!class_exists('FivePrayer_StyleDynamicDB')) {
 
             $getColorSecondBg = array_map(function ($key, $value) {
                 return $value["value"];
-            }, array_keys($filteredColorSecond), array_values($filteredColorSecond));
+            }, array_keys($filteredColorSecondBg), array_values($filteredColorSecondBg));
             $getColorSecondClr = array_map(function ($key, $value) {
                 return $value["value"];
-            }, array_keys($filteredColorSecond), array_values($filteredColorSecond));
+            }, array_keys($filteredColorSecondClr), array_values($filteredColorSecondClr));
 
 
             if ($color === 'firstbg') {

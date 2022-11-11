@@ -19,29 +19,37 @@ import * as React from 'react';
 import CalendarMonthly from './CalendarMonthly';
 import { HexAlphaColorPicker } from "react-colorful";
 import "../css/ColorPicker.scss"
-import { useInsertprayerSettingsMetaAPIMutation } from '../../../../api/prayerSettingsMetaAPI';
+import { useGetprayerSettingsMetaAPIQuery, useInsertprayerSettingsMetaAPIMutation } from '../../../../api/prayerSettingsMetaAPI';
 export interface ITimeTableMonthlyProps {
 }
-
+declare const FivePrayerStyleMonth;
 export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
+  const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
+  
+  console.log("📢[TimeTableMonthly.tsx:30]: FivePrayerStyleMonth?.firstbg: ", FivePrayerStyleMonth?.firstbg);
+  console.log("📢[TimeTableMonthly.tsx:30]: FivePrayerStyleMonth?.secondbg: ", FivePrayerStyleMonth?.secondbg);
   const [switchColor, setSwitchColor] = React.useState(true);
   // End Switch
-  const [colorFirstHeadBg, setColorFirstHeadBg] = React.useState("#000102");
-  const [colorFirstHeadClr, setColorFirstHeadClr] = React.useState("#000102");
+  const [colorFirstHeadBg, setColorFirstHeadBg] = React.useState(FivePrayerStyleMonth?.firstbg);
+  const [colorFirstHeadClr, setColorFirstHeadClr] = React.useState(FivePrayerStyleMonth?.firstclr);
   const [colorFirstHeadBgSave, setColorFirstHeadBgSave] = React.useState({});
   const [colorFirstHeadClrSave, setColorFirstHeadClrSave] = React.useState({});
   // end first
-  const [colorSecondHeadBg, setColorSecondHeadBg] = React.useState("#ff7700");
-  const [colorSecondHeadClr, setColorSecondHeadClr] = React.useState("#ff7700");
+  const [colorSecondHeadBg, setColorSecondHeadBg] = React.useState(FivePrayerStyleMonth?.secondbg);
+  const [colorSecondHeadClr, setColorSecondHeadClr] = React.useState(FivePrayerStyleMonth?.secondclr);
+  const [colorSecondHeadBgSave, setColorSecondHeadBgSave] = React.useState({});
+  const [colorSecondHeadClrSave, setColorSecondHeadClrSave] = React.useState({});
   // end second
   const [colorEvenRow, setColorEvenRow] = React.useState("#0059ff");
   const [colorHighLightRow, setColorHighLightRow] = React.useState("#73ff00");
-  const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
+
 
   const saveColor = () =>{
     
     insertprayersettingmeta(colorFirstHeadBgSave);
     insertprayersettingmeta(colorFirstHeadClrSave);
+    insertprayersettingmeta(colorSecondHeadBgSave);
+    insertprayersettingmeta(colorSecondHeadClrSave);
   }
   const firstHeadBg = (value,meta) =>{
     setColorFirstHeadBg(value)
@@ -59,12 +67,12 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   const secondHeadBg = (value,meta) =>{
     setColorSecondHeadBg(value)
     const colorSet = { value: value, meta: meta };
-    // insertprayersettingmeta(colorSet);
+    setColorSecondHeadBgSave(colorSet)
   }
   const secondHeadClr = (value,meta) =>{
     setColorSecondHeadClr(value)
     const colorSet = { value: value, meta: meta };
-    // insertprayersettingmeta(colorSet);
+    setColorSecondHeadClrSave(colorSet)
   }
   // End SecondHead
 

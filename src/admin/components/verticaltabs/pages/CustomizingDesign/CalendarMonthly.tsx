@@ -40,7 +40,7 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEven,rowHigh
 
   return (
 
-    <FivePrinter coloreven={rowEven} colorhigh={rowHighlight} className="fiveprayer__printer"  id="fiveprayer__divTo">
+    <FivePrinter coloreven={rowEven} colorhigh={rowHighlight} colorsecond={secondBg} className="fiveprayer__printer"  id="fiveprayer__divTo">
       <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
         <thead id='fiveprayer__waa'>
 
@@ -80,7 +80,7 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEven,rowHigh
 
           </tr>
 
-          <tr className="fiveprayer__tbmonthsecond" style={{ backgroundColor: secondBg,color: secondClr }}>
+          <tr id="fiveprayer__tbmonthsecond" style={{ backgroundColor: secondBg,color: secondClr }}>
             <th>Date</th>
             <th> Begins</th>
             <th> Iqamah</th>
@@ -139,7 +139,9 @@ const FivePrinter = styled.div`
 tr:nth-child(even) {
   background-color: ${props => props.coloreven};
 }
-
+#fiveprayer__tbmonthsecond{
+  background-color:  ${props => props.colorsecond} !important;
+}
 color: rgb(36, 28, 28);
 
 `;
