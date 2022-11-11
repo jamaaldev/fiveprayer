@@ -16,6 +16,8 @@
              $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
              $colorEvenRowBg = $monthstyle->StyleDynamic('evenrowbg');
              $colorEvenRowClr = $monthstyle->StyleDynamic('evenrowclr');
+             $colorHighlightRowBg = $monthstyle->StyleDynamic('highlightrowbg');
+             $colorHighlightRowClr = $monthstyle->StyleDynamic('highlightrowclr');
              wp_add_inline_script('fiveprayer-script', 'const FivePrayerStyleMonth = ' . json_encode(array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
 
@@ -24,7 +26,9 @@
                 'secondbg' =>  sanitize_title($colorSecondBg),
                 'secondclr' => sanitize_title($colorSecondClr),
                 'evenrowbg' => sanitize_title($colorEvenRowBg),
-                'evenrowclr' => sanitize_title($colorEvenRowClr)
+                'evenrowclr' => sanitize_title($colorEvenRowClr),
+                'highlightrowbg' => sanitize_title($colorHighlightRowBg),
+                'highlightrowclr' => sanitize_title($colorHighlightRowClr)
 
 
             )), 'before');
@@ -40,6 +44,8 @@
     --clr-second: <?=$colorSecondClr ?>;
     --bg-even: <?=$colorEvenRowBg ?>;
     --clr-even: <?=$colorEvenRowClr ?>;
+    --bg-highlight: <?=$colorHighlightRowBg ?>;
+    --clr-highlight: <?=$colorHightlightRowClr ?>;
 }
 
 @media print {
@@ -228,8 +234,8 @@
     }
 
     #today-row {
-        background-color: #d2f847;
-        color: #022f31;
+        background-color: var(--bg-highlight);
+        color: var(--clr-highlight);
     }
 
     .fiveprayer__tbmonthfirst {

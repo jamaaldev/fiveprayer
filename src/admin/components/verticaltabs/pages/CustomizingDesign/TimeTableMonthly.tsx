@@ -46,8 +46,8 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   const [colorEvenRowClrSave, setColorEvenRowClrSave] = React.useState({});
 
   // End EventRow
-  const [colorHighLightRowBg, setColorHighLightRowBg] = React.useState("#73ff00");
-  const [colorHighLightRowSave, setColorHighLightRowBgSave] = React.useState({});
+  const [colorHighLightRowBg, setColorHighLightRowBg] = React.useState(FivePrayerStyleMonth?.highlightrowbg);
+  const [colorHighLightRowBgSave, setColorHighLightRowBgSave] = React.useState({});
 
 
   const saveColor = () =>{
@@ -58,7 +58,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     insertprayersettingmeta(colorSecondHeadClrSave);
     insertprayersettingmeta(colorEvenRowBgSave);
     insertprayersettingmeta(colorEvenRowClrSave);
-
+    insertprayersettingmeta(colorHighLightRowBgSave);
   }
   const firstHeadBg = (value,meta) =>{
     setColorFirstHeadBg(value)
