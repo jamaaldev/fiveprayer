@@ -19,9 +19,9 @@ import React from 'react'
 import styled, { css } from 'styled-components';
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
 
-type Props = { firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEvenClr,rowHighlightBg }
+type Props = { firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEvenClr,rowHighlightBg,rowHighlightClr }
 
-function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEvenClr,rowHighlightBg }: Props) {
+function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEvenClr,rowHighlightBg,rowHighlightClr }: Props) {
   const { data: timetable, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
   const [month, SetMonth] = React.useState<FPCalendar[]>();
   
@@ -39,7 +39,7 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEv
 
   return (
 
-    <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorsecondBg={secondBg} className="fiveprayer__printer"  id="fiveprayer__divTo">
+    <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorhighCrl={rowHighlightClr} colorsecondBg={secondBg} className="fiveprayer__printer"  id="fiveprayer__divTo">
       <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
         <thead id='fiveprayer__waa'>
 
@@ -134,6 +134,8 @@ const FivePrinter = styled.div`
     }
 #today-row{
   background-color: ${props => props.colorhighBg} ;
+  color: ${props => props.colorhighCrl} !important;
+
 }
 tr:nth-child(even) {
   background-color: ${props => props.colorevenBg} !important;
@@ -142,7 +144,7 @@ tr:nth-child(even) {
 #fiveprayer__tbmonthsecond{
   background-color:  ${props => props.colorsecondBg} !important;
 }
-color: rgb(36, 28, 28);
+/* color: rgb(36, 28, 28); */
 
 `;
 

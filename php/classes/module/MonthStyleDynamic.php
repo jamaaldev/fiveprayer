@@ -45,7 +45,7 @@
     --bg-even: <?=$colorEvenRowBg ?>;
     --clr-even: <?=$colorEvenRowClr ?>;
     --bg-highlight: <?=$colorHighlightRowBg ?>;
-    --clr-highlight: <?=$colorHightlightRowClr ?>;
+    --clr-highlight: <?=$colorHighlightRowClr ?>;
 }
 
 @media print {

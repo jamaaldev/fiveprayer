@@ -56,6 +56,12 @@ if (!class_exists('FivePrayer_StyleDynamicDB')) {
                     return $val['meta-key'] === "highlightbg";
                 }
             );
+            $filteredColorHighLightRowClr = array_filter(
+                $setcolors,
+                function ($val) {
+                    return $val['meta-key'] === "highlightcrl";
+                }
+            );
 
 
 
@@ -109,6 +115,13 @@ if (!class_exists('FivePrayer_StyleDynamicDB')) {
                 }, array_keys($filteredColorHighLightRowBg), array_values($filteredColorHighLightRowBg));
 
                 return $colorHighLightRowBg = trim($getColorHighLightRowBg[0], '"');
+            }
+            if ($color === 'highlightrowclr') {
+                $getColorHighLightRowClr = array_map(function ($key, $value) {
+                    return $value["value"];
+                }, array_keys($filteredColorHighLightRowClr), array_values($filteredColorHighLightRowClr));
+
+                return $colorHighLightRowClr = trim($getColorHighLightRowClr[0], '"');
             }
         }
     }

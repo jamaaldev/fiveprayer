@@ -46,9 +46,13 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   const [colorEvenRowClrSave, setColorEvenRowClrSave] = React.useState({});
 
   // End EventRow
-  const [colorHighLightRowBg, setColorHighLightRowBg] = React.useState(FivePrayerStyleMonth?.highlightrowbg);
-  const [colorHighLightRowBgSave, setColorHighLightRowBgSave] = React.useState({});
 
+  // Start Highlight
+  const [colorHighLightRowBg, setColorHighLightRowBg] = React.useState(FivePrayerStyleMonth?.highlightrowbg);
+  const [colorHighLightRowCrl, setColorHighLightRowCrl] = React.useState(FivePrayerStyleMonth?.highlightrowcrl);
+  const [colorHighLightRowBgSave, setColorHighLightRowBgSave] = React.useState({});
+  const [colorHighLightRowClrSave, setColorHighLightRowClrSave] = React.useState({});
+// End HighLight
 
   const saveColor = () =>{
     
@@ -59,6 +63,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     insertprayersettingmeta(colorEvenRowBgSave);
     insertprayersettingmeta(colorEvenRowClrSave);
     insertprayersettingmeta(colorHighLightRowBgSave);
+    insertprayersettingmeta(colorHighLightRowClrSave);
   }
   const firstHeadBg = (value,meta) =>{
     setColorFirstHeadBg(value)
@@ -95,10 +100,15 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     const colorSet = { value: value, meta: meta };
     setColorEvenRowClrSave(colorSet);
   }
-  const eventRowHighlight = (value,meta) =>{
+  const eventRowHighlightBg = (value,meta) =>{
     setColorHighLightRowBg(value)
     const colorSet = { value: value, meta: meta };
     setColorHighLightRowBgSave(colorSet)
+  }
+  const eventRowHighlightClr = (value,meta) =>{
+    setColorHighLightRowCrl(value)
+    const colorSet = { value: value, meta: meta };
+    setColorHighLightRowClrSave(colorSet)
   }
   return (
     <div>
@@ -155,10 +165,18 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
             </div>
             }
               {/* End Even */}
-            <div className="highlight">
-              <span>HightLight Row Color</span>
-              <HexAlphaColorPicker color={colorHighLightRowBg} onChange={(value) => eventRowHighlight(value,'highlightbg')} />
+            { switchColor ?
+            <div className="highlight-bg">
+              <span>HightLight Row bg-Color</span>
+              <HexAlphaColorPicker color={colorHighLightRowBg} onChange={(value) => eventRowHighlightBg(value,'highlightbg')} />
             </div>
+            :
+            <div className="highlight-clr">
+              <span>HightLight Row ft-Color</span>
+              <HexAlphaColorPicker color={colorHighLightRowCrl} onChange={(value) => eventRowHighlightClr(value,'highlightcrl')} />
+            </div>
+
+            }
 
 
 
@@ -171,7 +189,8 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
             secondClr={colorSecondHeadClr} 
             rowEvenBg={colorEvenRowBg} 
             rowEvenClr={colorEvenRowClr} 
-            rowHighlightBg={colorHighLightRowBg}/>
+            rowHighlightBg={colorHighLightRowBg}
+            rowHighlightClr={colorHighLightRowCrl}/>
 
           </div>
         </div>
