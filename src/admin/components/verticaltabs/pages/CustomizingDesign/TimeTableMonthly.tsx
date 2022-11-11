@@ -49,7 +49,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
 
   // Start Highlight
   const [colorHighLightRowBg, setColorHighLightRowBg] = React.useState(FivePrayerStyleMonth?.highlightrowbg);
-  const [colorHighLightRowCrl, setColorHighLightRowCrl] = React.useState(FivePrayerStyleMonth?.highlightrowcrl);
+  const [colorHighLightRowCrl, setColorHighLightRowCrl] = React.useState(FivePrayerStyleMonth?.highlightrowclr);
   const [colorHighLightRowBgSave, setColorHighLightRowBgSave] = React.useState({});
   const [colorHighLightRowClrSave, setColorHighLightRowClrSave] = React.useState({});
 // End HighLight
