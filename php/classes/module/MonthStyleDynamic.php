@@ -14,13 +14,17 @@
              $colorFirstClr = $monthstyle->StyleDynamic('firstclr');
              $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
              $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
+             $colorEvenRowBg = $monthstyle->StyleDynamic('evenrowbg');
+             $colorEvenRowClr = $monthstyle->StyleDynamic('evenrowclr');
              wp_add_inline_script('fiveprayer-script', 'const FivePrayerStyleMonth = ' . json_encode(array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
 
                 'firstbg' =>  sanitize_title($colorFirstBg),
                 'firstclr' => sanitize_title($colorFirstClr),
                 'secondbg' =>  sanitize_title($colorSecondBg),
-                'secondclr' => sanitize_title($colorSecondClr)
+                'secondclr' => sanitize_title($colorSecondClr),
+                'evenrowbg' => sanitize_title($colorEvenRowBg),
+                'evenrowclr' => sanitize_title($colorEvenRowClr)
 
 
             )), 'before');
@@ -34,6 +38,8 @@
     --clr-first: <?=$colorFirstClr ?>;
     --bg-second: <?=$colorSecondBg ?>;
     --clr-second: <?=$colorSecondClr ?>;
+    --bg-even: <?=$colorEvenRowBg ?>;
+    --clr-even: <?=$colorEvenRowClr ?>;
 }
 
 @media print {
@@ -150,8 +156,8 @@
 
 
     .fiveprayer__printer tr:nth-child(even) {
-        background-color: #3c9a61 !important;
-        color: rgb(248, 246, 246) !important;
+        background-color: var(--bg-even) !important;
+        color: var(--clr-even) !important;
     }
 
 
@@ -238,8 +244,8 @@
 
 
     .fiveprayer__printer tr:nth-child(even) {
-        background-color: #3c9a61;
-        color: rgb(248, 246, 246);
+        background-color: var(--bg-even) ;
+        color: var(--clr-even) ;
     }
 
     .fiveprayer__select_print {
