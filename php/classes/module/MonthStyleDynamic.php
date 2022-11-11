@@ -2,49 +2,28 @@
  defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
  if (!class_exists('FivePrayer_MonthStyleDynamic')) {
+     require_once(plugin_dir_path(__FILE__) . '../module/StyleDynamicDB.php');
+
      class FivePrayer_MonthStyleDynamic
      {
          public function monthStyleDynamic()
          {
-             global $post;
-             global $wpdb;
-             $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_prayer_settings_meta ");
-             $result = json_encode($prayersettingmeta);
-             $setcolors = json_decode($result, true);
+             $monthstyle = new FivePrayer_StyleDynamicDB();
 
-             $filteredColorFirst = array_filter(
-                 $setcolors,
-                 function ($val) {
-                     return $val['meta-key'] === "first";
-                 }
-             );
-             $filteredColorSecond = array_filter(
-                 $setcolors,
-                 function ($val) {
-                     return $val['meta-key'] === "second";
-                 }
-             );
-
-             $getColorFirst = array_map(function ($key, $value) {
-                 return $value["value"];
-             }, array_keys($filteredColorFirst), array_values($filteredColorFirst));
-
-             $getColorSecond = array_map(function ($key, $value) {
-                 return $value["value"];
-             }, array_keys($filteredColorSecond), array_values($filteredColorSecond));
-
-
-
-             $colorFirst = trim($getColorFirst[0], '"');
-             $colorSecond = trim($getColorSecond[0], '"');
+             $colorFirstBg = $monthstyle->StyleDynamic('firstbg');
+             $colorFirstClr = $monthstyle->StyleDynamic('firstclr');
+             $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
+             $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
 
 
              ?>
 <!-- Start Inline CSS Style -->
 <style>
 :root {
-    --bg-first: <?=$colorFirst ?>;
-    --bg-second: <?=$colorSecond ?>;
+    --bg-first: <?=$colorFirstBg ?>;
+    --clr-first: <?=$colorFirstClr ?>;
+    --bg-second: <?=$colorSecondBg ?>;
+    --clr-second: <?=$colorSecondClr ?>;
 }
 
 @media print {
@@ -151,12 +130,12 @@
 
     .fiveprayer__tbmonthfirst {
         background-color: var(--bg-first) !important;
-        color: whitesmoke;
+        color: var(--clr-first) !important;
     }
 
     #fiveprayer__tbmonthsecond {
         background-color: var(--bg-second) !important;
-        color: rgb(248, 245, 245);
+        color: var(--clr-second) !important;
     }
 
 
@@ -239,12 +218,12 @@
 
     .fiveprayer__tbmonthfirst {
         background-color: var(--bg-first) ;
-        color: whitesmoke;
+        color: var(--clr-first);
     }
 
     #fiveprayer__tbmonthsecond {
         background-color:var(--bg-second);
-        color: rgb(248, 245, 245);
+        color: var(--clr-second);
     }
 
 

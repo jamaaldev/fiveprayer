@@ -19,9 +19,9 @@ import React from 'react'
 import styled, { css } from 'styled-components';
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
 
-type Props = { first, second, rowEven,rowHighlight }
+type Props = { firstBg,firstClr, secondBg,secondClr, rowEven,rowHighlight }
 
-function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
+function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEven,rowHighlight }: Props) {
   const { data: timetable, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
   const [month, SetMonth] = React.useState<FPCalendar[]>();
   
@@ -64,7 +64,7 @@ function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
             </form>
             <input className='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
           </div> */}
-          <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: first }} >
+          <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: firstBg,color: firstClr }}  >
             <th >
             </th>
 
@@ -80,7 +80,7 @@ function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
 
           </tr>
 
-          <tr className="fiveprayer__tbmonthsecond" style={{ backgroundColor: second }}>
+          <tr className="fiveprayer__tbmonthsecond" style={{ backgroundColor: secondBg,color: secondClr }}>
             <th>Date</th>
             <th> Begins</th>
             <th> Iqamah</th>

@@ -11,7 +11,7 @@ if (!class_exists('FivePrayer_enqueue')) {
             add_action('admin_enqueue_scripts', array($this,'fiveprayer_admin_enqueue_scripts'), 99);
             add_action('admin_head', array($this,'customizingDesign'));
 
-            require_once(plugin_dir_path(__FILE__) . '../shortcodes/MonthStyleDynamic.php');
+            require_once(plugin_dir_path(__FILE__) . '../module/MonthStyleDynamic.php');
             require_once(plugin_dir_path(__FILE__) . './FivePrayer_DataQuery.php');
             $this->dataQueryScripts = new FivePrayer_DataQuery();
         }
