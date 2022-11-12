@@ -18,8 +18,16 @@
 import React from 'react'
 import styled, { css } from 'styled-components';
 import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
+interface FivePrayerProps {
+  readonly colorevenBg: string;
+  readonly colorevenClr: string;
+  readonly colorhighBg: string;
+  readonly colorhighCrl: string;
+  readonly colorsecondBg: string;
+  
+};
 
-type Props = { firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEvenClr,rowHighlightBg,rowHighlightClr }
+type Props = { firstBg:string,firstClr:string, secondBg:string,secondClr:string, rowEvenBg:string,rowEvenClr:string,rowHighlightBg:string,rowHighlightClr:string }
 
 function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEvenClr,rowHighlightBg,rowHighlightClr }: Props) {
   const { data: timetable, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
@@ -123,7 +131,7 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEv
 
 }
 
-const FivePrinter = styled.div`
+const FivePrinter = styled.div<FivePrayerProps>`
    th,
      td {
 
@@ -138,13 +146,13 @@ const FivePrinter = styled.div`
 
 }
 tr:nth-child(even) {
-  background-color: ${props => props.colorevenBg} !important;
-  color: ${props => props.colorevenClr} !important;
+  background-color: ${props => props.colorevenBg} ;
+  color: ${props => props.colorevenClr} ;
 }
 #fiveprayer__tbmonthsecond{
   background-color:  ${props => props.colorsecondBg} !important;
 }
-/* color: rgb(36, 28, 28); */
+
 
 `;
 

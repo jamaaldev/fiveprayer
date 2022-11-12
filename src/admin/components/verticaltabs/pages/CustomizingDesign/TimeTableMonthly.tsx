@@ -117,9 +117,9 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
         <p>Customizing TimeTable Theme</p>
         <div className="container">
             <div className="color-switch">
-              <button onClick={() =>saveColor()}>Save Theme</button>
-              <button onClick={() =>setSwitchColor(true)}>Bg-Color</button>
-              <button onClick={() =>setSwitchColor(false)} >Ft-Color</button>
+              <button className={ switchColor ?  "active-clr" : 'color-select'}  onClick={() =>setSwitchColor(true)}>Bg-Color</button>
+              <button  className={ !switchColor ?  "active-clr" : 'color-select'} onClick={() =>setSwitchColor(false)} >Ft-Color</button>
+              <button className='save-theme' onClick={() =>saveColor()}>Save Theme</button>
             </div>
           <div className="clr-picker">
             {/* Start First */}
