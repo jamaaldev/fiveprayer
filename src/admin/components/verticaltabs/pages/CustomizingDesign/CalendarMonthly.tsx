@@ -24,6 +24,8 @@ interface FivePrayerProps {
   readonly colorhighBg: string;
   readonly colorhighCrl: string;
   readonly colorsecondBg: string;
+  readonly colorfirstBg: string;
+  readonly colorfirstClr: string;
 
 };
 
@@ -48,7 +50,7 @@ function CalendarMonthly({ firstBg, firstClr, secondBg, secondClr, rowEvenBg, ro
 
   return (
 
-    <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorhighCrl={rowHighlightClr} colorsecondBg={secondBg} className="fiveprayer__printer" id="fiveprayer__divTo">
+    <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorhighCrl={rowHighlightClr} colorsecondBg={secondBg} colorfirstBg={firstBg} colorfirstClr={firstClr} className="fiveprayer__printer" id="fiveprayer__divTo">
       <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
         {switchHighLight ?
           <tr id='today-row' className='demo-table-highlight'>
@@ -175,7 +177,10 @@ tr:nth-child(even) {
 #fiveprayer__tbmonthsecond{
   background-color:  ${props => props.colorsecondBg} !important;
 }
-
+.fiveprayer__tbmonthfirst {
+  background-color: ${props => props.colorfirstBg} !important ;
+  color: ${props => props.colorfirstClr} !important;
+    }
 
 `;
 

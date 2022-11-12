@@ -246,8 +246,8 @@
     }
 
     .fiveprayer__tbmonthfirst {
-        background-color: var(--bg-first);
-        color: var(--clr-first);
+        background-color: var(--bg-first) !important ;
+        color: var(--clr-first) !important ;
     }
 
     #fiveprayer__tbmonthsecond {
