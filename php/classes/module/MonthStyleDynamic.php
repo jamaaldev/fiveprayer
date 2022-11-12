@@ -81,9 +81,9 @@
     .entry-content h4,
     .entry-content h5,
     .entry-content h6,
-    .wp-block-image {
+    .wp-block-image,p {
 
-        font-size: 0px;
+        font-size: 0px !important;
 
     }
 
@@ -92,7 +92,7 @@
     body * {
 
         font-weight: 400 !important;
-        font-size: 13px !important;
+        
         line-height: 1.4 !important;
         max-width: fit-content !important;
         margin: 0 !important;
@@ -108,7 +108,6 @@
 
     body:has(.fiveprayer__printer) {
         width: fit-content !important;
-
     }
 
     .fiveprayer__printer * {
@@ -117,7 +116,7 @@
         height: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-
+        font-size: 13px !important;
     }
 
     .fiveprayer__noDisplay {
