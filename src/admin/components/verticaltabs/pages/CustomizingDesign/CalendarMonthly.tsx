@@ -69,9 +69,9 @@ function CalendarMonthly({ firstBg, firstClr, secondBg, secondClr, rowEvenBg, ro
         }
         <thead id='fiveprayer__waa'>
           {switchHighLight ?
-            <button onClick={() => setSwitchHighLight(false)}>Hide HighLight</button>
+            <button className='show-highlight' onClick={() => setSwitchHighLight(false)}>Hide HighLight</button>
             :
-            <button onClick={() => setSwitchHighLight(true)}>Show HighLight</button>
+            <button className='show-highlight' onClick={() => setSwitchHighLight(true)}>Show HighLight</button>
 
           }
           {/* <div className="fiveprayer__printer_option ">

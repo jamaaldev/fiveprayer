@@ -289,6 +289,21 @@
 
 
     }
+    button{
+      border: none;
+    border-radius: 0px;
+    padding-inline: 10px;
+    padding-block: 8px;
+   
+
+    cursor: pointer;
+    }
+    .show-highlight{
+        background: #079713e3 ;
+        color: white
+        
+    }
+   
 
 }
 </style>
