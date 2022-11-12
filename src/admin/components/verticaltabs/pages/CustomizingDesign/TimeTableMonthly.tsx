@@ -182,6 +182,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
 
           </div>
           <div className="calendar-prayer">
+          
             <CalendarMonthly 
             firstBg={colorFirstHeadBg} 
             firstClr={colorFirstHeadClr} 

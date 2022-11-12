@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
+
 .clr-picker{
     display: flex;
     justify-content: center;
@@ -62,4 +63,20 @@
       background: #0eacb2;
       color: white;
     }
+  }
+  .demo-table-highlight {
+
+    width: 100%;
+  }
+  .calendar-prayer{
+    width: 100%;
+  }
+  .demo-table-highlight td,.demo-table-highlight tr{
+
+    padding: 0 !important;
+    padding-inline: 3px !important;
+    padding-block: 7px !important;
+    border-width: 0 1px 1px 0 !important;
+    border: 1px solid #00000024 !important;
+    text-align: center !important;
   }

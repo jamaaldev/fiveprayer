@@ -24,17 +24,18 @@ interface FivePrayerProps {
   readonly colorhighBg: string;
   readonly colorhighCrl: string;
   readonly colorsecondBg: string;
-  
+
 };
 
-type Props = { firstBg:string,firstClr:string, secondBg:string,secondClr:string, rowEvenBg:string,rowEvenClr:string,rowHighlightBg:string,rowHighlightClr:string }
+type Props = { firstBg: string, firstClr: string, secondBg: string, secondClr: string, rowEvenBg: string, rowEvenClr: string, rowHighlightBg: string, rowHighlightClr: string }
 
-function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEvenClr,rowHighlightBg,rowHighlightClr }: Props) {
+function CalendarMonthly({ firstBg, firstClr, secondBg, secondClr, rowEvenBg, rowEvenClr, rowHighlightBg, rowHighlightClr }: Props) {
   const { data: timetable, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
   const [month, SetMonth] = React.useState<FPCalendar[]>();
-  
+  const [switchHighLight, setSwitchHighLight] = React.useState(false);
+
   React.useEffect(() => {
-    
+
     if (timetable?.length) {
 
       const newone = timetable?.filter((table: FPCalendar) => {
@@ -47,10 +48,32 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEv
 
   return (
 
-    <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorhighCrl={rowHighlightClr} colorsecondBg={secondBg} className="fiveprayer__printer"  id="fiveprayer__divTo">
+    <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorhighCrl={rowHighlightClr} colorsecondBg={secondBg} className="fiveprayer__printer" id="fiveprayer__divTo">
       <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
+        {switchHighLight ?
+          <tr id='today-row' className='demo-table-highlight'>
+            <td>0 Highlight 2222</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+          </tr>
+          : ''
+        }
         <thead id='fiveprayer__waa'>
+          {switchHighLight ?
+            <button onClick={() => setSwitchHighLight(false)}>Hide HighLight</button>
+            :
+            <button onClick={() => setSwitchHighLight(true)}>Show HighLight</button>
 
+          }
           {/* <div className="fiveprayer__printer_option ">
             <form id="fiveprayer__noPrint">
               <select name="country">
@@ -71,7 +94,7 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEv
             </form>
             <input className='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
           </div> */}
-          <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: firstBg,color: firstClr }}  >
+          <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: firstBg, color: firstClr }}  >
             <th >
             </th>
 
@@ -87,7 +110,7 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEv
 
           </tr>
 
-          <tr id="fiveprayer__tbmonthsecond" style={{ backgroundColor: secondBg,color: secondClr }}>
+          <tr id="fiveprayer__tbmonthsecond" style={{ backgroundColor: secondBg, color: secondClr }}>
             <th>Date</th>
             <th> Begins</th>
             <th> Iqamah</th>
@@ -105,7 +128,7 @@ function CalendarMonthly({ firstBg,firstClr, secondBg,secondClr, rowEvenBg,rowEv
 
         <tbody  >
           {month?.map((calendars: FPCalendar, index: number) => (
-            <tr  key={index} id={calendars?.today === new Date().getDate().toString() ? 'today-row' : null}>
+            <tr key={index} id={calendars?.today === new Date().getDate().toString() ? 'today-row' : null}>
               <td >{calendars?.currentDate}</td>
               <td>{calendars?.fajr_begins}</td>
               <td>{calendars?.fajr_iqamah}</td>
