@@ -19,14 +19,16 @@ export const customLocationApi = emptySplitApi.injectEndpoints({
             invalidatesTags: [{ type: 'locationTag'}],
         }),
         updateLocation: builder.mutation<LocationCity[],SearchTownCityState>({
-            query:({ locationChecked, ...put }) => ({ url: `fp/v1/fp_location`, method: 'PUT', body: put,headers:{
+            query:({ locationChecked, ...put }) => ({ url: `fp/v1/fp_location`, method: 'POST', body: put,headers:{
                 'X-WP-Nonce': prayerData?.nonce,
+                'X-HTTP-Method-Override': 'PUT'
             } }),
             invalidatesTags: [{ type: 'locationTag'}],
         }),
         deleteLocation: builder.mutation<LocationCity[],SearchTownCityState>({
-            query:({ locationChecked, ...put }) => ({ url: `fp/v1/fp_location`, method: 'DELETE', body: put,headers:{
+            query:({ locationChecked, ...put }) => ({ url: `fp/v1/fp_location`, method: 'POST', body: put,headers:{
                 'X-WP-Nonce': prayerData?.nonce,
+                'X-HTTP-Method-Override': 'DELETE'
             } }),
             invalidatesTags: [{ type: 'locationTag'}],
         }),
