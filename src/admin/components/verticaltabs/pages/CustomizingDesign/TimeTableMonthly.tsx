@@ -54,16 +54,44 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   const [colorHighLightRowClrSave, setColorHighLightRowClrSave] = React.useState({});
 // End HighLight
 
-  const saveColor = () =>{
+  const saveColor =  () =>{
     
-    insertprayersettingmeta(colorFirstHeadBgSave);
-    insertprayersettingmeta(colorFirstHeadClrSave);
-    insertprayersettingmeta(colorSecondHeadBgSave);
-    insertprayersettingmeta(colorSecondHeadClrSave);
-    insertprayersettingmeta(colorEvenRowBgSave);
-    insertprayersettingmeta(colorEvenRowClrSave);
-    insertprayersettingmeta(colorHighLightRowBgSave);
-    insertprayersettingmeta(colorHighLightRowClrSave);
+    if(colorFirstHeadBgSave.hasOwnProperty('value')){
+      insertprayersettingmeta(colorFirstHeadBgSave);
+
+    }
+    if(colorFirstHeadClrSave.hasOwnProperty('value')){
+       insertprayersettingmeta(colorFirstHeadClrSave);
+
+    }
+    if(colorSecondHeadBgSave.hasOwnProperty('value')){
+       insertprayersettingmeta(colorSecondHeadBgSave);
+
+    }
+    if(colorSecondHeadClrSave.hasOwnProperty('value')){
+      insertprayersettingmeta(colorSecondHeadClrSave);
+
+    }
+    if(colorSecondHeadClrSave.hasOwnProperty('value')){
+       insertprayersettingmeta(colorSecondHeadClrSave);
+
+    }
+    if(colorEvenRowBgSave.hasOwnProperty('value')){
+       insertprayersettingmeta(colorEvenRowBgSave);
+
+    }
+    if(colorEvenRowClrSave.hasOwnProperty('value')){
+       insertprayersettingmeta(colorEvenRowClrSave);
+
+    }
+    if(colorHighLightRowBgSave.hasOwnProperty('value')){
+       insertprayersettingmeta(colorHighLightRowBgSave);
+
+    }
+    if(colorHighLightRowClrSave.hasOwnProperty('value')){
+       insertprayersettingmeta(colorHighLightRowClrSave);
+
+    }
   }
   const firstHeadBg = (value,meta) =>{
     setColorFirstHeadBg(value)

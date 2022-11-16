@@ -1,4 +1,5 @@
 <?php
+
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 if (!class_exists('FivePrayer_enqueue')) {
@@ -14,6 +15,8 @@ if (!class_exists('FivePrayer_enqueue')) {
             require_once(plugin_dir_path(__FILE__) . './FivePrayer_DataQuery.php');
             $this->dataQueryScripts = new FivePrayer_DataQuery();
         }
+
+
         public function customizingDesign()
         {
             $monthstyle = new FivePrayer_MonthStyleDynamic();
@@ -47,13 +50,13 @@ public function fiveprayer_admin_enqueue_scripts()
         add_action(
             'admin_notices',
             function () {
-                if (! current_user_can('manage_options')) {
+                if (current_user_can('manage_options')) {
+                    remove_all_actions('user_admin_notices');
                     remove_all_actions('admin_notices');
                 }
             },
             0
         );
-        echo '<style>#setting-error-tgmpa>.updated settings-error notice is-dismissible, .update-nag, .updated { display: none; }</style>';
 
         $this->dataQueryScripts->sendDataUsingAjax();
     }
