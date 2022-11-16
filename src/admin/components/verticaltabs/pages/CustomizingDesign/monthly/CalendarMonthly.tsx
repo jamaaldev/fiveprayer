@@ -17,7 +17,7 @@
 
 import React from 'react'
 import styled, { css } from 'styled-components';
-import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
+import { useGetPrayerTimeTableQuery } from '../../../../../api/prayerTimeTableApi';
 interface FivePrayerProps {
   readonly colorevenBg: string;
   readonly colorevenClr: string;

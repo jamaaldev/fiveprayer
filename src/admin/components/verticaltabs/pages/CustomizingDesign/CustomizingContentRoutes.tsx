@@ -18,7 +18,8 @@
 import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import CustomizingDesign from '../CustomizingDesign';
-import { TimeTableMonthly } from './TimeTableMonthly';
+import TimeTableDaily from './daily/TimeTableDaily';
+import { TimeTableMonthly } from './monthly/TimeTableMonthly';
 
 
 export interface ICustomizingContentRoutesProps {}
@@ -29,6 +30,7 @@ export function CustomizingContentRoutes(props: ICustomizingContentRoutesProps) 
       <Routes>
         <Route path='customizingdesign/*' element={<CustomizingDesign />} />
         <Route path="timetablemonthly" element={<TimeTableMonthly />} />
+        <Route path="timetabledaily" element={<TimeTableDaily />} />
 
       </Routes>
     </div>

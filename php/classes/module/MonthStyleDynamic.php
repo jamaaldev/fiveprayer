@@ -172,7 +172,42 @@
         color: var(--clr-even) !important;
     }
 
+    .FP_DairyPrayer_ {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+    .FP_DairyPrayer_ th,
+    .FP_DairyPrayer_ td {
+        padding: 5px;
+        border-width: 0 1px 1px 0;
+        border: 1px solid black;
+
+        text-align: center;
+    }
+
+     .fiveprayer__tbhead {
+        background: rgb(4 94 20);
+        color: aliceblue;
+    }
+
+     .fp__highlight {
+        background-color: #d2f847;
+    }
+
+    .fiveprayer__iqamah_next {
+        font-size: 18px;
+        color: hsl(131deg 92% 19%);
+        font-weight: 700;
+
+    }
+
+    .fiveprayer__iqamah_time {
+        font-size: 40px;
+        color: hsl(131deg 92% 19%);
+        font-weight: 700;
+        padding-block: 20px;
+    }
 
 }
 
@@ -304,7 +339,45 @@
         
     }
    
+    .FP_DairyPrayer_ {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+    .FP_DairyPrayer_ th,
+    .FP_DairyPrayer_ td {
+        padding: 5px;
+        border-width: 0 1px 1px 0;
+        border: 1px solid black;
+
+        text-align: center;
+    }
+    .FP_DairyPrayerf_ th,
+    .FP_DairyPrayerf_ td {
+        padding: 10px;
+      
+    }
+
+     .fiveprayer__tbhead {
+        background: rgb(4 94 20);
+        color: aliceblue;
+    }
+
+   
+    .fiveprayer__iqamah_next {
+        font-size: 18px;
+        color:  var(--bg-second);
+        font-weight: 700;
+
+    }
+
+    .fiveprayer__iqamah_time {
+        padding: 0px;
+        font-size: 40px;
+        color:  var(--bg-second);
+        font-weight: 700;
+        
+    }
 }
 </style>
 <!-- End Inline CSS Style -->

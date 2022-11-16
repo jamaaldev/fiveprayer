@@ -15,21 +15,22 @@
 // You should have received a copy of the GNU General Public License
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
-import * as React from 'react';
-import { NavLink } from 'react-router-dom';
-export interface ICustomizingTabLinksProps {
-}
+import React from 'react'
+import CalendarDaily from './CalendarDaily'
 
-export function CustomizingTabLinks (props: ICustomizingTabLinksProps) {
+type Props = {}
+
+function TimeTableDaily({}: Props) {
   return (
     <div>
-      <NavLink to={'/settings/Customizingdesign/timetablemonthly'}>
-        <button className='tablink'>TimeTableMonthly</button>
-      </NavLink>
-      <NavLink to={'/settings/Customizingdesign/timetabledaily'}>
-        <button className='tablink'>TimeTableDaily</button>
-      </NavLink>
-   
+
+    <div id='Customizing' className='tabcontent'>
+         <h3>TimeTableDaily</h3>
+        <p>Customizing TimeTableDaily This is Just a Fake Data</p>
+        <CalendarDaily/>
     </div>
-  );
+    </div>
+  )
 }
+
+export default TimeTableDaily
