@@ -16,7 +16,6 @@
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from 'react'
-import CalendarDaily from './CalendarDaily'
 
 type Props = {}
 
@@ -27,7 +26,7 @@ function TimeTableDaily({}: Props) {
     <div id='Customizing' className='tabcontent'>
          <h3>TimeTableDaily</h3>
         <p>Customizing TimeTableDaily This is Just a Fake Data</p>
-        <CalendarDaily/>
+        
     </div>
     </div>
   )

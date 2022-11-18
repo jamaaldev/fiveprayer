@@ -16,9 +16,9 @@
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from 'react'
-type Props = {}
+type Props = {secondBg,secondClr,rowHighlightBg,rowHighlightClr}
 // import "./daily.scss";
-function CalendarDaily({ }: Props) {
+function CalendarDaily({secondBg,secondClr,rowHighlightBg,rowHighlightClr }: Props) {
   return (
     <div>
       <table className="FP_DairyPrayer_ FP_DairyPrayerf_">
@@ -30,8 +30,8 @@ function CalendarDaily({ }: Props) {
                 16 November 2022
               </span>
 
-              <div className="fiveprayer__iqamah_next" >FAJR IQAMAH</div>
-              <div className="fiveprayer__iqamah_time" style={{padding: "20px"}}> 4:28 AM</div>
+              <div className="fiveprayer__iqamah_next"  style={{color: secondBg }}>FAJR IQAMAH</div>
+              <div className="fiveprayer__iqamah_time" style={{padding: "20px",color: secondBg}}> 4:28 AM</div>
 
 
 
@@ -40,12 +40,12 @@ function CalendarDaily({ }: Props) {
             </td>
           </tr>
 
-          <tr id="fiveprayer__tbmonthsecond">
+          <tr id="fiveprayer__tbmonthsecond" style={{ backgroundColor: secondBg, color: secondClr }}>
             <th>Prayer</th>
             <th>Begins</th>
             <th>Iqamah</th>
           </tr>
-          <tr id="today-row">
+          <tr id="today-row" style={{ backgroundColor: rowHighlightBg, color: rowHighlightClr }}>
             <th>Fajr</th>
             <td>4:28 AM </td>
             <td>4:28 AM </td>

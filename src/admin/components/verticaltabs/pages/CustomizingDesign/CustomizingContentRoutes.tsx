@@ -29,9 +29,7 @@ export function CustomizingContentRoutes(props: ICustomizingContentRoutesProps) 
     <div>
       <Routes>
         <Route path='customizingdesign/*' element={<CustomizingDesign />} />
-        <Route path="timetablemonthly" element={<TimeTableMonthly />} />
-        <Route path="timetabledaily" element={<TimeTableDaily />} />
-
+        <Route path="timetable" element={<TimeTableMonthly />} />
       </Routes>
     </div>
   );

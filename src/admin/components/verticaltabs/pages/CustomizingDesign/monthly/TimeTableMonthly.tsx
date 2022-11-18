@@ -20,6 +20,7 @@ import CalendarMonthly from './CalendarMonthly';
 import { HexAlphaColorPicker } from "react-colorful";
 import "../../css/ColorPicker.scss"
 import { useInsertprayerSettingsMetaAPIMutation } from '../../../../../api/prayerSettingsMetaAPI';
+import CalendarDaily from '../daily/CalendarDaily';
 export interface ITimeTableMonthlyProps {
 }
 declare const FivePrayerStyleMonth;
@@ -28,6 +29,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
 
 
   const [switchColor, setSwitchColor] = React.useState(true);
+  const [switchMonthDaily, setSwitchMonthDaily] = React.useState(true);
   // End Switch
   const [colorFirstHeadBg, setColorFirstHeadBg] = React.useState(FivePrayerStyleMonth?.firstbg);
   const [colorFirstHeadClr, setColorFirstHeadClr] = React.useState(FivePrayerStyleMonth?.firstclr);
@@ -141,9 +143,14 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   return (
     <div>
       <div id='Customizing' className='tabcontent'>
-        <h3>TimeTableMonthly</h3>
+        <h3>TimeTable</h3>
         <p>Customizing TimeTable Theme</p>
         <div className="container">
+          <div className='month-daily'>
+
+            <button className={switchMonthDaily ? "active-month" : 'month-select'} onClick={() => setSwitchMonthDaily(true)}>Monthly</button>
+            <button className={!switchMonthDaily ? "active-month" : 'month-select'} onClick={() => setSwitchMonthDaily(false)}>Daily</button>
+          </div>
           <div className="color-switch">
             <button className={switchColor ? "active-clr" : 'color-select'} onClick={() => setSwitchColor(true)}>Bg-Color</button>
             <button className={!switchColor ? "active-clr" : 'color-select'} onClick={() => setSwitchColor(false)} >Ft-Color</button>
@@ -151,7 +158,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
           </div>
           <div className="clr-picker">
             {/* Start First */}
-            {switchColor ?
+            {switchMonthDaily ? switchColor ?
               <div className="first-bg">
                 <span>First Head bg-color</span>
                 <HexAlphaColorPicker color={colorFirstHeadBg} onChange={(value) => firstHeadBg(value, 'firstbg')} />
@@ -161,7 +168,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
                 <span>First Head ft-Color</span>
                 <HexAlphaColorPicker color={colorFirstHeadClr} onChange={(value) => firstHeadClr(value, 'firstclr')} />
               </div>
-
+              : ''
             }
             {/* End First */}
 
@@ -180,19 +187,29 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
             }
             {/* End Second */}
             {/* Start Even */}
-            {switchColor ?
+               
+           
+              {switchMonthDaily ?  switchColor ? 
+  
+                <div className="even-bg">
+                  <span>Even Row bg-Color</span>
+                  <HexAlphaColorPicker color={colorEvenRowBg} onChange={(value) => eventRowBg(value, 'evenbg')} />
+                </div>
+                :
+                <div className="even-clr">
+                  <span>Even Row ft-Color</span>
+                  <HexAlphaColorPicker color={colorEvenRowClr} onChange={(value) => eventRowClr(value, 'evenclr')} />
+                </div>
+                :''
+              }
 
-              <div className="even-bg">
-                <span>Even Row bg-Color</span>
-                <HexAlphaColorPicker color={colorEvenRowBg} onChange={(value) => eventRowBg(value, 'evenbg')} />
-              </div>
-              :
-              <div className="even-clr">
-                <span>Even Row ft-Color</span>
-                <HexAlphaColorPicker color={colorEvenRowClr} onChange={(value) => eventRowClr(value, 'evenclr')} />
-              </div>
-            }
+             
+              
+              
+            
+
             {/* End Even */}
+          
             {switchColor ?
               <div className="highlight-bg">
                 <span>HightLight Row bg-Color</span>
@@ -210,16 +227,21 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
 
           </div>
           <div className="calendar-prayer">
-
-            <CalendarMonthly
-              firstBg={colorFirstHeadBg}
-              firstClr={colorFirstHeadClr}
-              secondBg={colorSecondHeadBg}
-              secondClr={colorSecondHeadClr}
-              rowEvenBg={colorEvenRowBg}
-              rowEvenClr={colorEvenRowClr}
-              rowHighlightBg={colorHighLightRowBg}
-              rowHighlightClr={colorHighLightRowCrl} />
+            {switchMonthDaily ?
+              <CalendarMonthly
+                firstBg={colorFirstHeadBg}
+                firstClr={colorFirstHeadClr}
+                secondBg={colorSecondHeadBg}
+                secondClr={colorSecondHeadClr}
+                rowEvenBg={colorEvenRowBg}
+                rowEvenClr={colorEvenRowClr}
+                rowHighlightBg={colorHighLightRowBg}
+                rowHighlightClr={colorHighLightRowCrl} />
+              :
+              <CalendarDaily secondBg={colorSecondHeadBg}
+                secondClr={colorSecondHeadClr} rowHighlightBg={colorHighLightRowBg}
+                rowHighlightClr={colorHighLightRowCrl} />
+            }
 
           </div>
         </div>

@@ -83,69 +83,62 @@
                          return $value["value"];
                      }
                  }, array_keys($filteredColorFirstClr), array_values($filteredColorFirstClr));
-                
-                 return  isset($getColorFirstClr[0]) ? trim($getColorFirstClr[0], '"') : "#f5f5f5";
 
+                 return  isset($getColorFirstClr[0]) ? trim($getColorFirstClr[0], '"') : "#f5f5f5";
              }
 
              if ($color === 'secondbg') {
                  $getColorSecondBg = array_map(function ($key, $value) {
-                    if (isset($value["value"])) {
-                        return $value["value"];
-                    }
+                     if (isset($value["value"])) {
+                         return $value["value"];
+                     }
                  }, array_keys($filteredColorSecondBg), array_values($filteredColorSecondBg));
-                 
-                 return  isset($getColorSecondBg[0]) ? trim($getColorSecondBg[0], '"') : "#990c0c";
 
+                 return  isset($getColorSecondBg[0]) ? trim($getColorSecondBg[0], '"') : "#387d06";
              }
              if ($color === 'secondclr') {
                  $getColorSecondClr = array_map(function ($key, $value) {
-                      if (isset($value["value"])) {
-                        return $value["value"];
-                    }
+                     if (isset($value["value"])) {
+                         return $value["value"];
+                     }
                  }, array_keys($filteredColorSecondClr), array_values($filteredColorSecondClr));
 
-                 return  isset($getColorSecondClr[0]) ? trim($getColorSecondClr[0], '"') : "#f5f5f5";
-
+                 return  isset($getColorSecondClr[0]) ? trim($getColorSecondClr[0], '"') : "#e3d091";
              }
              if ($color === 'evenrowbg') {
                  $getColorEvenRowBg = array_map(function ($key, $value) {
-                      if (isset($value["value"])) {
-                        return $value["value"];
-                    }
+                     if (isset($value["value"])) {
+                         return $value["value"];
+                     }
                  }, array_keys($filteredColorEvenRowBg), array_values($filteredColorEvenRowBg));
                  return  isset($getColorEvenRowBg[0]) ? trim($getColorEvenRowBg[0], '"') : "#007f33";
-
              }
              if ($color === 'evenrowclr') {
                  $getColorEvenRowClr = array_map(function ($key, $value) {
-                      if (isset($value["value"])) {
-                        return $value["value"];
-                    }
+                     if (isset($value["value"])) {
+                         return $value["value"];
+                     }
                  }, array_keys($filteredColorEvenRowClr), array_values($filteredColorEvenRowClr));
 
                  return  isset($getColorEvenRowClr[0]) ? trim($getColorEvenRowClr[0], '"') : "#f5f5f5";
-
              }
              if ($color === 'highlightrowbg') {
                  $getColorHighLightRowBg = array_map(function ($key, $value) {
-                      if (isset($value["value"])) {
-                        return $value["value"];
-                    }
+                     if (isset($value["value"])) {
+                         return $value["value"];
+                     }
                  }, array_keys($filteredColorHighLightRowBg), array_values($filteredColorHighLightRowBg));
 
-                 return  isset($getColorHighLightRowBg[0]) ? trim($getColorHighLightRowBg[0], '"') : "#ff6900";
-
+                 return  isset($getColorHighLightRowBg[0]) ? trim($getColorHighLightRowBg[0], '"') : "#b4fc00";
              }
              if ($color === 'highlightrowclr') {
                  $getColorHighLightRowClr = array_map(function ($key, $value) {
-                      if (isset($value["value"])) {
-                        return $value["value"];
-                    }
+                     if (isset($value["value"])) {
+                         return $value["value"];
+                     }
                  }, array_keys($filteredColorHighLightRowClr), array_values($filteredColorHighLightRowClr));
 
-                 return  isset($getColorHighLightRowClr[0]) ? trim($getColorHighLightRowClr[0], '"') : "#f5f5f5";
-
+                 return  isset($getColorHighLightRowClr[0]) ? trim($getColorHighLightRowClr[0], '"') : "#035022";
              }
          }
      }

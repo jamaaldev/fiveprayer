@@ -23,13 +23,13 @@ export interface ICustomizingTabLinksProps {
 export function CustomizingTabLinks (props: ICustomizingTabLinksProps) {
   return (
     <div>
-      <NavLink to={'/settings/Customizingdesign/timetablemonthly'}>
-        <button className='tablink'>TimeTableMonthly</button>
+      <NavLink to={'/settings/Customizingdesign/timetable'}>
+        <button className='tablink'>TimeTable</button>
       </NavLink>
-      <NavLink to={'/settings/Customizingdesign/timetabledaily'}>
+      {/* <NavLink to={'/settings/Customizingdesign/timetabledaily'}>
         <button className='tablink'>TimeTableDaily</button>
       </NavLink>
-   
+    */}
     </div>
   );
 }
