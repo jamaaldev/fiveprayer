@@ -3,7 +3,7 @@
 
  if (!class_exists('FivePrayer_FpVerticalDailyPrayer')) {
      require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
-     require_once(plugin_dir_path(__FILE__) . '../module/MonthStyleDynamic.php');
+     require_once(plugin_dir_path(__FILE__) . '../module/DailyStyleDynamic.php');
 
 
      class FivePrayer_FpVerticalDailyPrayer
@@ -12,9 +12,7 @@
          public function __construct()
          {
              add_action('init', array($this, 'registerShortcodes'));
-            //  add_action('wp_enqueue_scripts', array($this,'dailyPrayer'), 999);
              add_action('wp_enqueue_scripts', array($this,'loadmeFirst'));
-
          }
 public function dailyPrayer()
 {
@@ -26,9 +24,8 @@ public function loadmeFirst()
     global $post;
 
     if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Fp_Vertical_Daily_Prayer')) {
-        // wp_enqueue_style('tablemonth', plugin_dir_url(__FILE__) . './tablemonth.css', true);
-        $monthstyle = new FivePrayer_MonthStyleDynamic();
-        $monthstyle->monthStyleDynamic();
+        $monthstyle = new FivePrayer_DailyStyleDynamic();
+        $monthstyle->dailyStyleDynamic();
     }
 }
 public function registerShortcodes()

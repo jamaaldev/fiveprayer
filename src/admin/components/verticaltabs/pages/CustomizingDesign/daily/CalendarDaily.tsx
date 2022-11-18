@@ -29,7 +29,7 @@ function CalendarDaily({secondBg,secondClr,rowHighlightBg,rowHighlightClr }: Pro
               <span>
                 16 November 2022
               </span>
-
+              <div className="fiveprayer__iqamah_next" style={{padding: "10px",color: secondBg }}>NEXT PRAYER</div>
               <div className="fiveprayer__iqamah_next"  style={{color: secondBg }}>FAJR IQAMAH</div>
               <div className="fiveprayer__iqamah_time" style={{padding: "20px",color: secondBg}}> 4:28 AM</div>
 
