@@ -56,42 +56,87 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   const [colorHighLightRowClrSave, setColorHighLightRowClrSave] = React.useState({});
   // End HighLight
 
-  const saveColor = () => {
+  const saveColor = async () => {
 
     if (colorFirstHeadBgSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorFirstHeadBgSave);
+      try {
+        await insertprayersettingmeta(colorFirstHeadBgSave);
+        
+      } catch (error) {
+        
+      }
 
     }
     if (colorFirstHeadClrSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorFirstHeadClrSave);
+      try {
+        await insertprayersettingmeta(colorFirstHeadClrSave);
+        
+      } catch (error) {
+        
+      }
 
     }
     if (colorSecondHeadBgSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorSecondHeadBgSave);
+      try {
+        await insertprayersettingmeta(colorSecondHeadBgSave);
+        
+      } catch (error) {
+        
+      }
 
     }
     if (colorSecondHeadClrSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorSecondHeadClrSave);
+      try {
+        await insertprayersettingmeta(colorSecondHeadClrSave);
+        
+      } catch (error) {
+        
+      }
 
     }
     if (colorSecondHeadClrSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorSecondHeadClrSave);
+      try {
+        await insertprayersettingmeta(colorSecondHeadClrSave);
+        
+      } catch (error) {
+        
+      }
 
     }
     if (colorEvenRowBgSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorEvenRowBgSave);
+      try {
+        
+        await insertprayersettingmeta(colorEvenRowBgSave);
+      } catch (error) {
+        
+      }
 
     }
     if (colorEvenRowClrSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorEvenRowClrSave);
+      try {
+        
+        await insertprayersettingmeta(colorEvenRowClrSave);
+      } catch (error) {
+        
+      }
 
     }
     if (colorHighLightRowBgSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorHighLightRowBgSave);
+      try {
+        
+        await insertprayersettingmeta(colorHighLightRowBgSave);
+      } catch (error) {
+        
+      }
 
     }
     if (colorHighLightRowClrSave.hasOwnProperty('value')) {
-      insertprayersettingmeta(colorHighLightRowClrSave);
+      try {
+       await insertprayersettingmeta(colorHighLightRowClrSave);
+        
+      } catch (error) {
+        
+      }
 
     }
   }
