@@ -38,14 +38,14 @@
 <!-- Start Inline CSS Style -->
 <style>
 :root {
-    --bg-first: <?=$colorFirstBg ?>;
-    --clr-first: <?=$colorFirstClr ?>;
-    --bg-second: <?=$colorSecondBg ?>;
-    --clr-second: <?=$colorSecondClr ?>;
-    --bg-even: <?=$colorEvenRowBg ?>;
-    --clr-even: <?=$colorEvenRowClr ?>;
-    --bg-highlight: <?=$colorHighlightRowBg ?>;
-    --clr-highlight: <?=$colorHighlightRowClr ?>;
+    --bg-first: <?=esc_attr($colorFirstBg) ?>;
+    --clr-first: <?=esc_attr($colorFirstClr) ?>;
+    --bg-second: <?=esc_attr($colorSecondBg) ?>;
+    --clr-second: <?=esc_attr($colorSecondClr) ?>;
+    --bg-even: <?=esc_attr($colorEvenRowBg) ?>;
+    --clr-even: <?=esc_attr($colorEvenRowClr) ?>;
+    --bg-highlight: <?=esc_attr($colorHighlightRowBg) ?>;
+    --clr-highlight: <?=esc_attr($colorHighlightRowClr) ?>;
 }
 
 @media print {
@@ -81,7 +81,8 @@
     .entry-content h4,
     .entry-content h5,
     .entry-content h6,
-    .wp-block-image,p {
+    .wp-block-image,
+    p {
 
         font-size: 0px !important;
 
@@ -92,7 +93,7 @@
     body * {
 
         font-weight: 400 !important;
-        
+
         line-height: 1.4 !important;
         max-width: fit-content !important;
         margin: 0 !important;
@@ -152,7 +153,7 @@
 
     .fiveprayer__tbhead {
         width: 100% !important;
-       
+
     }
 
 
@@ -186,12 +187,12 @@
         text-align: center;
     }
 
-     .fiveprayer__tbhead {
+    .fiveprayer__tbhead {
         background: rgb(4 94 20);
         color: aliceblue;
     }
 
-     .fp__highlight {
+    .fp__highlight {
         background-color: #d2f847;
     }
 
@@ -281,8 +282,8 @@
     }
 
     .fiveprayer__tbmonthfirst {
-        background-color: var(--bg-first) !important ;
-        color: var(--clr-first) !important ;
+        background-color: var(--bg-first) !important;
+        color: var(--clr-first) !important;
     }
 
     #fiveprayer__tbmonthsecond {
@@ -324,21 +325,22 @@
 
 
     }
-    button{
-      border: none;
-    border-radius: 0px;
-    padding-inline: 10px;
-    padding-block: 8px;
-   
 
-    cursor: pointer;
+    button {
+        border: none;
+        border-radius: 0px;
+        padding-inline: 10px;
+        padding-block: 8px;
+
+
+        cursor: pointer;
     }
-    .show-highlight{
-        background: #079713e3 ;
+
+    .show-highlight {
+        background: #079713e3;
         color: white
-        
     }
-   
+
     .FP_DairyPrayer_ {
         border-collapse: collapse;
         width: 100%;
@@ -352,21 +354,22 @@
 
         text-align: center;
     }
+
     .FP_DairyPrayerf_ th,
     .FP_DairyPrayerf_ td {
         padding: 10px;
-      
+
     }
 
-     .fiveprayer__tbhead {
+    .fiveprayer__tbhead {
         background: rgb(4 94 20);
         color: aliceblue;
     }
 
-   
+
     .fiveprayer__iqamah_next {
         font-size: 18px;
-        color:  var(--bg-second);
+        color: var(--bg-second);
         font-weight: 700;
 
     }
@@ -374,9 +377,9 @@
     .fiveprayer__iqamah_time {
         padding: 0px;
         font-size: 40px;
-        color:  var(--bg-second);
+        color: var(--bg-second);
         font-weight: 700;
-        
+
     }
 }
 </style>
