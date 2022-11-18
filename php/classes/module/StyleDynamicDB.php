@@ -63,9 +63,6 @@
              );
 
 
-
-
-
              if ($color === 'firstbg') {
                  $getColorFirstBg = array_map(function ($key, $value) {
                      if (isset($value["value"])) {
@@ -74,7 +71,7 @@
                  }, array_keys($filteredColorFirstBg), array_values($filteredColorFirstBg));
 
 
-                 return  isset($getColorFirstBg[0]) ? trim($getColorFirstBg[0], '"') : "#01b94b";
+                 return  isset($getColorFirstBg[0]) ? trim($getColorFirstBg[0], '"') : "#024a0f";
              }
 
              if ($color === 'firstclr') {
