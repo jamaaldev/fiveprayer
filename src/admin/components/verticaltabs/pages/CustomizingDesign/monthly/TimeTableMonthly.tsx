@@ -21,6 +21,8 @@ import { HexAlphaColorPicker } from "react-colorful";
 import "../../css/ColorPicker.scss"
 import { useInsertprayerSettingsMetaAPIMutation } from '../../../../../api/prayerSettingsMetaAPI';
 import CalendarDaily from '../daily/CalendarDaily';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 export interface ITimeTableMonthlyProps {
 }
 declare const FivePrayerStyleMonth;
@@ -57,10 +59,12 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   // End HighLight
 
   const saveColor = async () => {
+    const MySwal = withReactContent(Swal)
 
     if (colorFirstHeadBgSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorFirstHeadBgSave);
+     
         
       } catch (error) {
         
@@ -70,11 +74,12 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     if (colorFirstHeadClrSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorFirstHeadClrSave);
+       
         
       } catch (error) {
         
       }
-
+     
     }
     if (colorSecondHeadBgSave.hasOwnProperty('value')) {
       try {
@@ -131,6 +136,15 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
       }
 
     }
+   
+    MySwal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your Style has been saved',
+      showConfirmButton: false,
+      timer: 1600
+    })
+
   }
   const firstHeadBg = (value, meta) => {
     setColorFirstHeadBg(value)
