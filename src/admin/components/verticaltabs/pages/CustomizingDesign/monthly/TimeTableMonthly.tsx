@@ -94,15 +94,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
       }
 
     }
-    if (colorSecondHeadClrSave.hasOwnProperty('value')) {
-      try {
-        await insertprayersettingmeta(colorSecondHeadClrSave);
-        
-      } catch (error) {
-        
-      }
 
-    }
     if (colorEvenRowBgSave.hasOwnProperty('value')) {
       try {
         
