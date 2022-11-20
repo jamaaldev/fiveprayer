@@ -61,6 +61,7 @@ I am very sorry at the moment I am working alone and still need to finish more t
 == Changelog ==
 = 1.1.0 =
 * New Feature Added Customizing Your Style Dynamic TimeTable Prayer.
+* fixed for some hosting company blocking, put and delete methods
 
 
 = 1.0.1 =
@@ -75,6 +76,7 @@ I am very sorry at the moment I am working alone and still need to finish more t
 == Upgrade Notice ==
 = 1.1.0 =
 * New Feature Added Customizing Your Style Dynamic TimeTable Prayer.
+* fixed for some hosting company blocking, put and delete methods.
 
 
 = 1.0.1 =

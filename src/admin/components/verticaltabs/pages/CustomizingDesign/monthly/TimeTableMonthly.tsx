@@ -18,11 +18,11 @@
 import * as React from 'react';
 import CalendarMonthly from './CalendarMonthly';
 import { HexAlphaColorPicker } from "react-colorful";
+import 'react-toastify/dist/ReactToastify.css';
 import "../../css/ColorPicker.scss"
 import { useInsertprayerSettingsMetaAPIMutation } from '../../../../../api/prayerSettingsMetaAPI';
 import CalendarDaily from '../daily/CalendarDaily';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { ToastContainer, toast } from 'react-toastify';
 export interface ITimeTableMonthlyProps {
 }
 declare const FivePrayerStyleMonth;
@@ -59,12 +59,22 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   // End HighLight
 
   const saveColor = async () => {
-    const MySwal = withReactContent(Swal)
+
 
     if (colorFirstHeadBgSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorFirstHeadBgSave);
-     
+        toast.success('Your Style FirstBg Saved! Refresh it.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setColorFirstHeadBgSave({})
         
       } catch (error) {
         
@@ -75,33 +85,57 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     if (colorFirstHeadClrSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorFirstHeadClrSave);
-       
-        
+        toast.success('Your Style FirstClr Saved! Refresh it.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setColorFirstHeadClrSave({})
       } catch (error) {
         
       }
      
     }
+
     if (colorSecondHeadBgSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorSecondHeadBgSave);
-        
+        toast.success('Your Style SecondBg Saved! Refresh it.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setColorSecondHeadBgSave({})
       } catch (error) {
         
       }
 
     }
-    MySwal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your Style has been saved',
-      showConfirmButton: false,
-      timer: 1600
-    })
+   
     if (colorSecondHeadClrSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorSecondHeadClrSave);
-        
+        toast.success('Your Style SecondClr Saved! Refresh it.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setColorSecondHeadClrSave({})
       } catch (error) {
         
       }
@@ -110,8 +144,18 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
 
     if (colorEvenRowBgSave.hasOwnProperty('value')) {
       try {
-        
         await insertprayersettingmeta(colorEvenRowBgSave);
+        toast.success('Your Style EvenBg Saved! Refresh it.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setColorEvenRowBgSave({})
       } catch (error) {
         
       }
@@ -119,8 +163,18 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     }
     if (colorEvenRowClrSave.hasOwnProperty('value')) {
       try {
-        
         await insertprayersettingmeta(colorEvenRowClrSave);
+        toast.success('Your Style EvenClr Saved! Refresh it.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setColorEvenRowClrSave({})
       } catch (error) {
         
       }
@@ -128,8 +182,18 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     }
     if (colorHighLightRowBgSave.hasOwnProperty('value')) {
       try {
-        
         await insertprayersettingmeta(colorHighLightRowBgSave);
+        toast.success('Your Style HighLightBg Saved! Refresh it.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setColorHighLightRowBgSave({})
       } catch (error) {
         
       }
@@ -138,7 +202,17 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
     if (colorHighLightRowClrSave.hasOwnProperty('value')) {
       try {
        await insertprayersettingmeta(colorHighLightRowClrSave);
-        
+       toast.success('Your Style HighLightClr Saved! Refresh it.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+        setColorHighLightRowClrSave({})
       } catch (error) {
         
       }
@@ -193,7 +267,20 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
   }
   return (
     <div>
+
       <div id='Customizing' className='tabcontent'>
+      <ToastContainer 
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
         <h3>TimeTable</h3>
         <p>Customizing TimeTable Theme</p>
         <div className="container">
