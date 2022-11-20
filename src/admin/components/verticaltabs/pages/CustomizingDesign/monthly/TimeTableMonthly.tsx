@@ -71,6 +71,7 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
       }
 
     }
+
     if (colorFirstHeadClrSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorFirstHeadClrSave);
@@ -90,6 +91,13 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
       }
 
     }
+    MySwal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your Style has been saved',
+      showConfirmButton: false,
+      timer: 1600
+    })
     if (colorSecondHeadClrSave.hasOwnProperty('value')) {
       try {
         await insertprayersettingmeta(colorSecondHeadClrSave);
@@ -137,14 +145,6 @@ export function TimeTableMonthly(props: ITimeTableMonthlyProps) {
 
     }
    
-    MySwal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your Style has been saved',
-      showConfirmButton: false,
-      timer: 1600
-    })
-
   }
   const firstHeadBg = (value, meta) => {
     setColorFirstHeadBg(value)

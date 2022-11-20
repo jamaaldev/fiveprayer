@@ -20,6 +20,7 @@ type Props = {secondBg,secondClr,rowHighlightBg,rowHighlightClr}
 function CalendarDaily({secondBg,secondClr,rowHighlightBg,rowHighlightClr }: Props) {
   return (
     <div>
+      <h1>This is fake data just for Preview</h1>
       <table className="FP_DairyPrayer_ FP_DairyPrayerf_">
         <thead>
           <tr>
