@@ -5,7 +5,7 @@
 
  if (!class_exists('FivePrayer_FpTimetableMonth')) {
      require_once(plugin_dir_path(__FILE__) . '../module/GenerateTimeTableMonthly.php');
-     require_once(plugin_dir_path(__FILE__) . './MonthStyleDynamic.php');
+     require_once(plugin_dir_path(__FILE__) . '../module/MonthStyleDynamic.php');
 
 
 

@@ -1,4 +1,5 @@
 import { emptySplitApi } from './emptySplitApi'
+declare const prayerData;
 
 
 export const getInfoWordpress = emptySplitApi.injectEndpoints({

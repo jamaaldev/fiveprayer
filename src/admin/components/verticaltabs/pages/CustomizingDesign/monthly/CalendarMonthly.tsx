@@ -17,17 +17,27 @@
 
 import React from 'react'
 import styled, { css } from 'styled-components';
-import { useGetPrayerTimeTableQuery } from '../../../../api/prayerTimeTableApi';
+import { useGetPrayerTimeTableQuery } from '../../../../../api/prayerTimeTableApi';
+interface FivePrayerProps {
+  readonly colorevenBg: string;
+  readonly colorevenClr: string;
+  readonly colorhighBg: string;
+  readonly colorhighCrl: string;
+  readonly colorsecondBg: string;
+  readonly colorfirstBg: string;
+  readonly colorfirstClr: string;
 
-type Props = { first, second, rowEven,rowHighlight }
+};
 
-function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
+type Props = { firstBg: string, firstClr: string, secondBg: string, secondClr: string, rowEvenBg: string, rowEvenClr: string, rowHighlightBg: string, rowHighlightClr: string }
+
+function CalendarMonthly({ firstBg, firstClr, secondBg, secondClr, rowEvenBg, rowEvenClr, rowHighlightBg, rowHighlightClr }: Props) {
   const { data: timetable, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
   const [month, SetMonth] = React.useState<FPCalendar[]>();
-  
-  localStorage.setItem('even',rowEven);
+  const [switchHighLight, setSwitchHighLight] = React.useState(false);
+
   React.useEffect(() => {
-    
+
     if (timetable?.length) {
 
       const newone = timetable?.filter((table: FPCalendar) => {
@@ -40,10 +50,32 @@ function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
 
   return (
 
-    <FivePrinter coloreven={rowEven} colorhigh={rowHighlight} className="fiveprayer__printer"  id="fiveprayer__divTo">
+    <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorhighCrl={rowHighlightClr} colorsecondBg={secondBg} colorfirstBg={firstBg} colorfirstClr={firstClr} className="fiveprayer__printer" id="fiveprayer__divTo">
       <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
+        {switchHighLight ?
+          <tr id='today-row' className='demo-table-highlight'>
+            <td>0 Highlight 2222</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+            <td>5:19 AM</td>
+          </tr>
+          : ''
+        }
         <thead id='fiveprayer__waa'>
+          {switchHighLight ?
+            <button className='show-highlight' onClick={() => setSwitchHighLight(false)}>Hide HighLight</button>
+            :
+            <button className='show-highlight' onClick={() => setSwitchHighLight(true)}>Show HighLight</button>
 
+          }
           {/* <div className="fiveprayer__printer_option ">
             <form id="fiveprayer__noPrint">
               <select name="country">
@@ -64,7 +96,7 @@ function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
             </form>
             <input className='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
           </div> */}
-          <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: first }} >
+          <tr className="fiveprayer__tbmonthfirst" style={{ backgroundColor: firstBg, color: firstClr }}  >
             <th >
             </th>
 
@@ -80,7 +112,7 @@ function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
 
           </tr>
 
-          <tr className="fiveprayer__tbmonthsecond" style={{ backgroundColor: second }}>
+          <tr id="fiveprayer__tbmonthsecond" style={{ backgroundColor: secondBg, color: secondClr }}>
             <th>Date</th>
             <th> Begins</th>
             <th> Iqamah</th>
@@ -98,7 +130,7 @@ function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
 
         <tbody  >
           {month?.map((calendars: FPCalendar, index: number) => (
-            <tr  key={index} id={calendars?.today === new Date().getDate().toString() ? 'today-row' : null}>
+            <tr key={index} id={calendars?.today === new Date().getDate().toString() ? 'today-row' : null}>
               <td >{calendars?.currentDate}</td>
               <td>{calendars?.fajr_begins}</td>
               <td>{calendars?.fajr_iqamah}</td>
@@ -124,7 +156,7 @@ function CalendarMonthly({ first, second, rowEven,rowHighlight }: Props) {
 
 }
 
-const FivePrinter = styled.div`
+const FivePrinter = styled.div<FivePrayerProps>`
    th,
      td {
 
@@ -134,13 +166,21 @@ const FivePrinter = styled.div`
       
     }
 #today-row{
-  background-color: ${props => props.colorhigh} ;
+  background-color: ${props => props.colorhighBg} ;
+  color: ${props => props.colorhighCrl} !important;
+
 }
 tr:nth-child(even) {
-  background-color: ${props => props.coloreven};
+  background-color: ${props => props.colorevenBg} ;
+  color: ${props => props.colorevenClr} ;
 }
-
-color: rgb(36, 28, 28);
+#fiveprayer__tbmonthsecond{
+  background-color:  ${props => props.colorsecondBg} !important;
+}
+.fiveprayer__tbmonthfirst {
+  background-color: ${props => props.colorfirstBg} !important ;
+  color: ${props => props.colorfirstClr} !important;
+    }
 
 `;
 

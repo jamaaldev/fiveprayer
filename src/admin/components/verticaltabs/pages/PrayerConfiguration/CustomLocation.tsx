@@ -82,7 +82,7 @@ export const CustomLocation = () => {
   };
 
   return (
-    <Location__Container id='location__setting' className='vertical_tabcontent'>
+    <Location__Container  id='Customizing' className='tabcontent'>
       <p className='pheadline'>Custom Location Setting</p>
       <div className='location__col2'>
         <div className='FP__input__container'>
