@@ -221,6 +221,9 @@
     justify-content: stretch !important; 
 
     }
+    .printer-page-container span{
+        height: 0 !important;
+    }
     .left-printer{
         display: grid;
 background:red !important;
@@ -236,7 +239,8 @@ height: fit-content !important;
     .right-printer{
         display: grid;
         background:green !important;
-        height: 100px !important;
+        min-height: 100px !important;
+height: fit-content !important;
     }
 }
 
@@ -250,6 +254,10 @@ height: fit-content !important;
 
 justify-content: stretch ; 
 
+    }
+
+    .printer-page-container span{
+        height: 0;
     }
     .left-printer{
         display: grid;
