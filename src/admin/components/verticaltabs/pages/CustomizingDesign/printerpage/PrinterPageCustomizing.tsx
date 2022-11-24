@@ -15,21 +15,14 @@
 // You should have received a copy of the GNU General Public License
 // along with FivePrayer.  If not, see <http://www.gnu.org/licenses/>.
 
-import * as React from 'react';
-import { NavLink } from 'react-router-dom';
-export interface ICustomizingTabLinksProps {
+import React from 'react'
+
+type Props = {}
+
+function PrinterPageCustomizing({}: Props) {
+  return (
+    <div id='printer-page' className='tabcontent'>PrinterPageCustomizing</div>
+  )
 }
 
-export function CustomizingTabLinks (props: ICustomizingTabLinksProps) {
-  return (
-    <div>
-      <NavLink to={'/settings/Customizingdesign/timetable'}>
-        <button className='tablink'>TimeTable</button>
-      </NavLink>
-      <NavLink to={'/settings/Customizingdesign/printerpage'}>
-        <button className='tablink'>Printer Page</button>
-      </NavLink>
-   
-    </div>
-  );
-}
+export default PrinterPageCustomizing

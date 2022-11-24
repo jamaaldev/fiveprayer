@@ -95,11 +95,11 @@
         font-weight: 400 !important;
 
         line-height: 1.4 !important;
-        max-width: fit-content !important;
+        max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
-        height: fit-content !important;
+        height: 100% !important;
 
         white-space: nowrap !important;
 
@@ -107,8 +107,11 @@
 
     }
 
+
     body:has(.fiveprayer__printer) {
-        width: fit-content !important;
+        white-space: nowrap !important;
+
+        width: 100% !important;
     }
 
     .fiveprayer__printer * {
@@ -117,7 +120,7 @@
         height: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        font-size: 13px !important;
+        font-size: 14px !important;
     }
 
     .fiveprayer__noDisplay {
@@ -209,12 +212,64 @@
         font-weight: 700;
         padding-block: 20px;
     }
+    .printer-page-container{
+        display: grid !important;
+    grid-template-columns: repeat(3,2fr) !important;
+    grid-gap: 6px !important;
+    align-items: stretch !important;
 
+    justify-content: stretch !important; 
+
+    }
+    .left-printer{
+        display: grid;
+background:red !important;
+min-height: 100px !important;
+height: fit-content !important;
+    
+    }
+    .med-printer{
+        display: grid;
+   background:blue !important;
+
+    }
+    .right-printer{
+        display: grid;
+        background:green !important;
+        height: 100px !important;
+    }
 }
 
 @media screen {
+    .printer-page-container{
+        display: grid;
+    grid-template-columns: repeat(3,2fr);
+    grid-gap: 0px;
+    align-items: stretch ;
+   
 
+justify-content: stretch ; 
 
+    }
+    .left-printer{
+        display: grid;
+background:red;
+min-height: 100px ;
+height: fit-content ;
+
+    }
+   
+    .med-printer{
+        display: grid;
+   background:blue;
+
+    }
+    .right-printer{
+        display: grid;
+        background:green;
+        min-height: 100px ;
+height: fit-content ;
+    }
     .fiveprayer__noDisplay {
         display: none;
 
