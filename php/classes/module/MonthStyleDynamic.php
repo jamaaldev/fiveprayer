@@ -227,8 +227,8 @@
     .left-printer{
         display: grid;
 background:red !important;
-min-height: 100px !important;
-height: fit-content !important;
+height: 130px !important;
+
     
     }
     .med-printer{
@@ -239,8 +239,7 @@ height: fit-content !important;
     .right-printer{
         display: grid;
         background:green !important;
-        min-height: 100px !important;
-height: fit-content !important;
+        height: 130px !important;
     }
 }
 
@@ -262,8 +261,7 @@ justify-content: stretch ;
     .left-printer{
         display: grid;
 background:red;
-min-height: 100px ;
-height: fit-content ;
+height: 130px 
 
     }
    
@@ -275,8 +273,7 @@ height: fit-content ;
     .right-printer{
         display: grid;
         background:green;
-        min-height: 100px ;
-height: fit-content ;
+        height: 130px 
     }
     .fiveprayer__noDisplay {
         display: none;

@@ -21,6 +21,10 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
             <span class="postcode">DN22 0PR (United Kingdom)</span>
             <span class="email">info@muslimcharity.org.uk</span>
             <span class="phone">+44 (0) 3000 111 786</span>
+            <span class="phone">+44 (0) 3000 111 786</span>
+            <span class="phone">+44 (0) 3000 111 786</span>
+            <span class="space"></span>
+
         </div>
         <div class="med-printer">
             <img src="https://placekitten.com/240/160
@@ -31,6 +35,12 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
             <span class="country">Registered charity England & Wales</span>
             <span class="charity">Charity No: 1078488</span>
             <span class="charity"></span>
+            <span class="charity"></span>
+            <span class="charity"></span>
+           
+         
+            <span class="space"></span>
+            
         </div>
 
     </div>
