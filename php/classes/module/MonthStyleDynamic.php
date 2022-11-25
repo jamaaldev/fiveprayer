@@ -217,7 +217,7 @@
     grid-template-columns: repeat(3,2fr) !important;
     grid-gap: 6px !important;
     align-items: stretch !important;
-
+    margin-bottom: 10px !important;
     justify-content: stretch !important; 
 
     }
@@ -234,7 +234,12 @@ height: 130px !important;
     .med-printer{
         display: grid;
    background:blue !important;
+   justify-content: center !important;
 
+    }
+    .med-printer img{
+        width: 160px !important;
+        height: 130px !important;
     }
     .right-printer{
         display: grid;
@@ -268,7 +273,12 @@ height: 130px
     .med-printer{
         display: grid;
    background:blue;
+   justify-content: center ;
 
+    }
+    .med-printer img{
+        width: 160px;
+    height: 130px;
     }
     .right-printer{
         display: grid;
