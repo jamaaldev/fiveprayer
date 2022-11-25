@@ -17,17 +17,18 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
 <div class="fiveprayer__printer" id="fiveprayer__divTo">
     <div class="printer-page-container">
         <div class="left-printer">
-            <span class="address"> 91-93 Parkhurst Rd,</span>
-            <span class="postcode">London N7 0LP</span>
+            <span class="address"> 91-93 Parkhurst Rd London,</span>
+            <span class="postcode">N7 0LP</span>
             <span class="email">info@alrisaalah.org</span>
             <span class="phone">020 7700 3733</span>
             <span class="phone">Mon - Fri: 9:00 - 18:30</span>
-            <span class="phone">+44 (0) 3000 111 786</span>
+            <span class="phone"></span>
+            <span class="phone"></span>
             <span class="space"></span>
 
         </div>
         <div class="med-printer">
-            <img src="https://picsum.photos/150/150" alt="" srcset="">
+            <img src="https://www.alrisaalah.org/wp-content/uploads/2020/07/cropped-lOGO.jpeg" alt="" srcset="">
         </div>
         <div class="right-printer">
             <span class="name">Al Risaalah Mosque and Islington Islamic Centre</span>

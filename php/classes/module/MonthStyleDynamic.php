@@ -226,14 +226,12 @@
     }
     .left-printer{
         display: grid;
-background:red !important;
 height: 130px !important;
 
     
     }
     .med-printer{
         display: grid;
-   background:blue !important;
    justify-content: center !important;
 
     }
@@ -243,7 +241,6 @@ height: 130px !important;
     }
     .right-printer{
         display: grid;
-        background:green !important;
         height: 130px !important;
     }
 }
