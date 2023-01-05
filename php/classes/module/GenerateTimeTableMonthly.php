@@ -20,18 +20,15 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
                 }
             );
 
-            $getPrint = array_map(function ($value) {
+            $getPrinter = array_map(function ($value) {
                 if (isset($value["value"])) {
                     return $value['value'];
                 }
             }, array_values($printerDetail));
 
-            $obj = json_decode($getPrint[0]);
+            $printerInfo = json_decode($getPrinter[0]);
+            
 
-
-
-            $printerInfo = $obj;
-            BugFu::log($printerInfo);
             {?>
 
 
