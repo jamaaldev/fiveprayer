@@ -10,20 +10,41 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
         {
             $validatorChecker = new FivePrayer_Validator();
             global $wpdb;
+            $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_prayer_settings_meta ");
+            $result = json_encode($prayersettingmeta);
+            $printerPage = json_decode($result, true);
+            $printerDetail = array_filter(
+                $printerPage,
+                function ($val) {
+                    return $val['meta-key'] === "printer";
+                }
+            );
 
+            $getPrint = array_map(function ($value) {
+                if (isset($value["value"])) {
+                    return $value['value'];
+                }
+            }, array_values($printerDetail));
+
+            $obj = json_decode($getPrint[0]);
+
+
+
+            $printerInfo = $obj;
+            BugFu::log($printerInfo);
             {?>
 
 
 <div class="fiveprayer__printer" id="fiveprayer__divTo">
     <div class="printer-page-container">
         <div class="left-printer">
-            <span id="1" class="address"> 91-93 Parkhurst Rd London,</span>
-            <span id="2" class="postcode">N7 0LP</span>
-            <span id="3" class="email">info@alrisaalah.org</span>
-            <span id="4" class="phone">020 7700 3733</span>
-            <span id="5" class="phone">Mon - Fri: 9:00 - 18:30</span>
-            <span id="6" class="phone"></span>
-            <span id="7" class="phone"></span>
+            <span id="1" class="address"><?php echo esc_html($printerInfo->{'printer_left1'});   ?></span>
+            <span id="2" class="postcode"><?php echo esc_html($printerInfo->{'printer_left2'});   ?></span>
+            <span id="3" class="email"><?php echo esc_html($printerInfo->{'printer_left3'});   ?></span>
+            <span id="4" class="phone"><?php echo esc_html($printerInfo->{'printer_left4'});   ?></span>
+            <span id="5" class="phone"><?php echo esc_html($printerInfo->{'printer_left5'});   ?></span>
+            <span id="6" class="phone"><?php echo esc_html($printerInfo->{'printer_left6'});   ?></span>
+            <span id="7" class="phone"><?php echo esc_html($printerInfo->{'printer_left7'});   ?></span>
             <span id="" class="space"></span>
 
         </div>
@@ -31,12 +52,13 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
             <img src="https://www.alrisaalah.org/wp-content/uploads/2020/07/cropped-lOGO.jpeg" alt="" srcset="">
         </div>
         <div class="right-printer">
-            <span id="8" class="name">Al Risaalah Mosque and Islington Islamic Centre</span>
-            <span id="9" class="country">Registered charity England & Wales</span>
-            <span id="10" class="charity">Charity No: 1078488</span>
-            <span id="11" class="charity"></span>
-            <span id="12" class="charity"></span>
-            <span id="13" class="charity"></span>
+            <span id="8" class="name"><?php echo esc_html($printerInfo->{'printer_right1'});   ?></span>
+            <span id="9" class="country"><?php echo esc_html($printerInfo->{'printer_right2'});   ?></span>
+            <span id="10" class="charity"><?php echo esc_html($printerInfo->{'printer_right3'});   ?></span>
+            <span id="11" class="charity"><?php echo esc_html($printerInfo->{'printer_right4'});   ?></span>
+            <span id="12" class="charity"><?php echo esc_html($printerInfo->{'printer_right5'});   ?></span>
+            <span id="13" class="charity"><?php echo esc_html($printerInfo->{'printer_right6'});   ?></span>
+            <span id="14" class="charity"><?php echo esc_html($printerInfo->{'printer_right7'});   ?></span>
            
          
             <span class="space"></span>
