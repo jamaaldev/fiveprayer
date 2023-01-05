@@ -17,21 +17,51 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { useInsertprayerSettingsMetaAPIMutation } from '../../../../../api/prayerSettingsMetaAPI';
 import '../../../../elements/css/FPInput.scss';
 
 type Props = {}
 
 function PrinterPageCustomizing({ }: Props) {
-const imgID =  React.useRef<HTMLImageElement>(null);
-  const ImageLoad = (file) =>{
-    console.log("📢[PrinterPageCustomizing.tsx:27]: file: ", file.target.files);
-    let [imageName] = file.target.files;
-    console.log("📢[PrinterPageCustomizing.tsx:27]: imageName: ", imageName);
+  const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
 
-    if(imageName){
-        // make sure to use this ! mark if you see Object is possibly 'undefined' etc.
-        imgID.current!.src  = URL.createObjectURL(imageName);
+  const [printerPage, SetPrinterPage] = React.useState({
+    printer_left1: "",
+    printer_left2: "",
+    printer_left3: "",
+    printer_left4: "",
+    printer_left5: "",
+    printer_left6: "",
+    printer_left7: "",
+    printer_right1: "",
+    printer_right2: "",
+    printer_right3: "",
+    printer_right4: "",
+    printer_right5: "",
+    printer_right6: "",
+    printer_right7: ""
+  });
+
+  const handleChange = (e) =>{
+    const {name,value} = e.target;
+    SetPrinterPage((prev) =>{
+      return{...prev,[name]: value}
+    })
+  }
+  const imgID = React.useRef<HTMLImageElement>(null);
+  const ImageLoad = (file) => {
+    let [imageName] = file.target.files;
+
+    if (imageName) {
+      // make sure to use this ! mark if you see Object is possibly 'undefined' etc.
+      imgID!.current!.src = URL.createObjectURL(imageName);
     }
+  }
+  const savePrinterPage = (e) =>{
+    e.preventDefault();
+    const printerPages = { value: printerPage, meta: 'printer' };
+    insertprayersettingmeta(printerPages);
+
   }
   return (
     <div id='printer-page' className='tabcontent'>
@@ -39,41 +69,42 @@ const imgID =  React.useRef<HTMLImageElement>(null);
       <PrinterContainer className='FP__input__container'>
 
 
-        <div>
-          <h1>Left Side</h1>
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
+        <form onSubmit={savePrinterPage}>
+          <div>
+            <h1>Left Side</h1>
+            <input className='FP__input' type='text' name='printer_left1' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_left2' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_left3' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_left4' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_left5' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_left6' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_left7' onChange={handleChange} placeholder='Add Details' />
 
-        </div>
+          </div>
 
-        <div className="profile-uploud" >
-          <form  onChange={ImageLoad}>
-          <img ref={imgID}  width="200" height="200" src="https://fakeimg.pl/200x200/" />
-          
+          <div className="profile-uploud" >
+            
+              <img ref={imgID} width="200" height="200" src="https://fakeimg.pl/200x200/" />
 
-          <input type="file" className='FP__input'   name="avatar" accept="image/png, image/gif, image/jpeg" />
+              <input type="file" className='FP__input' onChange={ImageLoad} name="avatar" accept="image/png, image/gif, image/jpeg" />
 
-          </form>
+            
 
-        </div>
+          </div>
 
-        <div>
-          <h1>Right Side</h1>
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
-          <input className='FP__input' type='text' name='Add Details' placeholder='Add Details' />
+          <div>
+            <h1>Right Side</h1>
+            <input className='FP__input' type='text' name='printer_right1' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_right2' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_right3' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_right4' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_right5' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_right6' onChange={handleChange} placeholder='Add Details' />
+            <input className='FP__input' type='text' name='printer_right7' onChange={handleChange} placeholder='Add Details' />
 
-        </div>
-
+          </div>
+          <input type="submit" value="Save" />
+        </form>
       </PrinterContainer>
     </div>
 
