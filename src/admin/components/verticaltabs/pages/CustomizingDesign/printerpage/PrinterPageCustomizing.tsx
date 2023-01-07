@@ -42,24 +42,19 @@ function PrinterPageCustomizing({ }: Props) {
     printer_right4: FivePrayerPrinter.printer_right4 || "",
     printer_right5: FivePrayerPrinter.printer_right5 || "",
     printer_right6: FivePrayerPrinter.printer_right6 || "",
-    printer_right7: FivePrayerPrinter.printer_right7 || ""
+    printer_right7: FivePrayerPrinter.printer_right7 || "",
+    printer_logo: FivePrayerPrinter.printer_logo || "https://fakeimg.pl/200x200/"
   });
   
+  const imgID = React.useRef<HTMLImageElement>(null);
   const handleChange = (e) => {
     const { name, value } = e.target;
     SetPrinterPage((prev) => {
       return { ...prev, [name]: value }
     })
+    imgID!.current!.src = printerPage.printer_logo;
   }
-  const imgID = React.useRef<HTMLImageElement>(null);
-  const ImageLoad = (file) => {
-    let [imageName] = file.target.files;
 
-    if (imageName) {
-      // make sure to use this ! mark if you see Object is possibly 'undefined' etc.
-      imgID!.current!.src = URL.createObjectURL(imageName);
-    }
-  }
   const savePrinterPage = async (e) => {
     e.preventDefault();
 
@@ -117,9 +112,9 @@ function PrinterPageCustomizing({ }: Props) {
 
         <div className="profile-uploud" >
 
-          <img ref={imgID} width="200" height="200" src="https://fakeimg.pl/200x200/" />
+          <img ref={imgID} width="200" height="200" src={printerPage.printer_logo} />
 
-          <input type="file" className='FP__input' onChange={ImageLoad} name="avatar" accept="image/png, image/gif, image/jpeg" />
+          <input type="text" onChange={handleChange} name="printer_logo" placeholder='Add url link image' id="" />
           <input type="submit" value="Save" />
 
 

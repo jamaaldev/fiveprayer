@@ -27,7 +27,7 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
             }, array_values($printerDetail));
 
             $printerInfo = json_decode($getPrinter[0]);
-            
+
 
             {?>
 
@@ -46,7 +46,7 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
 
         </div>
         <div class="med-printer">
-            <img src="https://www.alrisaalah.org/wp-content/uploads/2020/07/cropped-lOGO.jpeg" alt="" srcset="">
+            <img src="<?php echo esc_html($printerInfo->{'printer_logo'});   ?>" alt="" srcset="">
         </div>
         <div class="right-printer">
             <span id="8" class="name"><?php echo esc_html($printerInfo->{'printer_right1'});   ?></span>
