@@ -35,27 +35,27 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
 <div class="fiveprayer__printer" id="fiveprayer__divTo">
     <div class="printer-page-container">
         <div class="left-printer">
-            <span id="1" class="address"><?php echo esc_html($printerInfo->{'printer_left1'});   ?></span>
-            <span id="2" class="postcode"><?php echo esc_html($printerInfo->{'printer_left2'});   ?></span>
-            <span id="3" class="email"><?php echo esc_html($printerInfo->{'printer_left3'});   ?></span>
-            <span id="4" class="phone"><?php echo esc_html($printerInfo->{'printer_left4'});   ?></span>
-            <span id="5" class="phone"><?php echo esc_html($printerInfo->{'printer_left5'});   ?></span>
-            <span id="6" class="phone"><?php echo esc_html($printerInfo->{'printer_left6'});   ?></span>
-            <span id="7" class="phone"><?php echo esc_html($printerInfo->{'printer_left7'});   ?></span>
-            <span id="" class="space"></span>
+            <span id="printer_left1" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left1'});   ?></span>
+            <span id="printer_left2" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left2'});   ?></span>
+            <span id="printer_left3" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left3'});   ?></span>
+            <span id="printer_left4" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left4'});   ?></span>
+            <span id="printer_left5" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left5'});   ?></span>
+            <span id="printer_left6" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left6'});   ?></span>
+            <span id="printer_left7" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left7'});   ?></span>
+            <span id="space" class="space"></span>
 
         </div>
         <div class="med-printer">
-            <img src="<?php echo esc_html($printerInfo->{'printer_logo'});   ?>" alt="" srcset="">
+            <img id="printer_logo" src="<?php echo esc_url($printerInfo->{'printer_logo'});   ?>" alt="logo" />
         </div>
         <div class="right-printer">
-            <span id="8" class="name"><?php echo esc_html($printerInfo->{'printer_right1'});   ?></span>
-            <span id="9" class="country"><?php echo esc_html($printerInfo->{'printer_right2'});   ?></span>
-            <span id="10" class="charity"><?php echo esc_html($printerInfo->{'printer_right3'});   ?></span>
-            <span id="11" class="charity"><?php echo esc_html($printerInfo->{'printer_right4'});   ?></span>
-            <span id="12" class="charity"><?php echo esc_html($printerInfo->{'printer_right5'});   ?></span>
-            <span id="13" class="charity"><?php echo esc_html($printerInfo->{'printer_right6'});   ?></span>
-            <span id="14" class="charity"><?php echo esc_html($printerInfo->{'printer_right7'});   ?></span>
+            <span id="printer_right1" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right1'});   ?></span>
+            <span id="printer_right2" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right2'});   ?></span>
+            <span id="printer_right3" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right3'});   ?></span>
+            <span id="printer_right4" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right4'});   ?></span>
+            <span id="printer_right5" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right5'});   ?></span>
+            <span id="printer_right6" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right6'});   ?></span>
+            <span id="printer_right7" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right7'});   ?></span>
            
          
             <span class="space"></span>
