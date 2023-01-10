@@ -51,6 +51,7 @@ if (!class_exists('FivePrayer_DataQuery')) {
                 'printer_right5' => sanitize_text_field($printerInfo->{'printer_right5'}),
                 'printer_right6' => sanitize_text_field($printerInfo->{'printer_right6'}),
                 'printer_right7' => sanitize_text_field($printerInfo->{'printer_right7'}),
+                'printer_boolean' => rest_sanitize_boolean($printerInfo->{'printer_boolean'}),
                 'printer_logo' => sanitize_text_field($printerInfo->{'printer_logo'})
 
 

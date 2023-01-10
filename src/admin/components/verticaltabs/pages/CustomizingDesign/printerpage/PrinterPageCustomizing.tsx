@@ -27,7 +27,8 @@ declare const FivePrayerPrinter;
 
 function PrinterPageCustomizing({ }: Props) {
   const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
-
+  const [check,setchecked] = React.useState('false');
+  console.log("📢[PrinterPageCustomizing.tsx:31]: check: ", check);
   const [printerPage, SetPrinterPage] = React.useState({
     printer_left1: FivePrayerPrinter?.printer_left1 || "",
     printer_left2: FivePrayerPrinter?.printer_left2 || "",
@@ -43,14 +44,30 @@ function PrinterPageCustomizing({ }: Props) {
     printer_right5: FivePrayerPrinter.printer_right5 || "",
     printer_right6: FivePrayerPrinter.printer_right6 || "",
     printer_right7: FivePrayerPrinter.printer_right7 || "",
+    printer_boolean: FivePrayerPrinter.printer_boolean || 'false',
     printer_logo: FivePrayerPrinter.printer_logo || "https://fakeimg.pl/200x200/"
   });
+ 
+
+    console.log("📢[PrinterPageCustomizing.tsx:50]: FivePrayerPrinter.printer_boolean: ", printerPage.printer_boolean);
   
   const imgID = React.useRef<HTMLImageElement>(null);
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value,checked } = e.target;
+    if(checked == true && name === 'printer_boolean' ){
+      setchecked('true')
+      value = 'true'
+    } 
+    if(checked == false && name === 'printer_boolean') {
+      setchecked('false')
+      value = 'false'
+
+    }
+    console.log("📢[PrinterPageCustomizing.tsx:54]: checked: ", checked);
+    console.log("📢[PrinterPageCustomizing.tsx:54]: value: ", value);
+    console.log("📢[PrinterPageCustomizing.tsx:54]: name: ", name);
     SetPrinterPage((prev) => {
-      return { ...prev, [name]: value }
+      return { ...prev, [name]: value}
     })
     imgID!.current!.src = printerPage.printer_logo;
   }
@@ -95,7 +112,7 @@ function PrinterPageCustomizing({ }: Props) {
       />
       Printer Page Add Extra Information
       <PrinterContainer onSubmit={savePrinterPage} className='FP__input__container'>
-
+        <input type="checkbox" onChange={handleChange} checked={JSON.parse(printerPage.printer_boolean)} value={`${check}`} name="printer_boolean" id="" />
 
 
         <div>

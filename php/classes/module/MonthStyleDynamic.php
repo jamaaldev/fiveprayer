@@ -283,7 +283,7 @@ height: 130px
         background:green;
         height: 130px 
     }
-    .fiveprayer__noDisplay {
+    .fiveprayer__noDisplay,#printerdisplay {
         display: none;
 
     }

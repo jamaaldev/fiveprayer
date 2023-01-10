@@ -33,7 +33,12 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
 
 
 <div class="fiveprayer__printer" id="fiveprayer__divTo">
-    <div class="printer-page-container">
+    <?php
+    if (esc_html($printerInfo->{'printer_boolean'}) === 'true') { ?>
+
+             
+
+    <div class="printer-page-container" id="printerdisplay">
         <div class="left-printer">
             <span id="printer_left1" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left1'});   ?></span>
             <span id="printer_left2" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left2'});   ?></span>
@@ -63,6 +68,7 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
         </div>
 
     </div>
+ <?php  } ?>
     <table id='fiveprayer__divToPrint' class='fiveprayer__TablePrayer_'>
         <thead id='fiveprayer__waa'>
             <?php
