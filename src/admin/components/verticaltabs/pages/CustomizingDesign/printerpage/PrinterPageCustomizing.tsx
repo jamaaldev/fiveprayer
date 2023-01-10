@@ -27,8 +27,6 @@ declare const FivePrayerPrinter;
 
 function PrinterPageCustomizing({ }: Props) {
   const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
-  const [check,setchecked] = React.useState('false');
-  console.log("📢[PrinterPageCustomizing.tsx:31]: check: ", check);
   const [printerPage, SetPrinterPage] = React.useState({
     printer_left1: FivePrayerPrinter?.printer_left1 || "",
     printer_left2: FivePrayerPrinter?.printer_left2 || "",
@@ -49,23 +47,21 @@ function PrinterPageCustomizing({ }: Props) {
   });
  
 
-    console.log("📢[PrinterPageCustomizing.tsx:50]: FivePrayerPrinter.printer_boolean: ", printerPage.printer_boolean);
-  
+
   const imgID = React.useRef<HTMLImageElement>(null);
   const handleChange = (e) => {
     let { name, value,checked } = e.target;
+
     if(checked == true && name === 'printer_boolean' ){
-      setchecked('true')
+   
       value = 'true'
     } 
     if(checked == false && name === 'printer_boolean') {
-      setchecked('false')
+   
       value = 'false'
 
     }
-    console.log("📢[PrinterPageCustomizing.tsx:54]: checked: ", checked);
-    console.log("📢[PrinterPageCustomizing.tsx:54]: value: ", value);
-    console.log("📢[PrinterPageCustomizing.tsx:54]: name: ", name);
+   
     SetPrinterPage((prev) => {
       return { ...prev, [name]: value}
     })
@@ -112,8 +108,8 @@ function PrinterPageCustomizing({ }: Props) {
       />
       Printer Page Add Extra Information
       <PrinterContainer onSubmit={savePrinterPage} className='FP__input__container'>
-        <input type="checkbox" onChange={handleChange} checked={JSON.parse(printerPage.printer_boolean)} value={`${check}`} name="printer_boolean" id="" />
-
+        <input type="checkbox" onChange={handleChange} checked={JSON.parse(printerPage.printer_boolean)}   name="printer_boolean" id="" />
+         
 
         <div>
           <h1>Left Side</h1>
