@@ -42,7 +42,7 @@ function PrinterPageCustomizing({ }: Props) {
     printer_right5: FivePrayerPrinter.printer_right5 || "",
     printer_right6: FivePrayerPrinter.printer_right6 || "",
     printer_right7: FivePrayerPrinter.printer_right7 || "",
-    printer_boolean: FivePrayerPrinter.printer_boolean || 'false',
+    printer_boolean: FivePrayerPrinter.printer_boolean.toString() || 'false',
     printer_logo: FivePrayerPrinter.printer_logo || "https://fakeimg.pl/200x200/"
   });
  
@@ -63,7 +63,7 @@ function PrinterPageCustomizing({ }: Props) {
     }
    
     SetPrinterPage((prev) => {
-      return { ...prev, [name]: value}
+      return { ...prev, [name]: value }
     })
     imgID!.current!.src = printerPage.printer_logo;
   }
