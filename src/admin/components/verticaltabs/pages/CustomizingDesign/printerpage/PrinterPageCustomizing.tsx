@@ -117,9 +117,6 @@ function PrinterPageCustomizing({ }: Props) {
 
       </div>
       <PrinterContainer onSubmit={savePrinterPage} className='FP__input__container'>
-        <input type="checkbox" onChange={handleChange} checked={JSON.parse(printerPage.printer_boolean)}   name="printer_boolean" id="" />
-         
-
         <div>
           <h1>Left Side</h1>
           <input className='FP__input' value={printerPage?.printer_left1} type='text' name='printer_left1' onChange={handleChange} placeholder='Add Details' />
