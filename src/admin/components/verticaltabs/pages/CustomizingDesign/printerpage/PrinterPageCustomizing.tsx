@@ -27,6 +27,7 @@ declare const FivePrayerPrinter;
 
 function PrinterPageCustomizing({ }: Props) {
   const [insertprayersettingmeta] = useInsertprayerSettingsMetaAPIMutation();
+
   const [printerPage, SetPrinterPage] = React.useState({
     printer_left1: FivePrayerPrinter?.printer_left1 || "",
     printer_left2: FivePrayerPrinter?.printer_left2 || "",
@@ -35,16 +36,17 @@ function PrinterPageCustomizing({ }: Props) {
     printer_left5: FivePrayerPrinter?.printer_left5 || "",
     printer_left6: FivePrayerPrinter?.printer_left6 || "",
     printer_left7: FivePrayerPrinter?.printer_left7 || "",
-    printer_right1: FivePrayerPrinter.printer_right1 || "",
-    printer_right2: FivePrayerPrinter.printer_right2 || "",
-    printer_right3: FivePrayerPrinter.printer_right3 || "",
-    printer_right4: FivePrayerPrinter.printer_right4 || "",
-    printer_right5: FivePrayerPrinter.printer_right5 || "",
-    printer_right6: FivePrayerPrinter.printer_right6 || "",
-    printer_right7: FivePrayerPrinter.printer_right7 || "",
-    printer_boolean: FivePrayerPrinter.printer_boolean.toString() || 'false',
-    printer_logo: FivePrayerPrinter.printer_logo || "https://fakeimg.pl/200x200/"
+    printer_right1: FivePrayerPrinter?.printer_right1 || "",
+    printer_right2: FivePrayerPrinter?.printer_right2 || "",
+    printer_right3: FivePrayerPrinter?.printer_right3 || "",
+    printer_right4: FivePrayerPrinter?.printer_right4 || "",
+    printer_right5: FivePrayerPrinter?.printer_right5 || "",
+    printer_right6: FivePrayerPrinter?.printer_right6 || "",
+    printer_right7: FivePrayerPrinter?.printer_right7 || "",
+    printer_boolean: FivePrayerPrinter?.printer_boolean.toString() || 'false',
+    printer_logo: FivePrayerPrinter?.printer_logo || "https://fakeimg.pl/200x200/"
   });
+
 
 
 
@@ -115,7 +117,8 @@ function PrinterPageCustomizing({ }: Props) {
 
       </div>
       <PrinterContainer onSubmit={savePrinterPage} className='FP__input__container'>
-
+        <input type="checkbox" onChange={handleChange} checked={JSON.parse(printerPage.printer_boolean)}   name="printer_boolean" id="" />
+         
 
         <div>
           <h1>Left Side</h1>
