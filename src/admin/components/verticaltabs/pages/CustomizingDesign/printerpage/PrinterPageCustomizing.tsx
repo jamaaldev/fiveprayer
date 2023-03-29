@@ -45,23 +45,23 @@ function PrinterPageCustomizing({ }: Props) {
     printer_boolean: FivePrayerPrinter.printer_boolean.toString() || 'false',
     printer_logo: FivePrayerPrinter.printer_logo || "https://fakeimg.pl/200x200/"
   });
- 
+
 
 
   const imgID = React.useRef<HTMLImageElement>(null);
   const handleChange = (e) => {
-    let { name, value,checked } = e.target;
+    let { name, value, checked } = e.target;
 
-    if(checked == true && name === 'printer_boolean' ){
-   
+    if (checked == true && name === 'printer_boolean') {
+
       value = 'true'
-    } 
-    if(checked == false && name === 'printer_boolean') {
-   
+    }
+    if (checked == false && name === 'printer_boolean') {
+
       value = 'false'
 
     }
-   
+
     SetPrinterPage((prev) => {
       return { ...prev, [name]: value }
     })
@@ -72,24 +72,24 @@ function PrinterPageCustomizing({ }: Props) {
     e.preventDefault();
 
     const printerPages = { value: printerPage, meta: 'printer' };
-      try {
-        await insertprayersettingmeta(printerPages);
-        toast.success('Your PrinterDetail Saved! Refresh it.', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+    try {
+      await insertprayersettingmeta(printerPages);
+      toast.success('Your PrinterDetail Saved! Refresh it.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
 
-      } catch (error) {
+    } catch (error) {
 
-      }
+    }
 
-  
+
 
   }
   return (
@@ -106,10 +106,16 @@ function PrinterPageCustomizing({ }: Props) {
         pauseOnHover
         theme="light"
       />
-      Printer Page Add Extra Information
+      <div className="checkbox__container">
+      <p>Printer Page Add Extra Information</p>
+      <label className="switch">
+        <input type="checkbox" onChange={handleChange} checked={JSON.parse(printerPage.printer_boolean)} name="printer_boolean" id="" />
+        <span className="slider"></span>
+      </label>
+
+      </div>
       <PrinterContainer onSubmit={savePrinterPage} className='FP__input__container'>
-        <input type="checkbox" onChange={handleChange} checked={JSON.parse(printerPage.printer_boolean)}   name="printer_boolean" id="" />
-         
+
 
         <div>
           <h1>Left Side</h1>
@@ -128,7 +134,7 @@ function PrinterPageCustomizing({ }: Props) {
           <img ref={imgID} width="200" height="200" src={printerPage.printer_logo} />
 
           <input type="text" onChange={handleChange} name="printer_logo" placeholder='Add url link image' id="" />
-          <input type="submit" value="Save" />
+          <input className='savebtn' type="submit" value="Save" />
 
 
 
@@ -162,6 +168,17 @@ const PrinterContainer = styled.form`
     .profile-uploud{
       width:200px;
       margin: 5px;
+    }
+    .savebtn{
+      background-color: blue;
+      color: white;
+      padding-block: 10px;
+      padding-inline: 15px;
+      border: none;
+      &:hover{
+        background-color: cadetblue;
+        cursor: pointer;
+      }
     }
         `;
 export default PrinterPageCustomizing

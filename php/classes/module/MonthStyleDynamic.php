@@ -112,7 +112,7 @@
     body:has(.fiveprayer__printer) {
         white-space: nowrap !important;
 
-        width: 100% !important;
+        width: fit-content !important;
     }
 
     .fiveprayer__printer * {
@@ -121,7 +121,7 @@
         height: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        font-size: 14px !important;
+        font-size: 13px !important;
     }
 
     .fiveprayer__noDisplay {
