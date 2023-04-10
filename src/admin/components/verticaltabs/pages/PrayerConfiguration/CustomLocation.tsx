@@ -1,9 +1,9 @@
 import * as React from 'react';
-import '../../elements/css/FPInput.scss';
+import '../../../elements/css/FPInput.scss';
 import { useState, useRef, useEffect, useCallback, useMemo, useReducer } from 'react';
 import styled from 'styled-components';
-import { useDeleteLocationMutation, useGetLocationQuery, useInsertLocationMutation, useUpdateLocationMutation } from '../../../api/customLocationApi';
-import { LocationChecked, LocationCity } from '../../../features/search/searchTownCity';
+import { useDeleteLocationMutation, useGetLocationQuery, useInsertLocationMutation, useUpdateLocationMutation } from '../../../../api/customLocationApi';
+import { LocationChecked, LocationCity } from '../../../../features/search/searchTownCity';
 export const CustomLocation = () => {
   const [country, setCountry] = useState<LocationCity | undefined | string | any>('');
   const [city, setCity] = useState<LocationCity | undefined | string | any>('');
@@ -82,7 +82,7 @@ export const CustomLocation = () => {
   };
 
   return (
-    <Location__Container id='location__setting' className='vertical_tabcontent'>
+    <Location__Container  id='Customizing' className='tabcontent'>
       <p className='pheadline'>Custom Location Setting</p>
       <div className='location__col2'>
         <div className='FP__input__container'>

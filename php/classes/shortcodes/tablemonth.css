@@ -1,3 +1,4 @@
+
 @media print {
 
     header,
@@ -32,7 +33,6 @@
         height: fit-content !important;
 
         white-space: nowrap !important;
-
 
 
     }

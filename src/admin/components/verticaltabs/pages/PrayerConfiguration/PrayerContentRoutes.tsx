@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import PrayerConfigration from '../PrayerConfigration';
-import { CustomLocation } from '../CustomLocation';
-import { PrayerConfig } from './PrayerConfig';
+import { CustomLocation } from './CustomLocation';
 
 export interface IPrayerContentRoutesProps {}
 

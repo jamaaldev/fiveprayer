@@ -1,6 +1,5 @@
-import { ListCityTown, LocationCity, SearchTownCityState } from '../features/search/searchTownCity';
 import { emptySplitApi } from './emptySplitApi';
-
+declare const prayerData;
 export const prayerSettingsMetaAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     getprayerSettingsMetaAPI: builder.query({
@@ -20,8 +19,9 @@ export const prayerSettingsMetaAPI = emptySplitApi.injectEndpoints({
       invalidatesTags: [{ type: 'prayerSettingsMetaTag' }],
     }),
     updateprayerSettingsMetaAPI: builder.mutation({
-      query: ({ prayersettingschecked, ...put }) => ({ url: `fp/v1/fp_prayersettings_meta`, method: 'PUT', body: put,headers:{
+      query: ({ prayersettingschecked, ...put }) => ({ url: `fp/v1/fp_prayersettings_meta`, method: 'POST', body: put,headers:{
         'X-WP-Nonce': prayerData?.nonce,
+        'X-HTTP-Method-Override': 'PUT'
       } }),
       invalidatesTags: [{ type: 'prayerSettingsMetaTag' }],
     }),
