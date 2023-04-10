@@ -1,41 +1,41 @@
 <?php
- defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
+defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
- if (!class_exists('FivePrayer_MonthStyleDynamic')) {
-     require_once(plugin_dir_path(__FILE__) . '../module/StyleDynamicDB.php');
+if (!class_exists('FivePrayer_MonthStyleDynamic')) {
+    require_once(plugin_dir_path(__FILE__) . '../module/StyleDynamicDB.php');
 
-     class FivePrayer_MonthStyleDynamic
-     {
-         public function monthStyleDynamic()
-         {
-             $monthstyle = new FivePrayer_StyleDynamicDB();
+    class FivePrayer_MonthStyleDynamic
+    {
+        public function monthStyleDynamic()
+        {
+            $monthstyle = new FivePrayer_StyleDynamicDB();
 
-             $colorFirstBg = $monthstyle->StyleDynamic('firstbg');
-             $colorFirstClr = $monthstyle->StyleDynamic('firstclr');
-             $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
-             $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
-             $colorEvenRowBg = $monthstyle->StyleDynamic('evenrowbg');
-             $colorEvenRowClr = $monthstyle->StyleDynamic('evenrowclr');
-             $colorHighlightRowBg = $monthstyle->StyleDynamic('highlightrowbg');
-             $colorHighlightRowClr = $monthstyle->StyleDynamic('highlightrowclr');
-             wp_add_inline_script('fiveprayer-script', 'const FivePrayerStyleMonth = ' . json_encode(array(
-                'ajaxUrl' => admin_url('admin-ajax.php'),
+            $colorFirstBg = $monthstyle->StyleDynamic('firstbg');
+            $colorFirstClr = $monthstyle->StyleDynamic('firstclr');
+            $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
+            $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
+            $colorEvenRowBg = $monthstyle->StyleDynamic('evenrowbg');
+            $colorEvenRowClr = $monthstyle->StyleDynamic('evenrowclr');
+            $colorHighlightRowBg = $monthstyle->StyleDynamic('highlightrowbg');
+            $colorHighlightRowClr = $monthstyle->StyleDynamic('highlightrowclr');
+            wp_add_inline_script('fiveprayer-script', 'const FivePrayerStyleMonth = ' . json_encode(array(
+               'ajaxUrl' => admin_url('admin-ajax.php'),
 
-                'firstbg' =>  sanitize_title($colorFirstBg),
-                'firstclr' => sanitize_title($colorFirstClr),
-                'secondbg' =>  sanitize_title($colorSecondBg),
-                'secondclr' => sanitize_title($colorSecondClr),
-                'evenrowbg' => sanitize_title($colorEvenRowBg),
-                'evenrowclr' => sanitize_title($colorEvenRowClr),
-                'highlightrowbg' => sanitize_title($colorHighlightRowBg),
-                'highlightrowclr' => sanitize_title($colorHighlightRowClr)
+               'firstbg' =>  sanitize_title($colorFirstBg),
+               'firstclr' => sanitize_title($colorFirstClr),
+               'secondbg' =>  sanitize_title($colorSecondBg),
+               'secondclr' => sanitize_title($colorSecondClr),
+               'evenrowbg' => sanitize_title($colorEvenRowBg),
+               'evenrowclr' => sanitize_title($colorEvenRowClr),
+               'highlightrowbg' => sanitize_title($colorHighlightRowBg),
+               'highlightrowclr' => sanitize_title($colorHighlightRowClr)
 
 
             )), 'before');
 
 
 
-             ?>
+            ?>
 <!-- Start Inline CSS Style -->
 <style>
 :root {
@@ -96,11 +96,11 @@
         font-weight: 400 !important;
 
         line-height: 1.4 !important;
-        max-width: 100% !important;
+        max-width: fit-content !important;
         margin: 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
-        height: 100% !important;
+        height: fit-content !important;
 
         white-space: nowrap !important;
 
@@ -117,8 +117,8 @@
 
     .fiveprayer__printer * {
         white-space: nowrap !important;
-        width: 100% !important;
-        height: 100% !important;
+        width: fit-content !important;
+        height: fit-content !important;
         margin: 0 !important;
         padding: 0 !important;
         font-size: 13px !important;
@@ -131,7 +131,7 @@
     }
 
     .fiveprayer__printer {
-        width: 100% !important;
+        width: fit-content !important;
     }
 
     #fiveprayer__divTo {
@@ -139,7 +139,7 @@
     }
 
     #fiveprayer__divToPrint {
-        width: 100% !important;
+        width: fit-content !important;
         border-collapse: collapse !important;
 
     }
@@ -156,7 +156,7 @@
     }
 
     .fiveprayer__tbhead {
-        width: 100% !important;
+        width: fit-content !important;
 
     }
 
@@ -179,7 +179,7 @@
 
     .FP_DairyPrayer_ {
         border-collapse: collapse;
-        width: 100%;
+        width: fit-content !important;
     }
 
     .FP_DairyPrayer_ th,
@@ -454,6 +454,6 @@ height: 130px
 <!-- End Inline CSS Style -->
 <?php
 
-         }
-     }
- }
+        }
+    }
+}
