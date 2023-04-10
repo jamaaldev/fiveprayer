@@ -1,40 +1,41 @@
 <?php
- defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
+defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
- if (!class_exists('FivePrayer_MonthStyleDynamic')) {
-     require_once(plugin_dir_path(__FILE__) . '../module/StyleDynamicDB.php');
+if (!class_exists('FivePrayer_MonthStyleDynamic')) {
+    require_once(plugin_dir_path(__FILE__) . '../module/StyleDynamicDB.php');
 
-     class FivePrayer_MonthStyleDynamic
-     {
-         public function monthStyleDynamic()
-         {
-             $monthstyle = new FivePrayer_StyleDynamicDB();
+    class FivePrayer_MonthStyleDynamic
+    {
+        public function monthStyleDynamic()
+        {
+            $monthstyle = new FivePrayer_StyleDynamicDB();
 
-             $colorFirstBg = $monthstyle->StyleDynamic('firstbg');
-             $colorFirstClr = $monthstyle->StyleDynamic('firstclr');
-             $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
-             $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
-             $colorEvenRowBg = $monthstyle->StyleDynamic('evenrowbg');
-             $colorEvenRowClr = $monthstyle->StyleDynamic('evenrowclr');
-             $colorHighlightRowBg = $monthstyle->StyleDynamic('highlightrowbg');
-             $colorHighlightRowClr = $monthstyle->StyleDynamic('highlightrowclr');
-             wp_add_inline_script('fiveprayer-script', 'const FivePrayerStyleMonth = ' . json_encode(array(
-                'ajaxUrl' => admin_url('admin-ajax.php'),
+            $colorFirstBg = $monthstyle->StyleDynamic('firstbg');
+            $colorFirstClr = $monthstyle->StyleDynamic('firstclr');
+            $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
+            $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
+            $colorEvenRowBg = $monthstyle->StyleDynamic('evenrowbg');
+            $colorEvenRowClr = $monthstyle->StyleDynamic('evenrowclr');
+            $colorHighlightRowBg = $monthstyle->StyleDynamic('highlightrowbg');
+            $colorHighlightRowClr = $monthstyle->StyleDynamic('highlightrowclr');
+            wp_add_inline_script('fiveprayer-script', 'const FivePrayerStyleMonth = ' . json_encode(array(
+               'ajaxUrl' => admin_url('admin-ajax.php'),
 
-                'firstbg' =>  sanitize_title($colorFirstBg),
-                'firstclr' => sanitize_title($colorFirstClr),
-                'secondbg' =>  sanitize_title($colorSecondBg),
-                'secondclr' => sanitize_title($colorSecondClr),
-                'evenrowbg' => sanitize_title($colorEvenRowBg),
-                'evenrowclr' => sanitize_title($colorEvenRowClr),
-                'highlightrowbg' => sanitize_title($colorHighlightRowBg),
-                'highlightrowclr' => sanitize_title($colorHighlightRowClr)
+               'firstbg' =>  sanitize_title($colorFirstBg),
+               'firstclr' => sanitize_title($colorFirstClr),
+               'secondbg' =>  sanitize_title($colorSecondBg),
+               'secondclr' => sanitize_title($colorSecondClr),
+               'evenrowbg' => sanitize_title($colorEvenRowBg),
+               'evenrowclr' => sanitize_title($colorEvenRowClr),
+               'highlightrowbg' => sanitize_title($colorHighlightRowBg),
+               'highlightrowclr' => sanitize_title($colorHighlightRowClr)
 
 
             )), 'before');
 
 
-             ?>
+
+            ?>
 <!-- Start Inline CSS Style -->
 <style>
 :root {
@@ -107,14 +108,17 @@
 
     }
 
+
     body:has(.fiveprayer__printer) {
+        white-space: nowrap !important;
+
         width: fit-content !important;
     }
 
     .fiveprayer__printer * {
         white-space: nowrap !important;
-        width: 100% !important;
-        height: 100% !important;
+        width: fit-content !important;
+        height: fit-content !important;
         margin: 0 !important;
         padding: 0 !important;
         font-size: 13px !important;
@@ -127,7 +131,7 @@
     }
 
     .fiveprayer__printer {
-        width: 100% !important;
+        width: fit-content !important;
     }
 
     #fiveprayer__divTo {
@@ -135,7 +139,7 @@
     }
 
     #fiveprayer__divToPrint {
-        width: 100% !important;
+        width: fit-content !important;
         border-collapse: collapse !important;
 
     }
@@ -152,7 +156,7 @@
     }
 
     .fiveprayer__tbhead {
-        width: 100% !important;
+        width: fit-content !important;
 
     }
 
@@ -175,7 +179,7 @@
 
     .FP_DairyPrayer_ {
         border-collapse: collapse;
-        width: 100%;
+        width: fit-content !important;
     }
 
     .FP_DairyPrayer_ th,
@@ -209,13 +213,77 @@
         font-weight: 700;
         padding-block: 20px;
     }
+    .printer-page-container{
+        display: grid !important;
+    grid-template-columns: repeat(3,2fr) !important;
+    grid-gap: 6px !important;
+    align-items: stretch !important;
+    margin-bottom: 10px !important;
+    justify-content: stretch !important; 
 
+    }
+    .printer-page-container span{
+        height: 0 !important;
+    }
+    .left-printer{
+        display: grid;
+height: 130px !important;
+
+    
+    }
+    .med-printer{
+        display: grid;
+   justify-content: center !important;
+
+    }
+    .med-printer img{
+        width: 160px !important;
+        height: 130px !important;
+    }
+    .right-printer{
+        display: grid;
+        height: 130px !important;
+    }
 }
 
 @media screen {
+    .printer-page-container{
+        display: grid;
+    grid-template-columns: repeat(3,2fr);
+    grid-gap: 0px;
+    align-items: stretch ;
+   
 
+justify-content: stretch ; 
 
-    .fiveprayer__noDisplay {
+    }
+
+    .printer-page-container span{
+        height: 0;
+    }
+    .left-printer{
+        display: grid;
+background:red;
+height: 130px 
+
+    }
+   
+    .med-printer{
+        display: grid;
+   background:blue;
+   justify-content: center ;
+
+    }
+    .med-printer img{
+        width: 160px;
+    height: 130px;
+    }
+    .right-printer{
+        display: grid;
+        background:green;
+        height: 130px 
+    }
+    .fiveprayer__noDisplay,#printerdisplay {
         display: none;
 
     }
@@ -386,6 +454,6 @@
 <!-- End Inline CSS Style -->
 <?php
 
-         }
-     }
- }
+        }
+    }
+}

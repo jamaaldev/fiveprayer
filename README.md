@@ -3,9 +3,9 @@ Contributors: jamaaldev
 Tags: prayer,muslim,five,fiveprayer
 Donate link: https://www.buymeacoffee.com/jamaaldev
 Requires at least: 5.9
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 5.6
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -59,10 +59,13 @@ I am very sorry at the moment I am working alone and still need to finish more t
 4. FivePrayer go to More Settings - Customizing Design - click TimeTable
 
 == Changelog ==
+= 1.2.0 =
+* New Feature Added Printer Page Add Extra Information.
+* Tested for Compatibility with WP version 6.2
+  
 = 1.1.0 =
 * New Feature Added Customizing Your Style Dynamic TimeTable Prayer.
 * fixed for some hosting company blocking, put and delete methods
-
 
 = 1.0.1 =
 * improved ShortCode Timetable Monthly Prayer With Printer Option outside Table or inside table row.
@@ -74,6 +77,10 @@ I am very sorry at the moment I am working alone and still need to finish more t
 * Feature ShortCode Daily Prayer Times.
 
 == Upgrade Notice ==
+= 1.2.0 =
+* New Feature Added Printer Page Add Extra Information.
+* Tested for Compatibility with WP version 6.2
+  
 = 1.1.0 =
 * New Feature Added Customizing Your Style Dynamic TimeTable Prayer.
 * fixed for some hosting company blocking, put and delete methods.

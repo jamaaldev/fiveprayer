@@ -26,10 +26,10 @@ export function CustomizingTabLinks (props: ICustomizingTabLinksProps) {
       <NavLink to={'/settings/Customizingdesign/timetable'}>
         <button className='tablink'>TimeTable</button>
       </NavLink>
-      {/* <NavLink to={'/settings/Customizingdesign/timetabledaily'}>
-        <button className='tablink'>TimeTableDaily</button>
+      <NavLink to={'/settings/Customizingdesign/printerpage'}>
+        <button className='tablink'>Printer Page</button>
       </NavLink>
-    */}
+   
     </div>
   );
 }

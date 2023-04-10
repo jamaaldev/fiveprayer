@@ -1,6 +1,5 @@
 <?php
 
-
 defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
 if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
@@ -10,15 +9,70 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
         {
             $validatorChecker = new FivePrayer_Validator();
             global $wpdb;
+            $prayersettingmeta = $wpdb->get_results("SELECT * FROM wp_fp_prayer_settings_meta ");
+            $result = json_encode($prayersettingmeta);
+            $printerPage = json_decode($result, true);
+            $printerDetail = array_filter(
+                $printerPage,
+                function ($val) {
+                    return $val['meta-key'] === "printer";
+                }
+            );
+
+            $getPrinter = array_map(function ($value) {
+                if (isset($value["value"])) {
+                    return $value['value'];
+                }
+            }, array_values($printerDetail));
+            if (isset($getPrinter[0])) {
+                $printerInfo = json_decode($getPrinter[0]);
+            }
 
             {?>
 
 
 <div class="fiveprayer__printer" id="fiveprayer__divTo">
+    <?php
+
+                if (isset($getPrinter[0]) && esc_html($printerInfo->{'printer_boolean'}) === 'true') {?>
+
+
+
+    <div class="printer-page-container" id="printerdisplay">
+        <div class="left-printer">
+            <span id="printer_left1" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left1'}); ?></span>
+            <span id="printer_left2" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left2'}); ?></span>
+            <span id="printer_left3" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left3'}); ?></span>
+            <span id="printer_left4" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left4'}); ?></span>
+            <span id="printer_left5" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left5'}); ?></span>
+            <span id="printer_left6" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left6'}); ?></span>
+            <span id="printer_left7" class="printer_line"><?php echo esc_html($printerInfo->{'printer_left7'}); ?></span>
+            <span id="space" class="space"></span>
+
+        </div>
+        <div class="med-printer">
+            <img id="printer_logo" src="<?php echo esc_url($printerInfo->{'printer_logo'}); ?>" alt="logo" />
+        </div>
+        <div class="right-printer">
+            <span id="printer_right1" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right1'}); ?></span>
+            <span id="printer_right2" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right2'}); ?></span>
+            <span id="printer_right3" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right3'}); ?></span>
+            <span id="printer_right4" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right4'}); ?></span>
+            <span id="printer_right5" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right5'}); ?></span>
+            <span id="printer_right6" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right6'}); ?></span>
+            <span id="printer_right7" class="printer_line"><?php echo esc_html($printerInfo->{'printer_right7'}); ?></span>
+
+
+            <span class="space"></span>
+
+        </div>
+
+    </div>
+ <?php }?>
     <table id='fiveprayer__divToPrint' class='fiveprayer__TablePrayer_'>
         <thead id='fiveprayer__waa'>
             <?php
-                if ($attributes["printer_option"] === "outside") {
+if ($attributes["printer_option"] === "outside") {
                     ?>
             <div class="fiveprayer__printer_option ">
                 <form id="fiveprayer__noPrint">
@@ -53,9 +107,9 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
                 <th td colspan="2">Isha</th>
             </tr>
             <?php
-                } ?>
+}?>
             <?php
-                if ($attributes["printer_option"] === "inside") {
+if ($attributes["printer_option"] === "inside") {
                     ?>
             <tr class="fiveprayer__tbmonthfirst">
                 <th class="fiveprayer__select_print fiveprayer__printer_option">
@@ -91,7 +145,7 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
 
             </tr>
             <?php
-                } ?>
+}?>
             <tr id="fiveprayer__tbmonthsecond">
                 <th>Date</th>
                 <th> Begins</th>
@@ -111,16 +165,17 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
         <tbody key={index}>
 
             <?php
-                $month = array('newMonth' =>  sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
+$month = array('newMonth' => sanitize_text_field(esc_sql(isset($_POST['newMonth'])) ? esc_sql($_POST['newMonth']) : ''));
 
-                $monthNumber =  $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null) ;
+                $monthNumber = $month['newMonth'] ? $month['newMonth'] : wp_date("n", null, $timezone = null);
 
-                $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array(wp_date("Y", null, $timezone = null),$validatorChecker->MonthlyNumber($monthNumber)));
+                $ourQueryTableGen = $wpdb->prepare("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = %d  AND MONTH(Date) = %d ", array(wp_date("Y", null, $timezone = null), $validatorChecker->MonthlyNumber($monthNumber)));
                 $timeTableMonthly = $wpdb->get_results($ourQueryTableGen);
+
                 foreach ($timeTableMonthly as $day) {?>
 
 
-            <tr id=<?php echo esc_attr($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null);?>>
+            <tr id=<?php echo esc_attr($day->today == wp_date("j", null, $timezone = null) ? 'today-row' : null); ?>>
                 <td><?php echo esc_html($day->currentDate); ?>
                 </td>
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>
@@ -181,6 +236,6 @@ jQuery(document).ready(function() {
     });
 });
 </script> <?php
-        }
+}
     }
 }
