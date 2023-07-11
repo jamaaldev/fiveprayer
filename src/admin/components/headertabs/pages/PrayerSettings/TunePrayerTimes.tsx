@@ -181,7 +181,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
     
     let endDate = new Date(year, Number(13));
 
-    const dataTable: string[] = [];
+    const dataTable: object[] = [];
     while (date < endDate) {
       let times = prayTimes.getTimes(date, [Number(JSON.parse(sessionStorage?.getItem('location') as string)?.lat ), Number(JSON.parse(sessionStorage?.getItem('location') as string)?.lng )], 'auto', 'auto', '24h');
       times.fajr_begins = times.fajr;
@@ -219,6 +219,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       times.maghrib_iqamah = maghribhourprayer + ':' + (maghribminprayer +  Number(sessionStorage.getItem('IQMaghrib'))) ? (maghribminprayer +  Number(sessionStorage.getItem('IQMaghrib'))) >= 60 ? maghribhourprayer + 1 + ":" + (maghribminprayer +  Number(sessionStorage.getItem('IQMaghrib'))) % 60 : maghribhourprayer + ':' + (maghribminprayer +  Number(sessionStorage.getItem('IQMaghrib'))) : maghribhourprayer + ':' + (maghribminprayer +  Number(sessionStorage.getItem('IQMaghrib')));
       times.isha_iqamah = ishahourprayer + ':' + (ishaminprayer +  Number(sessionStorage.getItem('IQIsha'))) ? (ishaminprayer +  Number(sessionStorage.getItem('IQIsha'))) >= 60 ? ishahourprayer + 1 + ":" + (ishaminprayer +  Number(sessionStorage.getItem('IQIsha'))) % 60 : ishahourprayer + ':' + (ishaminprayer +  Number(sessionStorage.getItem('IQIsha'))) : ishahourprayer + ':' + (ishaminprayer +  Number(sessionStorage.getItem('IQIsha')));
       times.currentDate = date.getDate() + ' ' + monthFullName(Number(date.getMonth())) + ' ' + date.getFullYear();
+      times.currentMonth = monthFullName(Number(date.getMonth()));
        
       const masjidJamaah = new MasjidJamaah(times);
       masjidJamaah.FajrJamah();
@@ -232,7 +233,6 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       date.setDate(date.getDate() + 1); // next day
     }
     updateTimeTable(dataTable);
-
     setTimeout(() => {
       dispatch(Calender(dataTable))
     }, 100);

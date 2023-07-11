@@ -73,7 +73,7 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
         <thead id='fiveprayer__waa'>
             <?php
 if ($attributes["printer_option"] === "outside") {
-                    ?>
+    ?>
             <div class="fiveprayer__printer_option ">
                 <form id="fiveprayer__noPrint">
                     <select name="country">
@@ -110,7 +110,7 @@ if ($attributes["printer_option"] === "outside") {
 }?>
             <?php
 if ($attributes["printer_option"] === "inside") {
-                    ?>
+    ?>
             <tr class="fiveprayer__tbmonthfirst">
                 <th class="fiveprayer__select_print fiveprayer__printer_option">
                     <form id="fiveprayer__noPrint">
@@ -180,7 +180,8 @@ $month = array('newMonth' => sanitize_text_field(esc_sql(isset($_POST['newMonth'
                 </td>
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>
                 </td>
-                <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_iqamah))); ?>
+                <!-- <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_iqamah))); ?> -->
+                <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_masjid_jamaah))); ?>
                 </td>
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->sunrise))); ?>
                 </td>
@@ -236,6 +237,6 @@ jQuery(document).ready(function() {
     });
 });
 </script> <?php
-}
+        }
     }
 }
