@@ -103,7 +103,7 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
   
   const DownloadCalendar = () =>{
     // first check if object and return! if not convert to object
-    let timeTableMonth = typeof timetable !== 'object' ? JSON.parse(timetable) : timetable;
+    let timeTableMonth = typeof timetable !== 'object' ? JSON.parse(timetable) : timetable!;
     let timeTableColumnKey =
     `${Object.keys(timeTableMonth[0])
       .map((value) => `"${value}"`)
@@ -194,20 +194,20 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
       dataTable.push(times);
      
           // convert given string into a number
-      let fajrhourprayer =   1 * (times.fajr_begins + "").split(/[^0-9.+-]/)[0]; 
-      let fajrminprayer =   1 * (times.fajr_begins + "").split(/[^0-9.+-]/)[1]; 
+      let fajrhourprayer =   1 * +(times.fajr_begins + "").split(/[^0-9.+-]/)[0]; 
+      let fajrminprayer =   1 * +(times.fajr_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let dhuhrhourprayer =   1 * (times.dhuhr_begins + "").split(/[^0-9.+-]/)[0]; 
-      let dhuhrminprayer =   1 * (times.dhuhr_begins + "").split(/[^0-9.+-]/)[1]; 
+      let dhuhrhourprayer =   1 * +(times.dhuhr_begins + "").split(/[^0-9.+-]/)[0]; 
+      let dhuhrminprayer =   1 * +(times.dhuhr_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let asrhourprayer =   1 * (times.asr_begins + "").split(/[^0-9.+-]/)[0]; 
-      let asrminprayer =   1 * (times.asr_begins + "").split(/[^0-9.+-]/)[1]; 
+      let asrhourprayer =   1 * +(times.asr_begins + "").split(/[^0-9.+-]/)[0]; 
+      let asrminprayer =   1 * +(times.asr_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let maghribhourprayer =   1 * (times.maghrib_begins + "").split(/[^0-9.+-]/)[0]; 
-      let maghribminprayer =   1 * (times.maghrib_begins + "").split(/[^0-9.+-]/)[1]; 
+      let maghribhourprayer =   1 * +(times.maghrib_begins + "").split(/[^0-9.+-]/)[0]; 
+      let maghribminprayer =   1 * +(times.maghrib_begins + "").split(/[^0-9.+-]/)[1]; 
           // convert given string into a number
-      let ishahourprayer =   1 * (times.isha_begins + "").split(/[^0-9.+-]/)[0]; 
-      let ishaminprayer =   1 * (times.isha_begins + "").split(/[^0-9.+-]/)[1]; 
+      let ishahourprayer =   1 * +(times.isha_begins + "").split(/[^0-9.+-]/)[0]; 
+      let ishaminprayer =   1 * +(times.isha_begins + "").split(/[^0-9.+-]/)[1]; 
       
 // 👇️ Integers
     
@@ -223,6 +223,10 @@ const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_pray
        
       const masjidJamaah = new MasjidJamaah(times);
       masjidJamaah.FajrJamah();
+      masjidJamaah.DuhrJamah();
+      masjidJamaah.AsrJamah();
+      masjidJamaah.MaghribJamah();
+      masjidJamaah.IshaJamah();
 
         
       let today = new Date();

@@ -14,6 +14,7 @@
     },
     "method": "JAFARI"
   },
+
   {
     "id": 1,
     "name": "University of Islamic Sciences, Karachi",
@@ -27,6 +28,7 @@
     },
     "method": "KARACHI"
   },
+
   {
     "id": 2,
     "name": "Islamic Society of North America (ISNA)",
@@ -40,6 +42,7 @@
     },
     "method": "ISNA"
   },
+
   {
     "id": 3,
     "name": "Muslim World League",
@@ -53,6 +56,7 @@
     },
     "method": "MWL"
   },
+
   {
     "id": 4,
     "name": "Umm Al-Qura University, Makkah",
@@ -66,6 +70,7 @@
     },
     "method": "MAKKAH"
   },
+
 
   {
     "id": 5,
@@ -95,5 +100,19 @@
       "longitude": 51.3889736
     },
     "method": "TEHRAN"
+  },
+
+  {
+    "id": 7,
+    "name": "London Unified Prayer Times",
+    "params": {
+      "Fajr": 14,
+      "Isha": 9
+    },
+    "location": {
+      "latitude": 51.56356206798022,
+      "longitude": -0.10549859051483922
+    },
+    "method": "LUPT"
   }
 ]

@@ -180,8 +180,8 @@ $month = array('newMonth' => sanitize_text_field(esc_sql(isset($_POST['newMonth'
                 </td>
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>
                 </td>
-                <!-- <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_iqamah))); ?> -->
-                <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_masjid_jamaah))); ?>
+                <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_iqamah))); ?>
+                <!-- <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_masjid_jamaah))); ?> -->
                 </td>
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->sunrise))); ?>
                 </td>

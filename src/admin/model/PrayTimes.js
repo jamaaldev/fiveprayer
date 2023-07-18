@@ -73,6 +73,10 @@ http://praytimes.org/calculation
     },
     // Calculation Methods
     methods = {
+      LUPT: {
+        name: "London Unified Prayer Times",
+        params: { fajr: 14, isha: 9 },
+      },
       MWL: {
         name: "Muslim World League",
         params: { fajr: 18, isha: 17 },
