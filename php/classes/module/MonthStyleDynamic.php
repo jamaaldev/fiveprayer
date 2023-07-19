@@ -90,7 +90,6 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
     }
 
 
-
     body * {
 
         font-weight: 400 !important;
@@ -101,10 +100,8 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         padding: 0 !important;
         box-sizing: border-box !important;
         height: fit-content !important;
-
+        width: fit-content !important;
         white-space: nowrap !important;
-
-
 
     }
 
@@ -122,6 +119,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         margin: 0 !important;
         padding: 0 !important;
         font-size: 13px !important;
+
     }
 
     .fiveprayer__noDisplay {
@@ -132,6 +130,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
 
     .fiveprayer__printer {
         width: fit-content !important;
+
     }
 
     #fiveprayer__divTo {
@@ -215,11 +214,11 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
     }
     .printer-page-container{
         display: grid !important;
-    grid-template-columns: repeat(3,2fr) !important;
-    grid-gap: 6px !important;
-    align-items: stretch !important;
-    margin-bottom: 10px !important;
-    justify-content: stretch !important; 
+        grid-template-columns: repeat(3,2fr) !important;
+        grid-gap: 6px !important;
+        align-items: stretch !important;
+        margin-bottom: 10px !important;
+        justify-content: stretch !important; 
 
     }
     .printer-page-container span{
@@ -227,13 +226,13 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
     }
     .left-printer{
         display: grid;
-height: 130px !important;
+        height: 130px !important;
 
     
     }
     .med-printer{
         display: grid;
-   justify-content: center !important;
+        justify-content: center !important;
 
     }
     .med-printer img{
@@ -249,12 +248,10 @@ height: 130px !important;
 @media screen {
     .printer-page-container{
         display: grid;
-    grid-template-columns: repeat(3,2fr);
-    grid-gap: 0px;
-    align-items: stretch ;
-   
-
-justify-content: stretch ; 
+        grid-template-columns: repeat(3,2fr);
+        grid-gap: 0px;
+        align-items: stretch;
+        justify-content: stretch; 
 
     }
 
@@ -263,20 +260,20 @@ justify-content: stretch ;
     }
     .left-printer{
         display: grid;
-background:red;
-height: 130px 
+        background:red;
+        height: 130px 
 
     }
    
     .med-printer{
         display: grid;
-   background:blue;
-   justify-content: center ;
+        background:blue;
+        justify-content: center ;
 
     }
     .med-printer img{
         width: 160px;
-    height: 130px;
+        height: 130px;
     }
     .right-printer{
         display: grid;
