@@ -14,25 +14,12 @@ class MasjidJamaah {
     // if(((parseInt(lastsecondmin) === 0 ) && ( parseInt(lastmin) === 0 ))){
     //   this.times.fajr_masjid_jamaah = hourprayer + ':' + (minprayer +16) % 60
     // }
-    var date = new Date();
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    let date = new Date();
+    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     const dayOne = 1;
     const timeMin = 18;
     for (let i = firstDay.getDate(); i < lastDay.getDate(); i++) {
-
-      // if (+this.times.today >= dayOne && minprayer >= 0 && minprayer <= 17) {
-
-      //   this.times.fajr_masjid_jamaah = hourprayer + ':' + timeMin;
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 18 && minprayer <= 39) {
-
-      //   this.times.fajr_masjid_jamaah = hourprayer + 1 + ':' + 0o0;
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 40 && minprayer <= 60) {
-
-      //   this.times.fajr_masjid_jamaah = hourprayer + 1 + ':' + timeMin;
-      // }
 
       if (+this.times.today >= dayOne && minprayer >= 0 && minprayer <= 14) {
 
@@ -50,23 +37,7 @@ class MasjidJamaah {
 
         this.times.fajr_iqamah = hourprayer + ((60 + timeMin) >= 60 ? 1 : '') + ':' + ((60 + timeMin) >= 60 ? 15 : 15);
       }
-      // if (+this.times.today >= dayOne && minprayer >= 29 && minprayer <= 35) {
-
-      //   this.times.fajr_iqamah = hourprayer + ((29 + timeMin) >= 60 ? 1 : '') + ':' + ((29 + timeMin) >= 60 ? 0 : (29 + timeMin));
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 36 && minprayer <= 42) {
-
-      //   this.times.fajr_iqamah = hourprayer + ((36 + timeMin) >= 60 ? 1 : '') + ':' + ((36 + timeMin) >= 60 ? 0 : (36 + timeMin));
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 43 && minprayer <= 49) {
-
-      //   this.times.fajr_iqamah = hourprayer + ((43 + timeMin) >= 60 ? 1 : '') + ':' + ((43 + timeMin) >= 60 ? 0 : (43 + timeMin));
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 50 && minprayer <= 60) {
-
-      //   this.times.fajr_iqamah = hourprayer + ((50 + timeMin) >= 60 ? 1 : '') + ':' + ((50 + timeMin) >= 60 ? 0 : (50 + timeMin));
-      // }
-
+     
 
     }
 
@@ -75,11 +46,10 @@ class MasjidJamaah {
   DuhrJamah() {
     let hourprayer = 1 * (this.times.dhuhr + "").split(/[^0-9.+-]/)[0];
     let minprayer = 1 * (this.times.dhuhr + "").split(/[^0-9.+-]/)[1];
-    const lastmin = String(minprayer).slice(-1); // 👉️ '7'
-    const lastsecondmin = String(minprayer).slice(-2, 1); // 👉️ '7'
-    var date = new Date();
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+   
+    let date = new Date();
+    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     const dayOne = 1;
     const timeMin = 30;
     for (let i = firstDay.getDate(); i < lastDay.getDate(); i++) {
@@ -122,12 +92,9 @@ class MasjidJamaah {
   AsrJamah() {
     let hourprayer = 1 * (this.times.asr + "").split(/[^0-9.+-]/)[0];
     let minprayer = 1 * (this.times.asr + "").split(/[^0-9.+-]/)[1];
-    const lastmin = String(minprayer).slice(-1); // 👉️ '7'
-    const lastsecondmin = String(minprayer).slice(-2, 1); // 👉️ '7'
-
-    var date = new Date();
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    let date = new Date();
+    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     const dayOne = 1;
     const timeMin = 30;
     for (let i = firstDay.getDate(); i < lastDay.getDate(); i++) {
@@ -172,12 +139,9 @@ class MasjidJamaah {
   MaghribJamah() {
     let hourprayer = 1 * (this.times.maghrib + "").split(/[^0-9.+-]/)[0];
     let minprayer = 1 * (this.times.maghrib + "").split(/[^0-9.+-]/)[1];
-    const lastmin = String(minprayer).slice(-1); // 👉️ '7'
-    const lastsecondmin = String(minprayer).slice(-2, 1); // 👉️ '7'
-
-    var date = new Date();
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    let date = new Date();
+    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     const dayOne = 1;
     const timeMin = 7;
     for (let i = firstDay.getDate(); i < lastDay.getDate(); i++) {
@@ -222,14 +186,9 @@ class MasjidJamaah {
   IshaJamah() {
     let hourprayer = 1 * (this.times.isha + "").split(/[^0-9.+-]/)[0];
     let minprayer = 1 * (this.times.isha + "").split(/[^0-9.+-]/)[1];
-    const lastmin = String(minprayer).slice(-1); // 👉️ '7'
-    const lastsecondmin = String(minprayer).slice(-2, 1); // 👉️ '7'
-
-    console.log("🚀 ~ file: MasjidJamaah.js:137 ~ MasjidJamaah ~ IshaJamah ~ this.times.isha:", this.times)
-
-    var date = new Date();
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    let date = new Date();
+    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     const dayOne = 1;
     const timeMin = 7;
     for (let i = firstDay.getDate(); i < lastDay.getDate(); i++) {
@@ -250,22 +209,6 @@ class MasjidJamaah {
 
         this.times.isha_iqamah = hourprayer + ((59 + timeMin) >= 56 ? 1 : '') + ':' + ((59 + timeMin) >= 56 ? timeMin : (59 + timeMin));
       }
-      // if (+this.times.today >= dayOne && minprayer >= 29 && minprayer <= 35) {
-
-      //   this.times.isha_iqamah = hourprayer + ((35 + timeMin) >= 60 ? 1 : '') + ':' + ((35 + timeMin) >= 60 ? 0 : (35 + timeMin));
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 36 && minprayer <= 42) {
-
-      //   this.times.isha_iqamah = hourprayer + ((42 + timeMin) >= 60 ? 1 : '') + ':' + ((42 + timeMin) >= 60 ? 0 : (42 + timeMin));
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 43 && minprayer <= 49) {
-
-      //   this.times.isha_iqamah = hourprayer + ((49 + timeMin) >= 60 ? 1 : '') + ':' + ((49 + timeMin) >= 60 ? 0 : (49 + timeMin));
-      // }
-      // if (+this.times.today >= dayOne && minprayer >= 50 && minprayer <= 60) {
-
-      //   this.times.isha_iqamah = hourprayer + ((56 + timeMin) >= 60 ? 1 : '') + ':' + ((56 + timeMin) >= 60 ? 0 : (56 + timeMin));
-      // }
 
     }
 

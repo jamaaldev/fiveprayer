@@ -25,6 +25,25 @@ flex: 1;
     flex-direction: column;
     color: var(--bbcolor);
   }
+  .disableBTN{
+    font-size: 15px;
+    // margin-bottom: 5px;
+    
+    width: 100%;
+    padding: 14px 8px;
+    font-weight: 500;
+    // flex: 1;
+    border-radius: 4px;
+    border: none;
+    /* color: var(--bbcolor); */
+    border: 1px solid #e1e7ec;
+    background-color: rgb(246, 246, 246);
+    color: rgba(26, 102, 26, 0.753);
+
+    // backdrop-filter: hue-rotate(100deg);
+    /* background: #e8f5e9; */
+    cursor: not-allowed;
+  }
   .middle_button {
     font-size: 15px;
     // margin-bottom: 5px;

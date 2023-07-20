@@ -3,19 +3,26 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { useGetprayerSettingsMetaAPIQuery } from '../../../../api/prayerSettingsMetaAPI';
 import { useGetPrayerTimeTableQuery, useUpdatePrayerTimeTableMutation } from '../../../../api/prayerTimeTableApi';
-import { Calender } from '../../../../features/calendars/prayerTimeCalendar';
+// import { Calender } from '../../../../features/calendars/prayerTimeCalendar';
 import { PrayTimes } from '../../../../model/PrayTimes';
 import FPInput from '../../../elements/FPInput';
 import MasjidJamaah from '../../../../model/MasjidJamaah';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../../app/store';
+
 export interface ITunePrayerTimesProps { }
 
 export function TunePrayerTimes(props: ITunePrayerTimesProps) {
   const [updateTimeTable] = useUpdatePrayerTimeTableMutation();
-  const { data: getprayersettingMeta } = useGetprayerSettingsMetaAPIQuery('fp_prayersettings_meta');
+  const { data: getprayersettingMeta,isFetching: isNotSaveFetch } = useGetprayerSettingsMetaAPIQuery('fp_prayersettings_meta');
+  // const {isWait } = useSelector((state: RootState) => state.prayer);
 
 
   const { data: timetable, isSuccess: success, isLoading, isFetching, isError } = useGetPrayerTimeTableQuery('fp_prayertimetable');
-
+const [isLoad,SetLoad] = React.useState(false);
+const [isHold,SetHold] = React.useState(false);
   //Imsak
   if (sessionStorage.getItem('Imsak') === null && getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Imsak')[0]?.['meta-key'] === 'Imsak') {
     const num = getprayersettingMeta?.filter((el) => el?.['meta-key'] === 'Imsak')[0]?.value;
@@ -165,11 +172,10 @@ export function TunePrayerTimes(props: ITunePrayerTimesProps) {
     isha: adjustmethod?.params?.Isha,
 
   });
-  const GenerateCalender = () => {
-
-
-
-
+  const GenerateCalender = async () => {
+    SetLoad(true);
+    SetHold(true);
+ 
     const currentDate = new Date();
     let year = currentDate.getFullYear();
     let month = currentDate.getMonth();
@@ -236,10 +242,28 @@ export function TunePrayerTimes(props: ITunePrayerTimesProps) {
       times.className = klass;
       date.setDate(date.getDate() + 1); // next day
     }
-    updateTimeTable(dataTable);
-    setTimeout(() => {
-      dispatch(Calender(dataTable))
-    }, 100);
+    try {
+      await updateTimeTable(dataTable);
+      SetLoad(true);
+
+      toast.success('Generate Calendar SuccessFull.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+      
+    } catch (error) {
+      console.log("🚀 ~ file: TunePrayerTimes.tsx:241 ~ GenerateCalender ~ error:", error)
+      
+    }
+    SetHold(false);
+ 
+    SetLoad(false);
 
   };
 
@@ -270,8 +294,20 @@ export function TunePrayerTimes(props: ITunePrayerTimesProps) {
             <label>
               <br />
             </label>
-            <button onClick={GenerateCalender} className='middle_button'>
-              Generate Calendar
+            <ToastContainer 
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
+            <button onClick={GenerateCalender} className={isNotSaveFetch ? 'disableBTN' : 'middle_button'}>
+             { isLoad ? 'Generating Calendar' : 'Generate Calendar'}
             </button>
           </div>
           <div className='middle_container'>
@@ -290,6 +326,8 @@ const Container = styled.main`
   margin-block: 15px;
   gap: 14px;
   align-items: baseline;
+
+  
 `;
 const Middle_Container_Tune = styled.div`
   width: 380px;
@@ -302,4 +340,5 @@ const Middle_Container_Tune = styled.div`
     line-height: 1.4;
     padding-block: 23px;
   }
+ 
 `;
