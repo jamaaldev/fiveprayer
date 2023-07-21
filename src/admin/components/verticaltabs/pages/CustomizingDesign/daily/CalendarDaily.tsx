@@ -25,7 +25,7 @@ function CalendarDaily({secondBg,secondClr,rowHighlightBg,rowHighlightClr }: Pro
         <thead>
           <tr>
           </tr><tr>
-            <td colspan="3">
+            <td colSpan={3}>
               <span>
                 16 November 2022
               </span>
@@ -48,7 +48,7 @@ function CalendarDaily({secondBg,secondClr,rowHighlightBg,rowHighlightClr }: Pro
           </tr>
           <tr id="">
             <th>Sunrise</th>
-            <td colspan="2">5:43 AM </td>
+            <td colSpan={2}>5:43 AM </td>
 
           </tr>
           <tr id="">

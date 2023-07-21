@@ -10,7 +10,7 @@ import { IqamahDelay } from './PrayerSettings/IqamahDelay';
 import { useGetPrayerTimeTableQuery } from '../../../api/prayerTimeTableApi';
 const PrayerSettings = () => {
   // const { data: calendar, isFetching, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
-  
+
   // const { calendar } = useSelector((state: RootState) => state.prayer);
 
   return (
@@ -29,7 +29,7 @@ const PrayerSettings = () => {
             <IqamahDelay />
           </Section>
         </SectionContainer>
-        <FPTablePrayerTime/>
+        <FPTablePrayerTime />
       </div>
     </>
   );

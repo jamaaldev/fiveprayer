@@ -1,9 +1,9 @@
 import * as React from 'react';
 import '../../../elements/css/FPInput.scss';
-import { useState, useRef, useEffect, useCallback, useMemo, useReducer } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { useDeleteLocationMutation, useGetLocationQuery, useInsertLocationMutation, useUpdateLocationMutation } from '../../../../api/customLocationApi';
-import { LocationChecked, LocationCity } from '../../../../features/search/searchTownCity';
+import { LocationCity } from '../../../../features/search/searchTownCity';
 export const CustomLocation = () => {
   const [country, setCountry] = useState<LocationCity | undefined | string | any>('');
   const [city, setCity] = useState<LocationCity | undefined | string | any>('');
@@ -11,7 +11,7 @@ export const CustomLocation = () => {
   const [lng, setLng] = useState<LocationCity | undefined | string | any>('');
   const [id, setId] = useState<LocationCity | undefined | string | any>('');
   const [errordata, setErrorData] = useState<undefined | string | any>('');
-  const { data: locationcity, isLoading, isSuccess, isFetching,error } = useGetLocationQuery('fp_location');
+  const { data: locationcity, isFetching } = useGetLocationQuery('fp_location');
   const [insertLocation] = useInsertLocationMutation();
   const [deleteLocation] = useDeleteLocationMutation();
   const [updatelocation] = useUpdateLocationMutation();
@@ -22,7 +22,7 @@ export const CustomLocation = () => {
     }
   };
   const listDelete = (e, index, el) => {
-    deleteLocation({ id: Number(e.target.id) });
+    deleteLocation(el.id);
   };
   const listEdit = (e, index, el) => {
     setCountry(el.country);
@@ -34,10 +34,10 @@ export const CustomLocation = () => {
 
   const listInsertUpdate = async () => {
     // insert
-    
+
     if (!id && country && city && lat && lng) {
       try {
-        const payload = await insertLocation({ country, city, lat, lng }).unwrap();
+        await insertLocation({ country, city, lat, lng }).unwrap();
       } catch (error) {
         setErrorData(error.data.data)
       }
@@ -50,9 +50,9 @@ export const CustomLocation = () => {
     }
     // update
     if (id && country && city && lat && lng) {
-      
+
       try {
-        const payload = await updatelocation({ id, country, city, lat, lng }).unwrap();
+        await updatelocation({ id, country, city, lat, lng }).unwrap();
       } catch (error) {
         setErrorData(error.data.data)
 
@@ -82,7 +82,7 @@ export const CustomLocation = () => {
   };
 
   return (
-    <Location__Container  id='Customizing' className='tabcontent'>
+    <Location__Container id='Customizing' className='tabcontent'>
       <p className='pheadline'>Custom Location Setting</p>
       <div className='location__col2'>
         <div className='FP__input__container'>
@@ -103,16 +103,16 @@ export const CustomLocation = () => {
             <ul>
               {locationcity?.map((el, index) => (
                 <List__Container key={index} onClick={(e) => listHandle(e, index, el)} className='list__item'>
-                  <li className='fp__list' id={el.id} onClick={(e) => listEdit(e, index, el)}>
+                  <li className='fp__list' id={JSON.stringify(el.id)} onClick={(e) => listEdit(e, index, el)}>
                     {' '}
                     {el.country} <span>{el.city}</span>
                   </li>
                   <div className='edit__delete'>
-                    <span id={el.id} data-edit='edit' onClick={(e) => listEdit(e, index, el)}>
+                    <span id={JSON.stringify(el.id)} data-edit='edit' onClick={(e) => listEdit(e, index, el)}>
                       Edit
                     </span>
                     <span>|</span>
-                    <span id={el.id} data-delete='delete' onClick={(e) => listDelete(e, index, el)}>
+                    <span id={JSON.stringify(el.id)} data-delete='delete' onClick={(e) => listDelete(e, index, el)}>
                       Delete
                     </span>
                   </div>
@@ -122,17 +122,17 @@ export const CustomLocation = () => {
           )}
         </div>
       </div>
-        {errordata ?
-      <div>
-        
-        <h1>Error Information</h1>
-        <div>Country {errordata?.country}</div>
-        <div>Location {errordata?.city}</div>
-        <div>lat {errordata?.lat}</div>
-        <div>lng {errordata?.lng}</div>
-        
-      </div>
-        : ''}        
+      {errordata ?
+        <div>
+
+          <h1>Error Information</h1>
+          <div>Country {errordata?.country}</div>
+          <div>Location {errordata?.city}</div>
+          <div>lat {errordata?.lat}</div>
+          <div>lng {errordata?.lng}</div>
+
+        </div>
+        : ''}
     </Location__Container>
   );
 };

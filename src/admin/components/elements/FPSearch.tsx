@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 function FPSearch({ holder, label, options, checked, name }) {
 
-  
+
   const droplist = React.useRef<HTMLInputElement>(null);
   const dropclick = React.useRef<HTMLInputElement>(null);
   let stopTime: number;
@@ -24,9 +24,9 @@ function FPSearch({ holder, label, options, checked, name }) {
   };
   const dropWait = (selected: EventTarget) => {
   };
-  const dropSelected = (selected: EventTarget) => {};
+  const dropSelected = (selected: EventTarget) => { };
 
-  useEffect(() => {}, [sessionStorage.getItem('city'), dropclick, droplist]);
+  useEffect(() => { }, [sessionStorage.getItem('city'), dropclick, droplist]);
   const dropClicks = (drop) => {
     if (droplist?.current) {
       node = droplist?.current;

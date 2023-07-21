@@ -18,6 +18,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components';
 import { useGetPrayerTimeTableQuery } from '../../../../../api/prayerTimeTableApi';
+import { FPCalendar } from '../../../../headertabs/pages/PrayerSettings/FPTablePrayerTime';
 interface FivePrayerProps {
   readonly colorevenBg: string;
   readonly colorevenClr: string;
@@ -51,31 +52,35 @@ function CalendarMonthly({ firstBg, firstClr, secondBg, secondClr, rowEvenBg, ro
   return (
 
     <FivePrinter colorevenBg={rowEvenBg} colorevenClr={rowEvenClr} colorhighBg={rowHighlightBg} colorhighCrl={rowHighlightClr} colorsecondBg={secondBg} colorfirstBg={firstBg} colorfirstClr={firstClr} className="fiveprayer__printer" id="fiveprayer__divTo">
+      {switchHighLight ?
+        <button className='show-highlight' onClick={() => setSwitchHighLight(false)}>Hide HighLight</button>
+        :
+        <button className='show-highlight' onClick={() => setSwitchHighLight(true)}>Show HighLight</button>
+
+      }
       <table id='fiveprayer__divToPrint' className='fiveprayer__TablePrayer_'>
         {switchHighLight ?
-          <tr id='today-row' className='demo-table-highlight'>
-            <td>0 Highlight 2222</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-            <td>5:19 AM</td>
-          </tr>
+          <thead>
+
+            <tr id='today-row' className='demo-table-highlight'>
+              <td>0 Highlight 2222</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+              <td>5:19 AM</td>
+            </tr>
+          </thead>
           : ''
         }
-        <thead id='fiveprayer__waa'>
-          {switchHighLight ?
-            <button className='show-highlight' onClick={() => setSwitchHighLight(false)}>Hide HighLight</button>
-            :
-            <button className='show-highlight' onClick={() => setSwitchHighLight(true)}>Show HighLight</button>
 
-          }
+        <thead id='fiveprayer__waa'>
           {/* <div className="fiveprayer__printer_option ">
             <form id="fiveprayer__noPrint">
               <select name="country">
@@ -100,15 +105,15 @@ function CalendarMonthly({ firstBg, firstClr, secondBg, secondClr, rowEvenBg, ro
             <th >
             </th>
 
-            <th td colspan="3">Fajr</th>
+            <th colSpan={3}>Fajr</th>
 
-            <th td colspan="2">Dhuhr</th>
+            <th colSpan={2}>Dhuhr</th>
 
-            <th td colspan="2">Asr</th>
+            <th colSpan={2}>Asr</th>
 
-            <th td colspan="2">Maghrib</th>
+            <th colSpan={2}>Maghrib</th>
 
-            <th td colspan="2">Isha</th>
+            <th colSpan={2}>Isha</th>
 
           </tr>
 
@@ -130,7 +135,7 @@ function CalendarMonthly({ firstBg, firstClr, secondBg, secondClr, rowEvenBg, ro
 
         <tbody  >
           {month?.map((calendars: FPCalendar, index: number) => (
-            <tr key={index} id={calendars?.today === new Date().getDate().toString() ? 'today-row' : null}>
+            <tr key={index} id={calendars?.today === new Date().getDate().toString() ? 'today-row' : ''}>
               <td >{calendars?.currentDate}</td>
               <td>{calendars?.fajr_begins}</td>
               <td>{calendars?.fajr_iqamah}</td>

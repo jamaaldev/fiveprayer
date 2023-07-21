@@ -5,9 +5,9 @@ declare const FivePrayerStyleMonth;
 
 export type FPCalendar = {
   currentDate: string[]; fajr: string[]; sunrise: string[]; dhuhr: string[]; className: string;
-  asr: string[]; sunset: string[]; maghrib: string[]; isha: string[]; midnight: string[]; day: number[]; date: number; today:string;
-  fajr_begins:string;fajr_iqamah:string;dhuhr_begins:string;dhuhr_iqamah:string;asr_begins:string;
-  asr_iqamah:string;maghrib_begins:string;maghrib_iqamah:string;isha_begins:string;isha_iqamah:string;
+  asr: string[]; sunset: string[]; maghrib: string[]; isha: string[]; midnight: string[]; day: number[]; date: number; today: string;
+  fajr_begins: string; fajr_iqamah: string; dhuhr_begins: string; dhuhr_iqamah: string; asr_begins: string;
+  asr_iqamah: string; maghrib_begins: string; maghrib_iqamah: string; isha_begins: string; isha_iqamah: string;
 
 }
 export type FPCal = {
@@ -16,7 +16,7 @@ export type FPCal = {
 }
 function FPTablePrayerTime() {
   const [month, SetMonth] = React.useState<FPCalendar[]>();
-  const { data: timetable, isFetching,isSuccess, isLoading } = useGetPrayerTimeTableQuery('fp_prayertimetable');
+  const { data: timetable, isSuccess } = useGetPrayerTimeTableQuery('fp_prayertimetable');
 
   React.useEffect(() => {
 
@@ -27,7 +27,7 @@ function FPTablePrayerTime() {
       })
       SetMonth(newone)
     }
-  }, [timetable,isSuccess, new Date().getMonth(), Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
+  }, [timetable, isSuccess, new Date().getMonth(), Number(JSON.parse(sessionStorage?.getItem('monthselect') as string)?.monthNum || new Date().getMonth()), 1])
 
   return (
     <div>

@@ -14,7 +14,7 @@ export type Generate = {
   city:string
 }
 export type LocationCity = {
-  id:string,
+  id:number,
   country:string, 
   city:string 
   lat:string,
@@ -31,10 +31,14 @@ export type ListCityTown = {
   lat: string;
   lng: string;
   city: string;
-  id:string;
-  
+  id:number;
 
-  
+}
+export type ListCityLocation = {
+  country: string;
+  lat: string;
+  lng: string;
+  city: string;
 }
 
 type Params = {
@@ -62,22 +66,22 @@ export interface SearchTownCityState {
   HigherLats:NameAndMethod[],
   MidnightMode:NameAndMethod[],
   AsrMedoths: NameAndMethod[],
-  
 
   ListCity:ListCityTown[],
   check:string[],
-  locationChecked:ListCityTown,
+  locationChecked:ListCityTown[],
   higherChecked:string,
   monthChecked:number,
   midnightChecked:string,
   medothChecked:string,
   asrChecked:string,
+  
 }
 
 
 const initialState:SearchTownCityState = {
 
-  CityTown: [],
+  CityTown: Object[''],
   CalcMethods: methodsForCalc,
   HigherLats: methodsHigherLats,
   MidnightMode: methodsMidnightCalc,
@@ -85,19 +89,20 @@ const initialState:SearchTownCityState = {
   
   ListCity: [],
   check: [],
-  locationChecked:{country:'', lat:'', lng:'', city:'', id:''},
+  locationChecked:[],
   higherChecked: '',
   monthChecked: Number(sessionStorage.getItem('month')) ? Number(sessionStorage.getItem('month')) : new Date().getMonth(),
   midnightChecked:'',
   asrChecked: '',
   medothChecked: '',
+ 
 };
 
 export const searchTownCitySlice = createSlice({
   name: "searchtowncity",
   initialState,
   reducers: {
-    CityTownSearch: (state,  {payload}: PayloadAction<string> ) => {
+    CityTownSearch: (state,  {payload}) => {
       state.CityTown = payload;
     },
     LocationChecked: (state, { payload }) => {

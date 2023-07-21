@@ -1,4 +1,4 @@
-import { LocationCity, SearchTownCityState } from '../features/search/searchTownCity';
+import { LocationCity, SearchTownCityState, ListCityTown, ListCityLocation } from '../features/search/searchTownCity';
 import { emptySplitApi } from './emptySplitApi'
 declare const prayerData;
 
@@ -12,21 +12,21 @@ export const customLocationApi = emptySplitApi.injectEndpoints({
             
                         providesTags:[{ type: "locationTag"}]
         }),
-        insertLocation: builder.mutation<LocationCity,SearchTownCityState>({
-            query:({ locationChecked, ...put }) => ({ url: `fp/v1/fp_location`, method: 'POST', body: put,headers:{
+        insertLocation: builder.mutation<ListCityLocation,ListCityLocation>({
+            query:( insertQuery) => ({ url: `fp/v1/fp_location`, method: 'POST', body: insertQuery,headers:{
                 'X-WP-Nonce': prayerData?.nonce,
             } }),
             invalidatesTags: [{ type: 'locationTag'}],
         }),
-        updateLocation: builder.mutation<LocationCity[],SearchTownCityState>({
-            query:({ locationChecked, ...put }) => ({ url: `fp/v1/fp_location`, method: 'POST', body: put,headers:{
+        updateLocation: builder.mutation<ListCityTown,ListCityTown>({
+            query:(updateQuery) => ({ url: `fp/v1/fp_location`, method: 'POST', body: updateQuery,headers:{
                 'X-WP-Nonce': prayerData?.nonce,
                 'X-HTTP-Method-Override': 'PUT'
             } }),
             invalidatesTags: [{ type: 'locationTag'}],
         }),
-        deleteLocation: builder.mutation<LocationCity[],SearchTownCityState>({
-            query:({ locationChecked, ...put }) => ({ url: `fp/v1/fp_location`, method: 'POST', body: put,headers:{
+        deleteLocation: builder.mutation<ListCityTown[],SearchTownCityState>({
+            query:(idQuery) => ({ url: `fp/v1/fp_location`, method: 'POST', body: {id:idQuery},headers:{
                 'X-WP-Nonce': prayerData?.nonce,
                 'X-HTTP-Method-Override': 'DELETE'
             } }),

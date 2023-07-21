@@ -14,12 +14,12 @@ export function BoxModel(props: IBoxModelProps) {
     const [updateTimeTable] = useUpdatePrayerTimeTableMutation();
 
     const FileUpload = (file) => {
-   
-        if(file.target.files[0].type.split('/')[1] === 'csv'){
+
+        if (file.target.files[0].type.split('/')[1] === 'csv') {
 
             SetfileName(file.target.files[0].name)
             ConvertCSVToJSON(file.target.files[0])
-        } else{
+        } else {
             alert('please choose csv file')
         }
     }
@@ -28,9 +28,9 @@ export function BoxModel(props: IBoxModelProps) {
         const reader = new FileReader();
         reader.readAsText(csv);
         reader.onload = () => {
-            const text:string | ArrayBuffer | null = reader.result as string;
-            let lines:string[] = [];
-            const linesArray:string[] = text?.split('\n');
+            const text: string | ArrayBuffer | null = reader.result as string;
+            let lines: string[] = [];
+            const linesArray: string[] = text?.split('\n');
             // for trimming and deleting extra space 
             linesArray.forEach((e: any) => {
                 const row = e.replace(/[\s]+[,]+|[,]+[\s]+/g, ',').trim();
@@ -39,12 +39,12 @@ export function BoxModel(props: IBoxModelProps) {
 
             // for removing empty record
             lines.splice(lines.length - 1, 1);
-            const result:object[] = [];
+            const result: object[] = [];
             // remove double quotes from a String
             const headers = lines[0].replace(/['"]+/g, '').split(',');
             for (let i = 1; i < lines.length; i++) {
 
-                const obj:object = {};
+                const obj: object = {};
                 // remove double quotes from a String
                 const currentline = lines[i].replace(/['"]+/g, '').split(',');
                 for (let j = 0; j < headers.length; j++) {
@@ -60,14 +60,14 @@ export function BoxModel(props: IBoxModelProps) {
     };
     const ImportCSV = () => {
 
-        if(csvJSON.length !== 0){
+        if (csvJSON.length !== 0) {
             updateTimeTable(csvJSON);
             SetfileName('');
             SetCSVJSON([]);
             refs.current.style.display = "none";
-    
+
             props.SetShow(false);
-          
+
         } else {
             alert('please upload your csv file')
         }
@@ -92,7 +92,7 @@ export function BoxModel(props: IBoxModelProps) {
                     <div onClick={ModelPoup} className="close">&times;</div>
 
 
-                    <input onChange={FileUpload} type="file"  accept=".csv"   id="actual-btn" hidden />
+                    <input onChange={FileUpload} type="file" accept=".csv" id="actual-btn" hidden />
 
                     <label htmlFor="actual-btn">Choose File</label>
 
