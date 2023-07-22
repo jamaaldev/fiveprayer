@@ -1,24 +1,24 @@
 <?php
- defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
+defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
- if (!class_exists('FivePrayer_DailyStyleDynamic')) {
-     require_once(plugin_dir_path(__FILE__) . '../module/StyleDynamicDB.php');
+if (!class_exists('FivePrayer_DailyStyleDynamic')) {
+    require_once(plugin_dir_path(__FILE__) . '../module/StyleDynamicDB.php');
 
-     class FivePrayer_DailyStyleDynamic
-     {
-         public function dailyStyleDynamic()
-         {
-             $monthstyle = new FivePrayer_StyleDynamicDB();
-
-
-             $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
-             $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
-             $colorHighlightRowBg = $monthstyle->StyleDynamic('highlightrowbg');
-             $colorHighlightRowClr = $monthstyle->StyleDynamic('highlightrowclr');
+    class FivePrayer_DailyStyleDynamic
+    {
+        public function dailyStyleDynamic()
+        {
+            $monthstyle = new FivePrayer_StyleDynamicDB();
 
 
+            $colorSecondBg = $monthstyle->StyleDynamic('secondbg');
+            $colorSecondClr = $monthstyle->StyleDynamic('secondclr');
+            $colorHighlightRowBg = $monthstyle->StyleDynamic('highlightrowbg');
+            $colorHighlightRowClr = $monthstyle->StyleDynamic('highlightrowclr');
 
-             ?>
+
+
+            ?>
 <!-- Start Inline CSS Style -->
 <style>
 :root {
@@ -54,7 +54,7 @@
     }
 
 
-    #fiveprayer__tbmonthsecond {
+    #fiveprayer-tbmonth-second {
         background-color: var(--bg-second);
         color: var(--clr-second);
     }
@@ -108,7 +108,7 @@
     }
 
 
-    #fiveprayer__tbmonthsecond {
+    #fiveprayer-tbmonth-second {
         background-color: var(--bg-second);
         color: var(--clr-second);
     }
@@ -138,6 +138,6 @@
 <!-- End Inline CSS Style -->
 <?php
 
-         }
-     }
- }
+        }
+    }
+}

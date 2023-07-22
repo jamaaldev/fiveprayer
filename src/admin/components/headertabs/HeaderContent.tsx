@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 const HeaderContent = () => {
-  return <Outlet />;
+	return <Outlet />;
 };
 
 export default HeaderContent;

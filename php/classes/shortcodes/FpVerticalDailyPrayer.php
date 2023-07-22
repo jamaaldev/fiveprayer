@@ -1,52 +1,52 @@
 <?php
- defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
+defined('ABSPATH') or exit('May Allah Guide You To The Right Path, Ameen.');
 
- if (!class_exists('FivePrayer_FpVerticalDailyPrayer')) {
-     require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
-     require_once(plugin_dir_path(__FILE__) . '../module/DailyStyleDynamic.php');
+if (!class_exists('FivePrayer_FpVerticalDailyPrayer')) {
+    require_once(plugin_dir_path(__FILE__) . '../module/NextPrayer.php');
+    require_once(plugin_dir_path(__FILE__) . '../module/DailyStyleDynamic.php');
 
 
-     class FivePrayer_FpVerticalDailyPrayer
-     {
-         public $highlight;
-         public function __construct()
-         {
-             add_action('init', array($this, 'registerShortcodes'));
-             add_action('wp_enqueue_scripts', array($this,'loadmeFirst'));
-         }
-public function dailyPrayer()
-{
-    wp_enqueue_style('dailyprayer', plugin_dir_url(__FILE__) . './dailyprayer.css', true);
-}
+    class FivePrayer_FpVerticalDailyPrayer
+    {
+        public $highlight;
+        public function __construct()
+        {
+            add_action('init', array($this, 'registerShortcodes'));
+            add_action('wp_enqueue_scripts', array($this,'loadmeFirst'));
+        }
+        public function dailyPrayer()
+        {
+            wp_enqueue_style('dailyprayer', plugin_dir_url(__FILE__) . './dailyprayer.css', true);
+        }
 
-public function loadmeFirst()
-{
-    global $post;
+        public function loadmeFirst()
+        {
+            global $post;
 
-    if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Fp_Vertical_Daily_Prayer')) {
-        $monthstyle = new FivePrayer_DailyStyleDynamic();
-        $monthstyle->dailyStyleDynamic();
-    }
-}
-public function registerShortcodes()
-{
-    add_shortcode('Fp_Vertical_Daily_Prayer', array($this, 'fpVerticalDailyPrayer'));
-}
+            if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Fp_Vertical_Daily_Prayer')) {
+                $monthstyle = new FivePrayer_DailyStyleDynamic();
+                $monthstyle->dailyStyleDynamic();
+            }
+        }
+        public function registerShortcodes()
+        {
+            add_shortcode('Fp_Vertical_Daily_Prayer', array($this, 'fpVerticalDailyPrayer'));
+        }
 
-  public function fpVerticalDailyPrayer($atts)
-  {
-      global $wpdb;
-      $mydate    = wp_date("j", null, $timezone = null);
-      $monthdate =  wp_date("n", null, $timezone = null);
+        public function fpVerticalDailyPrayer($atts)
+        {
+            global $wpdb;
+            $mydate    = wp_date("j", null, $timezone = null);
+            $monthdate =  wp_date("n", null, $timezone = null);
 
-      $yeardate = wp_date("Y", null, $timezone = null);
+            $yeardate = wp_date("Y", null, $timezone = null);
 
-      //   $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
-      $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate ");
+            //   $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable ");
+            $todayPrayerTable = $wpdb->get_results("SELECT * FROM wp_fp_timetable WHERE YEAR(Date) = $yeardate  AND MONTH(Date) = $monthdate ");
 
-      if ($todayPrayerTable) {
-          ob_start();
-          ?>
+            if ($todayPrayerTable) {
+                ob_start();
+                ?>
 
 <table class='FP_DairyPrayer_'>
     <thead>
@@ -73,7 +73,7 @@ public function registerShortcodes()
             </td>
         </tr>
 
-        <tr id='fiveprayer__tbmonthsecond'>
+        <tr id='fiveprayer-tbmonth-second'>
             <th>Prayer</th>
             <th>Begins</th>
             <th>Iqamah</th>
@@ -138,8 +138,8 @@ public function registerShortcodes()
 </table>
 <?php
 
-      }
-      return ob_get_clean();
-  }
-     }
- }
+            }
+            return ob_get_clean();
+        }
+    }
+}

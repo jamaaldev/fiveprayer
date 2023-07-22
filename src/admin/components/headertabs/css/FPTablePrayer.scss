@@ -1,44 +1,46 @@
 .FP_TablePrayer_ {
-   margin: 0;
+	margin: 0;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
-.FP_TablePrayer_  {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    
-}
+
+// .FP_TablePrayer_ {
+// 	font-family: arial, sans-serif;
+// 	border-collapse: collapse;
+// 	width: 100%;
+
+// }
 
 .FP_TablePrayer_ table th {
-     
-  background-color:var(--bbalp);
-  
-  // backdrop-filter: saturate(100%);
-  // backdrop-filter: contrast(50%);
-  backdrop-filter: hue-rotate(50deg);
+	background-color: var(--bbalp);
 
+	// backdrop-filter: saturate(100%);
+	// backdrop-filter: contrast(50%);
+	backdrop-filter: hue-rotate(50deg);
 
+	color: rgb(243, 244, 245);
+}
 
-  color: rgb(243, 244, 245);
-  }
-.FP_TablePrayer_ td,th {
-     
-    border: 1px solid #02352838;
-    text-align: center;
-    padding: 7px;
-  }
-  
-  .FP_TablePrayer_ tbody:nth-child(even) {
-    background-color: var(--bbalp);
-  }
-  .FP_TablePrayer_ thead {
-    background-color: #aff81c;
-  }
- 
-    .today-row{
-      // backdrop-filter: saturate(100%);
-      // background-color: var(--bbalp);
-      background-color: rgba(255, 168, 7, 0.829);
-     backdrop-filter: contrast(100%);
-     backdrop-filter: hue-rotate(50deg);
-  }
+.FP_TablePrayer_ table td,
+.FP_TablePrayer_ table th {
+	border: 1px solid #02352838;
+	text-align: center;
+	padding: 7px;
+}
 
+.FP_TablePrayer_ tbody:nth-child(even) {
+	background-color: var(--bbalp);
+}
+
+.FP_TablePrayer_ thead {
+	background-color: #aff81c;
+}
+
+.today-row {
+	// backdrop-filter: saturate(100%);
+	// background-color: var(--bbalp);
+	background-color: rgba(255, 168, 7, 0.829);
+	backdrop-filter: contrast(100%);
+	backdrop-filter: hue-rotate(50deg);
+}

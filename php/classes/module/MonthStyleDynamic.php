@@ -64,7 +64,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
 
 
 
-    #fiveprayer__noPrint,
+    #fiveprayer-no-print,
     .wp-block-post-title,
     .wp-container-6,
     .fiveprayer__printer_option select,
@@ -133,11 +133,11 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
 
     }
 
-    #fiveprayer__divTo {
+    #fiveprayer-div-to {
         max-width: inherit;
     }
 
-    #fiveprayer__divToPrint {
+    #fiveprayer-div-to-print {
         width: fit-content !important;
         border-collapse: collapse !important;
 
@@ -165,7 +165,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         color: var(--clr-first) !important;
     }
 
-    #fiveprayer__tbmonthsecond {
+    #fiveprayer-tbmonth-second {
         background-color: var(--bg-second) !important;
         color: var(--clr-second) !important;
     }
@@ -285,12 +285,12 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
 
     }
 
-    #fiveprayer__divTo {
+    #fiveprayer-div-to {
         border-collapse: collapse;
         max-width: inherit;
     }
 
-    #fiveprayer__divToPrint {
+    #fiveprayer-div-to-print {
         width: 100%;
         border-collapse: collapse;
     }
@@ -315,7 +315,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
     }
 
 
-    #fiveprayer__noPrint>th {
+    #fiveprayer-no-print table th {
         border: none;
     }
 
@@ -351,7 +351,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         color: var(--clr-first) !important;
     }
 
-    #fiveprayer__tbmonthsecond {
+    #fiveprayer-tbmonth-second {
         background-color: var(--bg-second);
         color: var(--clr-second);
     }
@@ -362,30 +362,30 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         color: var(--clr-even);
     }
 
-    .fiveprayer__select_print {
+    .fiveprayer-select-print {
         display: flex;
         padding: 0;
         margin: 0;
     }
 
-    .fiveprayer__select_print form {
+    .fiveprayer-select-print form {
         margin-bottom: 0;
     }
 
-    .fiveprayer__select_print select,
-    #fiveprayer__clickPrint {
+    .fiveprayer-select-print select,
+    #fiveprayer-click-print {
         border: none;
         height: 100%;
     }
 
-    .fiveprayer__select_print select {
+    .fiveprayer-select-print select {
         border: none;
         align-self: center;
 
 
     }
 
-    .fiveprayer__select_print .fiveprayer__clickPrint {
+    .fiveprayer-select-print .fiveprayer__clickPrint {
         border: none;
 
 
