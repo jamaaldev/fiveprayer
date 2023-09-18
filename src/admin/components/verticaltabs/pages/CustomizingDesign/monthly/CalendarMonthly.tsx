@@ -20,13 +20,13 @@ import styled, { css } from 'styled-components';
 import { useGetPrayerTimeTableQuery } from '../../../../../api/prayerTimeTableApi';
 import { FPCalendar } from '../../../../headertabs/pages/PrayerSettings/FPTablePrayerTime';
 interface FivePrayerProps {
-	readonly colorevenBg: string;
-	readonly colorevenClr: string;
-	readonly colorhighBg: string;
-	readonly colorhighCrl: string;
-	readonly colorsecondBg: string;
-	readonly colorfirstBg: string;
-	readonly colorfirstClr: string;
+	readonly colorevenbg: string;
+	readonly colorevenclr: string;
+	readonly colorhighbg: string;
+	readonly colorhighcrl: string;
+	readonly colorsecondbg: string;
+	readonly colorfirstbg: string;
+	readonly colorfirstclr: string;
 }
 
 type Props = {
@@ -88,13 +88,13 @@ function CalendarMonthly( {
 
 	return (
 		<FivePrinter
-			colorevenBg={ rowEvenBg }
-			colorevenClr={ rowEvenClr }
-			colorhighBg={ rowHighlightBg }
-			colorhighCrl={ rowHighlightClr }
-			colorsecondBg={ secondBg }
-			colorfirstBg={ firstBg }
-			colorfirstClr={ firstClr }
+			colorevenbg={ rowEvenBg }
+			colorevenclr={ rowEvenClr }
+			colorhighbg={ rowHighlightBg }
+			colorhighcrl={ rowHighlightClr }
+			colorsecondbg={ secondBg }
+			colorfirstbg={ firstBg }
+			colorfirstclr={ firstClr }
 			className="fiveprayer__printer"
 			id="fiveprayer-div-to"
 		>
@@ -238,19 +238,19 @@ const FivePrinter = styled.div< FivePrayerProps >`
 		padding-block: 7px;
 	}
 	#today-row {
-		background-color: ${ ( props ) => props.colorhighBg };
-		color: ${ ( props ) => props.colorhighCrl } !important;
+		background-color: ${ ( props ) => props.colorhighbg };
+		color: ${ ( props ) => props.colorhighcrl } !important;
 	}
 	tr:nth-child( even ) {
-		background-color: ${ ( props ) => props.colorevenBg };
-		color: ${ ( props ) => props.colorevenClr };
+		background-color: ${ ( props ) => props.colorevenbg };
+		color: ${ ( props ) => props.colorevenclr };
 	}
 	#fiveprayer-tbmonth-second {
-		background-color: ${ ( props ) => props.colorsecondBg } !important;
+		background-color: ${ ( props ) => props.colorsecondbg } !important;
 	}
 	.fiveprayer__tbmonthfirst {
-		background-color: ${ ( props ) => props.colorfirstBg } !important ;
-		color: ${ ( props ) => props.colorfirstClr } !important;
+		background-color: ${ ( props ) => props.colorfirstbg } !important ;
+		color: ${ ( props ) => props.colorfirstclr } !important;
 	}
 `;
 
