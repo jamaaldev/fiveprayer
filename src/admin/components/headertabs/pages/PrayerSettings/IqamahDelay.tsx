@@ -208,16 +208,6 @@ export function IqamahDelay( props: IIqamahDelayProps ) {
 							Upload FivePrayer
 						</button>
 					</div>
-					<div className="middle_container">
-						<label>Iqamah Fixed Times</label>
-						{ /* <input title='sdsdsd' type="file" className="middle_button FP__custom-file-input"/> */ }
-						<button
-							onClick={ UploadFile }
-							className="middle_button"
-						>
-							Enable Advance
-						</button>
-					</div>
 				</Container>
 				{ show ? (
 					<BoxModel showPopup={ 'block' } SetShow={ SetShow } />

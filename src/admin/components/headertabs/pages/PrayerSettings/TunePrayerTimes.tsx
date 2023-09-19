@@ -588,12 +588,12 @@ export function TunePrayerTimes( props: ITunePrayerTimesProps ) {
 				date.getFullYear();
 			times.currentMonth = monthFullName( Number( date.getMonth() ) );
 
-			const masjidJamaah = new MasjidJamaah( times );
-			masjidJamaah.FajrJamah();
-			masjidJamaah.DuhrJamah();
-			masjidJamaah.AsrJamah();
-			masjidJamaah.MaghribJamah();
-			masjidJamaah.IshaJamah();
+			// const masjidJamaah = new MasjidJamaah( times );
+			// masjidJamaah.FajrJamah();
+			// masjidJamaah.DuhrJamah();
+			// masjidJamaah.AsrJamah();
+			// masjidJamaah.MaghribJamah();
+			// masjidJamaah.IshaJamah();
 
 			let today = new Date();
 			let isToday =
