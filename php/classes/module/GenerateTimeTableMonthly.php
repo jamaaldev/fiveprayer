@@ -31,7 +31,7 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
             {?>
 
 
-<div class="fiveprayer__printer" id="fiveprayer__divTo">
+<div class="fiveprayer__printer" id="fiveprayer-div-to">
     <?php
 
                 if (isset($getPrinter[0]) && esc_html($printerInfo->{'printer_boolean'}) === 'true') {?>
@@ -69,13 +69,13 @@ if (!class_exists('FivePrayer_GenerateTimeTableMonthly')) {
 
     </div>
  <?php }?>
-    <table id='fiveprayer__divToPrint' class='fiveprayer__TablePrayer_'>
+    <table id='fiveprayer-div-to-print' class='fiveprayer__TablePrayer_'>
         <thead id='fiveprayer__waa'>
             <?php
 if ($attributes["printer_option"] === "outside") {
-                    ?>
+    ?>
             <div class="fiveprayer__printer_option ">
-                <form id="fiveprayer__noPrint">
+                <form id="fiveprayer-no-print">
                     <select name="country">
                         <option value="" disabled selected>--Select Months--</option>
                         <option value="1">January</option>
@@ -92,7 +92,7 @@ if ($attributes["printer_option"] === "outside") {
                         <option value="12">December</option>
                     </select>
                 </form>
-                <input class='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
+                <input class='fiveprayer__clickPrint' id='fiveprayer-no-print' type="button" value="print" />
             </div>
             <tr class="fiveprayer__tbmonthfirst">
                 <th class="emty__th"></th>
@@ -110,10 +110,10 @@ if ($attributes["printer_option"] === "outside") {
 }?>
             <?php
 if ($attributes["printer_option"] === "inside") {
-                    ?>
+    ?>
             <tr class="fiveprayer__tbmonthfirst">
                 <th class="fiveprayer__select_print fiveprayer__printer_option">
-                    <form id="fiveprayer__noPrint">
+                    <form id="fiveprayer-no-print">
                         <select name="country">
                             <option value="" disabled selected>--Select Months--</option>
                             <option value="1">January</option>
@@ -130,7 +130,7 @@ if ($attributes["printer_option"] === "inside") {
                             <option value="12">December</option>
                         </select>
                     </form>
-                    <input class='fiveprayer__clickPrint' id='fiveprayer__noPrint' type="button" value="print" />
+                    <input class='fiveprayer__clickPrint' id='fiveprayer-no-print' type="button" value="print" />
                 </th>
 
                 <th td colspan="3">Fajr</th>
@@ -146,7 +146,7 @@ if ($attributes["printer_option"] === "inside") {
             </tr>
             <?php
 }?>
-            <tr id="fiveprayer__tbmonthsecond">
+            <tr id="fiveprayer-tbmonth-second">
                 <th>Date</th>
                 <th> Begins</th>
                 <th> Iqamah</th>
@@ -181,6 +181,7 @@ $month = array('newMonth' => sanitize_text_field(esc_sql(isset($_POST['newMonth'
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_begins))); ?>
                 </td>
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_iqamah))); ?>
+                <!-- <td><?php echo esc_html(date("g:i A ", strtotime($day->fajr_masjid_jamaah))); ?> -->
                 </td>
                 <td><?php echo esc_html(date("g:i A ", strtotime($day->sunrise))); ?>
                 </td>
@@ -236,6 +237,6 @@ jQuery(document).ready(function() {
     });
 });
 </script> <?php
-}
+        }
     }
 }

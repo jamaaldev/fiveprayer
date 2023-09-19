@@ -1,83 +1,89 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,700&display=swap");
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,700&display=swap);
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
+
 body {
-  font-family: "Lato", sans-serif;
+	font-family: Lato, sans-serif;
 }
 
 /* Style the vertical_tab */
 .vertical_tab {
-  // float: left;
-  border: 1px solid #fcfcfc;
-  background-color: #f1f1f1;
-  width: 20%;
-  // z-index: -99;
+	// float: left;
+	border: 1px solid #fcfcfc;
+	background-color: #f1f1f1;
+	width: 20%;
+	// z-index: -99;
 }
+
 .vertical_tab a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 /* Style the buttons inside the vertical_tab */
 .vertical_tab button {
-  display: block;
-  background-color: inherit;
+	display: block;
+	background-color: inherit;
 
-  color: black;
-  padding: 22px 16px;
-  width: 100%;
-  border: none;
-  border-bottom: #e1e1e1 solid 1px;
-  outline: none;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 17px;
+	color: #000;
+	padding: 22px 16px;
+	width: 100%;
+	border: none;
+	border-bottom: #e1e1e1 solid 1px;
+	outline: none;
+	text-align: left;
+	cursor: pointer;
+	transition: 0.3s;
+	font-size: 17px;
 }
 
 /* Change background color of buttons on hover */
 .vertical_tab button:hover {
-  background-color: #dde4ea;
-  color: var(--bbcolor);
+	background-color: #dde4ea;
+	color: var(--bbcolor);
 }
 
 /* Create an active/current "vertical_tab a" class */
 .vertical_tab a.active {
-  background-color: #e1e1e1;
-  border-bottom: var(--px-line) solid var(--bbcolor);
-  color: var(--bbcolor);
+	background-color: #e1e1e1;
+	border-bottom: var(--px-line) solid var(--bbcolor);
+	color: var(--bbcolor);
 }
 
 /* Style the vertical_tab content */
 .vertical_tabcontent {
-  // float: left;
-  display: flex;
-  flex-direction: column;
-  background: white;
-  // padding: 0px 12px;
-  min-height: 550px;
-  width: 100%;
-  border-left: none;
-  z-index: 99;
-  font-family: "Roboto", sans-serif;
+	// float: left;
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	// padding: 0px 12px;
+	min-height: 550px;
+	width: 100%;
+	border-left: none;
+	z-index: 99;
+	font-family: Roboto, sans-serif;
 }
-.Google_Address{
-  width: 100%;
+
+.Google_Address {
+	width: 100%;
 }
+
 .vertical_tab_container {
-  margin-top: 5px
+	margin-top: 5px;
 }
+
 .vertical_tab_container_both {
-  display: flex;
-  background-color: #f8f8f8;
-  // float: left;
-  width: 100%;
-  border-left: none;
-  min-height: 550px;
+	display: flex;
+	background-color: #f8f8f8;
+	// float: left;
+	width: 100%;
+	border-left: none;
+	min-height: 550px;
 }
+
 .pheadline {
-  font-size: 24px;
-  font-weight: 300;
-  color: var(--bbcolor);
+	font-size: 24px;
+	font-weight: 300;
+	color: var(--bbcolor);
 }

@@ -11,7 +11,7 @@
  * Plugin Name: FivePrayer
  * Plugin URI:  https://fiveprayer.com
  * Description: FivePrayer - Plugin is For Muslim PrayerTimes.
- * Version:     1.2.0
+ * Version:     1.2.1
  * Author:      Jamaaldev
  * Author URI:  https://profiles.wordpress.org/jamaaldev/
  * Text Domain: fiveprayer-slug
@@ -57,13 +57,13 @@ if (!class_exists('FivePrayerPlugin')) {
 
 
 
-         public function onActivate()
-         {
-             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-             global $wpdb;
+        public function onActivate()
+        {
+            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+            global $wpdb;
 
 
-             dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_location_city` (
+            dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_location_city` (
                 `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
                 `country` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
                 `city` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -74,7 +74,7 @@ if (!class_exists('FivePrayerPlugin')) {
 
 
 
-             dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_timetable` (
+            dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_timetable` (
                 `date` date NOT NULL,
                 `fajr_begins` time DEFAULT NULL,
                 `fajr_iqamah` time DEFAULT NULL,
@@ -96,23 +96,23 @@ if (!class_exists('FivePrayerPlugin')) {
 
 
 
-             dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_prayer_settings_meta` (
+            dbDelta("CREATE TABLE IF NOT EXISTS `wp_fp_prayer_settings_meta` (
                 `id` int(11) NOT NULL AUTO_INCREMENT,
                 `meta-key` varchar(255) NOT NULL,
                 `value` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
                 PRIMARY KEY (`id`)
               ) ENGINE=InnoDB AUTO_INCREMENT=1743 DEFAULT CHARSET=utf8");
-         }
+        }
 
-         public function activate()
-         {
-             $this->onActivate();
-             flush_rewrite_rules();
-         }
-         public function deactivate()
-         {
-             flush_rewrite_rules();
-         }
+        public function activate()
+        {
+            $this->onActivate();
+            flush_rewrite_rules();
+        }
+        public function deactivate()
+        {
+            flush_rewrite_rules();
+        }
     }
 
     //check if the class exit always

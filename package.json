@@ -1,62 +1,62 @@
 {
-  "name": "fiveprayer",
-  "version": "1.2.0",
-  "description": "Five Prayer Plugin is For Muslim WordPress Website",
-  "main": "index.js",
-  "files": [
-    "build",
-    "php",
-    "/FivePrayer.php"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "wp-scripts build ",
-    "start:hot": "wp-scripts start --hot",
-    "check-engines": "wp-scripts check-engines",
-    "check-licenses": "wp-scripts check-licenses",
-    "format": "wp-scripts format",
-    "lint:css": "wp-scripts lint-style",
-    "lint:js": "wp-scripts lint-js",
-    "lint:md:docs": "wp-scripts lint-md-docs",
-    "lint:pkg-json": "wp-scripts lint-pkg-json",
-    "packages-update": "wp-scripts packages-update",
-    "plugin-zip": "wp-scripts plugin-zip",
-    "start": "wp-scripts start",
-    "test:e2e": "wp-scripts test-e2e",
-    "test:unit": "wp-scripts test-unit-js",
-    "release": "release-it"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jamaaldev/fiveprayer.git"
-  },
-  "devDependencies": {
-    "@types/react-redux": "^7.1.25",
-    "@types/styled-components": "^5.1.26",
-    "release-it": "^15.6.0"
-  },
-  "keywords": [
-    "prayer",
-    "muslim",
-    "fiveprayer"
-  ],
-  "author": "jamaaldev",
-  "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/jamaaldev/fiveprayer/issues"
-  },
-  "homepage": "https://github.com/jamaaldev/fiveprayer#readme",
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
-    "@wordpress/dom-ready": "^3.24.0",
-    "@wordpress/element": "^5.1.0",
-    "@wordpress/scripts": "^25.1.0",
-    "react-colorful": "^5.6.1",
-    "react-redux": "^8.0.5",
-    "react-refresh": "^0.14.0",
-    "react-router-dom": "^6.6.2",
-    "react-toastify": "^9.1.1",
-    "styled-components": "^5.3.6",
-    "typescript": "^4.9.4"
-  }
+	"name": "fiveprayer",
+	"version": "1.2.0",
+	"description": "Five Prayer Plugin is For Muslim WordPress Website",
+	"main": "index.js",
+	"files": [
+		"build",
+		"php",
+		"/FivePrayer.php"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "wp-scripts build ",
+		"start:hot": "wp-scripts start --hot",
+		"check-engines": "wp-scripts check-engines",
+		"check-licenses": "wp-scripts check-licenses",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style --fix",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jamaaldev/fiveprayer.git"
+	},
+	"devDependencies": {
+		"@types/react-redux": "^7.1.26",
+		"@types/styled-components": "^5.1.27"
+	},
+	"keywords": [
+		"prayer",
+		"muslim",
+		"fiveprayer"
+	],
+	"author": "jamaaldev",
+	"license": "GPL-3.0-or-later",
+	"bugs": {
+		"url": "https://github.com/jamaaldev/fiveprayer/issues"
+	},
+	"homepage": "https://github.com/jamaaldev/fiveprayer#readme",
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.9.5",
+		"@wordpress/dom-ready": "^3.41.0",
+		"@wordpress/element": "^5.18.0",
+		"@wordpress/scripts": "^26.12.0",
+		"np": "^8.0.4",
+		"react-colorful": "^5.6.1",
+		"react-redux": "^8.1.2",
+		"react-refresh": "^0.14.0",
+		"react-router-dom": "^6.16.0",
+		"react-toastify": "^9.1.3",
+		"release-it": "^16.1.5",
+		"styled-components": "^6.0.8",
+		"typescript": "^5.2.2"
+	}
 }

@@ -6,14 +6,16 @@ import { CustomLocation } from './CustomLocation';
 
 export interface IPrayerContentRoutesProps {}
 
-export function PrayerContentRoutes(props: IPrayerContentRoutesProps) {
-  return (
-    <div>
-      <Routes>
-        <Route path='prayerconfigration/*' element={<PrayerConfigration />} />
-        <Route path="customlocation" element={<CustomLocation />} />
-
-      </Routes>
-    </div>
-  );
+export function PrayerContentRoutes( props: IPrayerContentRoutesProps ) {
+	return (
+		<div>
+			<Routes>
+				<Route
+					path="prayerconfigration/*"
+					element={ <PrayerConfigration /> }
+				/>
+				<Route path="customlocation" element={ <CustomLocation /> } />
+			</Routes>
+		</div>
+	);
 }

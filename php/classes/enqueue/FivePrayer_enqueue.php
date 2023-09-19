@@ -35,31 +35,31 @@ if (!class_exists('FivePrayer_enqueue')) {
  *
  * @return void
  */
-public function fiveprayer_admin_enqueue_scripts()
-{
-    $page = isset($_GET['page']) ? sanitize_title($_GET['page']) : 0;
+        public function fiveprayer_admin_enqueue_scripts()
+        {
+            $page = isset($_GET['page']) ? sanitize_title($_GET['page']) : 0;
 
-    if ($page === 'fiveprayer') {
-        wp_enqueue_style('fiveprayer-style', plugin_dir_url(__FILE__) . '../../../build/index.css');
-        wp_enqueue_script('fiveprayer-script', plugin_dir_url(__FILE__) . '../../../build/index.js', array( 'wp-element' ), '1.0.0', true);
-        wp_localize_script('fiveprayer-script', 'prayerData', array(
+            if ($page === 'fiveprayer') {
+                wp_enqueue_style('fiveprayer-style', plugin_dir_url(__FILE__) . '../../../build/index.css');
+                wp_enqueue_script('fiveprayer-script', plugin_dir_url(__FILE__) . '../../../build/index.js', array( 'wp-element','wp-api' ), '1.0.0', true);
+                wp_localize_script('fiveprayer-script', 'prayerData', array(
 
-            'nonce' => wp_create_nonce('wp_rest')
-        ));
-        // removes annoying ads in my plugin page
-        add_action(
-            'admin_notices',
-            function () {
-                if (current_user_can('manage_options')) {
-                    remove_all_actions('user_admin_notices');
-                    remove_all_actions('admin_notices');
-                }
-            },
-            0
-        );
+                    'nonce' => wp_create_nonce('wp_rest')
+                ));
+                // removes annoying ads in my plugin page
+                add_action(
+                    'admin_notices',
+                    function () {
+                        if (current_user_can('manage_options')) {
+                            remove_all_actions('user_admin_notices');
+                            remove_all_actions('admin_notices');
+                        }
+                    },
+                    0
+                );
 
-        $this->dataQueryScripts->sendDataUsingAjax();
-    }
-}
+                $this->dataQueryScripts->sendDataUsingAjax();
+            }
+        }
     }
 }

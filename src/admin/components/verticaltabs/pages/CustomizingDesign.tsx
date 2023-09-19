@@ -3,14 +3,14 @@ import { CustomizingContentRoutes } from './CustomizingDesign/CustomizingContent
 import { CustomizingTabLinks } from './CustomizingDesign/CustomizingTabLinks';
 
 function CustomizingDesign() {
-  return (
-    <>
-      <div id='Google_Address' className='vertical_tabcontent'>
-        <CustomizingTabLinks />
-        <CustomizingContentRoutes/>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div id="Google_Address" className="vertical_tabcontent">
+				<CustomizingTabLinks />
+				<CustomizingContentRoutes />
+			</div>
+		</>
+	);
 }
 
 export default CustomizingDesign;

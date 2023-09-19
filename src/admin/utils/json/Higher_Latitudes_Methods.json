@@ -1,5 +1,5 @@
 [
-  { "name": "Middle of The Night Method", "method": "NightMiddle" },
-  { "name": "One Seventh Rule", "method": "OneSeventh" },
-  { "name": "Angel Base Method", "method": "AngleBased" }
+	{ "name": "Middle of The Night Method", "method": "NightMiddle" },
+	{ "name": "One Seventh Rule", "method": "OneSeventh" },
+	{ "name": "Angel Base Method", "method": "AngleBased" }
 ]

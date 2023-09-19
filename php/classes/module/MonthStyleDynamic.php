@@ -64,7 +64,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
 
 
 
-    #fiveprayer__noPrint,
+    #fiveprayer-no-print,
     .wp-block-post-title,
     .wp-container-6,
     .fiveprayer__printer_option select,
@@ -90,7 +90,6 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
     }
 
 
-
     body * {
 
         font-weight: 400 !important;
@@ -101,10 +100,8 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         padding: 0 !important;
         box-sizing: border-box !important;
         height: fit-content !important;
-
+        width: fit-content !important;
         white-space: nowrap !important;
-
-
 
     }
 
@@ -122,6 +119,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         margin: 0 !important;
         padding: 0 !important;
         font-size: 13px !important;
+
     }
 
     .fiveprayer__noDisplay {
@@ -132,13 +130,14 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
 
     .fiveprayer__printer {
         width: fit-content !important;
+
     }
 
-    #fiveprayer__divTo {
+    #fiveprayer-div-to {
         max-width: inherit;
     }
 
-    #fiveprayer__divToPrint {
+    #fiveprayer-div-to-print {
         width: fit-content !important;
         border-collapse: collapse !important;
 
@@ -166,7 +165,7 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
         color: var(--clr-first) !important;
     }
 
-    #fiveprayer__tbmonthsecond {
+    #fiveprayer-tbmonth-second {
         background-color: var(--bg-second) !important;
         color: var(--clr-second) !important;
     }
@@ -215,11 +214,11 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
     }
     .printer-page-container{
         display: grid !important;
-    grid-template-columns: repeat(3,2fr) !important;
-    grid-gap: 6px !important;
-    align-items: stretch !important;
-    margin-bottom: 10px !important;
-    justify-content: stretch !important; 
+        grid-template-columns: repeat(3,2fr) !important;
+        grid-gap: 6px !important;
+        align-items: stretch !important;
+        margin-bottom: 10px !important;
+        justify-content: stretch !important; 
 
     }
     .printer-page-container span{
@@ -227,13 +226,13 @@ if (!class_exists('FivePrayer_MonthStyleDynamic')) {
     }
     .left-printer{
         display: grid;
-height: 130px !important;
+        height: 130px !important;
 
     
     }
     .med-printer{
         display: grid;
-   justify-content: center !important;
+        justify-content: center !important;
 
     }
     .med-printer img{
@@ -249,12 +248,10 @@ height: 130px !important;
 @media screen {
     .printer-page-container{
         display: grid;
-    grid-template-columns: repeat(3,2fr);
-    grid-gap: 0px;
-    align-items: stretch ;
-   
-
-justify-content: stretch ; 
+        grid-template-columns: repeat(3,2fr);
+        grid-gap: 0px;
+        align-items: stretch;
+        justify-content: stretch; 
 
     }
 
@@ -263,20 +260,20 @@ justify-content: stretch ;
     }
     .left-printer{
         display: grid;
-background:red;
-height: 130px 
+        background:red;
+        height: 130px 
 
     }
    
     .med-printer{
         display: grid;
-   background:blue;
-   justify-content: center ;
+        background:blue;
+        justify-content: center ;
 
     }
     .med-printer img{
         width: 160px;
-    height: 130px;
+        height: 130px;
     }
     .right-printer{
         display: grid;
@@ -288,12 +285,12 @@ height: 130px
 
     }
 
-    #fiveprayer__divTo {
+    #fiveprayer-div-to {
         border-collapse: collapse;
         max-width: inherit;
     }
 
-    #fiveprayer__divToPrint {
+    #fiveprayer-div-to-print {
         width: 100%;
         border-collapse: collapse;
     }
@@ -318,7 +315,7 @@ height: 130px
     }
 
 
-    #fiveprayer__noPrint>th {
+    #fiveprayer-no-print table th {
         border: none;
     }
 
@@ -354,7 +351,7 @@ height: 130px
         color: var(--clr-first) !important;
     }
 
-    #fiveprayer__tbmonthsecond {
+    #fiveprayer-tbmonth-second {
         background-color: var(--bg-second);
         color: var(--clr-second);
     }
@@ -365,30 +362,30 @@ height: 130px
         color: var(--clr-even);
     }
 
-    .fiveprayer__select_print {
+    .fiveprayer-select-print {
         display: flex;
         padding: 0;
         margin: 0;
     }
 
-    .fiveprayer__select_print form {
+    .fiveprayer-select-print form {
         margin-bottom: 0;
     }
 
-    .fiveprayer__select_print select,
-    #fiveprayer__clickPrint {
+    .fiveprayer-select-print select,
+    #fiveprayer-click-print {
         border: none;
         height: 100%;
     }
 
-    .fiveprayer__select_print select {
+    .fiveprayer-select-print select {
         border: none;
         align-self: center;
 
 
     }
 
-    .fiveprayer__select_print .fiveprayer__clickPrint {
+    .fiveprayer-select-print .fiveprayer__clickPrint {
         border: none;
 
 
