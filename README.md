@@ -59,6 +59,9 @@ I am very sorry at the moment I am working alone and still need to finish more t
 4. FivePrayer go to More Settings - Customizing Design - click TimeTable
 
 == Changelog ==
+= 1.2.2 =
+* Tested for Compatibility with WP version 6.4.2
+
 = 1.2.1 =
 * improved UI Generate Calendar Button.
 * Tested for Compatibility with WP version 6.3.1
@@ -81,6 +84,9 @@ I am very sorry at the moment I am working alone and still need to finish more t
 * Feature ShortCode Daily Prayer Times.
 
 == Upgrade Notice ==
+= 1.2.2 =
+* Tested for Compatibility with WP version 6.4.2
+
 = 1.2.1 =
 * improved UI Generate Calendar Button.
 * Tested for Compatibility with WP version 6.3.1
