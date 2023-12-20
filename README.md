@@ -3,9 +3,9 @@ Contributors: jamaaldev
 Tags: prayer,muslim,five,fiveprayer
 Donate link: https://www.buymeacoffee.com/jamaaldev
 Requires at least: 5.9
-Tested up to: 6.3.1
+Tested up to: 6.4.2
 Requires PHP: 5.6
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
