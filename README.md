@@ -5,7 +5,7 @@ Donate link: https://www.buymeacoffee.com/jamaaldev
 Requires at least: 5.9
 Tested up to: 6.4.2
 Requires PHP: 5.6
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -59,6 +59,10 @@ I am very sorry at the moment I am working alone and still need to finish more t
 4. FivePrayer go to More Settings - Customizing Design - click TimeTable
 
 == Changelog ==
+= 1.2.3 =
+* Tested for Compatibility with WP version 6.5.3
+
+== Changelog ==
 = 1.2.2 =
 * Tested for Compatibility with WP version 6.4.2
 
@@ -84,6 +88,9 @@ I am very sorry at the moment I am working alone and still need to finish more t
 * Feature ShortCode Daily Prayer Times.
 
 == Upgrade Notice ==
+= 1.2.3 =
+* Tested for Compatibility with WP version 6.5.3
+
 = 1.2.2 =
 * Tested for Compatibility with WP version 6.4.2
 

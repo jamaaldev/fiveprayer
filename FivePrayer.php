@@ -11,7 +11,7 @@
  * Plugin Name: FivePrayer
  * Plugin URI:  https://fiveprayer.com
  * Description: FivePrayer - Plugin is For Muslim PrayerTimes.
- * Version:     1.2.2
+ * Version:     1.2.3
  * Author:      Jamaaldev
  * Author URI:  https://profiles.wordpress.org/jamaaldev/
  * Text Domain: fiveprayer-slug

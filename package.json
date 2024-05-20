@@ -1,6 +1,6 @@
 {
 	"name": "fiveprayer",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"description": "Five Prayer Plugin is For Muslim WordPress Website",
 	"main": "index.js",
 	"files": [
@@ -8,10 +8,12 @@
 		"php",
 		"/FivePrayer.php"
 	],
+
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"deploy": "np --no-tests --no-publish",
 		"build": "wp-scripts build ",
+		"release": "release-it --no-npm",
 		"start:hot": "wp-scripts start --hot",
 		"check-engines": "wp-scripts check-engines",
 		"check-licenses": "wp-scripts check-licenses",
@@ -32,7 +34,8 @@
 	},
 	"devDependencies": {
 		"@types/react-redux": "^7.1.33",
-		"@types/styled-components": "^5.1.34"
+		"@types/styled-components": "^5.1.34",
+		"release-it": "^17.3.0"
 	},
 	"keywords": [
 		"prayer",
@@ -46,19 +49,18 @@
 	},
 	"homepage": "https://github.com/jamaaldev/fiveprayer#readme",
 	"dependencies": {
-		"@reduxjs/toolkit": "^2.0.1",
-		"@wordpress/dom-ready": "^3.48.0",
-		"@wordpress/element": "^5.25.0",
-		"@wordpress/scripts": "^26.19.0",
-		"np": "^9.2.0",
-		"npm-check-updates": "^16.14.12",
+		"@reduxjs/toolkit": "^2.2.5",
+		"@wordpress/dom-ready": "^3.58.0",
+		"@wordpress/element": "^5.35.0",
+		"@wordpress/scripts": "^27.9.0",
+		"np": "^10.0.5",
+		"npm-check-updates": "^16.14.20",
 		"react-colorful": "^5.6.1",
-		"react-redux": "^9.0.4",
-		"react-refresh": "^0.14.0",
-		"react-router-dom": "^6.21.0",
-		"react-toastify": "^9.1.3",
-		"release-it": "^17.0.1",
-		"styled-components": "^6.1.1",
-		"typescript": "^5.3.3"
+		"react-redux": "^9.1.2",
+		"react-refresh": "^0.14.2",
+		"react-router-dom": "^6.23.1",
+		"react-toastify": "^10.0.5",
+		"styled-components": "^6.1.11",
+		"typescript": "^5.4.5"
 	}
 }
