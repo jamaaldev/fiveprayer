@@ -3,7 +3,7 @@ Contributors: jamaaldev
 Tags: prayer,muslim,five,fiveprayer
 Donate link: https://www.buymeacoffee.com/jamaaldev
 Requires at least: 5.9
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 5.6
 Stable tag: 1.2.3
 License: GPLv3 or later
@@ -60,6 +60,7 @@ I am very sorry at the moment I am working alone and still need to finish more t
 
 == Changelog ==
 = 1.2.3 =
+* Tested for Compatibility with WP version 6.7
 * Tested for Compatibility with WP version 6.6
 * Tested for Compatibility with WP version 6.5.3
 
@@ -90,6 +91,7 @@ I am very sorry at the moment I am working alone and still need to finish more t
 
 == Upgrade Notice ==
 = 1.2.3 =
+* Tested for Compatibility with WP version 6.7
 * Tested for Compatibility with WP version 6.6
 * Tested for Compatibility with WP version 6.5.3
 
